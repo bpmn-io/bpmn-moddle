@@ -1,0 +1,99 @@
+{
+  "name": "DC",
+  "uri": "http://www.omg.org/spec/DD/20100524/DC",
+  "types": [
+    {
+      "name": "Boolean"
+    },
+    {
+      "name": "Integer"
+    },
+    {
+      "name": "Real"
+    },
+    {
+      "name": "String"
+    },
+    {
+      "name": "Font",
+      "properties": [
+        {
+          "name": "name",
+          "type": "String",
+          "isAttr": true
+        },
+        {
+          "name": "size",
+          "type": "Real",
+          "isAttr": true
+        },
+        {
+          "name": "isBold",
+          "type": "Boolean",
+          "isAttr": true
+        },
+        {
+          "name": "isItalic",
+          "type": "Boolean",
+          "isAttr": true
+        },
+        {
+          "name": "isUnderline",
+          "type": "Boolean",
+          "isAttr": true
+        },
+        {
+          "name": "isStrikeThrough",
+          "type": "Boolean",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "Point",
+      "properties": [
+        {
+          "name": "x",
+          "type": "Real",
+          "default": "0",
+          "isAttr": true
+        },
+        {
+          "name": "y",
+          "type": "Real",
+          "default": "0",
+          "isAttr": true
+        }
+      ]
+    },
+    {
+      "name": "Bounds",
+      "properties": [
+        {
+          "name": "x",
+          "type": "Real",
+          "default": "0",
+          "isAttr": true
+        },
+        {
+          "name": "y",
+          "type": "Real",
+          "default": "0",
+          "isAttr": true
+        },
+        {
+          "name": "width",
+          "type": "Real",
+          "isAttr": true
+        },
+        {
+          "name": "height",
+          "type": "Real",
+          "isAttr": true
+        }
+      ]
+    }
+  ],
+  "prefix": "dc",
+  "associations": []
+}

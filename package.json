@@ -1,0 +1,49 @@
+{
+  "name": "bpmn-moddle",
+  "version": "0.0.1",
+  "description": "A moddle wrapper for BPMN 2.0",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "main": "lib/main",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpmn-io/bpmn-moddle"
+  },
+  "keywords": [
+    "bpmn",
+    "moddle",
+    "bpmn20",
+    "meta-model"
+  ],
+  "author": {
+    "name": "Nico Rehwaldt",
+    "url": "https://github.com/Nikku"
+  },
+  "contributors": [
+    {
+      "name": "bpmn.io contributors",
+      "url": "https://github.com/bpmn-io"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "~0.5.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-jsdoc": "~0.5.1",
+    "grunt-jasmine-node": "~0.1.0",
+    "grunt-release": "~0.7.0",
+    "load-grunt-tasks": "~0.3.0",
+    "jsondiffpatch": "~0.1.4",
+    "xsd-schema-validator": "0.0.3",
+    "sax": "~0.6.0",
+    "lodash": "~2.4.0"
+  },
+  "dependencies": {
+    "moddle": "~0.0.2",
+    "moddle-xml": "~0.0.3"
+  },
+  "peerDependencies": {
+    "lodash": "~2.4.0"
+  }
+}
