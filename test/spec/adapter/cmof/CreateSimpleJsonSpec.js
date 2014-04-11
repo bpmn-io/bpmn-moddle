@@ -81,6 +81,10 @@ describe('moddle BPMN 2.0 json', function() {
           name: 'flowNodeRef'
         });
 
+        builder.alter('Escalation', {
+          superClass: [ 'RootElement' ]
+        });
+
         builder.exportTo('resources/bpmn/json/bpmn.json');
       }, done);
 

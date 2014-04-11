@@ -782,6 +782,9 @@
           "isAttr": true,
           "type": "String"
         }
+      ],
+      "superClass": [
+        "RootElement"
       ]
     },
     {

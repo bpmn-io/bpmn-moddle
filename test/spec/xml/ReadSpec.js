@@ -51,11 +51,37 @@ describe('Model', function() {
                   id: 'SubProcess_1',
                   name : 'Sub Process 1',
                   documentation : [
-                    { $type : 'bpmn:Documentation', text : os.EOL + '        <h1>THIS IS HTML</h1>' + os.EOL + '      ' }
+                    {
+                      $type : 'bpmn:Documentation',
+                      text : os.EOL + '        <h1>THIS IS HTML</h1>' + os.EOL + '      '
+                    }
                   ]
                 }
               ]
             }
+          ]
+        });
+        
+        done(err);
+      });
+
+    });
+
+
+    it('should import escalation / error', function(done) {
+      // given
+      
+      // when
+      readFile('escalation-error.bpmn', 'bpmn:Definitions', function(err, result) {
+        
+        // then
+        expect(result).toDeepEqual({
+          $type: 'bpmn:Definitions',
+          id: 'test',
+          targetNamespace: 'http://bpmn.io/schema/bpmn',
+          rootElements: [
+            { $type : 'bpmn:Escalation', id : 'escalation' },
+            { $type : 'bpmn:Error', id : 'error' }
           ]
         });
         
