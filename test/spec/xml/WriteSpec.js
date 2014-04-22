@@ -73,6 +73,32 @@ describe('Model', function() {
     });
 
 
+    it('export ScriptTask / script', function(done) {
+
+      // given
+      var scriptTask = bpmnModel.create('bpmn:ScriptTask', {
+        id: 'ScriptTask_1',
+        scriptFormat: 'JavaScript',
+        script: 'context.set("FOO", "&nbsp;");'
+      });
+
+      var expectedXML =
+        '<bpmn:scriptTask xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                         'id="ScriptTask_1" scriptFormat="JavaScript">' +
+          '<bpmn:script><![CDATA[context.set("FOO", "&nbsp;");]]></bpmn:script>' +
+        '</bpmn:scriptTask>';
+
+      // when
+      write(scriptTask, function(err, result) {
+
+        // then
+        expect(result).toEqual(expectedXML);
+
+        done(err);
+      });
+    });
+
+
     it('export extensionElements', function(done) {
 
       // given

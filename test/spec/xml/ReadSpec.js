@@ -129,6 +129,26 @@ describe('Model', function() {
     });
 
 
+    it('should import ScriptTask', function(done) {
+
+      // given
+      
+      // when
+      readFile('scriptTask-script.part.bpmn', 'bpmn:ScriptTask', function(err, result) {
+        
+        // then
+        expect(result).toDeepEqual({
+          $type: 'bpmn:ScriptTask',
+          id : 'ScriptTask_4',
+          scriptFormat: 'Javascript',
+          script: 'context.set("FOO", "BAR");'
+        });
+
+        done(err);
+      });
+    });
+
+
     it('should import edge waypoints', function(done) {
 
       // given

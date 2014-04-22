@@ -2680,7 +2680,6 @@
         },
         {
           "name": "script",
-          "isAttr": true,
           "type": "String"
         }
       ]
