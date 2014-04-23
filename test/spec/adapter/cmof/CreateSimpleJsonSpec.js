@@ -65,6 +65,10 @@ describe('moddle BPMN 2.0 json', function() {
           isBody: true
         });
 
+        builder.alter('ScriptTask#script', function(desc) {
+          delete desc.isAttr;
+        });
+
         builder.alter('ConditionalEventDefinition#condition', {
           serialize: 'xsi:type'
         });
