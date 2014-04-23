@@ -638,7 +638,7 @@
             <targetRef>sid-8D8BD39F-1B08-433F-8F93-A1FF7520BA8B</targetRef>
          </dataOutputAssociation>
       </task>
-      <dataObjectReference id="sid-8D8BD39F-1B08-433F-8F93-A1FF7520BA8B" isCollection="true" name="Bewerber">
+      <dataObjectReference id="sid-8D8BD39F-1B08-433F-8F93-A1FF7520BA8B" name="Bewerber">
       </dataObjectReference>
       <exclusiveGateway gatewayDirection="Diverging" id="sid-B9B94A24-2819-461A-B5E8-61182BDA87DD" name="Bewerbungen&#10;eingegangen?">
          <incoming>sid-770DE0CC-14BD-46C1-B93A-3C10BD8A3933</incoming>

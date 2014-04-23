@@ -1577,12 +1577,12 @@
             <targetRef>sid-8D8BD39F-1B08-433F-8F93-A1FF7520BA8B</targetRef>
          </dataOutputAssociation>
       </task>
-      <dataObject id="sid-8D8BD39F-1B08-433F-8F93-A1FF7520BA8B" isCollection="true" name="Bewerber">
+      <dataObjectReference id="sid-8D8BD39F-1B08-433F-8F93-A1FF7520BA8B" name="Bewerber">
          <extensionElements>
             <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
             <signavio:signavioMetaData metaKey="userstory" metaValue="[]"/>
          </extensionElements>
-      </dataObject>
+      </dataObjectReference>
       <exclusiveGateway gatewayDirection="Diverging" id="sid-B9B94A24-2819-461A-B5E8-61182BDA87DD" name="Bewerbungen&#10;eingegangen?">
          <extensionElements>
             <signavio:signavioLabel align="center" bottom="false" left="false" ref="text_name" right="false" top="true" valign="bottom" x="20.0" y="-9.0"/>
@@ -2261,13 +2261,13 @@
          <incoming>sid-3906E383-5898-47F6-84FE-CBA12360BCF9</incoming>
          <outgoing>sid-11A2840A-596D-4937-BB37-0D5952E03535</outgoing>
       </task>
-      <dataObject id="sid-DF651323-2973-4344-A5E5-4FFF3FDCD702" name="Führungskraft&#10;Fachbereich">
+      <dataObjectReference id="sid-DF651323-2973-4344-A5E5-4FFF3FDCD702" name="Führungskraft&#10;Fachbereich">
          <extensionElements>
             <signavio:signavioType dataObjectType="ProcessParticipant"/>
             <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
             <signavio:signavioMetaData metaKey="userstory" metaValue="[]"/>
          </extensionElements>
-      </dataObject>
+      </dataObjectReference>
       <startEvent id="sid-3B833F36-ABCE-49A9-B268-445BAC9F758D" isInterrupting="true" name="Gesprächs-&#10;termin&#10;erreicht">
          <extensionElements>
             <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff"/>
