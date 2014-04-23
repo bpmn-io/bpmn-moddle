@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:camunda="http://activiti.org/bpmn" id="test" targetNamespace="http://bpmn.io/schema/bpmn">
+
+  <process id="Process_1">
+    <userTask id="userTask"
+        camunda:assignee="test"
+        camunda:async="true"
+        camunda:dueDate="2014-02-27"
+        camunda:exclusive="false"
+        camunda:priority="12">
+    </userTask>
+
+    <serviceTask id="serviceTask"
+        camunda:expression="${test}"
+        camunda:resultVariable="test"
+        camunda:type="mail">
+
+    </serviceTask>
+  </process>
+</definitions>

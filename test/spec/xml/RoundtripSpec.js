@@ -80,6 +80,24 @@ describe('Model - roundtrip', function() {
 
       // given
       readBpmn('complex-no-extensions.bpmn', function(err, result) {
+        
+        if (err) {
+          done(err);
+          return;
+        }
+
+        // when
+        writeBpmn(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
+    it('should write extension attributes', function(done) {
+
+      // given
+      readBpmn('extension-attributes.bpmn', function(err, result) {
 
         if (err) {
           done(err);
