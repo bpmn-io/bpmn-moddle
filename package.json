@@ -1,11 +1,11 @@
 {
   "name": "bpmn-moddle",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "test": "grunt test"
   },
-  "main": "lib/main",
+  "main": "lib/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-moddle"
@@ -20,13 +20,13 @@
     "name": "Nico Rehwaldt",
     "url": "https://github.com/Nikku"
   },
-  "license": "MIT",
   "contributors": [
     {
       "name": "bpmn.io contributors",
       "url": "https://github.com/bpmn-io"
     }
   ],
+  "license": "MIT",
   "devDependencies": {
     "grunt": "^0.4.4",
     "grunt-contrib-watch": "~0.5.0",
