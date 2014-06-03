@@ -3069,5 +3069,7 @@
     }
   ],
   "prefix": "bpmn",
-  "alias": "lowerCase"
+  "xml": {
+    "alias": "lowerCase"
+  }
 }

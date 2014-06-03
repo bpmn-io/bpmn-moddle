@@ -2,7 +2,7 @@ var _ = require('lodash'),
     fs = require('fs'),
     path = require('path');
 
-var CmofParser = require('moddle/lib/adapter/cmof/Parser');
+var CmofParser = require('cmof-parser');
 
 var Helper = require('../../Helper');
 

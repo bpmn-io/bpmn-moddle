@@ -29,10 +29,10 @@ describe('Model', function() {
 
     it('should import documentation', function(done) {
       // given
-      
+
       // when
       readFile('documentation.bpmn', 'bpmn:Definitions', function(err, result) {
-        
+
         // then
         expect(result).toDeepEqual({
           $type: 'bpmn:Definitions',
@@ -61,7 +61,7 @@ describe('Model', function() {
             }
           ]
         });
-        
+
         done(err);
       });
 
@@ -70,10 +70,10 @@ describe('Model', function() {
 
     it('should import escalation / error', function(done) {
       // given
-      
+
       // when
       readFile('escalation-error.bpmn', 'bpmn:Definitions', function(err, result) {
-        
+
         // then
         expect(result).toDeepEqual({
           $type: 'bpmn:Definitions',
@@ -84,7 +84,7 @@ describe('Model', function() {
             { $type : 'bpmn:Error', id : 'error' }
           ]
         });
-        
+
         done(err);
       });
     });
@@ -92,10 +92,10 @@ describe('Model', function() {
 
     it('should import extensionElements', function(done) {
       // given
-      
+
       // when
       readFile('extension-elements.bpmn', 'bpmn:Definitions', function(err, result) {
-        
+
         expect(result).toDeepEqual({
           $type: 'bpmn:Definitions',
           id: 'test',
@@ -108,7 +108,7 @@ describe('Model', function() {
             ]
           }
         });
-        
+
         done(err);
       });
     });
@@ -120,10 +120,10 @@ describe('Model', function() {
 
       // when
       readFile('simple.bpmn', 'bpmn:Definitions', function(err, result) {
-        
+
         // then
         expect(result.id).toBe('simple');
-        
+
         done(err);
       });
     });
@@ -132,10 +132,10 @@ describe('Model', function() {
     it('should import ScriptTask', function(done) {
 
       // given
-      
+
       // when
       readFile('scriptTask-script.part.bpmn', 'bpmn:ScriptTask', function(err, result) {
-        
+
         // then
         expect(result).toDeepEqual({
           $type: 'bpmn:ScriptTask',
@@ -152,10 +152,10 @@ describe('Model', function() {
     it('should import edge waypoints', function(done) {
 
       // given
-      
+
       // when
       readFile('di/bpmnedge-waypoint.part.bpmn', 'bpmndi:BPMNEdge', function(err, result) {
-        
+
         // then
         expect(result).toDeepEqual({
           $type: 'bpmndi:BPMNEdge',
@@ -177,9 +177,9 @@ describe('Model', function() {
 
       // when
       readFile('simple-default-ns.bpmn', 'bpmn:Definitions', function(err, result) {
-        
+
         expect(result.id).toBe('simple');
-        
+
         done(err);
       });
     });
@@ -203,7 +203,7 @@ describe('Model', function() {
             id: 'FOO_BAR'
           };
 
-          var references = context.getReferences();
+          var references = context.references;
 
           // then
           expect(references).toDeepEqual([ expectedReference ]);
@@ -241,7 +241,7 @@ describe('Model', function() {
             id: 'OUT_2'
           };
 
-          var references = context.getReferences();
+          var references = context.references;
 
           // then
           expect(references).toDeepEqual([ reference1, reference2 ]);
@@ -260,7 +260,7 @@ describe('Model', function() {
 
         // when
         readFile('empty-definitions.bpmn', 'bpmn:Definitions', function(err, result) {
-          
+
           var expected = {
             $type: 'bpmn:Definitions',
             id: 'empty-definitions',
@@ -278,7 +278,7 @@ describe('Model', function() {
       it('empty Definitions (default ns)', function(done) {
 
         // given
-        
+
         // when
         readFile('empty-definitions-default-ns.bpmn', 'bpmn:Definitions', function(err, result) {
 
@@ -326,7 +326,7 @@ describe('Model', function() {
       it('SubProcess / flow nodes / nested references', function(done) {
 
         // given
-        
+
         // when
         readFile('sub-process.part.bpmn', 'bpmn:SubProcess', function(err, result) {
 
@@ -353,7 +353,7 @@ describe('Model', function() {
       it('SubProcess / incoming + flow nodes', function(done) {
 
         // given
-        
+
         // when
         readFile('subprocess-flow-nodes-outgoing.part.bpmn', 'bpmn:Process', function(err, result) {
 
@@ -386,7 +386,7 @@ describe('Model', function() {
 
           var subProcess = result.flowElements[0];
           var sequenceFlow = result.flowElements[1];
-          
+
           // expect correctly resolved references
           expect(subProcess.incoming).toDeepEqual([ expectedSequenceFlow ]);
           expect(subProcess.outgoing).toDeepEqual([ expectedSequenceFlow ]);
@@ -402,7 +402,7 @@ describe('Model', function() {
       it('BPMNShape / nested bounds / non-ns-attributes', function(done) {
 
         // given
-        
+
         // when
         readFile('di/bpmnshape.part.bpmn', 'bpmndi:BPMNShape', function(err, result) {
 
@@ -488,7 +488,7 @@ describe('Model', function() {
 
     });
 
-    
+
     describe('should handle errors', function() {
 
 
@@ -496,9 +496,9 @@ describe('Model', function() {
 
         // when
         readFile('error/no-xml.txt', 'bpmn:Definitions', function(err, result) {
-          
+
           expect(err).not.toEqual(null);
-          
+
           done();
         });
       });
@@ -519,7 +519,7 @@ describe('Model', function() {
 
         // when
         readFile('error/invalid-child.bpmn', 'bpmn:Definitions', function(err, result) {
-          
+
           expect(err).not.toEqual(null);
 
           done();

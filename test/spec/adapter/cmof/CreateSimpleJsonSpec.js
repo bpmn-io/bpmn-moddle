@@ -1,3 +1,5 @@
+'use strict';
+
 var Builder = require('./Builder');
 
 
@@ -8,23 +10,25 @@ describe('moddle BPMN 2.0 json', function() {
     it('transform BPMN20.cmof', function(done) {
 
       var builder = new Builder();
-      
+
       builder.parse('resources/bpmn/cmof/BPMN20.cmof', function(pkg, cmof) {
-        
+
         builder.cleanIDs();
-        
+
         // remove associations
         pkg.associations = [];
 
-        pkg.alias = 'lowerCase';
+        pkg.xml = {
+          alias: 'lowerCase'
+        };
 
         // perform a translation from
-        // 
+        //
         // BaseElement
         //   - extensionValues = [ ExtensionAttributeValue#value = ... ]
-        //   
+        //
         // to
-        // 
+        //
         // BaseElement
         //   - extensionElements: ExtensionElements#values = [ ... ]
         //
@@ -47,7 +51,7 @@ describe('moddle BPMN 2.0 json', function() {
 
 
         // fix positioning of elements
-        
+
         builder.alter('FlowElementsContainer', function(desc) {
           builder.swapProperties(desc, 'laneSets', 'flowElements');
         });
@@ -98,11 +102,11 @@ describe('moddle BPMN 2.0 json', function() {
     it('transform BPMNDI.cmof', function(done) {
 
       var builder = new Builder();
-      
+
       builder.parse('resources/bpmn/cmof/BPMNDI.cmof', function(pkg) {
-        
+
         builder.cleanIDs();
-        
+
         // remove associations
         pkg.associations = [];
 
@@ -115,7 +119,7 @@ describe('moddle BPMN 2.0 json', function() {
     it('transform DI.cmof', function(done) {
 
       var builder = new Builder();
-      
+
       builder.parse('resources/bpmn/cmof/DI.cmof', function(pkg, cmof) {
 
         builder.cleanIDs();
@@ -136,11 +140,11 @@ describe('moddle BPMN 2.0 json', function() {
     it('transform DC.cmof', function(done) {
 
       var builder = new Builder();
-      
+
       builder.parse('resources/bpmn/cmof/DC.cmof', function(pkg, cmof) {
 
         builder.cleanIDs();
-        
+
         // remove associations
         pkg.associations = [];
 
