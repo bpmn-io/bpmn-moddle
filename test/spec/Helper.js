@@ -23,7 +23,7 @@ function createModelBuilder(base) {
   if (!base) {
     throw new Error('[test-util] must specify a base directory');
   }
-  
+
   function createModel(packageNames) {
 
     var packages = _.collect(packageNames, function(f) {

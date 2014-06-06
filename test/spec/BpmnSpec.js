@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('lodash');
 
 var Helper = require('./Helper'),
@@ -5,9 +7,11 @@ var Helper = require('./Helper'),
 
 var BpmnModel = Helper.bpmnModel();
 
+
 describe('Bpmn', function() {
 
   beforeEach(Matchers.add);
+
 
   describe('parsing', function() {
 
@@ -149,7 +153,7 @@ describe('Bpmn', function() {
           ]
         });
       });
-      
+
     });
   });
 });

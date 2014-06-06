@@ -1,50 +1,18 @@
-var SchemaValidator = require('xsd-schema-validator');
+'use strict';
 
-var Helper = require('../Helper'),
-    Matchers = require('../Matchers');
+var Matchers = require('../Matchers');
 
-var BpmnModel = Helper.bpmnModel();
+var Helper = require('./RoundtripHelper'),
+    BpmnModel = Helper.bpmnModel();
 
-var BPMN_XSD = 'resources/bpmn/xsd/BPMN20.xsd';
+var writeBpmn = Helper.writeBpmn,
+    readBpmn = Helper.readBpmn,
+    validate = Helper.validate;
 
 
 describe('Model - roundtrip', function() {
 
   var bpmnModel = BpmnModel.instance();
-
-  function readBpmnDiagram(file) {
-    return Helper.readFile('test/fixtures/bpmn/' + file);
-  }
-
-  function readBpmn(file, callback) {
-    BpmnModel.fromXML(readBpmnDiagram(file), 'bpmn:Definitions', callback);
-  }
-
-  function writeBpmn(element, opts, callback) {
-    BpmnModel.toXML(element, opts, callback);
-  }
-
-  function validate(err, xml, done) {
-
-    if (err) {
-      done(err);
-    } else {
-
-      if (!xml) {
-        done(new Error('XML is not defined'));
-      }
-
-      SchemaValidator.validateXML(xml, BPMN_XSD, function(err, result) {
-
-        if (err) {
-          done(err);
-        } else {
-          expect(result.valid).toBe(true);
-          done();
-        }
-      });
-    }
-  }
 
 
   beforeEach(Matchers.add);
@@ -80,7 +48,7 @@ describe('Model - roundtrip', function() {
 
       // given
       readBpmn('complex-no-extensions.bpmn', function(err, result) {
-        
+
         if (err) {
           done(err);
           return;
@@ -121,7 +89,7 @@ describe('Model - roundtrip', function() {
           done(err);
           return;
         }
-        
+
         // when
         writeBpmn(result, { format: true }, function(err, xml) {
           validate(err, xml, done);
@@ -139,7 +107,7 @@ describe('Model - roundtrip', function() {
           done(err);
           return;
         }
-        
+
         // when
         writeBpmn(result, { format: true }, function(err, xml) {
           validate(err, xml, done);
