@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "sax": "~0.6.0",
-    "moddle": "~0.0.2",
-    "moddle-xml": "~0.0.3"
+    "moddle": "~0.1.0",
+    "moddle-xml": "~0.1.0"
   }
 }
