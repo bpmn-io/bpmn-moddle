@@ -202,6 +202,57 @@ describe('Model', function() {
     });
 
 
+    it('should import ItemDefinition#structureRef', function(done) {
+
+      // when
+      readFile('itemDefinition-structureRef.part.bpmn', 'bpmn:ItemDefinition', function(err, result) {
+
+        // then
+        expect(result).toDeepEqual({
+          $type: 'bpmn:ItemDefinition',
+          id: 'itemDefinition',
+          structureRef: 'foo:Service'
+        });
+
+        done(err);
+      });
+    });
+
+
+    it('should import Operation#implementationRef', function(done) {
+
+      // when
+      readFile('operation-implementationRef.part.bpmn', 'bpmn:Operation', function(err, result) {
+
+        // then
+        expect(result).toDeepEqual({
+          $type: 'bpmn:Operation',
+          id: 'operation',
+          implementationRef: 'foo:operation'
+        });
+
+        done(err);
+      });
+    });
+
+
+    it('should import Interface#implementationRef', function(done) {
+
+      // when
+      readFile('interface-implementationRef.part.bpmn', 'bpmn:Interface', function(err, result) {
+
+        // then
+        expect(result).toDeepEqual({
+          $type: 'bpmn:Interface',
+          id: 'interface',
+          implementationRef: 'foo:interface'
+        });
+
+        done(err);
+      });
+    });
+
+
     describe('should import references', function() {
 
       it('via attributes', function(done) {

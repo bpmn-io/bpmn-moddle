@@ -22,7 +22,8 @@
         },
         {
           "name": "implementationRef",
-          "type": "Element"
+          "type": "String",
+          "isAttr": true
         }
       ]
     },
@@ -60,7 +61,8 @@
         },
         {
           "name": "implementationRef",
-          "type": "Element"
+          "type": "String",
+          "isAttr": true
         }
       ]
     },
@@ -1645,7 +1647,8 @@
         },
         {
           "name": "structureRef",
-          "type": "Element"
+          "type": "String",
+          "isAttr": true
         },
         {
           "name": "isCollection",

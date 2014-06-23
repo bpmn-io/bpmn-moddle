@@ -3,6 +3,11 @@
 var Builder = require('./Builder');
 
 
+function makeStringRef(desc) {
+  desc.type = 'String';
+  delete desc.isReference;
+}
+
 describe('moddle BPMN 2.0 json', function() {
 
   describe('generate simple model', function() {
@@ -81,16 +86,30 @@ describe('moddle BPMN 2.0 json', function() {
           delete desc.isAttr;
         });
 
-        builder.alter('CallActivity#calledElementRef', function(desc) {
 
-          // make CallActivity#calledElement a string rather than a reference
-          // (this way we are able to import it properly)
+        // make some references strings rather than references
+        // (this way we are able to import it properly)
 
-          desc.name = 'calledElement';
-          desc.type = 'String';
-
-          delete desc.isReference;
+        builder.alter('Operation#implementationRef', function(desc) {
+          desc.isAttr = true;
+          makeStringRef(desc);
         });
+
+        builder.alter('Interface#implementationRef', function(desc) {
+          desc.isAttr = true;
+          makeStringRef(desc);
+        });
+
+        builder.alter('ItemDefinition#structureRef', function(desc) {
+          desc.isAttr = true;
+          makeStringRef(desc);
+        });
+
+        builder.alter('CallActivity#calledElementRef', function(desc) {
+          desc.name = 'calledElement';
+          makeStringRef(desc);
+        });
+
 
         builder.alter('DataAssociation#targetRef', function(desc) {
           delete desc.isAttr;

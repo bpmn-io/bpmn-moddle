@@ -123,6 +123,79 @@ describe('Model', function() {
     });
 
 
+    it('should export ItemDefinition#structureRef', function(done) {
+
+      // given
+      var itemDefinition = bpmnModel.create('bpmn:ItemDefinition', {
+        id: 'serviceInput',
+        structureRef: 'service:CelsiusToFahrenheitSoapIn'
+      });
+
+      var expectedXML =
+        '<bpmn:itemDefinition xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                'id="serviceInput" ' +
+                'structureRef="service:CelsiusToFahrenheitSoapIn" />';
+
+      // when
+      write(itemDefinition, function(err, result) {
+
+        // then
+        expect(result).toEqual(expectedXML);
+
+        done(err);
+      });
+    });
+
+
+    it('should export Operation#implementationRef', function(done) {
+
+      // given
+      var operation = bpmnModel.create('bpmn:Operation', {
+        id: 'operation',
+        implementationRef: 'foo:operation'
+      });
+
+      var expectedXML =
+        '<bpmn:operation xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                'id="operation" ' +
+                'implementationRef="foo:operation" />';
+
+      // when
+      write(operation, function(err, result) {
+
+        // then
+        expect(result).toEqual(expectedXML);
+
+        done(err);
+      });
+    });
+
+
+    it('should export Interface#implementationRef', function(done) {
+
+      // given
+      var iface = bpmnModel.create('bpmn:Interface', {
+        id: 'interface',
+        implementationRef: 'foo:interface'
+      });
+
+      var expectedXML =
+        '<bpmn:interface xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                'id="interface" ' +
+                'implementationRef="foo:interface" />';
+
+      // when
+      write(iface, function(err, result) {
+
+        // then
+        expect(result).toEqual(expectedXML);
+
+        done(err);
+      });
+    });
+
+
+
     it('export extensionElements', function(done) {
 
       // given
