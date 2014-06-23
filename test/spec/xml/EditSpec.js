@@ -34,8 +34,6 @@ describe('Model - edit', function() {
         writeBpmn(result, { format: true }, function(err, xml) {
           expect(xml).toContain('name="OTHER PROCESS"');
 
-          console.log(xml);
-
           done(err);
         });
       });

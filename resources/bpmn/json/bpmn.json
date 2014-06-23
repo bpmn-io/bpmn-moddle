@@ -2592,11 +2592,10 @@
       ],
       "properties": [
         {
-          "name": "calledElementRef",
-          "type": "CallableElement",
+          "name": "calledElement",
+          "type": "String",
           "association": "A_calledElementRef_callActivity",
-          "isAttr": true,
-          "isReference": true
+          "isAttr": true
         }
       ]
     },

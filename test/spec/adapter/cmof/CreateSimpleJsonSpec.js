@@ -81,6 +81,17 @@ describe('moddle BPMN 2.0 json', function() {
           delete desc.isAttr;
         });
 
+        builder.alter('CallActivity#calledElementRef', function(desc) {
+
+          // make CallActivity#calledElement a string rather than a reference
+          // (this way we are able to import it properly)
+
+          desc.name = 'calledElement';
+          desc.type = 'String';
+
+          delete desc.isReference;
+        });
+
         builder.alter('DataAssociation#targetRef', function(desc) {
           delete desc.isAttr;
         });

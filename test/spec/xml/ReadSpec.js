@@ -185,6 +185,23 @@ describe('Model', function() {
     });
 
 
+    it('should import CallActivity#calledElement', function(done) {
+
+      // when
+      readFile('callActivity-calledElement.part.bpmn', 'bpmn:CallActivity', function(err, result) {
+
+        // then
+        expect(result).toDeepEqual({
+          $type: 'bpmn:CallActivity',
+          id: 'CallActivity_1',
+          calledElement: 'otherProcess'
+        });
+
+        done(err);
+      });
+    });
+
+
     describe('should import references', function() {
 
       it('via attributes', function(done) {
@@ -491,7 +508,6 @@ describe('Model', function() {
 
     describe('should handle errors', function() {
 
-
       it('when importing non-xml text', function(done) {
 
         // when
@@ -502,6 +518,7 @@ describe('Model', function() {
           done();
         });
       });
+
 
       it('when importing binary', function(done) {
 
@@ -514,6 +531,7 @@ describe('Model', function() {
         });
 
       });
+
 
       it('when importing invalid bpmn', function(done) {
 

@@ -99,6 +99,30 @@ describe('Model', function() {
     });
 
 
+    it('should export CallActivity#calledElement', function(done) {
+
+      // given
+      var callActivity = bpmnModel.create('bpmn:CallActivity', {
+        id: 'CallActivity_1',
+        calledElement: 'otherProcess'
+      });
+
+      var expectedXML =
+        '<bpmn:callActivity ' +
+            'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+            'id="CallActivity_1" calledElement="otherProcess" />';
+
+      // when
+      write(callActivity, function(err, result) {
+
+        // then
+        expect(result).toEqual(expectedXML);
+
+        done(err);
+      });
+    });
+
+
     it('export extensionElements', function(done) {
 
       // given
