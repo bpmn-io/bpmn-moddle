@@ -7,10 +7,12 @@ The library is built on top of [moddle](https://github.com/bpmn-io/moddle) / [mo
 
 ## Usage
 
-The library is provided as an npm package. Bundle it for the web via [browserify](browserify.org).
+The library is provided as an [npm package](https://www.npmjs.org/package/bpmn-moddle). Bundle it for the web via [browserify](browserify.org).
 
 ```javascript
-var Bpmn = require('bpmn-moddle');
+var BpmnModdle = require('bpmn-moddle');
+
+var moddle = new BpmnModdle();
 
 var xmlStr =
   '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -18,18 +20,16 @@ var xmlStr =
   '</bpmn2:definitions>';
 
 
-Bpmn.fromXML(xmlStr, function(err, definitions) {
+moddle.fromXML(xmlStr, function(err, definitions) {
 
   // update id attribute
   definitions.attr('id', 'NEW ID');
 
-  var model = Bpmn.instance();
-
   // add a root element
-  var bpmnProcess = model.create('bpmn:Process', { id: 'MyProcess_1' });
+  var bpmnProcess = moddle.create('bpmn:Process', { id: 'MyProcess_1' });
   definitions.get('rootElements').push(bpmnProcess);
 
-  Bpmn.toXML(definitions, function(err, xmlStrUpdated) {
+  moddle.toXML(definitions, function(err, xmlStrUpdated) {
 
     // xmlStrUpdated contains new id and the added process
 
