@@ -24,17 +24,16 @@ module.exports = function(grunt) {
       }
     },
 
-    jasmine_node: {
-      options: {
-        specNameMatcher: '.*Spec',
-        jUnit: {
-          report: true,
-          savePath : 'tmp/reports/jasmine',
-          useDotNotation: true,
-          consolidate: true
-        }
-      },
-      all: [ 'test/spec/' ]
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          require: [
+            './test/expect.js'
+          ]
+        },
+        src: ['test/**/*.js']
+      }
     },
 
     release: {
@@ -46,9 +45,9 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      jasmine_node: {
+      test: {
         files: [ '<%= config.sources %>/**/*.js', '<%= config.tests %>/spec/**/*.js' ],
-        tasks: [ 'jasmine_node' ]
+        tasks: [ 'test' ]
       }
     },
 
@@ -65,9 +64,9 @@ module.exports = function(grunt) {
 
   // tasks
 
-  grunt.registerTask('test', [ 'jasmine_node' ]);
+  grunt.registerTask('test', [ 'mochaTest' ]);
 
-  grunt.registerTask('auto-test', [ 'jasmine_node', 'watch:jasmine_node' ]);
+  grunt.registerTask('auto-test', [ 'test', 'watch:test' ]);
 
   grunt.registerTask('default', [ 'jshint', 'test', 'jsdoc' ]);
 };

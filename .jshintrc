@@ -20,17 +20,12 @@
   "maxlen" : 120,
   "browser" : false,
   "node" : true,
-  "debug": true,
+  "expr": true,
   "strict": false,
   "globals": {
-    "console": true,
-    "require": false,
-    "module": false,
     "describe": false,
     "it": false,
-    "jasmine": true,
     "expect": true,
-    "fail": true,
     "beforeEach": true,
     "afterEach": true
   }

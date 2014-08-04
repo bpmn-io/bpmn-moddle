@@ -1,6 +1,6 @@
 'use strict';
 
-var Builder = require('./Builder');
+var Builder = require('./builder');
 
 
 function makeStringRef(desc) {

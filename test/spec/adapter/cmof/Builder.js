@@ -4,7 +4,7 @@ var _ = require('lodash'),
 
 var CmofParser = require('cmof-parser');
 
-var Helper = require('../../Helper');
+var Helper = require('../../../helper');
 
 
 function Builder() {

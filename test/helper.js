@@ -3,7 +3,7 @@ var fs = require('fs'),
 
 var Model = require('moddle');
 
-var BpmnModel = require('../../lib/model/Simple');
+var SimpleBpmnModdle = require('../');
 
 function ensureDirExists(dir) {
 
@@ -51,6 +51,6 @@ module.exports.readFile = readFile;
 module.exports.ensureDirExists = ensureDirExists;
 module.exports.createModelBuilder = createModelBuilder;
 
-module.exports.bpmnModel = function() {
-  return BpmnModel;
+module.exports.createModdle = function() {
+  return new SimpleBpmnModdle();
 };
