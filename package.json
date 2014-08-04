@@ -35,6 +35,7 @@
     "grunt-jsdoc": "~0.5.1",
     "grunt-mocha-test": "^0.11.0",
     "grunt-release": "^0.7.0",
+    "ids": "0.0.3",
     "jsondiffpatch": "~0.1.4",
     "load-grunt-tasks": "~0.3.0",
     "xsd-schema-validator": "0.0.3"
@@ -43,7 +44,6 @@
     "lodash": "~2.4.0",
     "sax": "~0.6.0",
     "moddle": "~0.2.0",
-    "moddle-xml": "~0.2.0",
-    "ids": "0.0.3"
+    "moddle-xml": "~0.2.0"
   }
 }
