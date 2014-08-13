@@ -310,7 +310,7 @@
         {
           "name": "gatewayDirection",
           "type": "GatewayDirection",
-          "default": "unspecified",
+          "default": "Unspecified",
           "isAttr": true
         }
       ]
@@ -330,7 +330,8 @@
         {
           "name": "eventGatewayType",
           "type": "EventBasedGatewayType",
-          "isAttr": true
+          "isAttr": true,
+          "default": "Exclusive"
         }
       ]
     },
@@ -660,7 +661,8 @@
         {
           "name": "parallelMultiple",
           "isAttr": true,
-          "type": "Boolean"
+          "type": "Boolean",
+          "default": false
         },
         {
           "name": "outputSet",
@@ -2062,13 +2064,13 @@
       "properties": [
         {
           "name": "minimum",
-          "default": "0",
+          "default": 0,
           "isAttr": true,
           "type": "Integer"
         },
         {
           "name": "maximum",
-          "default": "1",
+          "default": 1,
           "isAttr": true,
           "type": "Integer"
         }
@@ -2430,13 +2432,13 @@
         },
         {
           "name": "startQuantity",
-          "default": "1",
+          "default": 1,
           "isAttr": true,
           "type": "Integer"
         },
         {
           "name": "completionQuantity",
-          "default": "1",
+          "default": 1,
           "isAttr": true,
           "type": "Integer"
         }

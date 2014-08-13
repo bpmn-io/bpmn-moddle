@@ -110,6 +110,33 @@ describe('moddle BPMN 2.0 json', function() {
           makeStringRef(desc);
         });
 
+        builder.alter('Gateway#gatewayDirection', function(desc) {
+          desc.default = 'Unspecified';
+        });
+
+        builder.alter('EventBasedGateway#eventGatewayType', function(desc) {
+          desc.default = 'Exclusive';
+        });
+
+        builder.alter('CatchEvent#parallelMultiple', function(desc) {
+          desc.default = false;
+        });
+
+        builder.alter('ParticipantMultiplicity#minimum', function(desc) {
+          desc.default = 0;
+        });
+
+        builder.alter('ParticipantMultiplicity#maximum', function(desc) {
+          desc.default = 1;
+        });
+
+        builder.alter('Activity#startQuantity', function(desc) {
+          desc.default = 1;
+        });
+
+        builder.alter('Activity#completionQuantity', function(desc) {
+          desc.default = 1;
+        });
 
         builder.alter('DataAssociation#targetRef', function(desc) {
           delete desc.isAttr;

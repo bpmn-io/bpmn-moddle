@@ -52,6 +52,47 @@ describe('bpmn-moddle', function() {
       expect(definitions.$type).to.eql('bpmn:Definitions');
     });
 
+
+    describe('defaults', function() {
+
+      it('should init Gateway', function() {
+        var gateway = moddle.create('bpmn:Gateway');
+
+        expect(gateway.gatewayDirection).to.eql('Unspecified');
+      });
+
+
+      it('should init EventBasedGateway', function() {
+        var gateway = moddle.create('bpmn:EventBasedGateway');
+
+        expect(gateway.eventGatewayType).to.eql('Exclusive');
+      });
+
+
+      it('should init CatchEvent', function() {
+        var event = moddle.create('bpmn:CatchEvent');
+
+        expect(event.parallelMultiple).to.eql(false);
+      });
+
+
+      it('should init ParticipantMultiplicity', function() {
+        var participantMultiplicity = moddle.create('bpmn:ParticipantMultiplicity');
+
+        expect(participantMultiplicity.minimum).to.eql(0);
+        expect(participantMultiplicity.maximum).to.eql(1);
+      });
+
+
+      it('should init Activity', function() {
+        var activity = moddle.create('bpmn:Activity');
+
+        expect(activity.startQuantity).to.eql(1);
+        expect(activity.completionQuantity).to.eql(1);
+      });
+
+    });
+
   });
 
 
