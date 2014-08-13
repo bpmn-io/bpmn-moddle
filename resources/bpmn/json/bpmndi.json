@@ -126,7 +126,8 @@
         {
           "name": "messageVisibleKind",
           "type": "MessageVisibleKind",
-          "isAttr": true
+          "isAttr": true,
+          "default": "initiating"
         }
       ],
       "superClass": [

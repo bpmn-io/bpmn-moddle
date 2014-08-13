@@ -167,6 +167,10 @@ describe('moddle BPMN 2.0 json', function() {
         // remove associations
         pkg.associations = [];
 
+        builder.alter('BPMNEdge#messageVisibleKind', function(desc) {
+          desc.default = 'initiating';
+        });
+
         builder.exportTo('resources/bpmn/json/bpmndi.json');
       }, done);
 

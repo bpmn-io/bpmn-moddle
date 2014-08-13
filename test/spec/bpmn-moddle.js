@@ -62,6 +62,13 @@ describe('bpmn-moddle', function() {
       });
 
 
+      it('should init BPMNShape', function() {
+        var bpmnEdge = moddle.create('bpmndi:BPMNEdge');
+
+        expect(bpmnEdge.messageVisibleKind).to.eql('initiating');
+      });
+
+
       it('should init EventBasedGateway', function() {
         var gateway = moddle.create('bpmn:EventBasedGateway');
 
