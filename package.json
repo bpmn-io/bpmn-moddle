@@ -1,6 +1,6 @@
 {
   "name": "bpmn-moddle",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "test": "grunt test"
@@ -43,7 +43,7 @@
   "dependencies": {
     "lodash": "^2.4.0",
     "sax": "^0.6.0",
-    "moddle": "^0.3.1",
-    "moddle-xml": "^0.3.0"
+    "moddle": "^0.4.0",
+    "moddle-xml": "^0.4.1"
   }
 }
