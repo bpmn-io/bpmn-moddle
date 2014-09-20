@@ -70,8 +70,9 @@ describe('moddle BPMN 2.0 json', function() {
           builder.swapProperties(desc, 'targetRef', 'sourceRef');
         });
 
-        builder.alter('Documentation#text', {
-          isBody: true
+        builder.alter('Documentation#text', function(prop) {
+          prop.isBody = true;
+          delete prop.isAttr;
         });
 
         builder.alter('ScriptTask#script', function(desc) {

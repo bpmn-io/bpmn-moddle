@@ -552,7 +552,6 @@
       "properties": [
         {
           "name": "text",
-          "isAttr": true,
           "type": "String",
           "isBody": true
         },

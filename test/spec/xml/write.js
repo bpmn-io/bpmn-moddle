@@ -74,6 +74,37 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('BaseElement#documentation', function(done) {
+
+        // given
+        var defs = moddle.create('bpmn:Definitions', {
+          id: 'Definitions_1'
+        });
+
+        var docs = defs.get('documentation');
+
+        docs.push(moddle.create('bpmn:Documentation', { textFormat: 'xyz', text: 'FOO\nBAR' }));
+        docs.push(moddle.create('bpmn:Documentation', { text: '<some /><html></html>' }));
+
+        var expectedXML =
+          '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_1">' +
+             '<bpmn:documentation textFormat="xyz">FOO\nBAR</bpmn:documentation>' +
+             '<bpmn:documentation><![CDATA[<some /><html></html>]]></bpmn:documentation>' +
+          '</bpmn:definitions>';
+
+        // when
+        write(defs, function(err, result) {
+
+          console.log(err);
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('CallActivity#calledElement', function(done) {
 
         // given
