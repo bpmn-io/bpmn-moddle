@@ -268,4 +268,79 @@ describe('bpmn-moddle - write', function() {
 
   });
 
+
+  describe('should export extensions', function() {
+
+
+    it('as attributes', function(done) {
+
+      // given
+      var definitions = moddle.create('bpmn:Definitions');
+
+      definitions.set('xmlns:foo', 'http://foobar');
+      definitions.set('foo:bar', 'BAR');
+
+      // or alternatively directly assign it to definitions.$attrs
+
+      var expectedXML =
+        '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                          'xmlns:foo="http://foobar" foo:bar="BAR" />';
+
+      // when
+      write(definitions, function(err, result) {
+
+        // then
+        expect(result).to.eql(expectedXML);
+
+        done(err);
+      });
+    });
+
+
+    it('as elements', function(done) {
+
+      // given
+
+      var vendorBgColor = moddle.createAny('vendor:info', 'http://vendor', {
+        key: 'bgcolor',
+        value: '#ffffff'
+      });
+
+      var vendorRole = moddle.createAny('vendor:info', 'http://vendor', {
+        key: 'role',
+        value: '[]'
+      });
+
+      var extensionElements = moddle.create('bpmn:ExtensionElements', {
+        values: [ vendorBgColor, vendorRole ]
+      });
+
+      var definitions = moddle.create('bpmn:Definitions', { extensionElements: extensionElements });
+
+      var expectedXML =
+        '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                          'xmlns:vendor="http://vendor">' +
+          '<bpmn:extensionElements>' +
+            '<vendor:info key="bgcolor" value="#ffffff" />' +
+            '<vendor:info key="role" value="[]" />' +
+          '</bpmn:extensionElements>' +
+        '</bpmn:definitions>';
+
+
+      // when
+      write(definitions, function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // then
+        expect(result).to.eql(expectedXML);
+
+        done();
+      });
+    });
+
+  });
+
 });

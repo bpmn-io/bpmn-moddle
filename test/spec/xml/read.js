@@ -483,6 +483,52 @@ describe('bpmn-moddle - read', function() {
   });
 
 
+  describe('should import extensions', function() {
+
+    it('as attributes', function(done) {
+
+      // given
+      var xml = '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/bpmnModel" ' +
+                                   'xmlns:foo="http://foobar" foo:bar="BAR" />';
+
+      // when
+      read(xml, 'bpmn:SequenceFlow', function(err, result, context) {
+
+        // then
+        expect(result.$attrs['foo:bar']).to.eql("BAR");
+
+        done(err);
+      });
+
+    });
+
+
+    it('as elements', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/extension-elements.bpmn', 'bpmn:Definitions', function(err, result) {
+
+        expect(result).to.jsonEqual({
+          $type: 'bpmn:Definitions',
+          id: 'test',
+          targetNamespace: 'http://bpmn.io/schema/bpmn',
+          extensionElements: {
+            $type : 'bpmn:ExtensionElements',
+            values : [
+              { $type: 'vendor:info', key: 'bgcolor', value: '#ffffff' },
+              { $type: 'vendor:info', key: 'role', value: '[]' }
+            ]
+          }
+        });
+
+        done(err);
+      });
+
+    });
+
+  });
+
+
   describe('should read xml documents', function() {
 
     it('empty definitions', function(done) {
