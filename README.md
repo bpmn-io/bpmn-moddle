@@ -23,7 +23,7 @@ var xmlStr =
 moddle.fromXML(xmlStr, function(err, definitions) {
 
   // update id attribute
-  definitions.attr('id', 'NEW ID');
+  definitions.set('id', 'NEW ID');
 
   // add a root element
   var bpmnProcess = moddle.create('bpmn:Process', { id: 'MyProcess_1' });
