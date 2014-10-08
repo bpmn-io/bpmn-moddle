@@ -17,7 +17,7 @@ describe('bpmn-moddle - roundtrip', function() {
 
 
   describe('should serialize valid BPMN 2.0 xml after read', function() {
-
+    this.timeout(15000);
 
     it('home-made bpmn model', function(done) {
 
