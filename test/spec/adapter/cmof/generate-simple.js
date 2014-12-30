@@ -24,7 +24,8 @@ describe('moddle BPMN 2.0 json', function() {
         pkg.associations = [];
 
         pkg.xml = {
-          alias: 'lowerCase'
+          tagAlias: 'lowerCase',
+          typePrefix: 't'
         };
 
         // perform a translation from
@@ -85,6 +86,18 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.alter('TextAnnotation#text', function(desc) {
           delete desc.isAttr;
+        });
+
+        builder.alter('SequenceFlow#conditionExpression', {
+          serialize: 'xsi:type'
+        });
+
+        builder.alter('MultiInstanceLoopCharacteristics#completionCondition', {
+          serialize: 'xsi:type'
+        });
+
+        builder.alter('Lane#childLaneSet', {
+          serialize: 'xsi:type'
         });
 
 
@@ -149,6 +162,11 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.alter('Escalation', {
           superClass: [ 'RootElement' ]
+        });
+
+        builder.alter('FormalExpression#body', {
+          "type": "String",
+          "isBody": true
         });
 
         builder.exportTo('resources/bpmn/json/bpmn.json');

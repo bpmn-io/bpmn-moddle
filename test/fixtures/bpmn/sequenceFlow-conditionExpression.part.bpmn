@@ -1,0 +1,5 @@
+<bpmn2:sequenceFlow id="SequenceFlow_1"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${foo > bar}</bpmn2:conditionExpression>
+</bpmn2:sequenceFlow>

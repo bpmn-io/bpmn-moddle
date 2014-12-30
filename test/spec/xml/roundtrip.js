@@ -107,5 +107,23 @@ describe('bpmn-moddle - roundtrip', function() {
       });
     });
 
+
+    it('xsi:type', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/xsi-type.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
   });
+
 });

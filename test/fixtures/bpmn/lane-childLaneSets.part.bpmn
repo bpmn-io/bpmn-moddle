@@ -1,0 +1,8 @@
+<bpmn2:lane id="Lane_1" name="Lane"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <bpmn2:childLaneSet xsi:type="bpmn2:tLaneSet" id="LaneSet_2">
+    <bpmn2:lane id="Lane_2" name="Nested Lane">
+    </bpmn2:lane>
+  </bpmn2:childLaneSet>
+</bpmn2:lane>

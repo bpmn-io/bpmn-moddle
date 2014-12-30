@@ -301,6 +301,80 @@ describe('bpmn-moddle - read', function() {
         });
       });
 
+
+      it('Lane#childLaneSet', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/lane-childLaneSets.part.bpmn', 'bpmn:Lane', function(err, result) {
+
+          // then
+          expect(result).to.jsonEqual({
+            $type: 'bpmn:Lane',
+            id: 'Lane_1',
+            name: 'Lane',
+            childLaneSet: {
+              $type: 'bpmn:LaneSet',
+              id: 'LaneSet_2',
+              lanes: [
+                {
+                  $type: 'bpmn:Lane',
+                  id: 'Lane_2',
+                  name: 'Nested Lane'
+                }
+              ]
+            }
+          });
+
+          done(err);
+        });
+      });
+
+
+      it('SequenceFlow#conditionExpression', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/sequenceFlow-conditionExpression.part.bpmn', 'bpmn:SequenceFlow', function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.jsonEqual({
+            $type: 'bpmn:SequenceFlow',
+            id: 'SequenceFlow_1',
+            conditionExpression: {
+              $type: 'bpmn:FormalExpression',
+              body: '${foo > bar}'
+            }
+          });
+
+          done(err);
+        });
+      });
+
+
+      it('MultiInstanceLoopCharacteristics#completionCondition', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/multiInstanceLoopCharacteristics-completionCondition.part.bpmn', 'bpmn:MultiInstanceLoopCharacteristics', function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.jsonEqual({
+            $type: 'bpmn:MultiInstanceLoopCharacteristics',
+            completionCondition: {
+              $type: 'bpmn:FormalExpression',
+              body: '${foo > bar}'
+            }
+          });
+
+          done(err);
+        });
+      });
     });
 
 

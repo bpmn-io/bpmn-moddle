@@ -74,6 +74,37 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('SequenceFlow#conditionExpression', function(done) {
+
+        // given
+        var sequenceFlow = moddle.create('bpmn:SequenceFlow', {
+          id: 'SequenceFlow_1'
+        });
+
+        sequenceFlow.conditionExpression = moddle.create('bpmn:FormalExpression', { body: '${ foo < bar }' });
+
+        var expectedXML =
+          '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                             'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+                             'id="SequenceFlow_1">\n' +
+          '  <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${ foo < bar }]]></bpmn:conditionExpression>\n' +
+          '</bpmn:sequenceFlow>\n';
+
+        // when
+        write(sequenceFlow, { format: true }, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('BaseElement#documentation', function(done) {
 
         // given
@@ -94,8 +125,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(defs, function(err, result) {
-
-          console.log(err);
 
           // then
           expect(result).to.eql(expectedXML);

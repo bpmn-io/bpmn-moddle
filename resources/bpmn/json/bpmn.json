@@ -209,7 +209,8 @@
         {
           "name": "childLaneSet",
           "type": "LaneSet",
-          "association": "A_childLaneSet_parentLane"
+          "association": "A_childLaneSet_parentLane",
+          "serialize": "xsi:type"
         },
         {
           "name": "partitionElementRef",
@@ -1604,7 +1605,8 @@
         },
         {
           "name": "body",
-          "type": "Element"
+          "type": "String",
+          "isBody": true
         },
         {
           "name": "evaluatesToTypeRef",
@@ -1711,7 +1713,8 @@
         {
           "name": "conditionExpression",
           "type": "Expression",
-          "association": "A_conditionExpression_sequenceFlow"
+          "association": "A_conditionExpression_sequenceFlow",
+          "serialize": "xsi:type"
         },
         {
           "name": "sourceRef",
@@ -2541,7 +2544,8 @@
         {
           "name": "completionCondition",
           "type": "Expression",
-          "association": "A_completionCondition_multiInstanceLoopCharacteristics"
+          "association": "A_completionCondition_multiInstanceLoopCharacteristics",
+          "serialize": "xsi:type"
         },
         {
           "name": "complexBehaviorDefinition",
@@ -3073,6 +3077,7 @@
   ],
   "prefix": "bpmn",
   "xml": {
-    "alias": "lowerCase"
+    "tagAlias": "lowerCase",
+    "typePrefix": "t"
   }
 }
