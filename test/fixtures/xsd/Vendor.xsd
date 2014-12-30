@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+  xmlns="http://vendor"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://vendor">
+
+  <xsd:element name="baz" type="tBaz" />
+  <xsd:complexType name="tBaz">
+    <xsd:attribute name="baz" type="xsd:string"/>
+  </xsd:complexType>
+
+  <xsd:element name="bar" type="tBar" />
+  <xsd:complexType name="tBar" mixed="true"></xsd:complexType>
+</xsd:schema>

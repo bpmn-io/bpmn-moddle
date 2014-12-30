@@ -7,6 +7,10 @@
       "isAbstract": true,
       "properties": [
         {
+          "name": "extension",
+          "type": "Extension"
+        },
+        {
           "name": "owningDiagram",
           "type": "Diagram",
           "isReadOnly": true,
@@ -204,8 +208,21 @@
     {
       "name": "Style",
       "isAbstract": true
+    },
+    {
+      "name": "Extension",
+      "properties": [
+        {
+          "name": "values",
+          "type": "Element",
+          "isMany": true
+        }
+      ]
     }
   ],
   "associations": [],
-  "prefix": "di"
+  "prefix": "di",
+  "xml": {
+    "tagAlias": "lowerCase"
+  }
 }

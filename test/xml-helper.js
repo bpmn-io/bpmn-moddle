@@ -2,7 +2,7 @@
 
 var SchemaValidator = require('xsd-schema-validator');
 
-var BPMN_XSD = 'resources/bpmn/xsd/BPMN20.xsd';
+var BPMN_XSD = 'test/fixtures/xsd/BPMN20.xsd';
 
 var Helper = require('./helper');
 

@@ -204,8 +204,31 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.cleanIDs();
 
+        pkg.xml = {
+          tagAlias: 'lowerCase'
+        };
+
         // remove associations
         pkg.associations = [];
+
+        pkg.types.push({
+          "name": "Extension",
+          "properties": [
+            {
+              "name": "values",
+              "type": "Element",
+              "isMany": true
+            }
+          ]
+        });
+
+        builder.alter('DiagramElement', function(data) {
+
+          data.properties.unshift({
+            "name": "extension",
+            "type": "Extension"
+          });
+        });
 
         builder.alter('Edge#waypoint', {
           serialize: 'xsi:type'

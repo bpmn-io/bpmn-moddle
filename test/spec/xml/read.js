@@ -380,12 +380,69 @@ describe('bpmn-moddle - read', function() {
 
     describe('bpmndi', function() {
 
+      it('Extensions', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/di/bpmnDiagram-extension.part.bpmn', 'bpmndi:BPMNDiagram', function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          var expected = {
+            $type: 'bpmndi:BPMNDiagram',
+            id: 'BPMNDiagram_1',
+            plane: {
+              $type: 'bpmndi:BPMNPlane',
+              id: 'BPMNPlane_1',
+              extension: {
+                $type: 'di:Extension',
+                values: [
+                  {
+                    $type: 'vendor:baz',
+                    baz: 'BAZ'
+                  }
+                ]
+              },
+              planeElement: [
+                {
+                  $type: 'bpmndi:BPMNShape',
+                  id: 'BPMNShape_1',
+                  extension: {
+                    $type: 'di:Extension',
+                    values: [
+                      {
+                        $type: 'vendor:bar',
+                        $body: 'BAR'
+                      }
+                    ]
+                  }
+                },
+                {
+                  $type: 'bpmndi:BPMNEdge',
+                  id: 'BPMNEdge_1',
+                  extension: {
+                    $type: 'di:Extension'
+                  }
+                }
+              ]
+            }
+          };
+
+          // then
+          expect(result).to.jsonEqual(expected);
+
+          done(err);
+        });
+      });
+
+
       it('BPMNShape#bounds (non-ns-attributes)', function(done) {
 
         // given
 
         // when
-        fromFile('test/fixtures/bpmn/di/bpmnshape.part.bpmn', 'bpmndi:BPMNShape', function(err, result) {
+        fromFile('test/fixtures/bpmn/di/bpmnShape.part.bpmn', 'bpmndi:BPMNShape', function(err, result) {
 
           var expected = {
             $type: 'bpmndi:BPMNShape',
@@ -396,7 +453,6 @@ describe('bpmn-moddle - read', function() {
 
           // then
           expect(result).to.jsonEqual(expected);
-          expect(result.bounds).to.exist;
 
           done(err);
         });
@@ -408,7 +464,7 @@ describe('bpmn-moddle - read', function() {
         // given
 
         // when
-        fromFile('test/fixtures/bpmn/di/bpmnedge-waypoint.part.bpmn', 'bpmndi:BPMNEdge', function(err, result) {
+        fromFile('test/fixtures/bpmn/di/bpmnEdge-waypoint.part.bpmn', 'bpmndi:BPMNEdge', function(err, result) {
 
           // then
           expect(result).to.jsonEqual({
@@ -430,7 +486,7 @@ describe('bpmn-moddle - read', function() {
         // given
 
         // when
-        fromFile('test/fixtures/bpmn/di/bpmnedge.part.bpmn', 'bpmndi:BPMNEdge', function(err, result) {
+        fromFile('test/fixtures/bpmn/di/bpmnEdge.part.bpmn', 'bpmndi:BPMNEdge', function(err, result) {
 
           var expected = {
             $type: 'bpmndi:BPMNEdge',
@@ -454,7 +510,7 @@ describe('bpmn-moddle - read', function() {
         // given
 
         // when
-        fromFile('test/fixtures/bpmn/di/bpmndiagram.part.bpmn', 'bpmndi:BPMNDiagram', function(err, result) {
+        fromFile('test/fixtures/bpmn/di/bpmnDiagram.part.bpmn', 'bpmndi:BPMNDiagram', function(err, result) {
 
           var expected = {
             $type: 'bpmndi:BPMNDiagram',

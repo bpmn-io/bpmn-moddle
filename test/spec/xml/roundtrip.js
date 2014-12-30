@@ -17,6 +17,7 @@ describe('bpmn-moddle - roundtrip', function() {
 
 
   describe('should serialize valid BPMN 2.0 xml after read', function() {
+
     this.timeout(15000);
 
     it('home-made bpmn model', function(done) {
@@ -68,6 +69,28 @@ describe('bpmn-moddle - roundtrip', function() {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
+    it('di extensions', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/di-extension.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          expect(xml).to.contain('<vendor:baz baz="BAZ" />');
+          expect(xml).to.contain('<vendor:bar>BAR</vendor:bar>');
+          expect(xml).to.contain('<di:extension />');
+
           validate(err, xml, done);
         });
       });
