@@ -106,6 +106,15 @@ function Builder() {
     });
   }
 
+  function cleanAssociations() {
+
+    preSerialize(function(str) {
+
+      // remove "association": "Something" lines
+      return str.replace(/,\n\s+"association": "[^"]+"/g, '');
+    });
+  }
+
   function parse(file, postParse, done) {
 
     new CmofParser({ clean: true }).parseFile(file, function(err, _desc) {
@@ -135,6 +144,8 @@ function Builder() {
   this.swapProperties = swapProperties;
 
   this.cleanIDs = cleanIDs;
+  this.cleanAssociations = cleanAssociations;
+
   this.exportTo = exportTo;
 }
 

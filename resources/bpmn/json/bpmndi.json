@@ -8,13 +8,11 @@
         {
           "name": "plane",
           "type": "BPMNPlane",
-          "association": "A_plane_diagram",
           "redefines": "di:Diagram#rootElement"
         },
         {
           "name": "labelStyle",
           "type": "BPMNLabelStyle",
-          "association": "A_labelStyle_diagram",
           "isMany": true
         }
       ],
@@ -27,7 +25,6 @@
       "properties": [
         {
           "name": "bpmnElement",
-          "association": "A_bpmnElement_plane",
           "isAttr": true,
           "isReference": true,
           "type": "bpmn:BaseElement",
@@ -43,7 +40,6 @@
       "properties": [
         {
           "name": "bpmnElement",
-          "association": "A_bpmnElement_shape",
           "isAttr": true,
           "isReference": true,
           "type": "bpmn:BaseElement",
@@ -66,8 +62,7 @@
         },
         {
           "name": "label",
-          "type": "BPMNLabel",
-          "association": "A_label_shape"
+          "type": "BPMNLabel"
         },
         {
           "name": "isMessageVisible",
@@ -82,7 +77,6 @@
         {
           "name": "choreographyActivityShape",
           "type": "BPMNShape",
-          "association": "A_choreographyActivityShape_participantBandShape",
           "isAttr": true,
           "isReference": true
         }
@@ -96,12 +90,10 @@
       "properties": [
         {
           "name": "label",
-          "type": "BPMNLabel",
-          "association": "A_label_edge"
+          "type": "BPMNLabel"
         },
         {
           "name": "bpmnElement",
-          "association": "A_bpmnElement_edge",
           "isAttr": true,
           "isReference": true,
           "type": "bpmn:BaseElement",
@@ -109,7 +101,6 @@
         },
         {
           "name": "sourceElement",
-          "association": "A_sourceElement_sourceEdge",
           "isAttr": true,
           "isReference": true,
           "type": "di:DiagramElement",
@@ -117,7 +108,6 @@
         },
         {
           "name": "targetElement",
-          "association": "A_targetElement_targetEdge",
           "isAttr": true,
           "isReference": true,
           "type": "di:DiagramElement",
@@ -140,7 +130,6 @@
         {
           "name": "labelStyle",
           "type": "BPMNLabelStyle",
-          "association": "A_labelStyle_label",
           "isAttr": true,
           "isReference": true,
           "redefines": "di:DiagramElement#style"

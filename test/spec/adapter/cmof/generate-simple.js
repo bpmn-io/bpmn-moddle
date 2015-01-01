@@ -19,6 +19,7 @@ describe('moddle BPMN 2.0 json', function() {
       builder.parse('resources/bpmn/cmof/BPMN20.cmof', function(pkg, cmof) {
 
         builder.cleanIDs();
+        builder.cleanAssociations();
 
         // remove associations
         pkg.associations = [];
@@ -80,20 +81,21 @@ describe('moddle BPMN 2.0 json', function() {
           delete desc.isAttr;
         });
 
-        builder.alter('ConditionalEventDefinition#condition', {
-          serialize: 'xsi:type'
-        });
-
         builder.alter('TextAnnotation#text', function(desc) {
           delete desc.isAttr;
         });
 
-        builder.alter('SequenceFlow#conditionExpression', {
-          serialize: 'xsi:type'
+        builder.alter('Expression', {
+          isAbstract: true
         });
 
-        builder.alter('MultiInstanceLoopCharacteristics#completionCondition', {
-          serialize: 'xsi:type'
+        // serialize Expression as xsi:type
+        pkg.types.forEach(function(t) {
+          (t.properties || []).forEach(function(p) {
+            if (p.type === 'Expression') {
+              p.serialize = 'xsi:type';
+            }
+          })
         });
 
         builder.alter('Lane#childLaneSet', {
@@ -182,6 +184,7 @@ describe('moddle BPMN 2.0 json', function() {
       builder.parse('resources/bpmn/cmof/BPMNDI.cmof', function(pkg) {
 
         builder.cleanIDs();
+        builder.cleanAssociations();
 
         // remove associations
         pkg.associations = [];
@@ -203,6 +206,7 @@ describe('moddle BPMN 2.0 json', function() {
       builder.parse('resources/bpmn/cmof/DI.cmof', function(pkg, cmof) {
 
         builder.cleanIDs();
+        builder.cleanAssociations();
 
         pkg.xml = {
           tagAlias: 'lowerCase'
@@ -247,6 +251,7 @@ describe('moddle BPMN 2.0 json', function() {
       builder.parse('resources/bpmn/cmof/DC.cmof', function(pkg, cmof) {
 
         builder.cleanIDs();
+        builder.cleanAssociations();
 
         // remove associations
         pkg.associations = [];
