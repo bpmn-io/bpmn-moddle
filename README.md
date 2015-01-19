@@ -1,13 +1,15 @@
 # bpmn-moddle
 
-bpmn-moddle allows you to read and write BPMN 2.0 diagram files in NodeJS and the browser. It uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/) to validate the input and produce correct BPMN 2.0 XML.
+[![Build Status](https://travis-ci.org/bpmn-io/bpmn-moddle.svg)](https://travis-ci.org/bpmn-io/bpmn-moddle)
 
-The library is built on top of [moddle](https://github.com/bpmn-io/moddle) / [moddle-xml](https://github.com/bpmn-io/moddle-xml).
+Read and write BPMN 2.0 diagram files in NodeJS and the browser.
+
+__bpmn-moddle__ uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/) to validate the input and produce correct BPMN 2.0 XML. The library is built on top of [moddle](https://github.com/bpmn-io/moddle) and [moddle-xml](https://github.com/bpmn-io/moddle-xml).
 
 
 ## Usage
 
-The library is provided as an [npm package](https://www.npmjs.org/package/bpmn-moddle). Bundle it for the web via [browserify](browserify.org).
+Get the library via [npm package](https://www.npmjs.org/package/bpmn-moddle). Bundle it for the web using [browserify](http://browserify.org) or [webpack](https://webpack.github.io).
 
 ```javascript
 var BpmnModdle = require('bpmn-moddle');
@@ -47,7 +49,7 @@ moddle.fromXML(xmlStr, function(err, definitions) {
 
 ## Building the Project
 
-You need [grunt](gruntjs.com) to build the project.
+You need [grunt](http://gruntjs.com) to build the project.
 
 To run the test suite that includes XSD schema validation you must have a Java JDK installed and properly exposed through the `JAVA_HOME` variable.
 
