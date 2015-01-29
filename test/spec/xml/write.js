@@ -6,8 +6,6 @@ var Helper = require('../../helper');
 
 describe('bpmn-moddle - write', function() {
 
-  var createModel = Helper.createModelBuilder('resources/bpmn/json/');
-
   var moddle = Helper.createModdle();
 
 

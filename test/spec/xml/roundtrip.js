@@ -24,8 +24,6 @@ describe('bpmn-moddle - roundtrip', function() {
 
       var definitions = moddle.create('bpmn:Definitions', { targetNamespace: 'http://foo' });
 
-      var ServiceTask = moddle.getType('bpmn:ServiceTask');
-
       var process = moddle.create('bpmn:Process');
       var serviceTask = moddle.create('bpmn:ServiceTask', { name: 'MyService Task'});
 
@@ -111,6 +109,28 @@ describe('bpmn-moddle - roundtrip', function() {
           validate(err, xml, done);
         });
       });
+    });
+
+
+    it('category', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/category.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          expect(xml).to.contain('sid-afd7e63e-916e-4bd0-a9f0-98cbff749193');
+          expect(xml).to.contain('group with label');
+
+          validate(err, xml, done);
+        });
+      });
+
     });
 
 

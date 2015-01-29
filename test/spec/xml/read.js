@@ -2,11 +2,7 @@
 
 var os = require('os');
 
-var XMLHelper = require('../../xml-helper'),
-    Helper = require('../../helper');
-
-var writeBpmn = XMLHelper.writeBpmn,
-    readBpmn = XMLHelper.readBpmn;
+var Helper = require('../../helper');
 
 
 describe('bpmn-moddle - read', function() {
@@ -347,6 +343,35 @@ describe('bpmn-moddle - read', function() {
               $type: 'bpmn:FormalExpression',
               body: '${foo > bar}'
             }
+          });
+
+          done(err);
+        });
+      });
+
+
+      it('Category', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/category.bpmn', 'bpmn:Definitions', function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          var category = result.rootElements[0];
+
+          // then
+          expect(category).to.jsonEqual({
+            $type: "bpmn:Category",
+            id: "sid-ccc7e63e-916e-4bd0-a9f0-98cbff749195",
+            categoryValue: [
+              {
+                $type: "bpmn:CategoryValue",
+                id: "sid-afd7e63e-916e-4bd0-a9f0-98cbff749193",
+                value: "group with label"
+              }
+            ]
           });
 
           done(err);
