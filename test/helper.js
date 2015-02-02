@@ -1,5 +1,7 @@
+'use strict';
+
 var fs = require('fs'),
-    _ = require('lodash');
+    map = require('lodash/collection/map');
 
 var Model = require('moddle');
 
@@ -26,7 +28,7 @@ function createModelBuilder(base) {
 
   function createModel(packageNames) {
 
-    var packages = _.collect(packageNames, function(f) {
+    var packages = map(packageNames, function(f) {
       var pkg = cache[f];
       var file = base + f + '.json';
 

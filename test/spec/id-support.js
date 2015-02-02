@@ -1,3 +1,5 @@
+'use strict';
+
 var Helper = require('../helper');
 
 var Ids = require('ids'),

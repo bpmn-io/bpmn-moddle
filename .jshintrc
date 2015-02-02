@@ -1,7 +1,9 @@
 {
   "node" : true,
-  "maxlen" : 120,
+  "strict": true,
   "unused": "vars",
+  "expr": true,
+  "maxlen" : 120,
   "globals": {
     "describe": false,
     "it": false,

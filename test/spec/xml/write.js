@@ -1,4 +1,7 @@
-var _ = require('lodash');
+'use strict';
+
+var assign = require('lodash/object/assign'),
+    isFunction = require('lodash/lang/isFunction');
 
 var Helper = require('../../helper');
 
@@ -10,13 +13,13 @@ describe('bpmn-moddle - write', function() {
 
 
   function write(element, options, callback) {
-    if (_.isFunction(options)) {
+    if (isFunction(options)) {
       callback = options;
       options = {};
     }
 
     // skip preamble for tests
-    options = _.extend({ preamble: false }, options);
+    options = assign({ preamble: false }, options);
 
     moddle.toXML(element, options, callback);
   }

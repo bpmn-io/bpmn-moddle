@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(chai, utils) {
 
   utils.addMethod(chai.Assertion.prototype, 'jsonEqual', function(comparison) {
