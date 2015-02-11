@@ -1,9 +1,6 @@
 'use strict';
 
-var fs = require('fs'),
-    map = require('lodash/collection/map');
-
-var Model = require('moddle');
+var fs = require('fs');
 
 var SimpleBpmnModdle = require('../');
 
@@ -18,41 +15,9 @@ function readFile(filename) {
   return fs.readFileSync(filename, { encoding: 'UTF-8' });
 }
 
-function createModelBuilder(base) {
-
-  var cache = {};
-
-  if (!base) {
-    throw new Error('[test-util] must specify a base directory');
-  }
-
-  function createModel(packageNames) {
-
-    var packages = map(packageNames, function(f) {
-      var pkg = cache[f];
-      var file = base + f + '.json';
-
-      if (!pkg) {
-        try {
-          pkg = cache[f] = JSON.parse(readFile(base + f + '.json'));
-        } catch (e) {
-          throw new Error('[Helper] failed to parse <' + file + '> as JSON: ' +  e.message);
-        }
-      }
-
-      return pkg;
-    });
-
-    return new Model(packages);
-  }
-
-  return createModel;
-}
-
 module.exports.readFile = readFile;
 module.exports.ensureDirExists = ensureDirExists;
-module.exports.createModelBuilder = createModelBuilder;
 
-module.exports.createModdle = function() {
-  return new SimpleBpmnModdle();
+module.exports.createModdle = function(additionalPackages, options) {
+  return new SimpleBpmnModdle(additionalPackages, options);
 };
