@@ -1,0 +1,9 @@
+<camunda:inputOutput xmlns:camunda="http://activiti.org/bpmn">
+    <camunda:outputParameter name="var1">
+      <camunda:script scriptFormat="Groovy">
+        <![CDATA[
+          return 1 + 1;
+        ]]>
+      </camunda:script>
+    </camunda:outputParameter>
+</camunda:inputOutput>

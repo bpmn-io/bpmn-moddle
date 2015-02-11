@@ -1,0 +1,12 @@
+<camunda:inputOutput xmlns:camunda="http://activiti.org/bpmn">
+  <camunda:inputParameter name="var1">
+    <camunda:map>
+      <camunda:entry key="a">
+        <camunda:list>
+          <camunda:value>stringInListNestedInMap</camunda:value>
+          <camunda:value>${ 'b' }</camunda:value>
+        </camunda:list>
+      </camunda:entry>
+    </camunda:map>
+  </camunda:inputParameter>
+</camunda:inputOutput>

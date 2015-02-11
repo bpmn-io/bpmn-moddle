@@ -1,0 +1,13 @@
+<camunda:inputOutput xmlns:camunda="http://activiti.org/bpmn">
+    <camunda:inputParameter name="var1">
+      <camunda:list>
+        <camunda:value>constantStringValue</camunda:value>
+        <camunda:value>${ 'elValue' }</camunda:value>
+        <camunda:script scriptFormat="Groovy">
+          <![CDATA[
+            return "scriptValue";
+          ]]>
+        </camunda:script>
+      </camunda:list>
+    </camunda:inputParameter>
+</camunda:inputOutput>

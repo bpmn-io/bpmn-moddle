@@ -1,0 +1,9 @@
+<camunda:inputOutput xmlns:camunda="http://activiti.org/bpmn">
+  <camunda:outputParameter name="var1">
+    <camunda:list>
+      <camunda:value>${1+1}</camunda:value>
+      <camunda:value>${1+2}</camunda:value>
+      <camunda:value>${1+3}</camunda:value>
+    </camunda:list>
+  </camunda:outputParameter>
+</camunda:inputOutput>

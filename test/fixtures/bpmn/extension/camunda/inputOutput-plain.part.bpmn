@@ -1,0 +1,3 @@
+<camunda:inputOutput xmlns:camunda="http://activiti.org/bpmn">
+  <camunda:inputParameter name="var2">stringConstantValue</camunda:inputParameter>
+</camunda:inputOutput>
