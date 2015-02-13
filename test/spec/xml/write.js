@@ -120,7 +120,7 @@ describe('bpmn-moddle - write', function() {
 
         var expectedXML =
           '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_1">' +
-             '<bpmn:documentation textFormat="xyz">FOO\nBAR</bpmn:documentation>' +
+             '<bpmn:documentation textFormat="xyz"><![CDATA[FOO\nBAR]]></bpmn:documentation>' +
              '<bpmn:documentation><![CDATA[<some /><html></html>]]></bpmn:documentation>' +
           '</bpmn:definitions>';
 
