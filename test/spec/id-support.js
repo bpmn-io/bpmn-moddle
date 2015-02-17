@@ -56,7 +56,7 @@ describe('bpmn-moddle - id-support', function() {
       IdSupport.extend(moddle, ids);
 
       // when
-      var serviceTask = moddle.create('bpmn:ServiceTask', {
+      moddle.create('bpmn:ServiceTask', {
         id: 'ServiceTask_1'
       });
 
@@ -69,6 +69,28 @@ describe('bpmn-moddle - id-support', function() {
       }).to.throw('id <ServiceTask_1> already used');
     });
 
+
+    it('should reset and allow reclaim of ids', function() {
+
+      // given
+      var moddle = Helper.createModdle();
+      IdSupport.extend(moddle, new Ids());
+
+      // when
+      moddle.create('bpmn:ServiceTask', {
+        id: 'ServiceTask_1'
+      });
+
+      IdSupport.extend(moddle, new Ids());
+
+      // then
+      expect(function() {
+
+        moddle.create('bpmn:ServiceTask', {
+          id: 'ServiceTask_1'
+        });
+      }).not.to.throw();
+    });
   });
 
 });
