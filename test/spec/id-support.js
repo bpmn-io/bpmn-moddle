@@ -76,14 +76,15 @@ describe('bpmn-moddle - id-support', function() {
       var moddle = Helper.createModdle();
       IdSupport.extend(moddle, new Ids());
 
-      // when
       moddle.create('bpmn:ServiceTask', {
         id: 'ServiceTask_1'
       });
 
+      // when
       IdSupport.extend(moddle, new Ids());
 
       // then
+      // expect id to have been reset
       expect(function() {
 
         moddle.create('bpmn:ServiceTask', {
