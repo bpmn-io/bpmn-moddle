@@ -22,6 +22,9 @@ describe('bpmn-moddle - integration', function() {
 
     describe('should serialize valid BPMN 2.0 after read', function() {
 
+      this.timeout(15000);
+
+
       it('inputOutput', function(done) {
 
         // given
