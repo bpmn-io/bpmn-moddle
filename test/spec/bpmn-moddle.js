@@ -53,6 +53,14 @@ describe('bpmn-moddle', function() {
     });
 
 
+    it('should create Definitions', function() {
+      var process = moddle.create('bpmn:Process');
+
+      expect(process.$type).to.eql('bpmn:Process');
+      expect(process.$instanceOf('bpmn:FlowElementsContainer')).to.be.true;
+    });
+
+
     describe('defaults', function() {
 
       it('should init Gateway', function() {
