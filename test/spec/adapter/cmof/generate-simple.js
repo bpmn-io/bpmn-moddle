@@ -72,6 +72,10 @@ describe('moddle BPMN 2.0 json', function() {
           builder.swapProperties(desc, 'targetRef', 'sourceRef');
         });
 
+        builder.alter('SubProcess', function(desc) {
+          desc.superClass.push('InteractionNode');
+        });
+
         builder.alter('Documentation#text', function(prop) {
           prop.isBody = true;
           delete prop.isAttr;

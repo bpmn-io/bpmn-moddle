@@ -2299,7 +2299,8 @@
       "name": "SubProcess",
       "superClass": [
         "Activity",
-        "FlowElementsContainer"
+        "FlowElementsContainer",
+        "InteractionNode"
       ],
       "properties": [
         {

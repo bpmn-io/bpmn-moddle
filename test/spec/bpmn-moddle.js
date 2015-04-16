@@ -53,11 +53,19 @@ describe('bpmn-moddle', function() {
     });
 
 
-    it('should create Definitions', function() {
+    it('should create Process', function() {
       var process = moddle.create('bpmn:Process');
 
       expect(process.$type).to.eql('bpmn:Process');
       expect(process.$instanceOf('bpmn:FlowElementsContainer')).to.be.true;
+    });
+
+
+    it('should create SubProcess', function() {
+      var subProcess = moddle.create('bpmn:SubProcess');
+
+      expect(subProcess.$type).to.eql('bpmn:SubProcess');
+      expect(subProcess.$instanceOf('bpmn:InteractionNode')).to.be.true;
     });
 
 
