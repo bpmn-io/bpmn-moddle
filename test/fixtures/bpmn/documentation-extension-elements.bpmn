@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:vendor="http://vendor" id="documentation-extension-elements" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn2:process id="Process_1">
+    <bpmn2:documentation>THIS IS A PROCESS</bpmn2:documentation>
+    <bpmn2:task id="Task_1" name="Task 1">
+      <bpmn2:documentation><![CDATA[
+        <h1>THIS IS HTML</h1>
+      ]]></bpmn2:documentation>
+      <bpmn2:extensionElements>
+        <vendor:info key="bgcolor" value="#ffffff"/>
+        <vendor:info key="role" value="[]"/>
+      </bpmn2:extensionElements>
+    </bpmn2:task>
+  </bpmn2:process>
+</bpmn2:definitions>

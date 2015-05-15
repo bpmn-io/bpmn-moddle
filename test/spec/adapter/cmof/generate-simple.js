@@ -56,6 +56,12 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.rename('ExtensionAttributeValue', 'ExtensionElements');
 
+        // fix documentation being first element
+
+        builder.alter('BaseElement', function(desc) {
+          builder.reorderProperties(desc, [ 'id', 'documentation' ]);
+        });
+
 
         // fix positioning of elements
 

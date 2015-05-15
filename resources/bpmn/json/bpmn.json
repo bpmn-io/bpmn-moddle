@@ -416,6 +416,11 @@
           "type": "String"
         },
         {
+          "name": "documentation",
+          "type": "Documentation",
+          "isMany": true
+        },
+        {
           "name": "extensionDefinitions",
           "type": "ExtensionDefinition",
           "isMany": true,
@@ -424,11 +429,6 @@
         {
           "name": "extensionElements",
           "type": "ExtensionElements"
-        },
-        {
-          "name": "documentation",
-          "type": "Documentation",
-          "isMany": true
         }
       ]
     },

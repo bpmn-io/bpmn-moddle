@@ -20,6 +20,38 @@ function Builder() {
     return elementsById['_0'];
   }
 
+  function findProperty(properties, name) {
+    var property = _.find(properties, function(d) {
+      return d.name === name;
+    });
+
+    return property && {
+      property: property,
+      idx: properties.indexOf(property)
+    };
+  }
+
+  function reorderProperties(desc, propertyNames) {
+    var properties = desc.properties;
+
+    var last;
+
+    _.forEach(propertyNames, function(name) {
+
+      var descriptor = findProperty(properties, name);
+
+      if (last && descriptor) {
+        // remove from old position
+        properties.splice(descriptor.idx, 1);
+
+        // add at new position
+        properties.splice(last.idx + 1, 0, descriptor.property);
+      }
+
+      last = descriptor;
+    });
+  }
+
   function swapProperties(desc, prop1, prop2) {
     var props = desc.properties;
 
@@ -141,6 +173,7 @@ function Builder() {
   this.parse = parse;
   this.alter = alter;
   this.rename = rename;
+  this.reorderProperties = reorderProperties;
   this.swapProperties = swapProperties;
 
   this.cleanIDs = cleanIDs;

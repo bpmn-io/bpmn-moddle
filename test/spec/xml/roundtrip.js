@@ -73,6 +73,23 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('documentation / extensionElements order', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/documentation-extension-elements.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('di extensions', function(done) {
 
       // given
