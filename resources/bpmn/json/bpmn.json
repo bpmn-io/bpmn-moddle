@@ -393,13 +393,13 @@
           "isAttr": true
         },
         {
-          "name": "sources",
+          "name": "source",
           "isMany": true,
           "isReference": true,
           "type": "Element"
         },
         {
-          "name": "targets",
+          "name": "target",
           "isMany": true,
           "isReference": true,
           "type": "Element"
@@ -2722,11 +2722,6 @@
           "isMany": true
         },
         {
-          "name": "relationships",
-          "type": "Relationship",
-          "isMany": true
-        },
-        {
           "name": "rootElements",
           "type": "RootElement",
           "isMany": true
@@ -2740,6 +2735,11 @@
           "name": "exporter",
           "isAttr": true,
           "type": "String"
+        },
+        {
+          "name": "relationships",
+          "type": "Relationship",
+          "isMany": true
         },
         {
           "name": "exporterVersion",

@@ -44,8 +44,11 @@ function Builder() {
         // remove from old position
         properties.splice(descriptor.idx, 1);
 
+        // update descriptor position
+        descriptor.idx = last.idx + 1;
+
         // add at new position
-        properties.splice(last.idx + 1, 0, descriptor.property);
+        properties.splice(descriptor.idx, 0, descriptor.property);
       }
 
       last = descriptor;

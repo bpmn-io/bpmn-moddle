@@ -90,6 +90,23 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('definitions children order', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/definitions-children.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('di extensions', function(done) {
 
       // given

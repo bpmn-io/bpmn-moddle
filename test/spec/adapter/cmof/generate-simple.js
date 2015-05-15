@@ -62,6 +62,20 @@ describe('moddle BPMN 2.0 json', function() {
           builder.reorderProperties(desc, [ 'id', 'documentation' ]);
         });
 
+        // fix definitions children order
+
+        builder.alter('Definitions', function(desc) {
+          builder.reorderProperties(desc, [ 'rootElements', 'diagrams', 'relationships' ]);
+        });
+
+        builder.alter('Relationship#sources', function(desc) {
+          desc.name = 'source';
+        });
+
+        builder.alter('Relationship#targets', function(desc) {
+          desc.name = 'target';
+        });
+
 
         // fix positioning of elements
 
@@ -105,7 +119,7 @@ describe('moddle BPMN 2.0 json', function() {
             if (p.type === 'Expression') {
               p.serialize = 'xsi:type';
             }
-          })
+          });
         });
 
         builder.alter('Lane#childLaneSet', {
