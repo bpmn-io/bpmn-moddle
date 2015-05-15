@@ -77,6 +77,13 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
 
+        // fix PotentialOwner#resourceRef
+
+        builder.alter('ResourceRole#resourceRef', function(desc) {
+          delete desc.isAttr;
+        });
+
+
         // fix positioning of elements
 
         builder.alter('FlowElementsContainer', function(desc) {

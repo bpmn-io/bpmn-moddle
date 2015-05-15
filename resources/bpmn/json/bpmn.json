@@ -2618,7 +2618,6 @@
         {
           "name": "resourceRef",
           "type": "Resource",
-          "isAttr": true,
           "isReference": true
         },
         {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="potential-owner"  name="potential-owner" targetNamespace="http://www.omg.org/bpmn20">
+  <process id="Process_1">
+    <userTask id="assignApprover" name="Assign&#xA;Approver" completionQuantity="1" isForCompensation="false" startQuantity="1" implementation="##unspecified">
+      <potentialOwner id="Bpmn_ResourceRole_DSeNcLH0EeS1nbPdxxCzlg" name="Assign Approver Potential Owner">
+        <resourceRef>Resource_1</resourceRef>
+      </potentialOwner>
+    </userTask>
+  </process>
+  <resource id="Resource_1" name="Team Assistant"/>
+</definitions>

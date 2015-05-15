@@ -107,6 +107,25 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('ResourceRole#resourceRef', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/potentialOwner.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          expect(xml).to.contain('<resourceRef>Resource_1</resourceRef>');
+
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('di extensions', function(done) {
 
       // given
