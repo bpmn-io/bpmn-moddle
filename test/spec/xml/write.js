@@ -135,6 +135,58 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it.skip('CallableElement#ioSpecification', function(done) {
+
+        // given
+        var callableElement = moddle.create('bpmn:CallableElement', {
+          id: 'Callable_1',
+          ioSpecification: moddle.create('bpmn:InputOutputSpecification')
+        });
+
+        var expectedXML =
+          '<bpmn:callableElement xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Callable_1">' +
+            '<bpmn:ioSpecification />' +
+          '</bpmn:callableElement>';
+
+        // when
+        write(callableElement, function(err, result) {
+
+          console.log(result);
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done();
+        });
+      });
+
+
+      it('ResourceRole#resourceRef', function(done) {
+
+        // given
+        var role = moddle.create('bpmn:ResourceRole', {
+          id: 'Callable_1',
+          resourceRef: moddle.create('bpmn:Resource', { id: 'REF' })
+        });
+
+        var expectedXML =
+          '<bpmn:resourceRole xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Callable_1">' +
+            '<bpmn:resourceRef>REF</bpmn:resourceRef>' +
+          '</bpmn:resourceRole>';
+
+        // when
+        write(role, function(err, result) {
+
+          // then
+          expect(err).not.to.exist;
+
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('CallActivity#calledElement', function(done) {
 
         // given

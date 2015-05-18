@@ -118,8 +118,6 @@ describe('bpmn-moddle - roundtrip', function() {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
-          expect(xml).to.contain('<resourceRef>Resource_1</resourceRef>');
-
           validate(err, xml, done);
         });
       });
