@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="sid-bdb880ac-c464-4e5c-aa56-569d709436e0" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <process id="Process_1">
+    <userTask id="UserTask_1">
+      <ioSpecification id="InputOutputSpecification_1">
+        <dataOutput id="DataOutput_1" itemSubjectRef="xsdBool" isCollection="false" name="approved">
+          <extensionElements />
+        </dataOutput>
+        <inputSet id="InputSet_1" name="default input set">
+          <outputSetRefs>OutputSet_1</outputSetRefs>
+        </inputSet>
+        <outputSet id="OutputSet_1" name="default output set">
+          <dataOutputRefs>DataOutput_1</dataOutputRefs>
+          <inputSetRefs>InputSet_1</inputSetRefs>
+        </outputSet>
+      </ioSpecification>
+    </userTask>
+  </process>
+</definitions>
