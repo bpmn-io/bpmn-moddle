@@ -1126,16 +1126,6 @@
       ],
       "properties": [
         {
-          "name": "inputSets",
-          "type": "InputSet",
-          "isMany": true
-        },
-        {
-          "name": "outputSets",
-          "type": "OutputSet",
-          "isMany": true
-        },
-        {
           "name": "dataInputs",
           "type": "DataInput",
           "isMany": true
@@ -1143,6 +1133,16 @@
         {
           "name": "dataOutputs",
           "type": "DataOutput",
+          "isMany": true
+        },
+        {
+          "name": "inputSets",
+          "type": "InputSet",
+          "isMany": true
+        },
+        {
+          "name": "outputSets",
+          "type": "OutputSet",
           "isMany": true
         }
       ]

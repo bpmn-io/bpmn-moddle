@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:camunda="http://activiti.org/bpmn" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:signavio="http://www.signavio.com" xmlns:style="http://www.w4.eu/spec/DataComposer/20120927/Diagram/Style" xmlns:w4="http://www.w4.eu/spec/BPMN/20110701/MODEL" xmlns:w4graph="http://www.w4.eu/spec/BPMN/20110930/GRAPH" xmlns:xs="http://xsdTypes.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="sid-bdb880ac-c464-4e5c-aa56-569d709436e0" w4:version="1.0" exporter="Signavio Process Editor, http://www.signavio.com" exporterVersion="7.0.0" expressionLanguage="http://www.w3.org/1999/XPath" name="sid-bdb880ac-c464-4e5c-aa56-569d709436e0" targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" typeLanguage="http://www.w3.org/2001/XMLSchema">
+   <process id="handle-invoice" name="Invoice Handling (OMG BPMN MIWG Demo)" isClosed="true" isExecutable="true" processType="None">
+      <userTask id="approveInvoice" camunda:assignee="${approver}" camunda:formKey="app:approveInvoice.jsf" name="Approve Invoice" completionQuantity="1" isForCompensation="false" startQuantity="1" implementation="##unspecified">
+         <ioSpecification id="Bpmn_InputOutputSpecification_Y6GAsLH1EeSuDf0W70XLGw">
+            <dataOutput id="Bpmn_DataOutput_Y6S1ALH1EeSuDf0W70XLGw" itemSubjectRef="xsdBool" isCollection="false" name="approved">
+               <extensionElements>
+                  <w4graph:graphStyle>
+                     <w4graph:basic background="153,153,153" foreground="0,0,0" autoResize="false" borderColor="100,100,100" collapsed="false"/>
+                  </w4graph:graphStyle>
+               </extensionElements>
+            </dataOutput>
+            <inputSet id="Bpmn_InputSet_Y6GAsrH1EeSuDf0W70XLGw" name="default input set">
+               <outputSetRefs>Bpmn_OutputSet_Y6GAsbH1EeSuDf0W70XLGw</outputSetRefs>
+            </inputSet>
+            <outputSet id="Bpmn_OutputSet_Y6GAsbH1EeSuDf0W70XLGw" name="default output set">
+               <dataOutputRefs>Bpmn_DataOutput_Y6S1ALH1EeSuDf0W70XLGw</dataOutputRefs>
+               <inputSetRefs>Bpmn_InputSet_Y6GAsrH1EeSuDf0W70XLGw</inputSetRefs>
+            </outputSet>
+         </ioSpecification>
+      </userTask>
+   </process>
+</definitions>

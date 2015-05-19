@@ -68,6 +68,12 @@ describe('moddle BPMN 2.0 json', function() {
           builder.reorderProperties(desc, [ 'rootElements', 'diagrams', 'relationships' ]);
         });
 
+        // fix ioSpec children order
+
+        builder.alter('InputOutputSpecification', function(desc) {
+          builder.reorderProperties(desc, [ 'dataInputs', 'dataOutputs', 'inputSets', 'outputSets' ]);
+        });
+
         builder.alter('Relationship#sources', function(desc) {
           desc.name = 'source';
         });

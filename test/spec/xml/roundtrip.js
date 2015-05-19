@@ -107,6 +107,24 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('ioSpecification children order', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/io-spec-children.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          xml = xml.replace(/inputOutputSpecification/g, 'ioSpecification') // patch for https://github.com/bpmn-io/bpmn-js/issues/279
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('ResourceRole#resourceRef', function(done) {
 
       // given
