@@ -90,6 +90,23 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it.skip('potentialOwner / dataOutputAssociation order', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/data-output-association-potential-owner.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('definitions children order', function(done) {
 
       // given
