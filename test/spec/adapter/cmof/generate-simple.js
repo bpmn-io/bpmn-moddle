@@ -62,6 +62,12 @@ describe('moddle BPMN 2.0 json', function() {
           builder.reorderProperties(desc, [ 'id', 'documentation' ]);
         });
 
+        // fix potentialOwner being last element
+
+        builder.alter('Activity', function(desc) {
+          builder.reorderProperties(desc, [ 'dataOutputAssociations', 'resources' ]);
+        });
+
         // fix definitions children order
 
         builder.alter('Definitions', function(desc) {

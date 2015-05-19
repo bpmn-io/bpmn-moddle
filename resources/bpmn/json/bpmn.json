@@ -2227,11 +2227,6 @@
           "type": "LoopCharacteristics"
         },
         {
-          "name": "resources",
-          "type": "ResourceRole",
-          "isMany": true
-        },
-        {
           "name": "default",
           "type": "SequenceFlow",
           "isAttr": true,
@@ -2267,6 +2262,11 @@
           "default": 1,
           "isAttr": true,
           "type": "Integer"
+        },
+        {
+          "name": "resources",
+          "type": "ResourceRole",
+          "isMany": true
         },
         {
           "name": "completionQuantity",
