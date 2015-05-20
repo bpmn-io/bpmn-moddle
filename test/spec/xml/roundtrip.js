@@ -90,10 +90,10 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
-    it.skip('potentialOwner / dataOutputAssociation order', function(done) {
+    it('activity children order', function(done) {
 
       // given
-      fromFile('test/fixtures/bpmn/data-output-association-potential-owner.bpmn', function(err, result) {
+      fromFile('test/fixtures/bpmn/activity-children.bpmn', function(err, result) {
 
         if (err) {
           return done(err);
@@ -101,6 +101,10 @@ describe('bpmn-moddle - roundtrip', function() {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
+
+          // patch for https://github.com/bpmn-io/bpmn-js/issues/279
+          xml = xml.replace(/inputOutputSpecification/g, 'ioSpecification');
+
           validate(err, xml, done);
         });
       });

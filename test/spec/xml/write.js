@@ -106,6 +106,51 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('Activity', function(done) {
+
+        // given
+        var activity = moddle.create('bpmn:Activity', {
+          id: 'Activity_1',
+          property: [
+            moddle.create('bpmn:Property', { name: 'FOO' }),
+            moddle.create('bpmn:Property', { name: 'BAR' })
+          ],
+          resourceRole: [
+            moddle.create('bpmn:HumanPerformer', { name: 'Walter'} )
+          ],
+          dataInputAssociations: [
+            moddle.create('bpmn:DataInputAssociation', { id: 'Input_1' })
+          ],
+          dataOutputAssociations: [
+            moddle.create('bpmn:DataOutputAssociation', { id: 'Output_1' })
+          ],
+          ioSpecification: moddle.create('bpmn:InputOutputSpecification')
+        });
+
+        var expectedXML =
+          '<bpmn:activity xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Activity_1">' +
+            '<bpmn:ioSpecification />' +
+            '<bpmn:property name="FOO" />' +
+            '<bpmn:property name="BAR" />' +
+            '<bpmn:dataInputAssociation id="Input_1" />' +
+            '<bpmn:dataOutputAssociation id="Output_1" />' +
+            '<bpmn:humanPerformer name="Walter" />' +
+          '</bpmn:activity>';
+
+        // when
+        write(activity, function(err, result) {
+
+          // patch for https://github.com/bpmn-io/bpmn-js/issues/279
+          result = result.replace(/inputOutputSpecification/g, 'ioSpecification');
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('BaseElement#documentation', function(done) {
 
         // given

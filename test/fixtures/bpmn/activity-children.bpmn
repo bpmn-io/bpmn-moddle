@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:vendor="http://vendor" id="activity-children" targetNamespace="http://bpmn.io/schema/bpmn">
+  <process id="Process_1">
+    <dataObjectReference id="DataObjectReference_1" />
+    <userTask id="Task_1" name="Task 1">
+      <ioSpecification id="InputOutputSpecification_1">
+        <dataOutput id="DataOutput_1"></dataOutput>
+        <inputSet id="InputSet_1" name="default input set">
+          <outputSetRefs>OutputSet_1</outputSetRefs>
+        </inputSet>
+        <outputSet id="OutputSet_1" name="default output set">
+          <dataOutputRefs>DataOutput_1</dataOutputRefs>
+          <inputSetRefs>InputSet_1</inputSetRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataOutputAssociation>
+        <sourceRef>DataOutput_1</sourceRef>
+        <targetRef>DataObjectReference_1</targetRef>
+      </dataOutputAssociation>
+      <potentialOwner id="ResourceRole_1"></potentialOwner>
+    </userTask>
+  </process>
+</definitions>

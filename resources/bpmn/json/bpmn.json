@@ -2223,24 +2223,10 @@
           "type": "Boolean"
         },
         {
-          "name": "loopCharacteristics",
-          "type": "LoopCharacteristics"
-        },
-        {
-          "name": "resources",
-          "type": "ResourceRole",
-          "isMany": true
-        },
-        {
           "name": "default",
           "type": "SequenceFlow",
           "isAttr": true,
           "isReference": true
-        },
-        {
-          "name": "properties",
-          "type": "Property",
-          "isMany": true
         },
         {
           "name": "ioSpecification",
@@ -2251,6 +2237,11 @@
           "type": "BoundaryEvent",
           "isMany": true,
           "isReference": true
+        },
+        {
+          "name": "property",
+          "type": "Property",
+          "isMany": true
         },
         {
           "name": "dataInputAssociations",
@@ -2269,10 +2260,19 @@
           "type": "Integer"
         },
         {
+          "name": "resourceRole",
+          "type": "ResourceRole",
+          "isMany": true
+        },
+        {
           "name": "completionQuantity",
           "default": 1,
           "isAttr": true,
           "type": "Integer"
+        },
+        {
+          "name": "loopCharacteristics",
+          "type": "LoopCharacteristics"
         }
       ]
     },
