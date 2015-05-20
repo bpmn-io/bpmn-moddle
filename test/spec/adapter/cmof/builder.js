@@ -40,7 +40,11 @@ function Builder() {
 
       var descriptor = findProperty(properties, name);
 
-      if (last && descriptor) {
+      if (!descriptor) {
+        throw new Error('property <' + name + '> does not exist');
+      }
+
+      if (last) {
         // remove from old position
         properties.splice(descriptor.idx, 1);
 
