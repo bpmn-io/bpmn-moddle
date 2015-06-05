@@ -195,7 +195,9 @@
         {
           "name": "childLaneSet",
           "type": "LaneSet",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "partitionElementRef",
@@ -325,7 +327,9 @@
         {
           "name": "activationCondition",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "default",
@@ -770,17 +774,23 @@
         {
           "name": "timeDate",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "timeCycle",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "timeDuration",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         }
       ]
     },
@@ -838,7 +848,9 @@
         {
           "name": "condition",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         }
       ]
     },
@@ -1194,12 +1206,16 @@
         {
           "name": "from",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "to",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         }
       ]
     },
@@ -1606,7 +1622,9 @@
         {
           "name": "conditionExpression",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "sourceRef",
@@ -1655,7 +1673,10 @@
         },
         {
           "name": "ioSpecification",
-          "type": "InputOutputSpecification"
+          "type": "InputOutputSpecification",
+          "xml": {
+            "serialize": "property"
+          }
         },
         {
           "name": "supportedInterfaceRefs",
@@ -2344,7 +2365,9 @@
         {
           "name": "loopCardinality",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "loopDataInputRef",
@@ -2369,7 +2392,9 @@
         {
           "name": "completionCondition",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "complexBehaviorDefinition",
@@ -2405,12 +2430,16 @@
         {
           "name": "loopCondition",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "loopMaximum",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         }
       ]
     },
@@ -2529,7 +2558,9 @@
         {
           "name": "completionCondition",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "ordering",
@@ -2642,7 +2673,9 @@
         {
           "name": "expression",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         },
         {
           "name": "parameterRef",
@@ -2658,7 +2691,9 @@
         {
           "name": "expression",
           "type": "Expression",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         }
       ]
     },

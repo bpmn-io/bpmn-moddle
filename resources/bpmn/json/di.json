@@ -80,7 +80,9 @@
           "isUnique": false,
           "isMany": true,
           "type": "dc:Point",
-          "serialize": "xsi:type"
+          "xml": {
+            "serialize": "xsi:type"
+          }
         }
       ]
     },

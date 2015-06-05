@@ -180,7 +180,7 @@ describe('bpmn-moddle - write', function() {
       });
 
 
-      it.skip('CallableElement#ioSpecification', function(done) {
+      it('CallableElement#ioSpecification', function(done) {
 
         // given
         var callableElement = moddle.create('bpmn:CallableElement', {
@@ -195,8 +195,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(callableElement, function(err, result) {
-
-          console.log(result);
 
           // then
           expect(result).to.eql(expectedXML);

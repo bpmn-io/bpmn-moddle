@@ -153,13 +153,13 @@ describe('moddle BPMN 2.0 json', function() {
         pkg.types.forEach(function(t) {
           (t.properties || []).forEach(function(p) {
             if (p.type === 'Expression') {
-              p.serialize = 'xsi:type';
+              p.xml = { serialize: 'xsi:type' };
             }
           });
         });
 
         builder.alter('Lane#childLaneSet', {
-          serialize: 'xsi:type'
+          xml: { serialize: 'xsi:type' }
         });
 
 
@@ -227,8 +227,12 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
         builder.alter('FormalExpression#body', {
-          "type": "String",
-          "isBody": true
+          'type': 'String',
+          'isBody': true
+        });
+
+        builder.alter('CallableElement#ioSpecification', function(desc) {
+          desc.xml = { serialize: 'property' };
         });
 
         builder.exportTo('resources/bpmn/json/bpmn.json');
@@ -295,7 +299,7 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
         builder.alter('Edge#waypoint', {
-          serialize: 'xsi:type'
+          xml: { serialize: 'xsi:type' }
         });
 
         builder.exportTo('resources/bpmn/json/di.json');
