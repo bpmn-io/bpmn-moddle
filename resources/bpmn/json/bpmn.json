@@ -1655,7 +1655,8 @@
         },
         {
           "name": "ioSpecification",
-          "type": "InputOutputSpecification"
+          "type": "InputOutputSpecification",
+          "serialize": "asProperty"
         },
         {
           "name": "supportedInterfaceRefs",
