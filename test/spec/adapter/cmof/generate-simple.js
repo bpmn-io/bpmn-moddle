@@ -227,8 +227,12 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
         builder.alter('FormalExpression#body', {
-          "type": "String",
-          "isBody": true
+          'type': 'String',
+          'isBody': true
+        });
+
+        builder.alter('CallableElement#ioSpecification', function(desc) {
+          desc.serialize = 'asProperty';
         });
 
         builder.exportTo('resources/bpmn/json/bpmn.json');
