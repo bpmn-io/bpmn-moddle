@@ -43,6 +43,6 @@
   "dependencies": {
     "lodash": "^3.0.0",
     "moddle": "^0.6.0",
-    "moddle-xml": "^0.7.0"
+    "moddle-xml": "^0.8.0"
   }
 }
