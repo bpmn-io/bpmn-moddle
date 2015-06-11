@@ -235,6 +235,14 @@ describe('moddle BPMN 2.0 json', function() {
           desc.xml = { serialize: 'property' };
         });
 
+        builder.alter('CallableElement#ioBinding', function(desc) {
+          desc.xml = { serialize: 'property' };
+        });
+
+        builder.alter('Activity#ioSpecification', function(desc) {
+          desc.xml = { serialize: 'property' };
+        });
+
         builder.exportTo('resources/bpmn/json/bpmn.json');
       }, done);
 

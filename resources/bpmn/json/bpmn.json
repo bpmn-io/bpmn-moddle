@@ -1687,7 +1687,10 @@
         {
           "name": "ioBinding",
           "type": "InputOutputBinding",
-          "isMany": true
+          "isMany": true,
+          "xml": {
+            "serialize": "property"
+          }
         }
       ]
     },
@@ -2251,7 +2254,10 @@
         },
         {
           "name": "ioSpecification",
-          "type": "InputOutputSpecification"
+          "type": "InputOutputSpecification",
+          "xml": {
+            "serialize": "property"
+          }
         },
         {
           "name": "boundaryEventRefs",

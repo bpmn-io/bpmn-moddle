@@ -101,10 +101,6 @@ describe('bpmn-moddle - roundtrip', function() {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
-
-          // patch for https://github.com/bpmn-io/bpmn-js/issues/279
-          xml = xml.replace(/inputOutputSpecification/g, 'ioSpecification');
-
           validate(err, xml, done);
         });
       });
@@ -139,9 +135,6 @@ describe('bpmn-moddle - roundtrip', function() {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
-          // patch for https://github.com/bpmn-io/bpmn-js/issues/279
-          xml = xml.replace(/inputOutputSpecification/g, 'ioSpecification');
-
           validate(err, xml, done);
         });
       });
