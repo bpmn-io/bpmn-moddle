@@ -106,6 +106,60 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it.skip('Process', function(done) {
+
+        // given
+        var processElement = moddle.create('bpmn:Process', {
+          id: 'Process_1',
+          flowElements: [
+            moddle.create('bpmn:Task', { id: 'Task_1' })
+          ],
+          properties: [
+            moddle.create('bpmn:Property', { name: 'foo' })
+          ],
+          laneSets: [
+            moddle.create('bpmn:LaneSet', { id: 'LaneSet_1' })
+          ],
+          monitoring: moddle.create('bpmn:Monitoring'),
+          artifacts: [
+            moddle.create('bpmn:TextAnnotation', {
+              id: 'TextAnnotation_1',
+              text: 'FOOBAR'
+            })
+          ],
+          resources: [
+            moddle.create('bpmn:PotentialOwner', { name: 'Walter' })
+          ]
+        });
+
+        var expectedXML =
+          '<bpmn:process xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                        'id="Process_1">' +
+            '<bpmn:monitoring />' +
+            '<bpmn:property name="foo" />' +
+            '<bpmn:laneSet id="LaneSet_1" />' +
+            '<bpmn:task id="Task_1" />' +
+            '<bpmn:textAnnotation id="TextAnnotation_1">' +
+              '<bpmn:text>FOOBAR</bpmn:text>' +
+            '</bpmn:textAnnotation>' +
+            '<bpmn:potentialOwner name="Walter" />' +
+          '</bpmn:process>';
+
+        // when
+        write(processElement, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('Activity', function(done) {
 
         // given

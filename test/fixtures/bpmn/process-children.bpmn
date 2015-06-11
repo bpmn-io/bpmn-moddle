@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<semantic:definitions
+    xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+    xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    id="process-children"
+    exporter="bpmn.io, http://bpmn.io"
+    targetNamespace="http://bpmn.io/schema/bpmn">
+  <semantic:resource name="User" id="UserResource_1"/>
+  <semantic:process id="Process_1">
+    <semantic:auditing />
+    <semantic:monitoring />
+    <semantic:property name="boundaryNotVisibleProperty" />
+    <semantic:laneSet id="LaneSet_1" />
+    <semantic:startEvent id="StartEvent_1" />
+    <semantic:userTask id="UserTask_1" />
+    <semantic:textAnnotation>
+      <text>FOO BAR</text>
+    </semantic:textAnnotation>
+    <semantic:potentialOwner resourceRef="UserResource_1" />
+  </semantic:process>
+</semantic:definitions>

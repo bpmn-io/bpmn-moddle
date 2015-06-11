@@ -107,6 +107,25 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it.skip('process children order', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/process-children.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          console.log(xml);
+
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('definitions children order', function(done) {
 
       // given
