@@ -361,6 +361,41 @@ describe('bpmn-moddle - write', function() {
         });
       });
 
+
+      it.skip('ItemDefinition#structureRef', function(done) {
+
+        // given
+        var itemDefinition = moddle.create('bpmn:ItemDefinition', {
+          'xmlns:xs': 'http://xml-types',
+          id: 'xsdBool',
+          isCollection: true,
+          itemKind: 'Information',
+          structureRef: 'xs:tBool'
+        });
+
+        var expectedXML =
+          '<bpmn:itemDefinition xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                               'xmlns:xs="http://xml-types" ' +
+                               'id="xsdBool" ' +
+                               'itemKind="Information" ' +
+                               'structureRef="xs:tBool" ' +
+                               'isCollection="true" />';
+
+
+        // when
+        write(itemDefinition, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done();
+        });
+      });
+
     });
 
 
