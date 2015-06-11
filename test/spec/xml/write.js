@@ -111,11 +111,11 @@ describe('bpmn-moddle - write', function() {
         // given
         var activity = moddle.create('bpmn:Activity', {
           id: 'Activity_1',
-          property: [
+          properties: [
             moddle.create('bpmn:Property', { name: 'FOO' }),
             moddle.create('bpmn:Property', { name: 'BAR' })
           ],
-          resourceRole: [
+          resources: [
             moddle.create('bpmn:HumanPerformer', { name: 'Walter'} )
           ],
           dataInputAssociations: [
@@ -140,8 +140,9 @@ describe('bpmn-moddle - write', function() {
         // when
         write(activity, function(err, result) {
 
-          // patch for https://github.com/bpmn-io/bpmn-js/issues/279
-          result = result.replace(/inputOutputSpecification/g, 'ioSpecification');
+          if (err) {
+            return done(err);
+          }
 
           // then
           expect(result).to.eql(expectedXML);

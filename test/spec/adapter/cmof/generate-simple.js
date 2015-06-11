@@ -106,24 +106,27 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
 
-        // fix Activity order + resourceRole serialization
-
-        builder.alter('Activity#properties', function(p) {
-          p.name = 'property';
-        });
-
-        builder.alter('Activity#resources', function(p) {
-          p.name = 'resourceRole';
-        });
+        // fix Activity order serialization
 
         builder.alter('Activity', function(desc) {
           builder.reorderProperties(desc, [
             'ioSpecification',
-            'property',
+            'properties',
             'dataInputAssociations',
             'dataOutputAssociations',
-            'resourceRole',
+            'resources',
             'loopCharacteristics'
+          ]);
+        });
+
+        builder.alter('Process', function(desc) {
+          builder.reorderProperties(desc, [
+            'auditing',
+            'monitoring',
+            'artifacts',
+            'resources',
+            'correlationSubscriptions',
+            'supports'
           ]);
         });
 

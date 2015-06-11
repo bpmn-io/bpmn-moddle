@@ -125,8 +125,18 @@
           "type": "Monitoring"
         },
         {
-          "name": "properties",
-          "type": "Property",
+          "name": "artifacts",
+          "type": "Artifact",
+          "isMany": true
+        },
+        {
+          "name": "resources",
+          "type": "ResourceRole",
+          "isMany": true
+        },
+        {
+          "name": "correlationSubscriptions",
+          "type": "CorrelationSubscription",
           "isMany": true
         },
         {
@@ -134,6 +144,11 @@
           "type": "Process",
           "isMany": true,
           "isReference": true
+        },
+        {
+          "name": "properties",
+          "type": "Property",
+          "isMany": true
         },
         {
           "name": "definitionalCollaborationRef",
@@ -145,21 +160,6 @@
           "name": "isExecutable",
           "isAttr": true,
           "type": "Boolean"
-        },
-        {
-          "name": "resources",
-          "type": "ResourceRole",
-          "isMany": true
-        },
-        {
-          "name": "artifacts",
-          "type": "Artifact",
-          "isMany": true
-        },
-        {
-          "name": "correlationSubscriptions",
-          "type": "CorrelationSubscription",
-          "isMany": true
         }
       ]
     },
@@ -2266,7 +2266,7 @@
           "isReference": true
         },
         {
-          "name": "property",
+          "name": "properties",
           "type": "Property",
           "isMany": true
         },
@@ -2287,7 +2287,7 @@
           "type": "Integer"
         },
         {
-          "name": "resourceRole",
+          "name": "resources",
           "type": "ResourceRole",
           "isMany": true
         },
