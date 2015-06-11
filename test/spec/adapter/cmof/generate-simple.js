@@ -123,6 +123,7 @@ describe('moddle BPMN 2.0 json', function() {
           builder.reorderProperties(desc, [
             'auditing',
             'monitoring',
+            'properties',
             'artifacts',
             'resources',
             'correlationSubscriptions',

@@ -125,6 +125,11 @@
           "type": "Monitoring"
         },
         {
+          "name": "properties",
+          "type": "Property",
+          "isMany": true
+        },
+        {
           "name": "artifacts",
           "type": "Artifact",
           "isMany": true
@@ -144,11 +149,6 @@
           "type": "Process",
           "isMany": true,
           "isReference": true
-        },
-        {
-          "name": "properties",
-          "type": "Property",
-          "isMany": true
         },
         {
           "name": "definitionalCollaborationRef",
