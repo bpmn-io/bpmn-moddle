@@ -366,6 +366,25 @@ describe('bpmn-moddle - write', function() {
 
     describe('bpmndi', function() {
 
+      it.skip('BPMNDiagram', function(done) {
+
+        // given
+        var diagram = moddle.create('bpmndi:BPMNDiagram', { name: 'FOO' });
+
+        var expectedXML =
+          '<bpmndi:BPMNDiagram xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" name="FOO" />';
+
+        // when
+        write(diagram, function(err, result) {
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('BPMNShape', function(done) {
 
         // given
