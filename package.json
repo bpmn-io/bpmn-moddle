@@ -1,6 +1,6 @@
 {
   "name": "bpmn-moddle",
-  "version": "0.8.3",
+  "version": "0.9.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "test": "grunt test"
