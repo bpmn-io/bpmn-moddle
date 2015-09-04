@@ -40,13 +40,11 @@
         {
           "name": "inMessageRef",
           "type": "Message",
-          "isAttr": true,
           "isReference": true
         },
         {
           "name": "outMessageRef",
           "type": "Message",
-          "isAttr": true,
           "isReference": true
         },
         {
