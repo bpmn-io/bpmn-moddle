@@ -249,11 +249,13 @@ describe('moddle BPMN 2.0 json', function() {
 		
 		// fix Operation attributes issue
 		builder.alter('Operation#inMessageRef', function(desc) {
-			delete desc.isAttr;
+		  delete desc.isAttr;
+          delete desc.isReference;
 		});
 		
 		builder.alter('Operation#outMessageRef', function(desc) {
-			delete desc.isAttr;
+		  delete desc.isAttr;
+          delete desc.isReference;
 		});
 
         builder.exportTo('resources/bpmn/json/bpmn.json');

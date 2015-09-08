@@ -400,6 +400,27 @@ describe('bpmn-moddle - read', function() {
           done(err);
         });
       });
+
+      it('Operation#messageRef', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/operation-messageRef.part.bpmn', 'bpmn:Operation', function(err, result) {
+
+          // then
+          expect(result).to.jsonEqual({
+            $type: 'bpmn:Operation',
+            id: 'operation',
+            inMessageRef: {
+                $type: 'bpmn:Message',
+            },
+            outMessageRef: {
+                $type: 'bpmn:Message',
+            }
+          });
+
+          done(err);
+        });
+      });
     });
 
 

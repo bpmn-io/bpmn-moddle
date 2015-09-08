@@ -39,13 +39,11 @@
         },
         {
           "name": "inMessageRef",
-          "type": "Message",
-          "isReference": true
+          "type": "Message"
         },
         {
           "name": "outMessageRef",
-          "type": "Message",
-          "isReference": true
+          "type": "Message"
         },
         {
           "name": "errorRefs",
