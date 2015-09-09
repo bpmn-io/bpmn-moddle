@@ -246,15 +246,15 @@ describe('moddle BPMN 2.0 json', function() {
         builder.alter('Activity#ioSpecification', function(desc) {
           desc.xml = { serialize: 'property' };
         });
-		
-		// fix Operation attributes issue
-		builder.alter('Operation#inMessageRef', function(desc) {
-		  delete desc.isAttr;
-		});
-		
-		builder.alter('Operation#outMessageRef', function(desc) {
-		  delete desc.isAttr;
-		});
+
+        // fix Operation attributes issue
+        builder.alter('Operation#inMessageRef', function(desc) {
+          delete desc.isAttr;
+        });
+
+        builder.alter('Operation#outMessageRef', function(desc) {
+          delete desc.isAttr;
+        });
 
         builder.exportTo('resources/bpmn/json/bpmn.json');
       }, done);

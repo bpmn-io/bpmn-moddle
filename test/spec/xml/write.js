@@ -451,6 +451,7 @@ describe('bpmn-moddle - write', function() {
         });
       });
 
+
       it('Operation#messageRef', function(done) {
         // given
         var inMessage = moddle.create('bpmn:Message', {
@@ -467,33 +468,14 @@ describe('bpmn-moddle - write', function() {
           outMessageRef: outMessage
         });
 
-        var opInterface = moddle.create('bpmn:Interface', {
-          operations: [ operation ]
-        });
-
-        var definitions = moddle.create('bpmn:Definitions', {
-          id: 'operation',
-          rootElements: [
-            inMessage,
-            outMessage,
-            opInterface
-          ]
-        });
-
         var expectedXML =
-          '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="operation">' +
-            '<bpmn:message id="fooInMessage" />' +
-            '<bpmn:message id="fooOutMessage" />' +
-            '<bpmn:interface>' +
-              '<bpmn:operation id="operation">' +
-                '<bpmn:inMessageRef>fooInMessage</bpmn:inMessageRef>' +
-                '<bpmn:outMessageRef>fooOutMessage</bpmn:outMessageRef>' +
-              '</bpmn:operation>' +
-            '</bpmn:interface>' +
-          '</bpmn:definitions>';
+          '<bpmn:operation xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="operation">' +
+            '<bpmn:inMessageRef>fooInMessage</bpmn:inMessageRef>' +
+            '<bpmn:outMessageRef>fooOutMessage</bpmn:outMessageRef>' +
+          '</bpmn:operation>';
 
         // when
-        write(definitions, function(err, result) {
+        write(operation, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);

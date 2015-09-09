@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="operation">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="definitions"
+                  targetNamespace="http://bpmn.io/schema/bpmn">
   <bpmn:message id="fooInMessage" />
   <bpmn:message id="fooOutMessage" />
-  <bpmn:interface>
-    <bpmn:operation id="operation">
+  <bpmn:interface name="bar">
+    <bpmn:operation id="operation" name="foo">
       <bpmn:inMessageRef>fooInMessage</bpmn:inMessageRef>
       <bpmn:outMessageRef>fooOutMessage</bpmn:outMessageRef>
     </bpmn:operation>

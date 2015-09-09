@@ -177,6 +177,27 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('Operation#messageRef', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/operation-messageRef.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          // then
+          expect(xml).to.contain('<bpmn:inMessageRef>fooInMessage</bpmn:inMessageRef>');
+
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('di extensions', function(done) {
 
       // given

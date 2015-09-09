@@ -401,21 +401,22 @@ describe('bpmn-moddle - read', function() {
         });
       });
 
+
       it('Operation#messageRef', function(done) {
 
         // when
-        fromFile('test/fixtures/bpmn/operation-messageRef.part.bpmn', 'bpmn:Definitions', function(err, result, context) {
+        fromFile('test/fixtures/bpmn/operation-messageRef.bpmn', 'bpmn:Definitions', function(err, result, context) {
 
           var inMessage = {
             property: 'bpmn:inMessageRef',
             id: 'fooInMessage',
-            element: { $type: 'bpmn:Operation', id: 'operation' }
+            element: { $type: 'bpmn:Operation', id: 'operation', name: 'foo' }
           };
 
           var outMessage = {
             property: 'bpmn:outMessageRef',
             id: 'fooOutMessage',
-            element: { $type: 'bpmn:Operation', id: 'operation' }
+            element: { $type: 'bpmn:Operation', id: 'operation', name: 'foo' }
           };
 
           var references = context.references;
@@ -426,6 +427,7 @@ describe('bpmn-moddle - read', function() {
           done(err);
         });
       });
+
     });
 
 
