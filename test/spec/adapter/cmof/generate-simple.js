@@ -83,6 +83,17 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
 
+        // fix event dataInput/dataOutput associations
+
+        builder.alter('CatchEvent#dataOutputAssociation', function(desc) {
+          desc.name = 'dataOutputAssociations';
+        });
+
+        builder.alter('ThrowEvent#dataInputAssociation', function(desc) {
+          desc.name = 'dataInputAssociations';
+        });
+
+
         // fix PotentialOwner#resourceRef
 
         builder.alter('ResourceRole#resourceRef', function(desc) {

@@ -597,7 +597,7 @@
           "isReference": true
         },
         {
-          "name": "dataInputAssociation",
+          "name": "dataInputAssociations",
           "type": "DataInputAssociation",
           "isMany": true
         },
@@ -637,7 +637,7 @@
           "isReference": true
         },
         {
-          "name": "dataOutputAssociation",
+          "name": "dataOutputAssociations",
           "type": "DataOutputAssociation",
           "isMany": true
         },

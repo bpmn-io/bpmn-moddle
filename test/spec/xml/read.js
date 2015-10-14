@@ -166,6 +166,54 @@ describe('bpmn-moddle - read', function() {
       });
 
 
+      it('ThrowEvent#dataInputAssociations', function(done) {
+
+        // given
+
+        // when
+        fromFile('test/fixtures/bpmn/throw-event-dataInputAssociations.part.bpmn', 'bpmn:EndEvent', function(err, result) {
+
+          var expected = {
+            $type: 'bpmn:EndEvent',
+            id: 'EndEvent_1',
+
+            dataInputAssociations: [
+              { $type: 'bpmn:DataInputAssociation', id: 'DataInputAssociation_1' }
+            ]
+          };
+
+          // then
+          expect(result).to.jsonEqual(expected);
+
+          done(err);
+        });
+      });
+
+
+      it('CatchEvent#dataOutputAssociations', function(done) {
+
+        // given
+
+        // when
+        fromFile('test/fixtures/bpmn/catch-event-dataOutputAssociations.part.bpmn', 'bpmn:StartEvent', function(err, result) {
+
+          var expected = {
+            $type: 'bpmn:StartEvent',
+            id: 'StartEvent_1',
+
+            dataOutputAssociations: [
+              { $type: 'bpmn:DataOutputAssociation', id: 'DataOutputAssociation_1' }
+            ]
+          };
+
+          // then
+          expect(result).to.jsonEqual(expected);
+
+          done(err);
+        });
+      });
+
+
       it('Escalation + Error', function(done) {
 
         // when

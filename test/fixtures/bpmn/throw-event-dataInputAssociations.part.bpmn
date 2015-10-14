@@ -1,0 +1,5 @@
+<bpmn:endEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+               id="EndEvent_1">
+  <bpmn:dataInputAssociation id="DataInputAssociation_1"></bpmn:dataInputAssociation>
+</bpmn:endEvent>

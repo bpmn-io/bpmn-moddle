@@ -1,0 +1,5 @@
+<bpmn:startEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+              id="StartEvent_1">
+  <bpmn:dataOutputAssociation id="DataOutputAssociation_1"></bpmn:dataOutputAssociation>
+</bpmn:startEvent>
