@@ -1978,15 +1978,28 @@
           "type": "Boolean"
         },
         {
-          "name": "choreographyRef",
-          "type": "Choreography",
-          "isMany": true,
-          "isReference": true
+          "name": "participants",
+          "type": "Participant",
+          "isMany": true
+        },
+        {
+          "name": "messageFlows",
+          "type": "MessageFlow",
+          "isMany": true
         },
         {
           "name": "artifacts",
           "type": "Artifact",
           "isMany": true
+        },
+        {
+          "name": "conversations",
+          "type": "ConversationNode",
+          "isMany": true
+        },
+        {
+          "name": "conversationAssociations",
+          "type": "ConversationAssociation"
         },
         {
           "name": "participantAssociations",
@@ -1999,28 +2012,15 @@
           "isMany": true
         },
         {
-          "name": "conversationAssociations",
-          "type": "ConversationAssociation"
-        },
-        {
-          "name": "participants",
-          "type": "Participant",
-          "isMany": true
-        },
-        {
-          "name": "messageFlows",
-          "type": "MessageFlow",
-          "isMany": true
-        },
-        {
           "name": "correlationKeys",
           "type": "CorrelationKey",
           "isMany": true
         },
         {
-          "name": "conversations",
-          "type": "ConversationNode",
-          "isMany": true
+          "name": "choreographyRef",
+          "type": "Choreography",
+          "isMany": true,
+          "isReference": true
         },
         {
           "name": "conversationLinks",

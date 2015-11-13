@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_1mzo4tf">
+    <bpmn:participant id="Participant_0lnpdkc" processRef="Process_1" />
+    <bpmn:textAnnotation id="TextAnnotation_07rzsuw" />
+    <bpmn:association id="Association_18zf5n2" sourceRef="Participant_0lnpdkc" targetRef="TextAnnotation_07rzsuw" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1mzo4tf">
+      <bpmndi:BPMNShape id="Participant_0lnpdkc_di" bpmnElement="Participant_0lnpdkc">
+        <dc:Bounds x="254" y="156" width="384" height="152" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_07rzsuw_di" bpmnElement="TextAnnotation_07rzsuw">
+        <dc:Bounds x="717" y="104" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_18zf5n2_di" bpmnElement="Association_18zf5n2">
+        <di:waypoint xsi:type="dc:Point" x="638" y="179" />
+        <di:waypoint xsi:type="dc:Point" x="717" y="158" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -381,6 +381,46 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('Collaboration', function(done) {
+
+        // given
+
+        var participant = moddle.create('bpmn:Participant', {
+          id: 'Participant_1'
+        });
+
+        var textAnnotation = moddle.create('bpmn:TextAnnotation', {
+          id: 'TextAnnotation_1'
+        });
+
+        var collaboration = moddle.create('bpmn:Collaboration', {
+          id: 'Collaboration_1',
+          participants: [ participant ],
+          artifacts: [ textAnnotation ]
+        });
+
+        var expectedXML =
+          '<bpmn:collaboration xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Collaboration_1">' +
+            '<bpmn:participant id="Participant_1" />' +
+            '<bpmn:textAnnotation id="TextAnnotation_1" />' +
+          '</bpmn:collaboration>';
+
+
+        // when
+        write(collaboration, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done();
+        });
+      });
+
+
       it('ExtensionElements', function(done) {
 
         // given

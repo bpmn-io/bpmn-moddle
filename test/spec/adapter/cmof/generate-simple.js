@@ -93,6 +93,22 @@ describe('moddle BPMN 2.0 json', function() {
           desc.name = 'dataInputAssociations';
         });
 
+        // fix Collaboration child element order
+        builder.alter('Collaboration', function(desc) {
+
+          builder.reorderProperties(desc, [
+            'participants',
+            'messageFlows',
+            'artifacts',
+            'conversations',
+            'conversationAssociations',
+            'participantAssociations',
+            'messageFlowAssociations',
+            'correlationKeys',
+            'choreographyRef',
+            'conversationLinks'
+          ]);
+        });
 
         // fix PotentialOwner#resourceRef
 
