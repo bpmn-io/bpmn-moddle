@@ -1,0 +1,5 @@
+<timerEventDefinition xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      id="Definition_1">
+  <timeCycle xsi:type="tFormalExpression" id="TimeCycle_1"><![CDATA[1w]]></timeCycle>
+</timerEventDefinition>

@@ -126,6 +126,30 @@ describe('bpmn-moddle - read', function() {
       });
 
 
+      it('TimerEventDefinition#expression', function(done) {
+
+        // given
+        var file = 'test/fixtures/bpmn/timerEventDefinition.part.bpmn';
+
+        // when
+        fromFile(file, 'bpmn:TimerEventDefinition', function(err, result) {
+
+          // then
+          expect(result).to.jsonEqual({
+            $type: 'bpmn:TimerEventDefinition',
+            id: 'Definition_1',
+            timeCycle: {
+              $type: 'bpmn:FormalExpression',
+              id: 'TimeCycle_1',
+              body: '1w'
+            }
+          });
+
+          done(err);
+        });
+
+      });
+
       it('Documentation', function(done) {
 
         // when
