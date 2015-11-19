@@ -39,23 +39,6 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
-    it('complex process', function(done) {
-
-      // given
-      fromFile('test/fixtures/bpmn/complex-no-extensions.bpmn', function(err, result) {
-
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
-    });
-
-
     it('extension attributes', function(done) {
 
       // given
@@ -307,6 +290,61 @@ describe('bpmn-moddle - roundtrip', function() {
           validate(err, xml, done);
         });
       });
+    });
+
+  });
+
+
+  describe('vendor', function() {
+
+
+    describe('signavio', function() {
+
+      it('complex process', function(done) {
+
+        // given
+        fromFile('test/fixtures/bpmn/complex-no-extensions.bpmn', function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // when
+          toXML(result, { format: true }, function(err, xml) {
+            validate(err, xml, done);
+          });
+        });
+      });
+
+    });
+
+
+    describe('yaoqiang', function() {
+
+      it('event definitions', function(done) {
+
+        // given
+        fromFile('test/fixtures/bpmn/event-definitions-yaoqiang.bpmn', function(err, result, context) {
+
+          if (err) {
+            return done(err);
+          }
+
+          var warningsStr = context.warnings.map(function(w) {
+            return '\n\t- ' + w.message;
+          }).join('');
+
+          if (warningsStr) {
+            return done(new Error('import warnings: ' + warningsStr));
+          }
+
+          // when
+          toXML(result, { format: true }, function(err, xml) {
+            validate(err, xml, done);
+          });
+        });
+      });
+
     });
 
   });

@@ -65,13 +65,22 @@ describe('moddle BPMN 2.0 json', function() {
         // fix definitions children order
 
         builder.alter('Definitions', function(desc) {
-          builder.reorderProperties(desc, [ 'rootElements', 'diagrams', 'relationships' ]);
+          builder.reorderProperties(desc, [
+            'rootElements',
+            'diagrams',
+            'relationships'
+          ]);
         });
 
         // fix ioSpec children order
 
         builder.alter('InputOutputSpecification', function(desc) {
-          builder.reorderProperties(desc, [ 'dataInputs', 'dataOutputs', 'inputSets', 'outputSets' ]);
+          builder.reorderProperties(desc, [
+            'dataInputs',
+            'dataOutputs',
+            'inputSets',
+            'outputSets'
+          ]);
         });
 
         builder.alter('Relationship#sources', function(desc) {
@@ -91,6 +100,30 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.alter('ThrowEvent#dataInputAssociation', function(desc) {
           desc.name = 'dataInputAssociations';
+        });
+
+        // fix catchEvent children order
+
+        builder.alter('CatchEvent', function(desc) {
+          builder.reorderProperties(desc, [
+            'dataOutputs',
+            'dataOutputAssociations',
+            'outputSet',
+            'eventDefinitions',
+            'eventDefinitionRefs',
+          ]);
+        });
+
+        // fix throwEvent children order
+
+        builder.alter('ThrowEvent', function(desc) {
+          builder.reorderProperties(desc, [
+            'dataInputs',
+            'dataInputAssociations',
+            'inputSet',
+            'eventDefinitions',
+            'eventDefinitionRefs',
+          ]);
         });
 
         // fix Collaboration child element order
@@ -129,7 +162,17 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
         builder.alter('DataAssociation', function(desc) {
-          builder.swapProperties(desc, 'targetRef', 'sourceRef');
+          builder.reorderProperties(desc, [
+            'sourceRef',
+            'targetRef',
+            'transformation'
+          ]);
+        });
+
+        builder.alter('DataAssociation#transformation', function(desc) {
+          desc.xml = {
+            'serialize': 'property'
+          };
         });
 
 
@@ -328,12 +371,12 @@ describe('moddle BPMN 2.0 json', function() {
         pkg.associations = [];
 
         pkg.types.push({
-          "name": "Extension",
-          "properties": [
+          'name': 'Extension',
+          'properties': [
             {
-              "name": "values",
-              "type": "Element",
-              "isMany": true
+              'name': 'values',
+              'type': 'Element',
+              'isMany': true
             }
           ]
         });
@@ -341,8 +384,8 @@ describe('moddle BPMN 2.0 json', function() {
         builder.alter('DiagramElement', function(data) {
 
           data.properties.unshift({
-            "name": "extension",
-            "type": "Extension"
+            'name': 'extension',
+            'type': 'Extension'
           });
         });
 

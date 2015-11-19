@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+	xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+	xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	id="_2015102701981"
+	targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL" >
+
+
+  <itemDefinition id="ID_TextData" />
+
+  <itemDefinition id="ID_LazyWorkerData" isCollection="false" itemKind="Information" />
+
+  <itemDefinition id="ID_ProcessComplexProperty" isCollection="true" itemKind="Information" />
+
+  <itemDefinition id="ID_ProcessStartData" isCollection="false" itemKind="Information" />
+
+  <itemDefinition id="ID_ErrorBody" isCollection="false" itemKind="Information" />
+
+  <error errorCode="SomethingWentWrong" id="ID_Error" name="Error" structureRef="ID_ErrorBody"/>
+
+  <timerEventDefinition id="ID_UserTaskTimeout2">
+    <timeDuration xsi:type="tFormalExpression" id="ID_UserTaskTimeoutDuration"><![CDATA[1w]]></timeDuration>
+  </timerEventDefinition>
+
+  <timerEventDefinition id="ID_UserTaskTimeout3">
+    <timeCycle  xsi:type="tFormalExpression" id="ID_UserTaskTimeoutCycle"><![CDATA[1w]]></timeCycle>
+  </timerEventDefinition>
+
+  <signal id="ID_LazyWorkerSignal" name="SubmitLazyWorkerSignal" />
+  <signal id="ID_ProcessStartSignal" name="ProcessStartSignal" />
+
+  <process id="ID_Process" isClosed="false" name="TestProcess" processType="None" isExecutable="true">
+    <documentation id="ID_Process_D_1" textFormat="text/plain"><![CDATA[Dokumentacija procesa]]></documentation>
+    <!-- known issue: #24
+    <property id="ID_ProcessProperty1" itemSubjectRef="ID_TextData" name="ProcessProperty1"/>
+    <property id="ID_ProcessProperty2" itemSubjectRef="ID_ProcessComplexProperty" name="ProcessProperty2"/>
+    -->
+
+    <startEvent id="ID_StartEvent" isInterrupting="true" name="Start" parallelMultiple="false">
+      <documentation id="ID_StartEvent_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Manual start</span></p>]]></documentation>
+      <outgoing>ID_Flow_StartEvent_UserTask</outgoing>
+      <property id="ID_StartEventProperty1" itemSubjectRef="ID_TextData" name="StartEventProperty1"/>
+      <property id="ID_StartEventProperty2" itemSubjectRef="ID_ProcessComplexProperty" name="StartEventProperty2"/>
+      <!-- workaround for #24 -->
+      <property id="ID_ProcessProperty1" itemSubjectRef="ID_TextData" name="ProcessProperty1"/>
+      <property id="ID_ProcessProperty2" itemSubjectRef="ID_ProcessComplexProperty" name="ProcessProperty2"/>
+      <!-- end workaround for #24 -->
+      <dataOutput id="ID_StartEventOutput1" isCollection="false" itemSubjectRef="ID_TextData" name="StartEventProperty1"/>
+      <dataOutput id="ID_StartEventOutput2" isCollection="false" itemSubjectRef="ID_ProcessComplexProperty" name="StartEventProperty2"/>
+      <dataOutputAssociation id="ID_StartEventDataOutputAssociation1">
+        <sourceRef>ID_StartEventOutput1</sourceRef>
+        <targetRef>ID_ProcessProperty1</targetRef>
+      </dataOutputAssociation>
+      <dataOutputAssociation id="ID_StartEventDataOutputAssociation2">
+        <targetRef>ID_ProcessProperty2</targetRef>
+        <transformation evaluatesToTypeRef="ID_ProcessComplexProperty" id="ID_StartEventDataOutputAssociation2Transformation" language="NCalc">
+					<![CDATA[StartEventProperty2]]>
+				</transformation>
+      </dataOutputAssociation>
+      <outputSet id="ID_StartEventOutputSet" name="StartEventOutputSet">
+        <dataOutputRefs>ID_StartEventOutput1</dataOutputRefs>
+        <dataOutputRefs>ID_StartEventOutput2</dataOutputRefs>
+		<optionalOutputRefs>ID_StartEventOutput2</optionalOutputRefs>
+      </outputSet>
+    </startEvent>
+
+    <startEvent id="ID_SignalStart" isInterrupting="true" name="SignalStart" parallelMultiple="false">
+      <documentation id="ID_SignalStart_D_1" textFormat="text/plain">
+				<![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Signal based start</span></p>]]>
+			</documentation>
+      <outgoing>ID_Flow_SignalStart_UserTask</outgoing>
+      <dataOutput id="ID_SignalStartOutput1" isCollection="false" itemSubjectRef="ID_TextData" name="ProcessStartSignal.Value1"/>
+      <dataOutputAssociation id="ID_SignalStartDataOutputAssociation1">
+        <sourceRef>ID_SignalStartOutput1</sourceRef>
+        <targetRef>ID_ProcessProperty1</targetRef>
+      </dataOutputAssociation>
+      <outputSet id="ID_SignalStartOutputSet" name="SignalStartOutputSet">
+        <dataOutputRefs>ID_SignalStartOutput1</dataOutputRefs>
+      </outputSet>
+      <signalEventDefinition id="ID_ProcessStartSignalDefinition" signalRef="ID_ProcessStartSignal"/>
+    </startEvent>
+
+    <userTask completionQuantity="1" id="ID_UserTask" implementation="##unspecified" isForCompensation="false" name="UserTask" startQuantity="1">
+      <documentation id="ID_UserTask_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Some work for human performer</span></p>]]></documentation>
+      <incoming>ID_Flow_StartEvent_UserTask</incoming>
+      <incoming>ID_Flow_SignalStart_UserTask</incoming>
+      <outgoing>ID_Flow_UserTask_ParallelStart</outgoing>
+      <ioSpecification id="ID_UserTaskIoSpecification">
+        <dataInput id="ID_UserTaskInput" isCollection="false" itemSubjectRef="ID_TextData" name="UserTaskProperty"/>
+        <dataOutput id="ID_UserTaskOutput" isCollection="false" itemSubjectRef="ID_TextData" name="UserTaskProperty"/>
+        <inputSet id="ID_UserTaskInputSet" name="UserTaskInputSet">
+          <dataInputRefs>ID_UserTaskInput</dataInputRefs>
+        </inputSet>
+        <outputSet id="ID_UserTaskOutputSet" name="UserTaskOutputSet">
+          <dataOutputRefs>ID_UserTaskOutput</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <property id="ID_UserTaskProperty" itemSubjectRef="ID_TextData" name="UserTaskProperty"/>
+      <dataInputAssociation id="ID_UserTaskInputAssociation">
+        <sourceRef>ID_ProcessProperty1</sourceRef>
+        <targetRef>ID_UserTaskInput</targetRef>
+      </dataInputAssociation>
+      <dataOutputAssociation id="ID_UserTaskOutputAssociation">
+        <sourceRef>ID_UserTaskOutput</sourceRef>
+        <targetRef>ID_ProcessProperty1</targetRef>
+      </dataOutputAssociation>
+      <humanPerformer id="ID_UserTaskPerformer1" name="UserTaskPerformer1">
+        <resourceAssignmentExpression id="ID_UserTaskPerformer1Expression">
+          <formalExpression id="ID_UserTaskUserTaskPerformer1Expression" evaluatesToTypeRef="ID_TextData" language="NCalc"><![CDATA[ProcessProperty1]]></formalExpression>
+        </resourceAssignmentExpression>
+      </humanPerformer>
+      <potentialOwner id="ID_UserTaskPerformer2" name="UserTaskPerformer2">
+        <resourceAssignmentExpression id="ID_UserTaskPerformer2Expression">
+          <formalExpression id="ID_UserTaskUserTaskPerformer2Expression" evaluatesToTypeRef="ID_TextData" language="NCalc"><![CDATA['Razvoj']]></formalExpression>
+        </resourceAssignmentExpression>
+      </potentialOwner>
+      <rendering>
+			</rendering>
+    </userTask>
+
+    <sequenceFlow id="ID_Flow_StartEvent_UserTask" sourceRef="ID_StartEvent" targetRef="ID_UserTask"/>
+
+    <sequenceFlow id="ID_Flow_UserTask_ParallelStart" sourceRef="ID_UserTask" targetRef="ID_ParallelStart"/>
+
+    <parallelGateway gatewayDirection="Diverging" id="ID_ParallelStart" name="ParallelStart">
+      <documentation id="ID_ParallelStart_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Splits process flow into two parallel executions</span></p>]]></documentation>
+      <incoming>ID_Flow_UserTask_ParallelStart</incoming>
+      <outgoing>ID_Flow_ParallelStart_ExecuteScript</outgoing>
+      <outgoing>ID_Flow_ParallelStart_SendEmail</outgoing>
+    </parallelGateway>
+
+    <sequenceFlow id="ID_Flow_ParallelStart_SendEmail" sourceRef="ID_ParallelStart" targetRef="ID_SendEmail"/>
+
+    <sendTask completionQuantity="1" id="ID_SendEmail" implementation="##WebService" isForCompensation="false" name="SendEmail" startQuantity="1">
+      <documentation id="ID_SendEmail_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Send e-mail to someone</span></p>]]></documentation>
+      <incoming>ID_Flow_ParallelStart_SendEmail</incoming>
+      <outgoing>ID_Flow_SendEmail_ParallelJoin</outgoing>
+    </sendTask>
+
+    <sequenceFlow id="ID_Flow_ParallelStart_ExecuteScript" sourceRef="ID_ParallelStart" targetRef="ID_ExecuteScript"/>
+
+    <scriptTask completionQuantity="1" id="ID_ExecuteScript" isForCompensation="false" name="ExecuteScript" scriptFormat="c#" startQuantity="1">
+      <documentation id="ID_ExecuteScript_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Execute some script</span></p>]]></documentation>
+      <incoming>ID_Flow_ParallelStart_ExecuteScript</incoming>
+      <outgoing>ID_Flow_ExecuteScript_ParallelJoin</outgoing>
+      <script><![CDATA[This should be a c# script]]></script>
+    </scriptTask>
+
+    <boundaryEvent attachedToRef="ID_UserTask" cancelActivity="false" id="ID_UserTimeoutEvent" name="UserTimeout" parallelMultiple="false">
+      <documentation id="ID_UserTimeoutEvent_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Task should be completed in one day</span></p><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;"> </span></p>]]></documentation>
+      <outgoing>ID_Flow_UserTimeout_SubmitLazyWorkerSignal</outgoing>
+      <!--<eventDefinitionRef>ID_UserTaskTimeout</eventDefinitionRef>-->
+	  <timerEventDefinition id="ID_UserTaskTimeout">
+    	<timeDate xsi:type="tFormalExpression" id="ID_UserTaskTimeoutTimeDate"><![CDATA[DateTime.AddDays(Execution.Created, 1)]]></timeDate>
+  	  </timerEventDefinition>
+    </boundaryEvent>
+
+    <sequenceFlow id="ID_Flow_UserTimeout_SubmitLazyWorkerSignal" sourceRef="ID_UserTimeoutEvent" targetRef="ID_SubmitLazyWorkerSignal"/>
+
+    <intermediateThrowEvent id="ID_SubmitLazyWorkerSignal" name="SubmitLazyWorkerSignal">
+      <documentation id="ID_SubmitLazyWorkerSignal_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Aleš zabušava!</span></p><p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;"> </span></p>]]></documentation>
+      <incoming>ID_Flow_UserTimeout_SubmitLazyWorkerSignal</incoming>
+      <signalEventDefinition id="Id_SubmitLazyWorkerSignalDefinition" signalRef="ID_LazyWorkerSignal"/>
+    </intermediateThrowEvent>
+
+    <sequenceFlow id="ID_Flow_SendEmail_ParallelJoin" sourceRef="ID_SendEmail" targetRef="ID_ParallelJoin" />
+
+    <sequenceFlow id="ID_Flow_ExecuteScript_ParallelJoin" sourceRef="ID_ExecuteScript" targetRef="ID_ParallelJoin"/>
+
+    <parallelGateway gatewayDirection="Converging" id="ID_ParallelJoin" name="Parallel join">
+      <documentation id="ID_ParallelJoin_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Joins all parallel executions</span></p>]]></documentation>
+      <incoming>ID_Flow_SendEmail_ParallelJoin</incoming>
+      <incoming>ID_Flow_ExecuteScript_ParallelJoin</incoming>
+      <outgoing>ID_Flow_ParallelJoin_ExclusiveGateway</outgoing>
+    </parallelGateway>
+
+    <exclusiveGateway gatewayDirection="Diverging" id="ID_ExclusiveGateway" name="Should continue?">
+      <documentation id="ID_ExclusiveGateway_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Check if everything was successful</span></p>]]></documentation>
+      <incoming>ID_Flow_ParallelJoin_ExclusiveGateway</incoming>
+      <outgoing>ID_Flow_EsclusiveGateway_ServiceTask</outgoing>
+      <outgoing>ID_Flow_EsclusiveGateway_ErrorEnd</outgoing>
+    </exclusiveGateway>
+
+    <sequenceFlow id="ID_Flow_ParallelJoin_ExclusiveGateway" sourceRef="ID_ParallelJoin" targetRef="ID_ExclusiveGateway"/>
+
+    <sequenceFlow id="ID_Flow_EsclusiveGateway_ErrorEnd" name="No" sourceRef="ID_ExclusiveGateway" targetRef="ID_ErrorEnd">
+      <conditionExpression id="ID_ExclusiveGatewayCondition1"><![CDATA[ErrorThrown = true]]></conditionExpression>
+    </sequenceFlow>
+
+    <sequenceFlow id="ID_Flow_EsclusiveGateway_ServiceTask" sourceRef="ID_ExclusiveGateway" targetRef="ID_ServiceTask">
+      <conditionExpression id="ID_ExclusiveGatewayCondition2"><![CDATA[ErrorThrown = false]]></conditionExpression>
+    </sequenceFlow>
+
+    <endEvent id="ID_ErrorEnd" name="Error">
+      <documentation id="ID_ErrorEnd_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">End process and throw error event.</span></p>]]></documentation>
+      <incoming>ID_Flow_EsclusiveGateway_ErrorEnd</incoming>
+      <errorEventDefinition errorRef="ID_Error" id="ID_ErrorDefinition"/>
+    </endEvent>
+
+    <serviceTask completionQuantity="1" id="ID_ServiceTask" implementation="##WebService" isForCompensation="false" name="Work work work" startQuantity="1">
+      <documentation id="ID_ServiceTask_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">Some service should really do something about this.</span></p>]]></documentation>
+      <incoming>ID_Flow_EsclusiveGateway_ServiceTask</incoming>
+      <outgoing>ID_Flow_ServiceTask_RegularEnd</outgoing>
+    </serviceTask>
+
+    <endEvent id="ID_RegularEnd" name="End">
+      <documentation id="ID_RegularEnd_D_1" textFormat="text/plain"><![CDATA[<p style="text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;"><span style="color:#000000;background-color:transparent;font-family:Segoe UI;font-size:8pt;font-weight:normal;font-style:normal;">End process.</span></p>]]></documentation>
+      <incoming>ID_Flow_ServiceTask_RegularEnd</incoming>
+    </endEvent>
+
+    <sequenceFlow id="ID_Flow_ServiceTask_RegularEnd" sourceRef="ID_ServiceTask" targetRef="ID_RegularEnd"/>
+
+    <sequenceFlow id="ID_Flow_SignalStart_UserTask" sourceRef="ID_SignalStart" targetRef="ID_UserTask"/>
+  </process>
+
+  <bpmndi:BPMNDiagram id="Yaoqiang_Diagram-_1">
+    <bpmndi:BPMNPlane bpmnElement="ID_Process">
+      <bpmndi:BPMNShape bpmnElement="ID_StartEvent" id="Yaoqiang-ID_StartEvent">
+        <dc:Bounds height="32.0" width="32.0" x="130.0" y="249.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="29.0" x="131.5" y="289.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_UserTask" id="Yaoqiang-ID_UserTask">
+        <dc:Bounds height="60.0" width="90.0" x="288.0" y="234.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="52.0" x="307.0" y="256.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_ParallelStart" id="Yaoqiang-ID_ParallelStart">
+        <dc:Bounds height="42.0" width="42.0" x="456.0" y="244.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="63.0" x="445.5" y="288.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_SendEmail" id="Yaoqiang-ID_SendEmail">
+        <dc:Bounds height="60.0" width="90.0" x="561.0" y="156.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="55.0" x="578.5" y="178.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_ExecuteScript" id="Yaoqiang-ID_ExecuteScript">
+        <dc:Bounds height="60.0" width="90.0" x="567.0" y="299.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="73.0" x="575.5" y="321.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_SubmitLazyWorkerSignal" id="Yaoqiang-ID_SubmitLazyWorkerSignal">
+        <dc:Bounds height="32.0" width="32.0" x="381.0" y="366.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="126.0" x="334.0" y="406.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_ParallelJoin" id="Yaoqiang-ID_ParallelJoin">
+        <dc:Bounds height="42.0" width="42.0" x="739.0" y="240.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="59.0" x="730.5" y="284.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_ExclusiveGateway" id="Yaoqiang-ID_ExclusiveGateway" isMarkerVisible="false">
+        <dc:Bounds height="42.0" width="42.0" x="838.0" y="240.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="89.0" x="814.5" y="284.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_ErrorEnd" id="Yaoqiang-ID_ErrorEnd">
+        <dc:Bounds height="32.0" width="32.0" x="994.0" y="137.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="30.0" x="995.0" y="177.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_ServiceTask" id="Yaoqiang-ID_ServiceTask">
+        <dc:Bounds height="60.0" width="90.0" x="949.0" y="230.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="34.8359375" width="59.0" x="964.5" y="244.58203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_RegularEnd" id="Yaoqiang-ID_RegularEnd">
+        <dc:Bounds height="32.0" width="32.0" x="1099.0" y="245.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="24.0" x="1103.0" y="285.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_SignalStart" id="Yaoqiang-ID_SignalStart">
+        <dc:Bounds height="32.0" width="32.0" x="132.0" y="167.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="58.0" x="119.0" y="207.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="ID_UserTimeoutEvent" id="Yaoqiang-ID_UserTimeoutEvent">
+        <dc:Bounds height="32.0" width="32.0" x="298.0" y="294.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="66.0" x="281.0" y="334.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_SignalStart_UserTask" id="Yaoqiang-ID_Flow_SignalStart_UserTask" sourceElement="ID_SignalStart" targetElement="ID_UserTask">
+        <di:waypoint x="164.4687194226713" y="182.0"/>
+        <di:waypoint x="212.0" y="182.0"/>
+        <di:waypoint x="212.0" y="252.0"/>
+        <di:waypoint x="288.5" y="264.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="209.0" y="227.56639096133566"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_StartEvent_UserTask" id="Yaoqiang-ID_Flow_StartEvent_UserTask" sourceElement="ID_StartEvent" targetElement="ID_UserTask">
+        <di:waypoint x="162.5" y="265.0"/>
+        <di:waypoint x="288.5" y="264.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="222.0" y="254.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_ParallelJoin_ExclusiveGateway" id="Yaoqiang-ID_Flow_ParallelJoin_ExclusiveGateway" sourceElement="ID_ParallelJoin" targetElement="ID_ExclusiveGateway">
+        <di:waypoint x="781.5" y="261.0"/>
+        <di:waypoint x="838.5" y="261.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="807.0" y="251.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_UserTask_ParallelStart" id="Yaoqiang-ID_Flow_UserTask_ParallelStart" sourceElement="ID_UserTask" targetElement="ID_ParallelStart">
+        <di:waypoint x="378.5" y="264.0"/>
+        <di:waypoint x="456.5" y="265.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="414.0" y="255.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_ExecuteScript_ParallelJoin" id="Yaoqiang-ID_Flow_ExecuteScript_ParallelJoin" sourceElement="ID_ExecuteScript" targetElement="ID_ParallelJoin">
+        <di:waypoint x="657.5" y="329.0"/>
+        <di:waypoint x="699.0" y="329.0"/>
+        <di:waypoint x="699.0" y="260.0"/>
+        <di:waypoint x="739.5" y="261.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="696.0" y="285.58203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_EsclusiveGateway_ErrorEnd" id="Yaoqiang-ID_Flow_EsclusiveGateway_ErrorEnd" sourceElement="ID_ExclusiveGateway" targetElement="ID_ErrorEnd">
+        <di:waypoint x="858.0" y="241.5"/>
+        <di:waypoint x="858.0" y="152.0"/>
+        <di:waypoint x="994.5312805773287" y="152.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="34.8359375" width="99.0" x="832.0156402886644" y="134.58203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_UserTimeout_SubmitLazyWorkerSignal" id="Yaoqiang-ID_Flow_UserTimeout_SubmitLazyWorkerSignal" sourceElement="ID_UserTimeoutEvent" targetElement="ID_SubmitLazyWorkerSignal">
+        <di:waypoint x="310.87820552884455" y="325.58469136072927"/>
+        <di:waypoint x="298.0" y="381.0"/>
+        <di:waypoint x="381.53128057732874" y="381.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="308.3196185578986" y="371.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_ParallelStart_ExecuteScript" id="Yaoqiang-ID_Flow_ParallelStart_ExecuteScript" sourceElement="ID_ParallelStart" targetElement="ID_ExecuteScript">
+        <di:waypoint x="497.5" y="264.0"/>
+        <di:waypoint x="535.0" y="264.0"/>
+        <di:waypoint x="535.0" y="329.0"/>
+        <di:waypoint x="567.5" y="329.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="532.0" y="284.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_ParallelStart_SendEmail" id="Yaoqiang-ID_Flow_ParallelStart_SendEmail" sourceElement="ID_ParallelStart" targetElement="ID_SendEmail">
+        <di:waypoint x="497.5" y="264.0"/>
+        <di:waypoint x="530.0" y="264.0"/>
+        <di:waypoint x="530.0" y="186.0"/>
+        <di:waypoint x="561.5" y="186.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="527.0" y="215.58203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_SendEmail_ParallelJoin" id="Yaoqiang-ID_Flow_SendEmail_ParallelJoin" sourceElement="ID_SendEmail" targetElement="ID_ParallelJoin">
+        <di:waypoint x="651.5" y="186.0"/>
+        <di:waypoint x="698.0" y="186.0"/>
+        <di:waypoint x="698.0" y="260.0"/>
+        <di:waypoint x="739.5" y="261.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="695.0" y="211.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_EsclusiveGateway_ServiceTask" id="Yaoqiang-ID_Flow_EsclusiveGateway_ServiceTask" sourceElement="ID_ExclusiveGateway" targetElement="ID_ServiceTask">
+        <di:waypoint x="880.5" y="261.0"/>
+        <di:waypoint x="949.5" y="260.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="104.0" x="862.5" y="250.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="ID_Flow_ServiceTask_RegularEnd" id="Yaoqiang-ID_Flow_ServiceTask_RegularEnd" sourceElement="ID_ServiceTask" targetElement="ID_RegularEnd">
+        <di:waypoint x="1039.5" y="260.0"/>
+        <di:waypoint x="1099.5" y="261.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="19.8359375" width="6.0" x="1066.0" y="251.08203125"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

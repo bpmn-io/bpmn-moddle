@@ -587,14 +587,9 @@
       ],
       "properties": [
         {
-          "name": "inputSet",
-          "type": "InputSet"
-        },
-        {
-          "name": "eventDefinitionRefs",
-          "type": "EventDefinition",
-          "isMany": true,
-          "isReference": true
+          "name": "dataInputs",
+          "type": "DataInput",
+          "isMany": true
         },
         {
           "name": "dataInputAssociations",
@@ -602,14 +597,19 @@
           "isMany": true
         },
         {
-          "name": "dataInputs",
-          "type": "DataInput",
-          "isMany": true
+          "name": "inputSet",
+          "type": "InputSet"
         },
         {
           "name": "eventDefinitions",
           "type": "EventDefinition",
           "isMany": true
+        },
+        {
+          "name": "eventDefinitionRefs",
+          "type": "EventDefinition",
+          "isMany": true,
+          "isReference": true
         }
       ]
     },
@@ -627,14 +627,9 @@
           "default": false
         },
         {
-          "name": "outputSet",
-          "type": "OutputSet"
-        },
-        {
-          "name": "eventDefinitionRefs",
-          "type": "EventDefinition",
-          "isMany": true,
-          "isReference": true
+          "name": "dataOutputs",
+          "type": "DataOutput",
+          "isMany": true
         },
         {
           "name": "dataOutputAssociations",
@@ -642,14 +637,19 @@
           "isMany": true
         },
         {
-          "name": "dataOutputs",
-          "type": "DataOutput",
-          "isMany": true
+          "name": "outputSet",
+          "type": "OutputSet"
         },
         {
           "name": "eventDefinitions",
           "type": "EventDefinition",
           "isMany": true
+        },
+        {
+          "name": "eventDefinitionRefs",
+          "type": "EventDefinition",
+          "isMany": true,
+          "isReference": true
         }
       ]
     },
@@ -929,10 +929,6 @@
       ],
       "properties": [
         {
-          "name": "transformation",
-          "type": "FormalExpression"
-        },
-        {
           "name": "assignment",
           "type": "Assignment",
           "isMany": true
@@ -947,6 +943,13 @@
           "name": "targetRef",
           "type": "ItemAwareElement",
           "isReference": true
+        },
+        {
+          "name": "transformation",
+          "type": "FormalExpression",
+          "xml": {
+            "serialize": "property"
+          }
         }
       ]
     },
