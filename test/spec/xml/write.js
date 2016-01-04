@@ -528,16 +528,22 @@ describe('bpmn-moddle - write', function() {
 
     describe('bpmndi', function() {
 
-      it.skip('BPMNDiagram', function(done) {
+      it('BPMNDiagram', function(done) {
 
         // given
-        var diagram = moddle.create('bpmndi:BPMNDiagram', { name: 'FOO' });
+        var diagram = moddle.create('bpmndi:BPMNDiagram', { name: 'FOO', resolution: 96.5 });
 
         var expectedXML =
-          '<bpmndi:BPMNDiagram xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" name="FOO" />';
+          '<bpmndi:BPMNDiagram xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
+                              'name="FOO" ' +
+                              'resolution="96.5" />';
 
         // when
         write(diagram, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
 
           // then
           expect(result).to.eql(expectedXML);
