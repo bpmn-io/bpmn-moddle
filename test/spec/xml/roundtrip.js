@@ -20,15 +20,83 @@ describe('bpmn-moddle - roundtrip', function() {
 
     this.timeout(15000);
 
+
     it('home-made bpmn model', function(done) {
 
       var definitions = moddle.create('bpmn:Definitions', { targetNamespace: 'http://foo' });
 
-      var process = moddle.create('bpmn:Process');
-      var serviceTask = moddle.create('bpmn:ServiceTask', { name: 'MyService Task'});
+      var processElement = moddle.create('bpmn:Process');
+      var serviceTask = moddle.create('bpmn:ServiceTask', { name: 'MyService Task' });
 
-      process.get('flowElements').push(serviceTask);
-      definitions.get('rootElements').push(process);
+      processElement.get('flowElements').push(serviceTask);
+      definitions.get('rootElements').push(processElement);
+
+      // when
+      toXML(definitions, { format: true }, function(err, xml) {
+
+        // then
+        validate(err, xml, done);
+      });
+    });
+
+
+    it('ioSpecification', function(done) {
+
+      // given
+      var definitions = moddle.create('bpmn:Definitions', { targetNamespace: 'http://foo' });
+
+      var processElement = moddle.create('bpmn:Process');
+
+      var dataInput = moddle.create('bpmn:DataInput', { id: 'DataInput_FOO' });
+
+      var inputSet = moddle.create('bpmn:InputSet', {
+        dataInputRefs: [ dataInput ]
+      });
+
+      var outputSet = moddle.create('bpmn:OutputSet');
+
+      var ioSpecification = moddle.create('bpmn:InputOutputSpecification', {
+        inputSets: [ inputSet ],
+        outputSets: [ outputSet ],
+        dataInputs: [ dataInput ]
+      });
+
+      var serviceTask = moddle.create('bpmn:ServiceTask', {
+        name: 'MyService Task',
+        ioSpecification: ioSpecification
+      });
+
+      processElement.get('flowElements').push(serviceTask);
+      definitions.get('rootElements').push(processElement);
+
+      // when
+      toXML(definitions, { format: true }, function(err, xml) {
+
+        // then
+        validate(err, xml, done);
+      });
+    });
+
+
+    it('properties', function(done) {
+
+      // given
+      var definitions = moddle.create('bpmn:Definitions', { targetNamespace: 'http://foo' });
+
+      var processElement = moddle.create('bpmn:Process');
+
+      var property = moddle.create('bpmn:Property', {
+        id: 'Property_112',
+        name: '__targetRef_placeholder'
+      });
+
+      var serviceTask = moddle.create('bpmn:ServiceTask', {
+        name: 'MyService Task',
+        properties: [ property ]
+      });
+
+      processElement.get('flowElements').push(serviceTask);
+      definitions.get('rootElements').push(processElement);
 
       // when
       toXML(definitions, { format: true }, function(err, xml) {
@@ -107,10 +175,10 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
-    it.skip('process children order', function(done) {
+    it.skip('processElement children order', function(done) {
 
       // given
-      fromFile('test/fixtures/bpmn/process-children.bpmn', function(err, result) {
+      fromFile('test/fixtures/bpmn/processElement-children.bpmn', function(err, result) {
 
         if (err) {
           return done(err);
@@ -220,7 +288,7 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
-    it('complex process / extensionElements', function(done) {
+    it('complex processElement / extensionElements', function(done) {
 
       // given
       fromFile('test/fixtures/bpmn/complex.bpmn', function(err, result) {
@@ -259,7 +327,7 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
-    it('simple process', function(done) {
+    it('simple processElement', function(done) {
 
       // given
       fromFile('test/fixtures/bpmn/simple.bpmn', function(err, result) {
@@ -300,7 +368,7 @@ describe('bpmn-moddle - roundtrip', function() {
 
     describe('signavio', function() {
 
-      it('complex process', function(done) {
+      it('complex processElement', function(done) {
 
         // given
         fromFile('test/fixtures/bpmn/complex-no-extensions.bpmn', function(err, result) {
