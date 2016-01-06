@@ -333,6 +333,41 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it.skip('ItemDefinition#structureRef with ns', function(done) {
+
+        // given
+        var itemDefinition = moddle.create('bpmn:ItemDefinition', {
+          'xmlns:xs': 'http://xml-types',
+          id: 'xsdBool',
+          isCollection: true,
+          itemKind: 'Information',
+          structureRef: 'xs:tBool'
+        });
+
+        var expectedXML =
+          '<bpmn:itemDefinition xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                               'xmlns:xs="http://xml-types" ' +
+                               'id="xsdBool" ' +
+                               'itemKind="Information" ' +
+                               'structureRef="xs:tBool" ' +
+                               'isCollection="true" />';
+
+
+        // when
+        write(itemDefinition, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done();
+        });
+      });
+
+
       it('Operation#implementationRef', function(done) {
 
         // given
@@ -457,41 +492,6 @@ describe('bpmn-moddle - write', function() {
       });
 
 
-      it.skip('ItemDefinition#structureRef', function(done) {
-
-        // given
-        var itemDefinition = moddle.create('bpmn:ItemDefinition', {
-          'xmlns:xs': 'http://xml-types',
-          id: 'xsdBool',
-          isCollection: true,
-          itemKind: 'Information',
-          structureRef: 'xs:tBool'
-        });
-
-        var expectedXML =
-          '<bpmn:itemDefinition xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
-                               'xmlns:xs="http://xml-types" ' +
-                               'id="xsdBool" ' +
-                               'itemKind="Information" ' +
-                               'structureRef="xs:tBool" ' +
-                               'isCollection="true" />';
-
-
-        // when
-        write(itemDefinition, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done();
-        });
-      });
-
-
       it('Operation#messageRef', function(done) {
         // given
         var inMessage = moddle.create('bpmn:Message', {
@@ -583,8 +583,7 @@ describe('bpmn-moddle - write', function() {
 
   describe('should export extensions', function() {
 
-
-    it('as attributes', function(done) {
+    it('attributes on root', function(done) {
 
       // given
       var definitions = moddle.create('bpmn:Definitions');
@@ -609,7 +608,38 @@ describe('bpmn-moddle - write', function() {
     });
 
 
-    it('as elements', function(done) {
+    it('attributes on nested element', function(done) {
+
+      // given
+      var signal = moddle.create('bpmn:Signal', {
+        'foo:bar': 'BAR'
+      });
+
+      var definitions = moddle.create('bpmn:Definitions');
+
+      definitions.set('xmlns:foo', 'http://foobar');
+      definitions.get('rootElements').push(signal);
+
+      // or alternatively directly assign it to definitions.$attrs
+
+      var expectedXML =
+        '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                          'xmlns:foo="http://foobar">' +
+          '<bpmn:signal foo:bar="BAR" />' +
+        '</bpmn:definitions>';
+
+      // when
+      write(definitions, function(err, result) {
+
+        // then
+        expect(result).to.eql(expectedXML);
+
+        done(err);
+      });
+    });
+
+
+    it('elements via bpmn:extensionElements', function(done) {
 
       // given
 

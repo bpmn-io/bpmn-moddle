@@ -740,7 +740,7 @@ describe('bpmn-moddle - read', function() {
 
   describe('should import extensions', function() {
 
-    it('as attributes', function(done) {
+    it('attributes on root', function(done) {
 
       // given
       var xml = '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/bpmnModel" ' +
@@ -758,7 +758,7 @@ describe('bpmn-moddle - read', function() {
     });
 
 
-    it('as elements', function(done) {
+    it('elements via bpmn:extensionElements', function(done) {
 
       // when
       fromFile('test/fixtures/bpmn/extension-elements.bpmn', function(err, result) {
