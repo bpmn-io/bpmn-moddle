@@ -30,6 +30,7 @@
     "chai": "^1.9.1",
     "cmof-parser": "^0.1.0",
     "grunt": "^0.4.2",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^0.7.2",
     "grunt-contrib-watch": "^0.5.0",
     "grunt-mocha-test": "^0.11.0",
