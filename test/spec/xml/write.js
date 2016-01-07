@@ -583,7 +583,7 @@ describe('bpmn-moddle - write', function() {
 
   describe('should export extensions', function() {
 
-    it.skip('manually added custom namespace', function(done) {
+    it('manually added custom namespace', function(done) {
 
       // given
       var definitions = moddle.create('bpmn:Definitions');
