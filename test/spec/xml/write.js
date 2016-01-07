@@ -583,6 +583,34 @@ describe('bpmn-moddle - write', function() {
 
   describe('should export extensions', function() {
 
+    it.skip('manually added custom namespace', function(done) {
+
+      // given
+      var definitions = moddle.create('bpmn:Definitions');
+
+      definitions.set('xmlns:foo', 'http://foobar');
+
+      // or alternatively directly assign it to definitions.$attrs
+
+      var expectedXML =
+        '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                          'xmlns:foo="http://foobar" />';
+
+      // when
+      write(definitions, function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // then
+        expect(result).to.eql(expectedXML);
+
+        done(err);
+      });
+    });
+
+
     it('attributes on root', function(done) {
 
       // given
