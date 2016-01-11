@@ -190,10 +190,27 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
         builder.alter('Process', function(desc) {
+
+          desc.properties.push({
+            "name": "laneSets",
+            "type": "LaneSet",
+            "isMany": true,
+            "replaces": "FlowElementsContainer#laneSets"
+          });
+
+          desc.properties.push({
+            "name": "flowElements",
+            "type": "FlowElement",
+            "isMany": true,
+            "replaces": "FlowElementsContainer#flowElements"
+          });
+
           builder.reorderProperties(desc, [
             'auditing',
             'monitoring',
             'properties',
+            'laneSets',
+            'flowElements',
             'artifacts',
             'resources',
             'correlationSubscriptions',

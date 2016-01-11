@@ -106,7 +106,7 @@ describe('bpmn-moddle - write', function() {
       });
 
 
-      it.skip('Process', function(done) {
+      it('Process', function(done) {
 
         // given
         var processElement = moddle.create('bpmn:Process', {

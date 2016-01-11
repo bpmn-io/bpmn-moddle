@@ -175,10 +175,10 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
-    it.skip('processElement children order', function(done) {
+    it('process children order', function(done) {
 
       // given
-      fromFile('test/fixtures/bpmn/processElement-children.bpmn', function(err, result) {
+      fromFile('test/fixtures/bpmn/process-children.bpmn', function(err, result) {
 
         if (err) {
           return done(err);
@@ -186,8 +186,6 @@ describe('bpmn-moddle - roundtrip', function() {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
-          console.log(xml);
-
           validate(err, xml, done);
         });
       });

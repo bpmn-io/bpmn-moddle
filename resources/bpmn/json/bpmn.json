@@ -128,6 +128,18 @@
           "isMany": true
         },
         {
+          "name": "laneSets",
+          "type": "LaneSet",
+          "isMany": true,
+          "replaces": "FlowElementsContainer#laneSets"
+        },
+        {
+          "name": "flowElements",
+          "type": "FlowElement",
+          "isMany": true,
+          "replaces": "FlowElementsContainer#flowElements"
+        },
+        {
           "name": "artifacts",
           "type": "Artifact",
           "isMany": true
