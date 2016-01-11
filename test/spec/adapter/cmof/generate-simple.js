@@ -254,6 +254,33 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
 
+        // fix MultiMultiInstanceLoopCharacteristics
+
+        builder.alter('MultiInstanceLoopCharacteristics#loopDataInputRef', function(desc) {
+          delete desc.isAttr;
+        });
+
+        builder.alter('MultiInstanceLoopCharacteristics#loopDataOutputRef', function(desc) {
+          delete desc.isAttr;
+        });
+
+        builder.alter('MultiInstanceLoopCharacteristics#inputDataItem', function(desc) {
+          desc.xml = { serialize: 'property' };
+        });
+
+        builder.alter('MultiInstanceLoopCharacteristics#outputDataItem', function(desc) {
+          desc.xml = { serialize: 'property' };
+        });
+
+        builder.alter('MultiInstanceLoopCharacteristics', function(desc) {
+          builder.reorderProperties(desc, [
+            'outputDataItem',
+            'complexBehaviorDefinition',
+            'completionCondition'
+          ]);
+        });
+
+
         // make some references strings rather than references
         // (this way we are able to import it properly)
 

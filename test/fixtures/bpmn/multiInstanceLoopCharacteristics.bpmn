@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" expressionLanguage="C#">
+  <bpmn:itemDefinition id="TravelOrderItem" structureRef="Composite" />
+  <bpmn:itemDefinition id="TravelOrdersItem" structureRef="Table" />
+  <bpmn:itemDefinition id="TextField" structureRef="Text"/>
+  <bpmn:itemDefinition id="DateField" structureRef="DateTime" />
+  <bpmn:itemDefinition id="GetDataInputItem" structureRef="Composite" />
+  <bpmn:itemDefinition id="GetDataOutputItem" structureRef="Composite" />
+  <bpmn:collaboration id="Collaboration_0f4232i">
+    <bpmn:participant id="Participant_1vspv4b" name="Obračun potnih stroškov" processRef="Process"/>
+  </bpmn:collaboration>
+  <bpmn:message id="GetDataInputMessage" name="GetDataInput" itemRef="GetDataInputItem"/>
+  <bpmn:message id="GetDataOutputMessage" name="GetDataOutput" itemRef="GetDataOutputItem"/>
+  <bpmn:message id="SaveDataInputMessage" name="SaveDataInput" itemRef="GetDataOutputItem"/>
+  <bpmn:interface id="testServiceInterface" name="Test service">
+    <bpmn:operation id="getTravelOrdersOperation" name="Get travel orders">
+      <bpmn:inMessageRef>GetDataInputMessage</bpmn:inMessageRef>
+      <bpmn:outMessageRef>GetDataOutputMessage</bpmn:outMessageRef>
+    </bpmn:operation>
+    <bpmn:operation id="updateTravelOrdersOperation" name="Update travel orders">
+      <bpmn:inMessageRef>SaveDataInputMessage</bpmn:inMessageRef>
+    </bpmn:operation>
+  </bpmn:interface>
+  <bpmn:process id="Process" name="Obračun potnih stroškov" isExecutable="false">
+    <bpmn:property id="DateFrom" itemSubjectRef="DateField" name="DateFrom"/>
+    <bpmn:property id="DateTo" itemSubjectRef="DateField" name="DateTo"/>
+    <bpmn:property id="Process_TravelOrders" itemSubjectRef="TravelOrdersItem" name="TravelOrders"/>
+    <bpmn:laneSet>
+      <bpmn:lane id="Lane_031mcj4" name="Zaposleni">
+        <bpmn:flowNodeRef>GetDataTask</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SaveDataTask</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>CheckDataTask</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_07ppqwd</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1k2pby1" name="Vodstvo">
+        <bpmn:flowNodeRef>EndEvent_09bhhnm</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>InfoTask</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="SequenceFlow_19mjczs" sourceRef="StartEvent_07ppqwd" targetRef="GetDataTask"/>
+    <bpmn:sequenceFlow id="SequenceFlow_155rtvl" sourceRef="CheckDataTask" targetRef="SaveDataTask"/>
+    <bpmn:serviceTask id="GetDataTask" name="Dobi potne naloge iz baze" operationRef="getTravelOrdersOperation">
+      <bpmn:incoming>SequenceFlow_19mjczs</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_011pa7g</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_011pa7g" sourceRef="GetDataTask" targetRef="CheckDataTask"/>
+    <bpmn:serviceTask id="SaveDataTask" name="Shrani popravke v bazo" operationRef="updateTravelOrdersOperation">
+      <bpmn:incoming>SequenceFlow_155rtvl</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_03uzecg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0dde9jz" sourceRef="InfoTask" targetRef="EndEvent_09bhhnm"/>
+    <bpmn:endEvent id="EndEvent_09bhhnm" name="Konec">
+      <bpmn:incoming>SequenceFlow_0dde9jz</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_03uzecg" sourceRef="SaveDataTask" targetRef="InfoTask"/>
+    <bpmn:userTask id="CheckDataTask" name="Popravki potnih nalogov">
+      <bpmn:incoming>SequenceFlow_011pa7g</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_155rtvl</bpmn:outgoing>
+      <bpmn:ioSpecification id="g9sghjg">
+        <bpmn:dataInput id="CheckDataTaskInput" isCollection="true" itemSubjectRef="TravelOrdersItem" name="CheckDataTaskLoop.TravelOrders"/>
+        <bpmn:dataOutput id="CheckDataTaskOutput" isCollection="true" itemSubjectRef="TravelOrdersItem" name="CheckDataTaskLoop.TravelOrders"/>
+        <bpmn:inputSet id="dsagj" name="CheckDataTaskInputSet">
+          <bpmn:dataInputRefs>CheckDataTaskInput</bpmn:dataInputRefs>
+        </bpmn:inputSet>
+        <bpmn:outputSet id="gasgsag" name="CheckDataTaskOutputSet">
+          <bpmn:dataOutputRefs>CheckDataTaskOutput</bpmn:dataOutputRefs>
+        </bpmn:outputSet>
+      </bpmn:ioSpecification>
+      <bpmn:property id="CheckDataTask_TravelOrder" itemSubjectRef="TravelOrderItem" name="TravelOrder"/>
+      <bpmn:property id="CheckDataTask_TravelOrders" itemSubjectRef="TravelOrdersItem" name="TravelOrders"/>
+      <bpmn:dataInputAssociation id="gasg9hsaga">
+        <bpmn:sourceRef>Process_TravelOrders</bpmn:sourceRef>
+        <bpmn:targetRef>CheckDataTaskInput</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataOutputAssociation id="gasg9hsagdsga">
+        <bpmn:sourceRef>CheckDataTaskOutput</bpmn:sourceRef>
+        <bpmn:targetRef>Process_TravelOrders</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:humanPerformer id="ID_0396ye8" name="CheckDataResource">
+        <bpmn:resourceAssignmentExpression id="ID_00ufxmy">
+          <bpmn:expression xsi:type="bpmn:tFormalExpression" id="ID_01xo5kk" language="C#" evaluatesToTypeRef="TextField">var.CheckDataTask.TravelOrder.UserName</bpmn:expression>
+        </bpmn:resourceAssignmentExpression>
+      </bpmn:humanPerformer>
+      <bpmn:multiInstanceLoopCharacteristics id="g9sdgh0sd" isSequential="false">
+        <bpmn:loopDataInputRef>CheckDataTaskInput</bpmn:loopDataInputRef>
+        <bpmn:loopDataOutputRef>CheckDataTaskOutput</bpmn:loopDataOutputRef>
+        <bpmn:inputDataItem id="LoopInstanceInput" isCollection="false" itemSubjectRef="TravelOrderItem" name="CheckDataTask.TravelOrder"/>
+        <bpmn:outputDataItem id="LoopInstanceOutput" isCollection="false" itemSubjectRef="TravelOrderItem" name="CheckDataTask.TravelOrder"/>
+      </bpmn:multiInstanceLoopCharacteristics>
+    </bpmn:userTask>
+    <bpmn:startEvent id="StartEvent_07ppqwd" name="Start">
+      <bpmn:outgoing>SequenceFlow_19mjczs</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="InfoTask" name="Obvestilo nadrejenemu">
+      <bpmn:incoming>SequenceFlow_03uzecg</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0dde9jz</bpmn:outgoing>
+      <bpmn:potentialOwner id="gas9gsa">
+        <bpmn:resourceAssignmentExpression id="g9hgshninhpsd">
+          <bpmn:expression xsi:type="bpmn:tFormalExpression" id="ID_0jfg1xo5kk" language="C#" evaluatesToTypeRef="TextField"><![CDATA["Nadzornik - potni nalogi"]]></bpmn:expression>
+        </bpmn:resourceAssignmentExpression>
+      </bpmn:potentialOwner>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0f4232i">
+      <bpmndi:BPMNShape id="Participant_1vspv4b_di" bpmnElement="Participant_1vspv4b">
+        <dc:Bounds x="118" y="90" width="922" height="499"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_19mjczs_di" bpmnElement="SequenceFlow_19mjczs">
+        <di:waypoint xsi:type="dc:Point" x="234" y="215"/>
+        <di:waypoint xsi:type="dc:Point" x="271" y="215"/>
+        <di:waypoint xsi:type="dc:Point" x="271" y="215"/>
+        <di:waypoint xsi:type="dc:Point" x="308" y="215"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="199" y="205" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Lane_031mcj4_di" bpmnElement="Lane_031mcj4">
+        <dc:Bounds x="148" y="90" width="892" height="248"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1k2pby1_di" bpmnElement="Lane_1k2pby1">
+        <dc:Bounds x="148" y="338" width="892" height="251"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1l60ojj_di" bpmnElement="GetDataTask">
+        <dc:Bounds x="308" y="175" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_09bhhnm_di" bpmnElement="EndEvent_09bhhnm">
+        <dc:Bounds x="896" y="438" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="869" y="474" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1u1r0p4_di" bpmnElement="CheckDataTask">
+        <dc:Bounds x="501" y="175" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_155rtvl_di" bpmnElement="SequenceFlow_155rtvl">
+        <di:waypoint xsi:type="dc:Point" x="601" y="215"/>
+        <di:waypoint xsi:type="dc:Point" x="687" y="215"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="554.5" y="444" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0jpwr74_di" bpmnElement="SaveDataTask">
+        <dc:Bounds x="687" y="175" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_011pa7g_di" bpmnElement="SequenceFlow_011pa7g">
+        <di:waypoint xsi:type="dc:Point" x="408" y="215"/>
+        <di:waypoint xsi:type="dc:Point" x="501" y="215"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="411" y="205" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0dde9jz_di" bpmnElement="SequenceFlow_0dde9jz">
+        <di:waypoint xsi:type="dc:Point" x="787" y="456"/>
+        <di:waypoint xsi:type="dc:Point" x="838" y="456"/>
+        <di:waypoint xsi:type="dc:Point" x="838" y="456"/>
+        <di:waypoint xsi:type="dc:Point" x="896" y="456"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="793" y="325.5" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_03uzecg_di" bpmnElement="SequenceFlow_03uzecg">
+        <di:waypoint xsi:type="dc:Point" x="737" y="255"/>
+        <di:waypoint xsi:type="dc:Point" x="737" y="416"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="692" y="325.5" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_07ppqwd_di" bpmnElement="StartEvent_07ppqwd">
+        <dc:Bounds x="198" y="197" width="36" height="36"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="171" y="233" width="90" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1dmthn1_di" bpmnElement="InfoTask">
+        <dc:Bounds x="687" y="416" width="100" height="80"/>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

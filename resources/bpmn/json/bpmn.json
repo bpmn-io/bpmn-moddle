@@ -2391,22 +2391,31 @@
         {
           "name": "loopDataInputRef",
           "type": "ItemAwareElement",
-          "isAttr": true,
           "isReference": true
         },
         {
           "name": "loopDataOutputRef",
           "type": "ItemAwareElement",
-          "isAttr": true,
           "isReference": true
         },
         {
           "name": "inputDataItem",
-          "type": "DataInput"
+          "type": "DataInput",
+          "xml": {
+            "serialize": "property"
+          }
         },
         {
           "name": "outputDataItem",
-          "type": "DataOutput"
+          "type": "DataOutput",
+          "xml": {
+            "serialize": "property"
+          }
+        },
+        {
+          "name": "complexBehaviorDefinition",
+          "type": "ComplexBehaviorDefinition",
+          "isMany": true
         },
         {
           "name": "completionCondition",
@@ -2414,11 +2423,6 @@
           "xml": {
             "serialize": "xsi:type"
           }
-        },
-        {
-          "name": "complexBehaviorDefinition",
-          "type": "ComplexBehaviorDefinition",
-          "isMany": true
         },
         {
           "name": "oneBehaviorEventRef",

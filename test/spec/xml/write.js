@@ -106,6 +106,56 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('MultiInstanceLoopCharacteristics', function(done) {
+
+        // given
+        var loopCharacteristics = moddle.create('bpmn:MultiInstanceLoopCharacteristics', {
+          loopCardinality: moddle.create('bpmn:FormalExpression', { body: '${ foo < bar }' }),
+          loopDataInputRef: moddle.create('bpmn:Property', { id: 'loopDataInputRef' }),
+          loopDataOutputRef: moddle.create('bpmn:Property', { id: 'loopDataOutputRef' }),
+          inputDataItem: moddle.create('bpmn:DataInput', { id: 'inputDataItem' }),
+          outputDataItem: moddle.create('bpmn:DataOutput', { id: 'outputDataItem' }),
+          complexBehaviorDefinition: [
+            moddle.create('bpmn:ComplexBehaviorDefinition', { id: 'complexBehaviorDefinition' })
+          ],
+          completionCondition: moddle.create('bpmn:FormalExpression', { body: '${ done }' }),
+          isSequential: true,
+          behavior: 'One',
+          oneBehaviorEventRef: moddle.create('bpmn:CancelEventDefinition', { id: 'oneBehaviorEventRef' }),
+          noneBehaviorEventRef: moddle.create('bpmn:MessageEventDefinition', { id: 'noneBehaviorEventRef' })
+        });
+
+        var expectedXML =
+          '<bpmn:multiInstanceLoopCharacteristics xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                                                 'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+                                                 'isSequential="true" ' +
+                                                 'behavior="One" ' +
+                                                 'oneBehaviorEventRef="oneBehaviorEventRef" ' +
+                                                 'noneBehaviorEventRef="noneBehaviorEventRef">' +
+              '<bpmn:loopCardinality xsi:type="bpmn:tFormalExpression"><![CDATA[${ foo < bar }]]></bpmn:loopCardinality>' +
+              '<bpmn:loopDataInputRef>loopDataInputRef</bpmn:loopDataInputRef>' +
+              '<bpmn:loopDataOutputRef>loopDataOutputRef</bpmn:loopDataOutputRef>' +
+              '<bpmn:inputDataItem id="inputDataItem" />' +
+              '<bpmn:outputDataItem id="outputDataItem" />' +
+              '<bpmn:complexBehaviorDefinition id="complexBehaviorDefinition" />' +
+              '<bpmn:completionCondition xsi:type="bpmn:tFormalExpression">${ done }</bpmn:completionCondition>' +
+          '</bpmn:multiInstanceLoopCharacteristics>';
+
+        // when
+        write(loopCharacteristics, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('Process', function(done) {
 
         // given

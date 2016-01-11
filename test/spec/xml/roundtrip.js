@@ -124,6 +124,23 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('multi instance loop characteristics', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/multiInstanceLoopCharacteristics.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('documentation / extensionElements order', function(done) {
 
       // given
