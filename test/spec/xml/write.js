@@ -383,7 +383,7 @@ describe('bpmn-moddle - write', function() {
       });
 
 
-      it.skip('ItemDefinition#structureRef with ns', function(done) {
+      it('ItemDefinition#structureRef with ns', function(done) {
 
         // given
         var itemDefinition = moddle.create('bpmn:ItemDefinition', {
