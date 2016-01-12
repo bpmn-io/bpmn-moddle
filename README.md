@@ -1,6 +1,6 @@
 # bpmn-moddle
 
-[![Build Status](https://travis-ci.org/bpmn-io/bpmn-moddle.svg)](https://travis-ci.org/bpmn-io/bpmn-moddle)
+[![Build Status](https://travis-ci.org/bpmn-io/bpmn-moddle.svg?branch=master)](https://travis-ci.org/bpmn-io/bpmn-moddle)
 
 Read and write BPMN 2.0 diagram files in NodeJS and the browser.
 
