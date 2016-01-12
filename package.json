@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "lodash": "^3.0.0",
-    "moddle": "^0.6.2",
+    "moddle": "^0.6.3",
     "moddle-xml": "^0.9.4"
   }
 }
