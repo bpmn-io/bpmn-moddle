@@ -203,17 +203,14 @@
           "type": "String"
         },
         {
-          "name": "childLaneSet",
-          "type": "LaneSet",
-          "xml": {
-            "serialize": "xsi:type"
-          }
-        },
-        {
           "name": "partitionElementRef",
           "type": "BaseElement",
           "isAttr": true,
           "isReference": true
+        },
+        {
+          "name": "partitionElement",
+          "type": "BaseElement"
         },
         {
           "name": "flowNodeRef",
@@ -222,8 +219,11 @@
           "isReference": true
         },
         {
-          "name": "partitionElement",
-          "type": "BaseElement"
+          "name": "childLaneSet",
+          "type": "LaneSet",
+          "xml": {
+            "serialize": "xsi:type"
+          }
         }
       ]
     },

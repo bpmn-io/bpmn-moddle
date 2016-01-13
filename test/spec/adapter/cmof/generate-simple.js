@@ -249,11 +249,6 @@ describe('moddle BPMN 2.0 json', function() {
           });
         });
 
-        builder.alter('Lane#childLaneSet', {
-          xml: { serialize: 'xsi:type' }
-        });
-
-
         // fix MultiMultiInstanceLoopCharacteristics
 
         builder.alter('MultiInstanceLoopCharacteristics#loopDataInputRef', function(desc) {
@@ -338,6 +333,18 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.alter('Lane#flowNodeRefs', {
           name: 'flowNodeRef'
+        });
+
+        builder.alter('Lane#childLaneSet', {
+          xml: { serialize: 'xsi:type' }
+        });
+
+        builder.alter('Lane', function(desc) {
+          builder.reorderProperties(desc, [
+            'partitionElement',
+            'flowNodeRef',
+            'childLaneSet'
+          ]);
         });
 
         builder.alter('Escalation', {

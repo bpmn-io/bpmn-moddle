@@ -175,6 +175,23 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('lane children order', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/lane-children.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('conversation children order', function(done) {
 
       // given
