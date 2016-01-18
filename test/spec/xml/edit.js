@@ -40,4 +40,37 @@ describe('bpmn-moddle - edit', function() {
 
   });
 
+
+  describe('dataObjectRef', function() {
+
+    it('should update', function(done) {
+
+      fromFile('test/fixtures/bpmn/data-object-reference.bpmn', function(err, result) {
+
+        // given
+        var process = result.rootElements[0],
+            dataObjectReference = process.flowElements[0];
+
+        // when
+        // creating new data object
+        var dataObject_2 = moddle.create('bpmn:DataObject', { id: 'dataObject_2' });
+
+        // adding data object to its parent (makes sure it is contained in the XML)
+        process.flowElements.push(dataObject_2);
+
+        // set reference to the new data object
+        dataObjectReference.dataObjectRef = dataObject_2;
+
+        toXML(result, { format: true }, function(err, xml) {
+
+          // then
+          expect(xml).to.contain('<bpmn:dataObject id="dataObject_2" />');
+          expect(xml).to.contain('<bpmn:dataObjectReference id="DataObjectReference_1" dataObjectRef="dataObject_2" />');
+
+          done(err);
+        });
+
+      });
+    });
+  });
 });
