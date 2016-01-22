@@ -189,6 +189,38 @@ describe('moddle BPMN 2.0 json', function() {
           ]);
         });
 
+
+        // fix *Refs -> Ref
+
+        builder.alter('CallableElement#supportedInterfaceRefs', {
+          name: 'supportedInterfaceRef'
+        });
+
+        builder.alter('Participant#interfaceRefs', {
+          name: 'interfaceRef'
+        });
+
+        builder.alter('Operation#errorRefs', {
+          name: 'errorRef'
+        });
+
+        builder.alter('ThrowEvent#eventDefinitionRefs', {
+          name: 'eventDefinitionRef'
+        });
+
+        builder.alter('CatchEvent#eventDefinitionRefs', {
+          name: 'eventDefinitionRef'
+        });
+
+        builder.alter('DataInput#inputSetRefs', {
+          name: 'inputSetRef'
+        });
+
+        builder.alter('DataOutput#outputSetRefs', {
+          name: 'outputSetRef'
+        });
+
+
         builder.alter('Process', function(desc) {
 
           desc.properties.push({

@@ -49,6 +49,56 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('Definitions (participant + interface)', function(done) {
+
+        // given
+        var interfaceElement = moddle.create('bpmn:Interface', {
+          id: 'Interface_1'
+        });
+
+        var participantElement = moddle.create('bpmn:Participant', {
+          id: 'Process_1',
+          interfaceRef: [
+            interfaceElement
+          ]
+        });
+
+        var collaborationElement = moddle.create('bpmn:Collaboration', {
+          participants: [
+            participantElement
+          ]
+        });
+
+        var definitions = moddle.create('bpmn:Definitions', {
+          targetNamespace: 'http://bpmn.io/bpmn',
+          rootElements: [
+            interfaceElement,
+            collaborationElement
+          ]
+        });
+
+        var expectedXML =
+          '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                  'targetNamespace="http://bpmn.io/bpmn">' +
+            '<bpmn:interface id="Interface_1" />' +
+            '<bpmn:collaboration>' +
+              '<bpmn:participant id="Process_1">' +
+                '<bpmn:interfaceRef>Interface_1</bpmn:interfaceRef>' +
+              '</bpmn:participant>' +
+            '</bpmn:collaboration>' +
+          '</bpmn:definitions>';
+
+        // when
+        write(definitions, function(err, result) {
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('ScriptTask#script', function(done) {
 
         // given

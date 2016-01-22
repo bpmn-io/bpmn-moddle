@@ -1,0 +1,20 @@
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  targetNamespace="http://bpmn.io/bpmn">
+  <bpmn:message id="Message_In" />
+  <bpmn:message id="Message_Out" />
+  <bpmn:error id="BarError" />
+  <bpmn:error id="OtherError" />
+  <bpmn:interface id="Interface_1" name="foobar">
+    <bpmn:operation name="foo">
+      <bpmn:inMessageRef>Message_In</bpmn:inMessageRef>
+      <bpmn:outMessageRef>Message_Out</bpmn:outMessageRef>
+      <bpmn:errorRef>BarError</bpmn:errorRef>
+      <bpmn:errorRef>OtherError</bpmn:errorRef>
+    </bpmn:operation>
+  </bpmn:interface>
+  <bpmn:collaboration>
+    <bpmn:participant id="Process_1">
+      <bpmn:interfaceRef>Interface_1</bpmn:interfaceRef>
+    </bpmn:participant>
+  </bpmn:collaboration>
+</bpmn:definitions>

@@ -260,6 +260,23 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('Participant#interfaceRef', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/participant-interfaceRef.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('ResourceRole#resourceRef', function(done) {
 
       // given

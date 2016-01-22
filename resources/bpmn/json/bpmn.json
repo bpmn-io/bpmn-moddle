@@ -48,7 +48,7 @@
           "isReference": true
         },
         {
-          "name": "errorRefs",
+          "name": "errorRef",
           "type": "Error",
           "isMany": true,
           "isReference": true
@@ -618,7 +618,7 @@
           "isMany": true
         },
         {
-          "name": "eventDefinitionRefs",
+          "name": "eventDefinitionRef",
           "type": "EventDefinition",
           "isMany": true,
           "isReference": true
@@ -658,7 +658,7 @@
           "isMany": true
         },
         {
-          "name": "eventDefinitionRefs",
+          "name": "eventDefinitionRef",
           "type": "EventDefinition",
           "isMany": true,
           "isReference": true
@@ -983,7 +983,7 @@
           "type": "Boolean"
         },
         {
-          "name": "inputSetRefs",
+          "name": "inputSetRef",
           "type": "InputSet",
           "isVirtual": true,
           "isMany": true,
@@ -1023,7 +1023,7 @@
           "type": "Boolean"
         },
         {
-          "name": "outputSetRefs",
+          "name": "outputSetRef",
           "type": "OutputSet",
           "isVirtual": true,
           "isMany": true,
@@ -1692,7 +1692,7 @@
           }
         },
         {
-          "name": "supportedInterfaceRefs",
+          "name": "supportedInterfaceRef",
           "type": "Interface",
           "isMany": true,
           "isReference": true
@@ -1916,7 +1916,7 @@
           "type": "String"
         },
         {
-          "name": "interfaceRefs",
+          "name": "interfaceRef",
           "type": "Interface",
           "isMany": true,
           "isReference": true
