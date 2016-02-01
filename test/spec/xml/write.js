@@ -811,6 +811,56 @@ describe('bpmn-moddle - write', function() {
       });
     });
 
+
+    it('nested elements via bpmn:extensionElements', function(done) {
+
+      var camundaNs = 'http://camunda.org/schema/1.0/bpmn';
+
+      // when
+
+      var inputParameter = moddle.createAny('camunda:inputParameter', camundaNs, {
+        name: 'assigneeEntity',
+        $body: 'user'
+      });
+
+      var inputOutput = moddle.createAny('camunda:inputOutput', camundaNs, {
+        $children: [
+          inputParameter
+        ]
+      });
+
+      var extensionElements = moddle.create('bpmn:ExtensionElements', {
+        values: [ inputOutput ]
+      });
+
+      var userTask = moddle.create('bpmn:UserTask', {
+        extensionElements: extensionElements
+      });
+
+      var expectedXML =
+          '<bpmn:userTask xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                         'xmlns:camunda="' + camundaNs + '">' +
+            '<bpmn:extensionElements>' +
+              '<camunda:inputOutput>' +
+                '<camunda:inputParameter name="assigneeEntity">user</camunda:inputParameter>' +
+              '</camunda:inputOutput>' +
+            '</bpmn:extensionElements>' +
+          '</bpmn:userTask>';
+
+      // when
+      write(userTask, function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // then
+        expect(result).to.eql(expectedXML);
+
+        done();
+      });
+    });
+
   });
 
 });
