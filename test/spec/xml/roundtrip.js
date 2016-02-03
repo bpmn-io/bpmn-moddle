@@ -481,6 +481,57 @@ describe('bpmn-moddle - roundtrip', function() {
       });
     });
 
+
+    it('nested default namespace prefix', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/nested-default-namespace-prefix.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(xml).to.contain('<Entry key="A" value="B" />');
+
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
+    it('nested elements no (default) namespace prefix', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/nested-no-namespace-prefix.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(xml).to.contain('<Entry key="A" value="B" />');
+
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
   });
 
 
