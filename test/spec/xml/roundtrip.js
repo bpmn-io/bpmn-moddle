@@ -40,6 +40,35 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('obscure ids model', function(done) {
+
+      var definitions = moddle.create('bpmn:Definitions', {
+        'xmlns:foo': 'http://foo-ns',
+        targetNamespace: 'http://foo',
+        rootElements: [
+          moddle.create('bpmn:Message', { id: 'foo_bar' }),
+          moddle.create('bpmn:Message', { id: 'foo-bar' }),
+          moddle.create('bpmn:Message', { id: 'foo1bar' }),
+          moddle.create('bpmn:Message', { id: 'Foo1bar' }),
+          moddle.create('bpmn:Message', { id: '_foo_bar' }),
+          moddle.create('bpmn:Message', { id: '_foo-bar' }),
+          moddle.create('bpmn:Message', { id: '_11' })
+          // invalid
+          // moddle.create('bpmn:Message', { id: '-foo-bar' }),
+          // moddle.create('bpmn:Message', { id: 'foo:_foo_bar' }),
+          // moddle.create('bpmn:Message', { id: '1foo_bar' })
+        ]
+      });
+
+      // when
+      toXML(definitions, { format: true }, function(err, xml) {
+
+        // then
+        validate(err, xml, done);
+      });
+    });
+
+
     it('ioSpecification', function(done) {
 
       // given
