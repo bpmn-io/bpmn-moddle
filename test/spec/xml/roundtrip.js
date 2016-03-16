@@ -443,13 +443,12 @@ describe('bpmn-moddle - roundtrip', function() {
 
   describe('vendor', function() {
 
-
     describe('signavio', function() {
 
       it('complex processElement', function(done) {
 
         // given
-        fromFile('test/fixtures/bpmn/complex-no-extensions.bpmn', function(err, result) {
+        fromFile('test/fixtures/bpmn/vendor/signavio-complex-no-extensions.bpmn', function(err, result) {
 
           if (err) {
             return done(err);
@@ -470,7 +469,7 @@ describe('bpmn-moddle - roundtrip', function() {
       it('event definitions', function(done) {
 
         // given
-        fromFile('test/fixtures/bpmn/event-definitions-yaoqiang.bpmn', function(err, result, context) {
+        fromFile('test/fixtures/bpmn/vendor/yaoqiang-event-definitions.bpmn', function(err, result, context) {
 
           if (err) {
             return done(err);
