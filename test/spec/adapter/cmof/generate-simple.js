@@ -153,6 +153,13 @@ describe('moddle BPMN 2.0 json', function() {
           delete desc.isAttr;
         });
 
+        // fix missing ResourceAssignmentExpression parent
+
+        builder.alter('ResourceAssignmentExpression', function(desc) {
+          desc.superClass = [ 'BaseElement' ];
+        });
+
+
         // fix positioning of elements
 
         builder.alter('FlowElementsContainer', function(desc) {

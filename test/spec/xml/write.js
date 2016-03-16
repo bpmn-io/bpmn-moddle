@@ -385,6 +385,43 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('ResourceAssignmentExpression', function(done) {
+
+        // given
+        var expression = moddle.create('bpmn:FormalExpression', { body: '${ foo < bar }' });
+
+        var assignmentExpression =
+              moddle.create('bpmn:ResourceAssignmentExpression', {
+                id: 'FOO BAR',
+                expression: expression
+              });
+
+        var expectedXML =
+          '<bpmn:resourceAssignmentExpression ' +
+                    'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+                    'id="FOO BAR">' +
+            '<bpmn:expression xsi:type="bpmn:tFormalExpression">' +
+              '<![CDATA[${ foo < bar }]]>' +
+            '</bpmn:expression>' +
+          '</bpmn:resourceAssignmentExpression>';
+
+        // when
+        write(assignmentExpression, function(err, result, context) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+
+      });
+
+
       it('CallActivity#calledElement', function(done) {
 
         // given
