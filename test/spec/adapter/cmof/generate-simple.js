@@ -29,6 +29,10 @@ describe('moddle BPMN 2.0 json', function() {
           typePrefix: 't'
         };
 
+        builder.alter('BaseElement#id', {
+          isId: true
+        });
+
         // perform a translation from
         //
         // BaseElement
@@ -148,7 +152,6 @@ describe('moddle BPMN 2.0 json', function() {
         builder.alter('ResourceRole#resourceRef', function(desc) {
           delete desc.isAttr;
         });
-
 
         // fix positioning of elements
 
@@ -454,12 +457,12 @@ describe('moddle BPMN 2.0 json', function() {
         pkg.associations = [];
 
         pkg.types.push({
-          'name': 'Extension',
-          'properties': [
+          name: 'Extension',
+          properties: [
             {
-              'name': 'values',
-              'type': 'Element',
-              'isMany': true
+              name: 'values',
+              type: 'Element',
+              isMany: true
             }
           ]
         });
@@ -467,8 +470,34 @@ describe('moddle BPMN 2.0 json', function() {
         builder.alter('DiagramElement', function(data) {
 
           data.properties.unshift({
-            'name': 'extension',
-            'type': 'Extension'
+            name: 'extension',
+            type: 'Extension'
+          });
+
+          data.properties.unshift({
+            name: 'id',
+            type: 'String',
+            isAttr: true,
+            isId: true
+          });
+        });
+
+        builder.alter('Diagram', function(data) {
+          data.properties.unshift({
+            name: 'id',
+            type: 'String',
+            isAttr: true,
+            isId: true
+          });
+        });
+
+
+        builder.alter('Style', function(data) {
+          (data.properties = data.properties || []).unshift({
+            name: 'id',
+            type: 'String',
+            isAttr: true,
+            isId: true
           });
         });
 

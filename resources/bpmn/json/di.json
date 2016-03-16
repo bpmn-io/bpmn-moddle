@@ -7,6 +7,12 @@
       "isAbstract": true,
       "properties": [
         {
+          "name": "id",
+          "type": "String",
+          "isAttr": true,
+          "isId": true
+        },
+        {
           "name": "extension",
           "type": "Extension"
         },
@@ -90,6 +96,12 @@
       "name": "Diagram",
       "isAbstract": true,
       "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "isAttr": true,
+          "isId": true
+        },
         {
           "name": "rootElement",
           "type": "DiagramElement",
@@ -197,7 +209,15 @@
     },
     {
       "name": "Style",
-      "isAbstract": true
+      "isAbstract": true,
+      "properties": [
+        {
+          "name": "id",
+          "type": "String",
+          "isAttr": true,
+          "isId": true
+        }
+      ]
     },
     {
       "name": "Extension",
