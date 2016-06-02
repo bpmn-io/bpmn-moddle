@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:process xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+               xmlns:drools="http://www.jboss.org/drools"
+               id="Evaluation"
+               isExecutable="false">
+  <bpmn2:extensionElements>
+    <drools:import name="com.example.model.User" />
+  </bpmn2:extensionElements>
+</bpmn2:process>

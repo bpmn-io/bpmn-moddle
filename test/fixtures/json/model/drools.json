@@ -1,0 +1,24 @@
+{
+  "name": "DROOLS",
+  "uri": "http://www.jboss.org/drools",
+  "prefix": "drools",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "Import",
+      "superClass": [
+        "Element"
+      ],
+      "properties": [
+        {
+          "name": "name",
+          "type": "String",
+          "isAttr": true
+        }
+      ]
+    }
+  ]
+}
