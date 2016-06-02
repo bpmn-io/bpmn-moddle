@@ -3,6 +3,8 @@
   "version": "0.12.1",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
+    "all": "grunt",
+    "dev": "grunt auto-test",
     "test": "grunt test"
   },
   "repository": {
