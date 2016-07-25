@@ -946,6 +946,22 @@ describe('bpmn-moddle - read', function() {
       });
     });
 
+
+    it('when importing duplicate ids', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/error/duplicate-ids.bpmn', function(err, result, context) {
+
+        var warnings = context.warnings;
+
+        expect(err).not.to.exist;
+        expect(warnings.length).to.eql(1);
+        expect(warnings[0].message).to.contain('duplicate ID <test>');
+
+        done();
+      });
+    });
+
   });
 
 });
