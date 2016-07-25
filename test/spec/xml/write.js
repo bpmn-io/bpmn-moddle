@@ -125,6 +125,30 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('Task with null property', function(done) {
+
+        // given
+        var task = moddle.create('bpmn:Task', {
+          id: 'Task_1',
+          default: null
+        });
+
+        // when
+        var expectedXML =
+          '<bpmn:task xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                           'id="Task_1" />';
+
+        // then
+        write(task, function(err, result) {
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('SequenceFlow#conditionExpression', function(done) {
 
         // given
