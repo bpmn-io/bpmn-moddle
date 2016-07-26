@@ -8,7 +8,7 @@
   <bpmn:itemDefinition id="GetDataInputItem" structureRef="Composite" />
   <bpmn:itemDefinition id="GetDataOutputItem" structureRef="Composite" />
   <bpmn:collaboration id="Collaboration_0f4232i">
-    <bpmn:participant id="Participant_1vspv4b" name="Obračun potnih stroškov" processRef="Process"/>
+    <bpmn:participant id="Participant_1vspv4b" processRef="Process"/>
   </bpmn:collaboration>
   <bpmn:message id="GetDataInputMessage" name="GetDataInput" itemRef="GetDataInputItem"/>
   <bpmn:message id="GetDataOutputMessage" name="GetDataOutput" itemRef="GetDataOutputItem"/>
@@ -22,7 +22,7 @@
       <bpmn:inMessageRef>SaveDataInputMessage</bpmn:inMessageRef>
     </bpmn:operation>
   </bpmn:interface>
-  <bpmn:process id="Process" name="Obračun potnih stroškov" isExecutable="false">
+  <bpmn:process id="Process" isExecutable="false">
     <bpmn:property id="DateFrom" itemSubjectRef="DateField" name="DateFrom"/>
     <bpmn:property id="DateTo" itemSubjectRef="DateField" name="DateTo"/>
     <bpmn:property id="Process_TravelOrders" itemSubjectRef="TravelOrdersItem" name="TravelOrders"/>

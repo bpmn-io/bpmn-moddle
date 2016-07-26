@@ -176,7 +176,7 @@ describe('bpmn-moddle - read', function() {
                     documentation : [
                       {
                         $type : 'bpmn:Documentation',
-                        text : os.EOL + '        <h1>THIS IS HTML</h1>' + os.EOL + '      '
+                        text : '\n        <h1>THIS IS HTML</h1>\n      '
                       }
                     ]
                   }
