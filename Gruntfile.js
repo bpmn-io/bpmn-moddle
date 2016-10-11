@@ -34,7 +34,17 @@ module.exports = function(grunt) {
             './test/expect.js'
           ]
         },
-        src: ['test/**/*.js']
+        src: [ 'test/**/*.js' ]
+      },
+      watch: {
+        options: {
+          noFail: true,
+          reporter: 'spec',
+          require: [
+            './test/expect.js'
+          ]
+        },
+        src: [ 'test/**/*.js' ]
       }
     },
 
@@ -48,8 +58,11 @@ module.exports = function(grunt) {
 
     watch: {
       test: {
-        files: [ '<%= config.sources %>/**/*.js', '<%= config.tests %>/spec/**/*.js' ],
-        tasks: [ 'test' ]
+        files: [
+          '<%= config.sources %>/**/*.js',
+          '<%= config.tests %>/spec/**/*.js'
+        ],
+        tasks: [ 'mochaTest:watch' ]
       }
     }
   });
@@ -58,7 +71,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [ 'mochaTest' ]);
 
-  grunt.registerTask('auto-test', [ 'test', 'watch:test' ]);
+  grunt.registerTask('auto-test', [ 'mochaTest:watch', 'watch:test' ]);
 
   grunt.registerTask('default', [ 'jshint', 'test' ]);
 };
