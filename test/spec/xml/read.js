@@ -867,7 +867,7 @@ describe('bpmn-moddle - read', function() {
       // when
       fromFile('test/fixtures/bpmn/error/no-xml.txt', function(err, result) {
 
-        expect(err).not.to.eql(null);
+        expect(err).to.exist;
 
         done();
       });
@@ -879,11 +879,30 @@ describe('bpmn-moddle - read', function() {
       // when
       fromFile('test/fixtures/bpmn/error/binary.png', function(err, result) {
 
-        expect(err).not.to.eql(null);
+        expect(err).to.exist;
 
         done();
       });
 
+    });
+
+
+    it('when importing bpmn:Extension (missing definition)', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/error/extension-definition-missing.bpmn', function(err, result, context) {
+
+        var warnings = context.warnings;
+
+        // then
+        expect(warnings).to.have.length(1);
+
+        expect(warnings[0].message).to.eql('unresolved reference <ino:tInnovator>');
+
+        expect(err).not.to.exist;
+
+        done();
+      });
     });
 
 

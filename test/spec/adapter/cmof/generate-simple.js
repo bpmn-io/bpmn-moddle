@@ -60,6 +60,14 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.rename('ExtensionAttributeValue', 'ExtensionElements');
 
+
+        // fix cryptic bpmn:Extension reference
+        builder.alter('Extension#definition', {
+          isAttr: true,
+          isReference: true
+        });
+
+
         // fix documentation being first element
 
         builder.alter('BaseElement', function(desc) {

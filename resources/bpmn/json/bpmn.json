@@ -458,7 +458,9 @@
         },
         {
           "name": "definition",
-          "type": "ExtensionDefinition"
+          "type": "ExtensionDefinition",
+          "isAttr": true,
+          "isReference": true
         }
       ]
     },
