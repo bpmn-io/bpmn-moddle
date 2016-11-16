@@ -401,9 +401,21 @@ describe('moddle BPMN 2.0 json', function() {
           superClass: [ 'RootElement' ]
         });
 
-        builder.alter('FormalExpression#body', {
-          'type': 'String',
-          'isBody': true
+        builder.alter('Expression', function(desc) {
+          desc.isAbstract = false;
+          desc.properties = [
+            {
+              name: 'body',
+              type: 'String',
+              isBody: true
+            }
+          ];
+        });
+
+        builder.alter('FormalExpression', function(desc) {
+          desc.properties = desc.properties.filter(function(p) {
+            return p.name !== 'body';
+          });
         });
 
         builder.alter('CallableElement#ioSpecification', function(desc) {

@@ -1521,7 +1521,14 @@
       "superClass": [
         "BaseElement"
       ],
-      "isAbstract": true
+      "isAbstract": false,
+      "properties": [
+        {
+          "name": "body",
+          "type": "String",
+          "isBody": true
+        }
+      ]
     },
     {
       "name": "FormalExpression",
@@ -1533,11 +1540,6 @@
           "name": "language",
           "isAttr": true,
           "type": "String"
-        },
-        {
-          "name": "body",
-          "type": "String",
-          "isBody": true
         },
         {
           "name": "evaluatesToTypeRef",

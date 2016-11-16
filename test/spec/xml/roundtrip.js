@@ -170,6 +170,33 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('Expression without xsi:type', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/expression-plain.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // we are serializing xsi:type, even though
+          // it is the default
+          expect(xml).to.contain('xsi:type="bpmn:tExpression');
+
+          validate(err, xml, done);
+        });
+      });
+
+    });
+
+
     it('documentation / extensionElements order', function(done) {
 
       // given
