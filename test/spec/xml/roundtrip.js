@@ -465,6 +465,22 @@ describe('bpmn-moddle - roundtrip', function() {
       });
     });
 
+    it('colors', function(done) {
+
+      fromFile('test/fixtures/bpmn/example-colors.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          validate(err, xml, done);
+        });
+      });
+    });
+
   });
 
 

@@ -124,7 +124,6 @@ describe('bpmn-moddle - write', function() {
         });
       });
 
-
       it('Task with null property', function(done) {
 
         // given
@@ -734,6 +733,33 @@ describe('bpmn-moddle - write', function() {
           expect(result).to.eql(expectedXML);
 
           done(err);
+        });
+      });
+
+      it('BPMNShape (colored)', function(done) {
+
+        // given
+        var bpmnShape = moddle.create('bpmndi:BPMNShape', {
+          fill: '#ff0000',
+          stroke: '#00ff00'
+        });
+
+        var expectedXML =
+          '<bpmndi:BPMNShape xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
+                            'xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" ' +
+                            'bioc:stroke="#00ff00" bioc:fill="#ff0000" />';
+
+        // when
+        write(bpmnShape, function(err, result) {
+
+          if (err) {
+            done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done();
         });
       });
 
