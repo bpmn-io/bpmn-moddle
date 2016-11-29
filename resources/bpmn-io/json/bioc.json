@@ -27,6 +27,11 @@
           "name": "stroke",
           "isAttr": true,
           "type": "String"
+        },
+        {
+          "name": "fill",
+          "isAttr": true,
+          "type": "String"
         }
       ]
     }
