@@ -763,6 +763,33 @@ describe('bpmn-moddle - write', function() {
         });
       });
 
+      it('BPMNEdge (colored)', function(done) {
+
+        // given
+        var bpmnEdge = moddle.create('bpmndi:BPMNEdge', {
+          fill: '#ff0000',
+          stroke: '#00ff00'
+        });
+
+        var expectedXML =
+          '<bpmndi:BPMNEdge xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
+                            'xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" ' +
+                            'bioc:stroke="#00ff00" bioc:fill="#ff0000" />';
+
+        // when
+        write(bpmnEdge, function(err, result) {
+
+          if (err) {
+            done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done();
+        });
+      });
+
     });
 
   });

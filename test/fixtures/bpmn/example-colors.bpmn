@@ -31,7 +31,7 @@
       <bpmndi:BPMNShape id="_BPMNShape_Task_2" bpmnElement="Task_1" fill="#0000ff" stroke="#ff0000">
         <dc:Bounds height="80.0" width="100.0" x="420.0" y="220.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_2" targetElement="_BPMNShape_Task_2" stroke="#ff00ff">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_2" targetElement="_BPMNShape_Task_2" stroke="#ff00ff" fill="#ffff00">
         <di:waypoint xsi:type="dc:Point" x="388.0" y="260.0"/>
         <di:waypoint xsi:type="dc:Point" x="420.0" y="260.0"/>
       </bpmndi:BPMNEdge>
