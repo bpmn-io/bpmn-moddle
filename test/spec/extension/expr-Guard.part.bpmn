@@ -1,0 +1,7 @@
+<bpmn:sequenceFlow
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:expr="http://expr"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    id="SequenceFlow_1">
+  <bpmn:conditionExpression xsi:type="expr:Guard"><![CDATA[${ foo < bar }]]></bpmn:conditionExpression>
+</bpmn:sequenceFlow>

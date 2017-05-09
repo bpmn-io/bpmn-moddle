@@ -1,0 +1,14 @@
+{
+  "name": "Expr",
+  "uri": "http://expr",
+  "prefix": "expr",
+  "associations": [],
+  "types": [
+    {
+      "name": "Guard",
+      "superClass": [
+        "bpmn:FormalExpression"
+      ]
+    }
+  ]
+}
