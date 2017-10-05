@@ -152,7 +152,7 @@
       ]
     }
   ],
-  "emumerations": [
+  "enumerations": [
     {
       "name": "ParticipantBandKind",
       "literalValues": [

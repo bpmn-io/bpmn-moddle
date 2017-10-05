@@ -2814,7 +2814,7 @@
       ]
     }
   ],
-  "emumerations": [
+  "enumerations": [
     {
       "name": "ProcessType",
       "literalValues": [
