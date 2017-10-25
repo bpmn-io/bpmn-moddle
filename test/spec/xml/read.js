@@ -501,6 +501,24 @@ describe('bpmn-moddle - read', function() {
         });
       });
 
+
+      it('Association#associationDirection', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/association.part.bpmn', 'bpmn:Association', function(err, result, context) {
+
+          // then
+          expect(result).to.jsonEqual({
+            '$type': 'bpmn:Association',
+            associationDirection: 'None',
+            id: 'association'
+          });
+
+          done(err);
+        });
+
+      });
+
     });
 
 
