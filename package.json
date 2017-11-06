@@ -45,6 +45,6 @@
   "dependencies": {
     "lodash": "^3.0.0",
     "moddle": "^1.0.0",
-    "moddle-xml": "^1.1.0"
+    "moddle-xml": "^1.1.1"
   }
 }
