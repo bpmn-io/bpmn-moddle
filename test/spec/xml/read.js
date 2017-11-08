@@ -726,7 +726,7 @@ describe('bpmn-moddle - read', function() {
 
       // given
       var xml =
-        '<bpmn:serviceTask xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/bpmnModel">' +
+        '<bpmn:serviceTask xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL">' +
           '<bpmn:outgoing>OUT_1</bpmn:outgoing>' +
           '<bpmn:outgoing>OUT_2</bpmn:outgoing>' +
         '</bpmn:serviceTask>';
@@ -958,7 +958,7 @@ describe('bpmn-moddle - read', function() {
         expect(invalidElementWarning.message).to.eql(
             'unparsable content <categoryValue> detected\n\t' +
               'line: 2\n\t' +
-              'column: 89\n\t' +
+              'column: 2\n\t' +
               'nested error: unrecognized element <bpmn:categoryValue>');
 
         expect(unresolvableReferenceWarning.message).to.eql(
