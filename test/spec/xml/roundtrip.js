@@ -465,6 +465,7 @@ describe('bpmn-moddle - roundtrip', function() {
       });
     });
 
+
     it('colors', function(done) {
 
       fromFile('test/fixtures/bpmn/example-colors.bpmn', function(err, result) {
@@ -531,6 +532,28 @@ describe('bpmn-moddle - roundtrip', function() {
       });
     });
 
+
+    it('conflicting ns prefix', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/namespace-prefix-collision.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          validate(err, xml, done);
+        });
+      });
+    });
 
   });
 
