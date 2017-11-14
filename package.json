@@ -4,7 +4,7 @@
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "all": "run-s lint test",
-    "lint": "eslint {lib,test}/**/*.js",
+    "lint": "eslint .",
     "dev": "npm test -- --watch",
     "test": "mocha -r ./test/expect --reporter=spec --recursive test"
   },

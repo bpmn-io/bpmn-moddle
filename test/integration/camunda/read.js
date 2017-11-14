@@ -1,7 +1,5 @@
 'use strict';
 
-var os = require('os');
-
 var Helper = require('../../helper');
 
 var camundaPackage = require('../../fixtures/json/model/camunda');

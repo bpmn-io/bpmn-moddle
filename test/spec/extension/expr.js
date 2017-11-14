@@ -1,7 +1,5 @@
 'use strict';
 
-var os = require('os');
-
 var isFunction = require('lodash/lang/isFunction'),
     assign = require('lodash/object/assign');
 

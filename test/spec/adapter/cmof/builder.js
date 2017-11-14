@@ -1,12 +1,9 @@
 'use strict';
 
 var _ = require('lodash'),
-    fs = require('fs'),
-    path = require('path');
+    fs = require('fs');
 
 var CmofParser = require('cmof-parser');
-
-var Helper = require('../../../helper');
 
 
 function Builder() {
@@ -172,11 +169,6 @@ function Builder() {
         }
       }
     });
-  }
-
-  function write(dest) {
-    var dir = path.dirname(dest);
-    Helper.ensureDirExists(dir);
   }
 
   this.parse = parse;

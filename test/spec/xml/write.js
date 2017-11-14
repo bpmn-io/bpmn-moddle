@@ -293,7 +293,7 @@ describe('bpmn-moddle - write', function() {
             moddle.create('bpmn:Property', { name: 'BAR' })
           ],
           resources: [
-            moddle.create('bpmn:HumanPerformer', { name: 'Walter'} )
+            moddle.create('bpmn:HumanPerformer', { name: 'Walter' } )
           ],
           dataInputAssociations: [
             moddle.create('bpmn:DataInputAssociation', { id: 'Input_1' })

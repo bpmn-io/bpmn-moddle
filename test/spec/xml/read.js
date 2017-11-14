@@ -1,7 +1,5 @@
 'use strict';
 
-var os = require('os');
-
 var Helper = require('../../helper');
 
 
@@ -436,13 +434,13 @@ describe('bpmn-moddle - read', function() {
 
           // then
           expect(category).to.jsonEqual({
-            $type: "bpmn:Category",
-            id: "sid-ccc7e63e-916e-4bd0-a9f0-98cbff749195",
+            $type: 'bpmn:Category',
+            id: 'sid-ccc7e63e-916e-4bd0-a9f0-98cbff749195',
             categoryValue: [
               {
-                $type: "bpmn:CategoryValue",
-                id: "sid-afd7e63e-916e-4bd0-a9f0-98cbff749193",
-                value: "group with label"
+                $type: 'bpmn:CategoryValue',
+                id: 'sid-afd7e63e-916e-4bd0-a9f0-98cbff749193',
+                value: 'group with label'
               }
             ]
           });
@@ -769,7 +767,7 @@ describe('bpmn-moddle - read', function() {
       read(xml, 'bpmn:SequenceFlow', function(err, result, context) {
 
         // then
-        expect(result.$attrs['foo:bar']).to.eql("BAR");
+        expect(result.$attrs['foo:bar']).to.eql('BAR');
 
         done(err);
       });
@@ -956,13 +954,13 @@ describe('bpmn-moddle - read', function() {
         var unresolvableReferenceWarning = warnings[1];
 
         expect(invalidElementWarning.message).to.eql(
-            'unparsable content <categoryValue> detected\n\t' +
+          'unparsable content <categoryValue> detected\n\t' +
               'line: 2\n\t' +
               'column: 2\n\t' +
               'nested error: unrecognized element <bpmn:categoryValue>');
 
         expect(unresolvableReferenceWarning.message).to.eql(
-            'unresolved reference <sid-afd7e63e-916e-4bd0-a9f0-98cbff749193>');
+          'unresolved reference <sid-afd7e63e-916e-4bd0-a9f0-98cbff749193>');
 
         done();
       });
