@@ -697,7 +697,7 @@ describe('bpmn-moddle - read', function() {
     it('via attributes', function(done) {
 
       // given
-      var xml = '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/bpmnModel" sourceRef="FOO_BAR" />';
+      var xml = '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" sourceRef="FOO_BAR" />';
 
       // when
       read(xml, 'bpmn:SequenceFlow', function(err, result, context) {
@@ -760,7 +760,7 @@ describe('bpmn-moddle - read', function() {
     it('attributes on root', function(done) {
 
       // given
-      var xml = '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/bpmnModel" ' +
+      var xml = '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
                                    'xmlns:foo="http://foobar" foo:bar="BAR" />';
 
       // when
