@@ -898,7 +898,9 @@ describe('bpmn-moddle - read', function() {
         var warnings = context.warnings;
         var warning = warnings[0];
 
-        expect(err).not.to.exist;
+        expect(err).to.exist;
+        expect(err.message).to.match(/failed to parse document as <bpmn:Definitions>/);
+
         expect(result).not.to.exist;
 
         expect(warnings.length).to.eql(1);
