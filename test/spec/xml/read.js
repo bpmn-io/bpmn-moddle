@@ -890,6 +890,25 @@ describe('bpmn-moddle - read', function() {
     });
 
 
+    it('when importing non-bpmn xml', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/error/not-bpmn.bpmn', function(err, result, context) {
+
+        var warnings = context.warnings;
+        var warning = warnings[0];
+
+        expect(err).not.to.exist;
+        expect(result).not.to.exist;
+
+        expect(warnings.length).to.eql(1);
+        expect(warning.message).to.match(/unparsable content <definitions> detected/);
+
+        done();
+      });
+    });
+
+
     it('when importing binary', function(done) {
 
       // when

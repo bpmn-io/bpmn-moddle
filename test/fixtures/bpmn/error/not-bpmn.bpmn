@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://not-bpmn" targetNamespace="http://bpmn.io/schema/bpmn">
+  <process id="process1" />
+  <process id="process2" />
+</definitions>
