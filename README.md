@@ -49,20 +49,18 @@ moddle.fromXML(xmlStr, function(err, definitions) {
 
 ## Building the Project
 
-You need [grunt](http://gruntjs.com) to build the project.
-
 To run the test suite that includes XSD schema validation you must have a Java JDK installed and properly exposed through the `JAVA_HOME` variable.
 
 Execute the test via
 
 ```
-grunt test
+npm test
 ```
 
 Perform a complete build of the application via
 
 ```
-grunt
+npm run all
 ```
 
 
