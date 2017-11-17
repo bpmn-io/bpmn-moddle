@@ -18,7 +18,9 @@ var moddle = new BpmnModdle();
 
 var xmlStr =
   '<?xml version="1.0" encoding="UTF-8"?>' +
-  '<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" id="empty-definitions" targetNamespace="http://bpmn.io/schema/bpmn">' +
+  '<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                     'id="empty-definitions" ' +
+                     'targetNamespace="http://bpmn.io/schema/bpmn">' +
   '</bpmn2:definitions>';
 
 
