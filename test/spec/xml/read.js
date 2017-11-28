@@ -75,6 +75,23 @@ describe('bpmn-moddle - read', function() {
       });
 
 
+      it('CompensateEventDefinition', function(done) {
+
+        // when
+        fromFile('test/fixtures/bpmn/compensate-event-definition.part.bpmn', 'bpmn:CompensateEventDefinition', function(err, result) {
+
+          // then
+          expect(result).to.jsonEqual({
+            $type: 'bpmn:CompensateEventDefinition'
+          });
+
+          expect(result.waitForCompletion).to.be.true;
+
+          done(err);
+        });
+      });
+
+
       it('SubProcess#incoming', function(done) {
 
         // given

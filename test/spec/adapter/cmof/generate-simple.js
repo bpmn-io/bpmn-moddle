@@ -353,6 +353,10 @@ describe('moddle BPMN 2.0 json', function() {
           desc.default = 'Unspecified';
         });
 
+        builder.alter('CompensateEventDefinition#waitForCompletion', function(desc) {
+          desc.default = true;
+        });
+
         builder.alter('EventBasedGateway#eventGatewayType', function(desc) {
           desc.default = 'Exclusive';
         });

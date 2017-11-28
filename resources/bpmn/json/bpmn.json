@@ -768,7 +768,8 @@
         {
           "name": "waitForCompletion",
           "isAttr": true,
-          "type": "Boolean"
+          "type": "Boolean",
+          "default": true
         },
         {
           "name": "activityRef",
