@@ -681,7 +681,6 @@ describe('bpmn-moddle - write', function() {
 
         var expectedXML =
           '<bpmndi:BPMNShape xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
-                            'xmlns:di="http://www.omg.org/spec/DD/20100524/DI" ' +
                             'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC">' +
             '<dc:Bounds x="100" y="200" width="50" height="50" />' +
           '</bpmndi:BPMNShape>';

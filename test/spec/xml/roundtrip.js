@@ -188,7 +188,7 @@ describe('bpmn-moddle - roundtrip', function() {
 
           // we are serializing xsi:type, even though
           // it is the default
-          expect(xml).to.contain('xsi:type="bpmn:tExpression');
+          expect(xml).not.to.contain('xsi:type="bpmn:tExpression');
 
           validate(err, xml, done);
         });
