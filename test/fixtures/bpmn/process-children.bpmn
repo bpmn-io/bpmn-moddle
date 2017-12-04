@@ -17,8 +17,10 @@
     <semantic:startEvent id="StartEvent_1" />
     <semantic:userTask id="UserTask_1" />
     <semantic:textAnnotation>
-      <text>FOO BAR</text>
+      <semantic:text>FOO BAR</semantic:text>
     </semantic:textAnnotation>
-    <semantic:potentialOwner resourceRef="UserResource_1" />
+    <semantic:potentialOwner>
+      <semantic:resourceRef>UserResource_1</semantic:resourceRef>
+    </semantic:potentialOwner>
   </semantic:process>
 </semantic:definitions>

@@ -12,7 +12,7 @@ describe('bpmn-moddle - roundtrip', function() {
   var moddle = Helper.createModdle();
 
   function fromFile(file, done) {
-    XMLHelper.fromFile(moddle, file, done);
+    XMLHelper.fromValidFile(moddle, file, done);
   }
 
 

@@ -12,7 +12,6 @@
           </bpmn:lane>
           <bpmn:lane id="Lane_1br88d1" />
         </bpmn:childLaneSet>
-        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0temuh8" />
     </bpmn:laneSet>

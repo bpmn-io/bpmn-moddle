@@ -13,11 +13,26 @@ module.exports.fromFile = function(moddle, file, done) {
   moddle.fromXML(fileContents, 'bpmn:Definitions', done);
 };
 
+
+module.exports.fromValidFile = function(moddle, file, done) {
+  var fileContents = Helper.readFile(file);
+
+  validate(null, fileContents, function(err) {
+
+    if (err) {
+      return done(err);
+    }
+
+    moddle.fromXML(fileContents, 'bpmn:Definitions', done);
+  });
+
+};
+
 module.exports.toXML = function(element, opts, done) {
   element.$model.toXML(element, opts, done);
 };
 
-module.exports.validate = function(err, xml, done) {
+function validate(err, xml, done) {
 
   if (err) {
     return done(err);
@@ -36,4 +51,6 @@ module.exports.validate = function(err, xml, done) {
     expect(result.valid).to.be.true;
     done();
   });
-};
+}
+
+module.exports.validate = validate;

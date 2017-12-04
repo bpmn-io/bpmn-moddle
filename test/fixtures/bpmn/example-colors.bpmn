@@ -5,7 +5,7 @@
   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-  xmlns:biocolors="http://bpmn.io/schema/bpmn/biocolors/1.0"
+  xmlns:bc="http://bpmn.io/schema/bpmn/biocolors/1.0"
   xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd"
   id="simple"
   targetNamespace="http://bpmn.io/schema/bpmn">
@@ -22,16 +22,16 @@
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
-      <bpmndi:BPMNShape id="_BPMNShape_SubProcess_2" bpmnElement="SubProcess_1" isExpanded="true" fill="#ff0000">
+      <bpmndi:BPMNShape id="_BPMNShape_SubProcess_2" bpmnElement="SubProcess_1" isExpanded="true" bc:fill="#ff0000">
         <dc:Bounds height="300.0" width="300.0" x="300.0" y="80.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1" stroke="#00ff00">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1" bc:stroke="#00ff00">
         <dc:Bounds height="36.0" width="36.0" x="352.0" y="242.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_Task_2" bpmnElement="Task_1" fill="#0000ff" stroke="#ff0000">
+      <bpmndi:BPMNShape id="_BPMNShape_Task_2" bpmnElement="Task_1" bc:fill="#0000ff" bc:stroke="#ff0000">
         <dc:Bounds height="80.0" width="100.0" x="420.0" y="220.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_2" targetElement="_BPMNShape_Task_2" stroke="#ff00ff" fill="#ffff00">
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="_BPMNShape_StartEvent_2" targetElement="_BPMNShape_Task_2" bc:stroke="#ff00ff" bc:fill="#ffff00">
         <di:waypoint xsi:type="dc:Point" x="388.0" y="260.0"/>
         <di:waypoint xsi:type="dc:Point" x="420.0" y="260.0"/>
       </bpmndi:BPMNEdge>
