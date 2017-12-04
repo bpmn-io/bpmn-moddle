@@ -166,11 +166,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(sequenceFlow, { format: true }, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -216,11 +211,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(loopCharacteristics, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -270,11 +260,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(processElement, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -316,11 +301,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(activity, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -431,11 +411,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(assignmentExpression, function(err, result, context) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -515,11 +490,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(itemDefinition, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -603,11 +573,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(collaboration, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -700,11 +665,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(diagram, function(err, result) {
-
-          if (err) {
-            return done(err);
-          }
-
           // then
           expect(result).to.eql(expectedXML);
 
@@ -728,7 +688,6 @@ describe('bpmn-moddle - write', function() {
 
         // when
         write(bpmnShape, function(err, result) {
-
           // then
           expect(result).to.eql(expectedXML);
 
