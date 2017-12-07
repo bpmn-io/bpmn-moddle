@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                   id="test"
+                   targetNamespace="http://bpmn.io/schema/bpmn" />

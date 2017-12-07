@@ -920,7 +920,7 @@ describe('bpmn-moddle - read', function() {
 
         expect(result).not.to.exist;
 
-        expect(warnings.length).to.eql(1);
+        expect(warnings).to.have.length(1);
         expect(warning.message).to.match(/unparsable content <definitions> detected/);
 
         done();
@@ -968,7 +968,7 @@ describe('bpmn-moddle - read', function() {
         var warnings = context.warnings;
 
         expect(err).not.to.exist;
-        expect(warnings.length).to.eql(1);
+        expect(warnings).to.have.length(1);
 
         done();
       });
@@ -986,7 +986,7 @@ describe('bpmn-moddle - read', function() {
         expect(err).not.to.exist;
 
         // wrong <categoryValue> + unresolvable reference
-        expect(warnings.length).to.eql(2);
+        expect(warnings).to.have.length(2);
 
         var invalidElementWarning = warnings[0];
         var unresolvableReferenceWarning = warnings[1];
@@ -1013,7 +1013,7 @@ describe('bpmn-moddle - read', function() {
         var warnings = context.warnings;
 
         expect(err).not.to.exist;
-        expect(warnings.length).to.eql(1);
+        expect(warnings).to.have.length(1);
 
         done();
       });
@@ -1028,11 +1028,28 @@ describe('bpmn-moddle - read', function() {
         var warnings = context.warnings;
 
         expect(err).not.to.exist;
-        expect(warnings.length).to.eql(1);
+        expect(warnings).to.have.length(1);
         expect(warnings[0].message).to.contain('duplicate ID <test>');
 
         done();
       });
+    });
+
+
+    it('when importing non UTF-8 files', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/error/bad-encoding.bpmn', function(err, result, context) {
+
+        var warnings = context.warnings;
+
+        expect(err).not.to.exist;
+        expect(warnings).to.have.length(1);
+        expect(warnings[0].message).to.match(/unsupported document encoding <windows-1252>/);
+
+        done();
+      });
+
     });
 
   });
