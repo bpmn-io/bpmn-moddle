@@ -1,0 +1,5 @@
+resources/bpmn/cmof/
+resources/bpmn/xsd/
+test/
+.eslintrc
+.travis.yml
