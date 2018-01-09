@@ -673,8 +673,7 @@ describe('bpmn-moddle - read', function() {
 
           var expected = {
             $type: 'bpmndi:BPMNDiagram',
-            id: 'bpmndiagram',
-
+            id: 'BPMNDiagram_1',
             plane: {
               $type: 'bpmndi:BPMNPlane',
               id: 'BPMNPlane_1',
@@ -1050,6 +1049,25 @@ describe('bpmn-moddle - read', function() {
         done();
       });
 
+    });
+
+
+    it('when importing broken diagram / xmlns redeclaration', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/error/xmlns-redeclaration.bpmn', function(err, result, context) {
+
+        expect(err).not.to.exist;
+
+        expect(context.warnings).to.have.length(2);
+        expect(context.warnings[0].message).to.match(/attribute <xmlns> already defined/);
+        expect(context.warnings[1].message).to.match(/attribute <id> already defined/);
+
+        expect(result.$attrs.xmlns).to.eql('http://www.omg.org/spec/BPMN/20100524/MODEL');
+        expect(result.id).to.eql('10');
+
+        done();
+      });
     });
 
   });

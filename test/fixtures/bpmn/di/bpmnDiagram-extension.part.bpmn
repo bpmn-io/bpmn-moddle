@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmndi:BPMNDiagram id="BPMNDiagram_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:vendor="http://vendor" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="BPMNDiagram_1">
+<bpmndi:BPMNDiagram id="BPMNDiagram_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:vendor="http://vendor" xmlns:di="http://www.omg.org/spec/DD/20100524/DI">
   <bpmndi:BPMNPlane id="BPMNPlane_1">
     <di:extension>
       <vendor:baz baz="BAZ" />
