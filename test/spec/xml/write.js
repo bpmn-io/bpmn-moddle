@@ -815,12 +815,68 @@ describe('bpmn-moddle - write', function() {
         'foo:bar': 'BAR'
       });
 
-      var definitions = moddle.create('bpmn:Definitions');
+      var definitions = moddle.create('bpmn:Definitions', {
+        rootElements: [ signal ],
+        'xmlns:foo': 'http://foobar'
+      });
 
-      definitions.set('xmlns:foo', 'http://foobar');
-      definitions.get('rootElements').push(signal);
+      var expectedXML =
+        '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                          'xmlns:foo="http://foobar">' +
+          '<bpmn:signal foo:bar="BAR" />' +
+        '</bpmn:definitions>';
 
-      // or alternatively directly assign it to definitions.$attrs
+      // when
+      write(definitions, function(err, result) {
+
+        // then
+        expect(result).to.eql(expectedXML);
+
+        done(err);
+      });
+    });
+
+
+    it('attributes and namespace on nested element', function(done) {
+
+      // given
+      var signal = moddle.create('bpmn:Signal', {
+        'xmlns:foo': 'http://foobar',
+        'foo:bar': 'BAR'
+      });
+
+      var definitions = moddle.create('bpmn:Definitions', {
+        rootElements: [ signal ]
+      });
+
+      var expectedXML =
+        '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL">' +
+          '<bpmn:signal xmlns:foo="http://foobar" foo:bar="BAR" />' +
+        '</bpmn:definitions>';
+
+      // when
+      write(definitions, function(err, result) {
+
+        // then
+        expect(result).to.eql(expectedXML);
+
+        done(err);
+      });
+    });
+
+
+    it('attributes and namespace on root + nested element', function(done) {
+
+      // given
+      var signal = moddle.create('bpmn:Signal', {
+        'xmlns:foo': 'http://foobar',
+        'foo:bar': 'BAR'
+      });
+
+      var definitions = moddle.create('bpmn:Definitions', {
+        'xmlns:foo': 'http://foobar',
+        rootElements: [ signal ]
+      });
 
       var expectedXML =
         '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
