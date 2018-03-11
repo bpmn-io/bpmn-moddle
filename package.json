@@ -39,7 +39,7 @@
     "xsd-schema-validator": "^0.5.0"
   },
   "dependencies": {
-    "lodash": "^3.0.0",
+    "min-dash": "^2.0.1",
     "moddle": "^3.0.0",
     "moddle-xml": "^5.0.0"
   }

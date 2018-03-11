@@ -4,8 +4,8 @@ var Helper = require('../helper');
 
 var droolsPackage = require('../fixtures/json/model/drools');
 
-var isFunction = require('lodash/lang/isFunction'),
-    assign = require('lodash/object/assign');
+var isFunction = require('min-dash').isFunction,
+    assign = require('min-dash').assign;
 
 
 describe('bpmn-moddle - integration', function() {
