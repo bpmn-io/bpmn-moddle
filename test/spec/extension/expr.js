@@ -1,7 +1,7 @@
 'use strict';
 
-var isFunction = require('lodash/lang/isFunction'),
-    assign = require('lodash/object/assign');
+var isFunction = require('lodash/isFunction'),
+    assign = require('lodash/assign');
 
 var Helper = require('../../helper');
 
