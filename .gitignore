@@ -1,6 +1,5 @@
 node_modules/
 tmp/
-docs/api/
-dist/
+package-lock.json
 .idea
 *.iml
