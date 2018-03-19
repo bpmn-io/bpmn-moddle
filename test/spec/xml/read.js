@@ -1070,6 +1070,28 @@ describe('bpmn-moddle - read', function() {
       });
     });
 
+
+    it('when importing invalid attributes', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/error/invalid-attributes.bpmn', function(err, result, context) {
+
+        expect(err).not.to.exist;
+
+        expect(context.warnings).to.have.length(2);
+        expect(context.warnings[0].message).to.match(/illegal first char attribute name/);
+        expect(context.warnings[1].message).to.match(/missing attribute value/);
+
+        expect(result.rootElements).to.jsonEqual([
+          {
+            $type: 'bpmn:Process',
+            id: 'Process_1'
+          }
+        ]);
+
+        done();
+      });
+    });
   });
 
 });
