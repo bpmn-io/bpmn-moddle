@@ -1,6 +1,6 @@
 {
   "name": "bpmn-moddle",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "all": "run-s lint test",
