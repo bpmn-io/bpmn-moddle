@@ -1094,4 +1094,37 @@ describe('bpmn-moddle - read', function() {
     });
   });
 
+
+  describe('should read attributes', function() {
+
+    it('when importing non-xml text', function(done) {
+
+      // when
+      fromFile('test/fixtures/bpmn/attrs.bpmn', function(err, result, context) {
+
+        var warnings = context.warnings;
+
+        expect(err).not.to.exist;
+        expect(warnings).to.have.length(1);
+
+        expect(warnings[0].message).to.match(
+          /illegal first char attribute name/
+        );
+
+        expect(result.$attrs).to.jsonEqual({
+          'xmlns:bpmn2': 'http://www.omg.org/spec/BPMN/20100524/MODEL',
+          'xmlns:color_1.0': 'http://colors',
+          'xmlns:.color': 'http://colors'
+        });
+
+        expect(result).to.jsonEqual({
+          $type: 'bpmn:Definitions'
+        });
+
+        done();
+      });
+    });
+
+  });
+
 });
