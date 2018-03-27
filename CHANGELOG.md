@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 4.0.0
+
+* `FEAT`: encode entities in body properties (rather than using CDATA escaping)
+
 ## 3.0.2
 
 * `FIX`: properly handle `.` in attribute names
