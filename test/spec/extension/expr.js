@@ -73,7 +73,7 @@ describe('bpmn-moddle - expr', function() {
                          'xmlns:expr="http://expr" ' +
                          'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
                          'id="SequenceFlow_1">\n' +
-      '  <bpmn:conditionExpression xsi:type="expr:Guard"><![CDATA[${ foo < bar }]]></bpmn:conditionExpression>\n' +
+      '  <bpmn:conditionExpression xsi:type="expr:Guard">${ foo &lt; bar }</bpmn:conditionExpression>\n' +
       '</bpmn:sequenceFlow>\n';
 
     // when

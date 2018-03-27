@@ -137,7 +137,7 @@ describe('bpmn-moddle - integration', function() {
                   '<camunda:entry key="a">' +
                     '<camunda:list>' +
                       '<camunda:value>stringInListNestedInMap</camunda:value>' +
-                      '<camunda:value><![CDATA[${ \'b\' }]]></camunda:value>' +
+                      '<camunda:value>${ \'b\' }</camunda:value>' +
                     '</camunda:list>' +
                   '</camunda:entry>' +
                 '</camunda:map>' +
@@ -184,8 +184,8 @@ describe('bpmn-moddle - integration', function() {
               '<camunda:inputParameter name="var1">' +
                 '<camunda:list>' +
                   '<camunda:value>constantStringValue</camunda:value>' +
-                  '<camunda:value><![CDATA[${ \'elValue\' }]]></camunda:value>' +
-                  '<camunda:script><![CDATA[\n            return "scriptValue";\n          ]]></camunda:script>' +
+                  '<camunda:value>${ \'elValue\' }</camunda:value>' +
+                  '<camunda:script>\n            return "scriptValue";\n          </camunda:script>' +
                 '</camunda:list>' +
               '</camunda:inputParameter>' +
             '</camunda:inputOutput>';

@@ -111,7 +111,7 @@ describe('bpmn-moddle - write', function() {
         var expectedXML =
           '<bpmn:scriptTask xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
                            'id="ScriptTask_1" scriptFormat="JavaScript">' +
-            '<bpmn:script><![CDATA[context.set("FOO", "&nbsp;");]]></bpmn:script>' +
+            '<bpmn:script>context.set("FOO", "&amp;nbsp;");</bpmn:script>' +
           '</bpmn:scriptTask>';
 
         // when
@@ -161,7 +161,7 @@ describe('bpmn-moddle - write', function() {
           '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
                              'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
                              'id="SequenceFlow_1">\n' +
-          '  <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${ foo < bar }]]></bpmn:conditionExpression>\n' +
+          '  <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${ foo &lt; bar }</bpmn:conditionExpression>\n' +
           '</bpmn:sequenceFlow>\n';
 
         // when
@@ -200,7 +200,7 @@ describe('bpmn-moddle - write', function() {
                                                  'behavior="One" ' +
                                                  'oneBehaviorEventRef="oneBehaviorEventRef" ' +
                                                  'noneBehaviorEventRef="noneBehaviorEventRef">' +
-              '<bpmn:loopCardinality xsi:type="bpmn:tFormalExpression"><![CDATA[${ foo < bar }]]></bpmn:loopCardinality>' +
+              '<bpmn:loopCardinality xsi:type="bpmn:tFormalExpression">${ foo &lt; bar }</bpmn:loopCardinality>' +
               '<bpmn:loopDataInputRef>loopDataInputRef</bpmn:loopDataInputRef>' +
               '<bpmn:loopDataOutputRef>loopDataOutputRef</bpmn:loopDataOutputRef>' +
               '<bpmn:inputDataItem id="inputDataItem" />' +
@@ -323,8 +323,8 @@ describe('bpmn-moddle - write', function() {
 
         var expectedXML =
           '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_1">' +
-             '<bpmn:documentation textFormat="xyz"><![CDATA[FOO\nBAR]]></bpmn:documentation>' +
-             '<bpmn:documentation><![CDATA[<some /><html></html>]]></bpmn:documentation>' +
+             '<bpmn:documentation textFormat="xyz">FOO\nBAR</bpmn:documentation>' +
+             '<bpmn:documentation>&lt;some /&gt;&lt;html&gt;&lt;/html&gt;</bpmn:documentation>' +
           '</bpmn:definitions>';
 
         // when
@@ -405,7 +405,7 @@ describe('bpmn-moddle - write', function() {
                     'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
                     'id="FOO BAR">' +
             '<bpmn:expression xsi:type="bpmn:tFormalExpression">' +
-              '<![CDATA[${ foo < bar }]]>' +
+              '${ foo &lt; bar }' +
             '</bpmn:expression>' +
           '</bpmn:resourceAssignmentExpression>';
 
