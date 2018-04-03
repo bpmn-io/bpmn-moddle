@@ -29,6 +29,7 @@
     }
   ],
   "license": "MIT",
+  "sideEffects": false,
   "devDependencies": {
     "chai": "^4.1.2",
     "cmof-parser": "^0.2.0",
