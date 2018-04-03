@@ -1,22 +1,24 @@
-'use strict';
+import {
+  createModdle
+} from '../../helper';
 
-var Helper = require('../../helper'),
-    XMLHelper = require('../../xml-helper');
+import camundaPackage from '../../fixtures/json/model/camunda';
 
-var toXML = XMLHelper.toXML,
-    validate = XMLHelper.validate;
-
-var camundaPackage = require('../../fixtures/json/model/camunda');
+import {
+  fromFile as parseFromFile,
+  toXML,
+  validate
+} from '../../xml-helper';
 
 
 describe('bpmn-moddle - integration', function() {
 
   describe('camunda extension', function() {
 
-    var moddle = Helper.createModdle({ camunda: camundaPackage });
+    var moddle = createModdle({ camunda: camundaPackage });
 
     function fromFile(file, done) {
-      XMLHelper.fromFile(moddle, file, done);
+      parseFromFile(moddle, file, done);
     }
 
 

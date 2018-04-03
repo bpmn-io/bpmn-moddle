@@ -1,12 +1,11 @@
-'use strict';
-
-var Builder = require('./builder');
+import Builder from './builder';
 
 
 function makeStringRef(desc) {
   desc.type = 'String';
   delete desc.isReference;
 }
+
 
 describe('moddle BPMN 2.0 json', function() {
 

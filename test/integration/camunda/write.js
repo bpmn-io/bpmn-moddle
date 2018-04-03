@@ -1,11 +1,15 @@
-'use strict';
+import expect from '../../expect';
 
-var assign = require('min-dash').assign,
-    isFunction = require('min-dash').isFunction;
+import {
+  assign,
+  isFunction
+} from 'min-dash';
 
-var Helper = require('../../helper');
+import {
+  createModdle
+} from '../../helper';
 
-var camundaPackage = require('../../fixtures/json/model/camunda');
+import camundaPackage from '../../fixtures/json/model/camunda';
 
 
 describe('bpmn-moddle - integration', function() {
@@ -14,7 +18,7 @@ describe('bpmn-moddle - integration', function() {
 
     describe('write', function() {
 
-      var moddle = Helper.createModdle({ camunda: camundaPackage });
+      var moddle = createModdle({ camunda: camundaPackage });
 
       function write(element, options, callback) {
         if (isFunction(options)) {

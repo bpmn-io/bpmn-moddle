@@ -1,8 +1,11 @@
-'use strict';
+import expect from '../../expect';
 
-var Helper = require('../../helper');
+import {
+  createModdle,
+  readFile
+} from '../../helper';
 
-var camundaPackage = require('../../fixtures/json/model/camunda');
+import camundaPackage from '../../fixtures/json/model/camunda';
 
 
 describe('bpmn-moddle - integration', function() {
@@ -11,14 +14,14 @@ describe('bpmn-moddle - integration', function() {
 
     describe('read', function() {
 
-      var moddle = Helper.createModdle({ camunda: camundaPackage });
+      var moddle = createModdle({ camunda: camundaPackage });
 
       function read(xml, root, opts, callback) {
         return moddle.fromXML(xml, root, opts, callback);
       }
 
       function fromFile(file, root, opts, callback) {
-        var contents = Helper.readFile('test/fixtures/bpmn/' + file);
+        var contents = readFile('test/fixtures/bpmn/' + file);
         return read(contents, root, opts, callback);
       }
 

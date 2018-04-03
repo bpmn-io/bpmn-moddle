@@ -1,25 +1,30 @@
-'use strict';
+import expect from '../expect';
 
-var Helper = require('../helper');
+import {
+  createModdle,
+  readFile
+} from '../helper';
 
-var droolsPackage = require('../fixtures/json/model/drools');
+import droolsPackage from '../fixtures/json/model/drools';
 
-var isFunction = require('min-dash').isFunction,
-    assign = require('min-dash').assign;
+import {
+  assign,
+  isFunction
+} from 'min-dash';
 
 
 describe('bpmn-moddle - integration', function() {
 
   describe('drools:import element', function() {
 
-    var moddle = Helper.createModdle({ drools: droolsPackage });
+    var moddle = createModdle({ drools: droolsPackage });
 
     function read(xml, root, opts, callback) {
       return moddle.fromXML(xml, root, opts, callback);
     }
 
     function fromFile(file, root, opts, callback) {
-      var contents = Helper.readFile('test/fixtures/bpmn/' + file);
+      var contents = readFile('test/fixtures/bpmn/' + file);
       return read(contents, root, opts, callback);
     }
 

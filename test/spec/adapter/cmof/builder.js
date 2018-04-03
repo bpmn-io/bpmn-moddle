@@ -1,12 +1,17 @@
-'use strict';
+import {
+  assign,
+  find,
+  forEach,
+  isFunction,
+  matchPattern
+} from 'min-dash';
 
-var _ = require('lodash'),
-    fs = require('fs');
+import fs from 'fs';
 
-var CmofParser = require('cmof-parser');
+import CmofParser from 'cmof-parser';
 
 
-function Builder() {
+export default function Builder() {
 
   var desc;
 
@@ -20,7 +25,7 @@ function Builder() {
   }
 
   function findProperty(properties, name) {
-    var property = _.find(properties, function(d) {
+    var property = find(properties, function(d) {
       return d.name === name;
     });
 
@@ -35,7 +40,7 @@ function Builder() {
 
     var last;
 
-    _.forEach(propertyNames, function(name) {
+    forEach(propertyNames, function(name) {
 
       var descriptor = findProperty(properties, name);
 
@@ -62,9 +67,7 @@ function Builder() {
     var props = desc.properties;
 
     function findProperty(name) {
-      return _.find(props, function(d) {
-        return d.name === name;
-      });
+      return find(props, matchPattern({ name }));
     }
 
     var p1 = findProperty(prop1);
@@ -83,7 +86,7 @@ function Builder() {
 
     var str = JSON.stringify(pkg, null, '  ');
 
-    _.forEach(hooks.preSerialize, function(fn) {
+    forEach(hooks.preSerialize, function(fn) {
       str = fn(str);
     });
 
@@ -113,24 +116,24 @@ function Builder() {
     }
 
     if (elementParts[1]) {
-      var property = _.find(element.properties, function(p) {
-        return p.name === elementParts[1];
-      });
+      var property = find(element.properties, matchPattern({
+        name: elementParts[1]
+      }));
 
       if (!property) {
         throw new Error('[transform] property <' + elementParts[0] + '#' + elementParts[1] + '> does not exist');
       }
 
-      if (_.isFunction(extension)) {
+      if (isFunction(extension)) {
         extension.call(element, property);
       } else {
-        _.extend(property, extension);
+        assign(property, extension);
       }
     } else {
-      if (_.isFunction(extension)) {
+      if (isFunction(extension)) {
         extension.call(element, element);
       } else {
-        _.extend(element, extension);
+        assign(element, extension);
       }
     }
   }
@@ -182,5 +185,3 @@ function Builder() {
 
   this.exportTo = exportTo;
 }
-
-module.exports = Builder;

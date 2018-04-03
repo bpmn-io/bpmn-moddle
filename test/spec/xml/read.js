@@ -1,18 +1,21 @@
-'use strict';
+import expect from '../../expect';
 
-var Helper = require('../../helper');
+import {
+  createModdle,
+  readFile
+} from '../../helper';
 
 
 describe('bpmn-moddle - read', function() {
 
-  var moddle = Helper.createModdle();
+  var moddle = createModdle();
 
   function read(xml, root, opts, callback) {
     return moddle.fromXML(xml, root, opts, callback);
   }
 
   function fromFile(file, root, opts, callback) {
-    var contents = Helper.readFile(file);
+    var contents = readFile(file);
     return read(contents, root, opts, callback);
   }
 

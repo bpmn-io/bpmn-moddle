@@ -6,7 +6,7 @@
     "all": "run-s lint test",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha -r ./test/expect --reporter=spec --recursive test"
+    "test": "mocha -r esm --reporter=spec --recursive test"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "cmof-parser": "^0.2.0",
     "eslint": "^4.11.0",
     "eslint-plugin-bpmn-io": "^0.4.1",
+    "esm": "^3.0.15",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.2",
     "xsd-schema-validator": "^0.5.0"

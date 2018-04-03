@@ -1,1 +1,3 @@
-module.exports = require('./lib/simple');
+export {
+  default
+} from './lib/simple';

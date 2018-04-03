@@ -9,10 +9,10 @@ __bpmn-moddle__ uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/
 
 ## Usage
 
-Get the library via [npm package](https://www.npmjs.org/package/bpmn-moddle). Bundle it for the web using [browserify](http://browserify.org) or [webpack](https://webpack.github.io).
+As of version `5.0.0` this library exposes ES modules. Use [esm](https://github.com/standard-things/esm) to consume it or a ES module aware transpiler such as Webpack, Rollup or Browserify + babelify to bundle it for the browser.
 
 ```javascript
-var BpmnModdle = require('bpmn-moddle');
+import BpmnModdle from 'bpmn-moddle';
 
 var moddle = new BpmnModdle();
 
@@ -45,8 +45,9 @@ moddle.fromXML(xmlStr, function(err, definitions) {
 
 ## Resources
 
-*   [Issues](https://github.com/bpmn-io/bpmn-moddle/issues)
-*   [Examples](https://github.com/bpmn-io/bpmn-moddle/tree/master/test/spec/xml)
+* [Issues](https://github.com/bpmn-io/bpmn-moddle/issues)
+* [Examples](https://github.com/bpmn-io/bpmn-moddle/tree/master/test/spec/xml)
+* [Changelog](./CHANGELOG.md)
 
 
 ## Building the Project

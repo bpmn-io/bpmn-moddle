@@ -1,18 +1,22 @@
-'use strict';
+import expect from '../../expect';
 
-var Helper = require('../../helper'),
-    XMLHelper = require('../../xml-helper');
+import {
+  createModdle
+} from '../../helper';
 
-var toXML = XMLHelper.toXML,
-    validate = XMLHelper.validate;
+import {
+  fromValidFile,
+  toXML,
+  validate
+} from '../../xml-helper';
 
 
 describe('bpmn-moddle - roundtrip', function() {
 
-  var moddle = Helper.createModdle();
+  var moddle = createModdle();
 
   function fromFile(file, done) {
-    XMLHelper.fromValidFile(moddle, file, done);
+    fromValidFile(moddle, file, done);
   }
 
 

@@ -1,14 +1,19 @@
-'use strict';
+import expect from '../../expect';
 
-var isFunction = require('min-dash').isFunction,
-    assign = require('min-dash').assign;
+import {
+  assign,
+  isFunction
+} from 'min-dash';
 
-var Helper = require('../../helper');
+import {
+  createModdle,
+  readFile
+} from '../../helper';
 
 
 describe('bpmn-moddle - expr', function() {
 
-  var moddle = Helper.createModdle({
+  var moddle = createModdle({
     expr: require('../../fixtures/json/model/expr')
   });
 
@@ -17,7 +22,7 @@ describe('bpmn-moddle - expr', function() {
   }
 
   function fromFile(file, root, opts, callback) {
-    var contents = Helper.readFile(file);
+    var contents = readFile(file);
     return read(contents, root, opts, callback);
   }
 

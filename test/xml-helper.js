@@ -1,21 +1,23 @@
-'use strict';
+import expect from './expect';
 
-var SchemaValidator = require('xsd-schema-validator');
+import SchemaValidator from 'xsd-schema-validator';
+
+import {
+  readFile
+} from './helper';
 
 var BPMN_XSD = 'test/fixtures/xsd/BPMN20.xsd';
 
-var Helper = require('./helper');
 
-
-module.exports.fromFile = function(moddle, file, done) {
-  var fileContents = Helper.readFile(file);
+export function fromFile(moddle, file, done) {
+  var fileContents = readFile(file);
 
   moddle.fromXML(fileContents, 'bpmn:Definitions', done);
-};
+}
 
 
-module.exports.fromValidFile = function(moddle, file, done) {
-  var fileContents = Helper.readFile(file);
+export function fromValidFile(moddle, file, done) {
+  var fileContents = readFile(file);
 
   validate(null, fileContents, function(err) {
 
@@ -25,14 +27,15 @@ module.exports.fromValidFile = function(moddle, file, done) {
 
     moddle.fromXML(fileContents, 'bpmn:Definitions', done);
   });
+}
 
-};
 
-module.exports.toXML = function(element, opts, done) {
+export function toXML(element, opts, done) {
   element.$model.toXML(element, opts, done);
-};
+}
 
-function validate(err, xml, done) {
+
+export function validate(err, xml, done) {
 
   if (err) {
     return done(err);
@@ -52,5 +55,3 @@ function validate(err, xml, done) {
     done();
   });
 }
-
-module.exports.validate = validate;

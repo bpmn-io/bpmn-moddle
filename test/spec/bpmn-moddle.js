@@ -1,11 +1,13 @@
-'use strict';
+import expect from '../expect';
 
-var Helper = require('../helper');
-
-var moddle = Helper.createModdle();
+import {
+  createModdle
+} from '../helper';
 
 
 describe('bpmn-moddle', function() {
+
+  var moddle = createModdle();
 
 
   describe('parsing', function() {
@@ -31,7 +33,11 @@ describe('bpmn-moddle', function() {
       var descriptor = type.$descriptor;
 
       expect(descriptor).to.exist;
-      expect(descriptor.propertiesByName['di:modelElement']).to.eql(descriptor.propertiesByName['bpmndi:bpmnElement']);
+      expect(
+        descriptor.propertiesByName['di:modelElement']
+      ).to.eql(
+        descriptor.propertiesByName['bpmndi:bpmnElement']
+      );
     });
 
   });
@@ -204,5 +210,7 @@ describe('bpmn-moddle', function() {
       });
 
     });
+
   });
+
 });

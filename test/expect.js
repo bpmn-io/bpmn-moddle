@@ -1,7 +1,11 @@
-var chai = require('chai');
+import chai from 'chai';
+
+import Matchers from './matchers';
 
 // add matchers
-chai.use(require('./matchers'));
+chai.use(Matchers);
 
-// expose expect as global
-global.expect = chai.expect;
+// expose chai expect
+export {
+  expect as default
+} from 'chai';

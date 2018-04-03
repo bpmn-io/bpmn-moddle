@@ -1,23 +1,18 @@
-'use strict';
+import fs from 'fs';
 
-var fs = require('fs');
+import SimpleBpmnModdle from '../';
 
-var SimpleBpmnModdle = require('../');
-
-function ensureDirExists(dir) {
+export function ensureDirExists(dir) {
 
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
 }
 
-function readFile(filename) {
+export function readFile(filename) {
   return fs.readFileSync(filename, { encoding: 'UTF-8' });
 }
 
-module.exports.readFile = readFile;
-module.exports.ensureDirExists = ensureDirExists;
-
-module.exports.createModdle = function(additionalPackages, options) {
+export function createModdle(additionalPackages, options) {
   return new SimpleBpmnModdle(additionalPackages, options);
-};
+}
