@@ -6,6 +6,12 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.0.0
+
+### Breaking Changes
+
+* `FEAT`: migrate to ES modules. Use `esm` or a ES module aware transpiler to consume this library.
+
 ## 4.0.0
 
 * `FEAT`: encode entities in body properties (rather than using CDATA escaping)
