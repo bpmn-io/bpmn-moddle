@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.1.0
+
+* `CHORE`: bump dependency versions
+
 ## 5.0.0
 
 ### Breaking Changes
