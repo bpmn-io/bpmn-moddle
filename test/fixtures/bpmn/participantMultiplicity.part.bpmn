@@ -1,0 +1,3 @@
+<participant xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+   <participantMultiplicity id="sid-a4e85590-bd67-418d-a617-53bcfcfde620" maximum="2" minimum="2"/>
+</participant>

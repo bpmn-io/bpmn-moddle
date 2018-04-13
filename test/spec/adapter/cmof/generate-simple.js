@@ -166,6 +166,10 @@ describe('moddle BPMN 2.0 json', function() {
           desc.superClass = [ 'BaseElement' ];
         });
 
+        // fix missing ParticipantMultiplicity parent
+        builder.alter('ParticipantMultiplicity', function(desc) {
+          desc.superClass = [ 'BaseElement' ];
+        });
 
         // fix positioning of elements
 

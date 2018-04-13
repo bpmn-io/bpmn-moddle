@@ -643,6 +643,29 @@ describe('bpmn-moddle - read', function() {
       });
 
 
+      it('Participant#participantMultiplicity', function(done) {
+
+        // given
+
+        // when
+        fromFile('test/fixtures/bpmn/participantMultiplicity.part.bpmn', 'bpmn:Participant', function(err, result) {
+
+          // then
+          expect(result).to.jsonEqual({
+            $type: 'bpmn:Participant',
+            participantMultiplicity: {
+              $type: 'bpmn:ParticipantMultiplicity',
+              id: 'sid-a4e85590-bd67-418d-a617-53bcfcfde620',
+              maximum: 2,
+              minimum: 2
+            }
+          });
+
+          done(err);
+        });
+      });
+
+
       it('BPMNEdge#waypoint (explicit xsi:type)', function(done) {
 
         // given
@@ -1095,6 +1118,7 @@ describe('bpmn-moddle - read', function() {
         done();
       });
     });
+
   });
 
 

@@ -1980,6 +1980,9 @@
           "isAttr": true,
           "type": "Integer"
         }
+      ],
+      "superClass": [
+        "BaseElement"
       ]
     },
     {
