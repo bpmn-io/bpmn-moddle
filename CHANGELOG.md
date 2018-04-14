@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.1.3
+
+* `FIX`: correct missing `resourceParameterBinding` parent
+
 ## 5.1.2
 
 * `CHORE`: warn on unknown attribute in well-known namespace
