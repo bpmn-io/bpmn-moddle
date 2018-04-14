@@ -160,6 +160,12 @@ describe('moddle BPMN 2.0 json', function() {
           delete desc.isAttr;
         });
 
+        // fix missing ResourceParameterBinding parent
+
+        builder.alter('ResourceParameterBinding', function(desc) {
+          desc.superClass = [ 'BaseElement' ];
+        });
+
         // fix missing ResourceAssignmentExpression parent
 
         builder.alter('ResourceAssignmentExpression', function(desc) {
