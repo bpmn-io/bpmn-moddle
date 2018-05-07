@@ -6,6 +6,7 @@ import {
 
 import {
   fromValidFile,
+  fromFilePart,
   toXML,
   validate
 } from '../../xml-helper';
@@ -151,6 +152,32 @@ describe('bpmn-moddle - roundtrip', function() {
 
         // when
         toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
+    it('extension attributes on expression', function(done) {
+
+      // given
+      fromFilePart(moddle, 'test/fixtures/bpmn/expression-extension.part.bpmn', 'bpmn:ResourceAssignmentExpression', function(err, result, context) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          expect(xml).to.contain(
+            '<bpmn:expression ' +
+                'id="ID_0hnlswl" ' +
+                'myNs:expressionType="Constant">' +
+              'fgdfgdfg' +
+            '</bpmn:expression>'
+          );
+
           validate(err, xml, done);
         });
       });

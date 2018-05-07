@@ -10,11 +10,14 @@ var BPMN_XSD = 'test/fixtures/xsd/BPMN20.xsd';
 
 
 export function fromFile(moddle, file, done) {
-  var fileContents = readFile(file);
-
-  moddle.fromXML(fileContents, 'bpmn:Definitions', done);
+  return fromFilePart(moddle, file, 'bpmn:Definitions', done);
 }
 
+export function fromFilePart(moddle, file, type, done) {
+  var fileContents = readFile(file);
+
+  moddle.fromXML(fileContents, type, done);
+}
 
 export function fromValidFile(moddle, file, done) {
   var fileContents = readFile(file);

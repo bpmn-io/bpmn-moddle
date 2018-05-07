@@ -1,0 +1,11 @@
+<bpmn:resourceAssignmentExpression
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+    xmlns:myNs="http://some-company/schema/bpmn/myNs"
+    xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+    id="ID_19xkliu">
+  <bpmn:expression
+    xsi:type="bpmn:tExpression"
+    id="ID_0hnlswl"
+    myNs:expressionType="Constant">fgdfgdfg</bpmn:expression>
+</bpmn:resourceAssignmentExpression>
