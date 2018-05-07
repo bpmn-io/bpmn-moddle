@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.1.4
+
+* `FIX`: correct extension attributes not being serialized on `bpmn:Expression` elements ([#55](https://github.com/bpmn-io/bpmn-moddle/issues/55))
+
 ## 5.1.3
 
 * `FIX`: correct missing `resourceParameterBinding` parent
