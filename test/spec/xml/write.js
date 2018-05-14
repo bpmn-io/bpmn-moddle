@@ -127,6 +127,7 @@ describe('bpmn-moddle - write', function() {
         });
       });
 
+
       it('Task with null property', function(done) {
 
         // given
