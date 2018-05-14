@@ -308,6 +308,15 @@ describe('moddle BPMN 2.0 json', function() {
           });
         });
 
+        // fix StandardLoopCharacteristics#loopMaximum
+
+        builder.alter('StandardLoopCharacteristics#loopMaximum', function(desc) {
+          desc.isAttr = true;
+          desc.type = 'Integer';
+
+          delete desc.xml;
+        });
+
         // fix MultiMultiInstanceLoopCharacteristics
 
         builder.alter('MultiInstanceLoopCharacteristics#loopDataInputRef', function(desc) {

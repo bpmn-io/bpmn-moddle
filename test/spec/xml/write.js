@@ -222,6 +222,40 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('StandardLoopCharacteristics', function(done) {
+
+        // given
+        var loopCharacteristics = moddle.create('bpmn:StandardLoopCharacteristics', {
+          testBefore: true,
+          loopMaximum: 100,
+          loopCondition: moddle.create('bpmn:FormalExpression', {
+            body: '${ foo < bar }'
+          })
+        });
+
+        var expectedXML =
+          '<bpmn:standardLoopCharacteristics xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+                                            'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+                                            'testBefore="true" ' +
+                                            'loopMaximum="100">' +
+              '<bpmn:loopCondition xsi:type="bpmn:tFormalExpression">${ foo &lt; bar }</bpmn:loopCondition>' +
+          '</bpmn:standardLoopCharacteristics>';
+
+        // when
+        write(loopCharacteristics, function(err, result) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('Process', function(done) {
 
         // given

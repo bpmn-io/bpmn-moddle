@@ -2468,10 +2468,8 @@
         },
         {
           "name": "loopMaximum",
-          "type": "Expression",
-          "xml": {
-            "serialize": "xsi:type"
-          }
+          "type": "Integer",
+          "isAttr": true
         }
       ]
     },
