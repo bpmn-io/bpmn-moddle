@@ -8,7 +8,7 @@ ___Note:__ Yet to be released changes appear here._
 
 ## 5.1.5
 
-* `FIX`: correct `StandardLoopCharacteristics#loopMaximum` type [#56](https://github.com/bpmn-io/bpmn-moddle/issues/56)
+* `FIX`: correct `StandardLoopCharacteristics#loopMaximum` type ([#56](https://github.com/bpmn-io/bpmn-moddle/issues/56))
 
 ## 5.1.4
 
