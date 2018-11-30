@@ -1388,7 +1388,7 @@
           "type": "String"
         },
         {
-          "name": "participantRefs",
+          "name": "participantRef",
           "type": "Participant",
           "isMany": true,
           "isReference": true
@@ -2061,7 +2061,7 @@
       ],
       "properties": [
         {
-          "name": "participantRefs",
+          "name": "participantRef",
           "type": "Participant",
           "isMany": true,
           "isReference": true
@@ -2135,8 +2135,8 @@
     {
       "name": "Choreography",
       "superClass": [
-        "FlowElementsContainer",
-        "Collaboration"
+        "Collaboration",
+        "FlowElementsContainer"
       ]
     },
     {

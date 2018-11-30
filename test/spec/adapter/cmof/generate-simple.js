@@ -203,6 +203,13 @@ describe('moddle BPMN 2.0 json', function() {
         });
 
 
+        // fix Choreography child element order by swapping the super classes
+        // (Collaboration children should come before FlowElementsContainer children)
+        builder.alter('Choreography', function(desc) {
+          desc.superClass = [ 'Collaboration', 'FlowElementsContainer' ];
+        });
+
+
         // fix Activity order serialization
 
         builder.alter('Activity', function(desc) {
@@ -245,6 +252,14 @@ describe('moddle BPMN 2.0 json', function() {
 
         builder.alter('DataOutput#outputSetRefs', {
           name: 'outputSetRef'
+        });
+
+        builder.alter('ChoreographyActivity#participantRefs', {
+          name: 'participantRef'
+        });
+
+        builder.alter('ConversationNode#participantRefs', {
+          name: 'participantRef'
         });
 
 
