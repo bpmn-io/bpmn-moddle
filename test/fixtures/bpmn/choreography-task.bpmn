@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:signavio="http://www.signavio.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" exporter="Signavio Process Editor, http://www.signavio.com" exporterVersion="8.4.1" expressionLanguage="http://www.w3.org/1999/XPath" id="sid-73c85f47-caf7-49f4-81c2-ccd9c46beedb" targetNamespace="http://www.signavio.com/bpmn20" typeLanguage="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
+  <message id="someMessage" />
+  <choreography id="Choreography_1" name="Default Choreography">
+    <participant id="Participant_1" name="Initiating Participant"/>
+    <participant id="Participant_2" name="Non-initiating Participant"/>
+    <messageFlow id="MessageFlow" messageRef="someMessage" name="Message Flow" sourceRef="Participant_1" targetRef="Participant_2"/>
+    <choreographyTask id="ChoreographyTask_1" name="Choreography Task" initiatingParticipantRef="Participant_1">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_1</outgoing>
+      <participantRef>Participant_1</participantRef>
+      <participantRef>Participant_2</participantRef>
+      <messageFlowRef>MessageFlow</messageFlowRef>
+    </choreographyTask>
+    <endEvent id="EndEvent_1" name="End Event 1">
+      <incoming>SequenceFlow_1</incoming>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_1" sourceRef="ChoreographyTask_1" targetRef="EndEvent_1"/>
+    <startEvent id="StartEvent_1" name="Start Event 1">
+      <outgoing>SequenceFlow_2</outgoing>
+    </startEvent>
+    <sequenceFlow id="SequenceFlow_2" sourceRef="StartEvent_1" targetRef="ChoreographyTask_1"/>
+  </choreography>
+</definitions>

@@ -463,6 +463,25 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('choreography task', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/choreography-task.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          validate(err, xml, done);
+        });
+      });
+
+    });
+
+
     it('simple processElement', function(done) {
 
       // given
