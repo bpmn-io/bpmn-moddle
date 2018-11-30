@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 5.1.6
+
+* `FIX`: correct `Choreography` model definitions ([#59](https://github.com/bpmn-io/bpmn-moddle/issues/59))
+
 ## 5.1.5
 
 * `FIX`: correct `StandardLoopCharacteristics#loopMaximum` type ([#56](https://github.com/bpmn-io/bpmn-moddle/issues/56))
