@@ -1090,7 +1090,7 @@ describe('bpmn-moddle - read', function() {
         expect(context.warnings[1].message).to.match(/attribute <id> already defined/);
 
         expect(result.$attrs.xmlns).to.eql('http://www.omg.org/spec/BPMN/20100524/MODEL');
-        expect(result.id).to.eql('10');
+        expect(result.id).to.eql('a10');
 
         done();
       });
