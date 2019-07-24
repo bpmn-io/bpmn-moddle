@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "min-dash": "^3.0.0",
-    "moddle": "^4.1.0",
-    "moddle-xml": "^7.5.0"
+    "moddle": "^5.0.1",
+    "moddle-xml": "^8.0.1"
   }
 }
