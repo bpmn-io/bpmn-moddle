@@ -4,12 +4,12 @@
 
 Read and write BPMN 2.0 diagram files in NodeJS and the browser.
 
-__bpmn-moddle__ uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/) to validate the input and produce correct BPMN 2.0 XML. The library is built on top of [moddle](https://github.com/bpmn-io/moddle) and [moddle-xml](https://github.com/bpmn-io/moddle-xml).
+__bpmn-moddle__ uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/) to validate the input and produce correct BPMN 2.0 XML. 
 
 
 ## Usage
 
-Get the library via [npm package](https://www.npmjs.org/package/bpmn-moddle). Bundle it for the web using [browserify](http://browserify.org) or [webpack](https://webpack.github.io).
+Get the library via [npm package](https://www.npmjs.org/package/bpmn-moddle). Consume it in NodeJS, via UMD or bundle it for the browser using your favorite module bundler.
 
 ```javascript
 import BpmnModdle from 'bpmn-moddle';
@@ -65,6 +65,11 @@ Perform a complete build of the application via
 ```
 npm run all
 ```
+
+
+## Related
+
+The library is built on top of [moddle](https://github.com/bpmn-io/moddle) and [moddle-xml](https://github.com/bpmn-io/moddle-xml).
 
 
 ## License
