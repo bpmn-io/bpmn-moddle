@@ -6,6 +6,11 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.0.0
+
+* `FEAT`: add pre-built distribution
+* `CHORE`: update to `moddle@5.0.1`, `moddle-xml@8.0.1`
+
 ## 5.2.0
 
 * `FEAT`: validate ID attributes as QNames
