@@ -3,15 +3,23 @@
   "version": "5.2.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
-    "all": "run-s lint test",
+    "all": "run-s lint test distro",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha -r esm --reporter=spec --recursive test"
+    "test": "mocha -r esm --reporter=spec --recursive test/spec test/integration test/adapter",
+    "distro": "run-s build test:build",
+    "build": "rollup -c",
+    "test:build": "mocha --reporter=spec --recursive test/distro",
+    "prepublishOnly": "run-s distro"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-moddle"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "umd:main": "dist/bpmn-moddle.umd.js",
+  "source": "lib/index.js",
   "keywords": [
     "bpmn",
     "moddle",
@@ -38,6 +46,11 @@
     "esm": "^3.0.15",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.5",
+    "rollup": "^1.17.0",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1",
     "xsd-schema-validator": "^0.5.0"
   },
   "dependencies": {
