@@ -6,7 +6,7 @@
     "all": "run-s lint test distro",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha -r esm --reporter=spec --recursive test/spec test/integration test/adapter",
+    "test": "mocha -r esm --reporter=spec --recursive test/spec test/integration",
     "distro": "run-s build test:build",
     "build": "rollup -c",
     "test:build": "mocha --reporter=spec --recursive test/distro",
