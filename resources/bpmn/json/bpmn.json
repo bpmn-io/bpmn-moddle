@@ -945,11 +945,6 @@
       ],
       "properties": [
         {
-          "name": "assignment",
-          "type": "Assignment",
-          "isMany": true
-        },
-        {
           "name": "sourceRef",
           "type": "ItemAwareElement",
           "isMany": true,
@@ -966,6 +961,11 @@
           "xml": {
             "serialize": "property"
           }
+        },
+        {
+          "name": "assignment",
+          "type": "Assignment",
+          "isMany": true
         }
       ]
     },

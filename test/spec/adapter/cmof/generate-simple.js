@@ -223,6 +223,14 @@ describe('moddle BPMN 2.0 json', function() {
           ]);
         });
 
+        builder.alter('DataAssociation', function(desc) {
+          builder.reorderProperties(desc, [
+            'sourceRef',
+            'targetRef',
+            'transformation',
+            'assignment'
+          ]);
+        });
 
         // fix *Refs -> Ref
 

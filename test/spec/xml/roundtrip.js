@@ -347,6 +347,24 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('dataInputAssociation assignment order', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/data-input-association.assignment.bpmn', function(err, result) {
+
+        if (err) {
+          console.log('FAILED TO OPEN DIAGRAM');
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+          validate(err, xml, done);
+        });
+      });
+    });
+
+
     it('Participant#interfaceRef', function(done) {
 
       // given
