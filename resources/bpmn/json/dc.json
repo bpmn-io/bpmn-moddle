@@ -1,6 +1,7 @@
 {
   "name": "DC",
   "uri": "http://www.omg.org/spec/DD/20100524/DC",
+  "prefix": "dc",
   "types": [
     {
       "name": "Boolean"
@@ -94,6 +95,5 @@
       ]
     }
   ],
-  "prefix": "dc",
   "associations": []
 }

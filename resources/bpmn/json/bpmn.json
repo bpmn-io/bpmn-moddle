@@ -1,6 +1,7 @@
 {
   "name": "BPMN20",
   "uri": "http://www.omg.org/spec/BPMN/20100524/MODEL",
+  "prefix": "bpmn",
   "associations": [],
   "types": [
     {
@@ -21,8 +22,8 @@
         },
         {
           "name": "implementationRef",
-          "type": "String",
-          "isAttr": true
+          "isAttr": true,
+          "type": "String"
         }
       ]
     },
@@ -55,8 +56,8 @@
         },
         {
           "name": "implementationRef",
-          "type": "String",
-          "isAttr": true
+          "isAttr": true,
+          "type": "String"
         }
       ]
     },
@@ -129,15 +130,15 @@
         },
         {
           "name": "laneSets",
-          "type": "LaneSet",
           "isMany": true,
-          "replaces": "FlowElementsContainer#laneSets"
+          "replaces": "FlowElementsContainer#laneSets",
+          "type": "LaneSet"
         },
         {
           "name": "flowElements",
-          "type": "FlowElement",
           "isMany": true,
-          "replaces": "FlowElementsContainer#flowElements"
+          "replaces": "FlowElementsContainer#flowElements",
+          "type": "FlowElement"
         },
         {
           "name": "artifacts",
@@ -989,22 +990,22 @@
         {
           "name": "inputSetRef",
           "type": "InputSet",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         },
         {
           "name": "inputSetWithOptional",
           "type": "InputSet",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         },
         {
           "name": "inputSetWithWhileExecuting",
           "type": "InputSet",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         }
       ]
@@ -1029,22 +1030,22 @@
         {
           "name": "outputSetRef",
           "type": "OutputSet",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         },
         {
           "name": "outputSetWithOptional",
           "type": "OutputSet",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         },
         {
           "name": "outputSetWithWhileExecuting",
           "type": "OutputSet",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         }
       ]
@@ -1526,8 +1527,8 @@
       "properties": [
         {
           "name": "body",
-          "type": "String",
-          "isBody": true
+          "isBody": true,
+          "type": "String"
         }
       ]
     },
@@ -1582,8 +1583,8 @@
         },
         {
           "name": "structureRef",
-          "type": "String",
-          "isAttr": true
+          "isAttr": true,
+          "type": "String"
         },
         {
           "name": "isCollection",
@@ -1735,8 +1736,8 @@
         {
           "name": "lanes",
           "type": "Lane",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         }
       ]
@@ -1896,15 +1897,15 @@
         {
           "name": "incomingConversationLinks",
           "type": "ConversationLink",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         },
         {
           "name": "outgoingConversationLinks",
           "type": "ConversationLink",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         }
       ]
@@ -2244,8 +2245,8 @@
         {
           "name": "categorizedFlowElements",
           "type": "FlowElement",
-          "isVirtual": true,
           "isMany": true,
+          "isVirtual": true,
           "isReference": true
         },
         {
@@ -2950,7 +2951,6 @@
       ]
     }
   ],
-  "prefix": "bpmn",
   "xml": {
     "tagAlias": "lowerCase",
     "typePrefix": "t"

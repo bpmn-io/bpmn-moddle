@@ -3,9 +3,9 @@
   <bpmn2:process id="Process_1">
     <bpmn2:documentation>THIS IS A PROCESS</bpmn2:documentation>
     <bpmn2:subProcess id="SubProcess_1" name="Sub Process 1">
-      <bpmn2:documentation><![CDATA[
-        <h1>THIS IS HTML</h1>
-      ]]></bpmn2:documentation>
+      <bpmn2:documentation>
+        <![CDATA[<h1>THIS IS HTML</h1>]]>
+      </bpmn2:documentation>
     </bpmn2:subProcess>
   </bpmn2:process>
 </bpmn2:definitions>

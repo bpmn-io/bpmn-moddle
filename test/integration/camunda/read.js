@@ -126,7 +126,7 @@ describe('bpmn-moddle - integration', function() {
                       { $type: 'camunda:Value', value: '${ \'elValue\' }' },
                       {
                         $type: 'camunda:Script',
-                        source: '\n            return "scriptValue";\n          '
+                        source: 'return "scriptValue";'
                       }
                     ]
                   }
@@ -183,7 +183,7 @@ describe('bpmn-moddle - integration', function() {
                   name: 'var1',
                   definition: {
                     $type: 'camunda:Script',
-                    source: '\n          return 1 + 1;\n        '
+                    source: 'return 1 + 1;'
                   }
                 }
               ]
