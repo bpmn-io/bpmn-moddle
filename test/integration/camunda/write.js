@@ -173,7 +173,7 @@ describe('bpmn-moddle - integration', function() {
               items: [
                 moddle.create('camunda:Value', { value: 'constantStringValue' }),
                 moddle.create('camunda:Value', { value: '${ \'elValue\' }' }),
-                moddle.create('camunda:Script', { source: '\n            return "scriptValue";\n          ' })
+                moddle.create('camunda:Script', { source: 'return "scriptValue";' })
               ]
             })
           });
@@ -189,7 +189,7 @@ describe('bpmn-moddle - integration', function() {
                 '<camunda:list>' +
                   '<camunda:value>constantStringValue</camunda:value>' +
                   '<camunda:value>${ \'elValue\' }</camunda:value>' +
-                  '<camunda:script>\n            return "scriptValue";\n          </camunda:script>' +
+                  '<camunda:script>return "scriptValue";</camunda:script>' +
                 '</camunda:list>' +
               '</camunda:inputParameter>' +
             '</camunda:inputOutput>';

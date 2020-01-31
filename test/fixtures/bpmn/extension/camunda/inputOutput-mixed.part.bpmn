@@ -4,9 +4,7 @@
         <camunda:value>constantStringValue</camunda:value>
         <camunda:value>${ 'elValue' }</camunda:value>
         <camunda:script scriptFormat="Groovy">
-          <![CDATA[
-            return "scriptValue";
-          ]]>
+          <![CDATA[return "scriptValue";]]>
         </camunda:script>
       </camunda:list>
     </camunda:inputParameter>

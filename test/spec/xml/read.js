@@ -194,7 +194,7 @@ describe('bpmn-moddle - read', function() {
                     documentation : [
                       {
                         $type : 'bpmn:Documentation',
-                        text : '\n        <h1>THIS IS HTML</h1>\n      '
+                        text : '<h1>THIS IS HTML</h1>'
                       }
                     ]
                   }

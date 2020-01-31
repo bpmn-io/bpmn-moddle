@@ -14,6 +14,8 @@ import {
 
 describe('bpmn-moddle - roundtrip', function() {
 
+  this.timeout(10000);
+
   var moddle = createModdle();
 
   function fromFile(file, done) {
@@ -22,9 +24,6 @@ describe('bpmn-moddle - roundtrip', function() {
 
 
   describe('should serialize valid BPMN 2.0 xml after read', function() {
-
-    this.timeout(15000);
-
 
     it('home-made bpmn model', function(done) {
 

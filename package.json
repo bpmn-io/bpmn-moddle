@@ -3,14 +3,15 @@
   "version": "6.0.2",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
-    "all": "run-s lint test distro",
+    "all": "run-s generate-schema lint test distro",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
     "test": "mocha -r esm --reporter=spec --recursive test/spec test/integration",
     "distro": "run-s build test:build",
     "build": "rollup -c",
     "test:build": "mocha --reporter=spec --recursive test/distro",
-    "prepublishOnly": "run-s distro"
+    "prepublishOnly": "run-s distro",
+    "generate-schema": "node tasks/generate-schema"
   },
   "repository": {
     "type": "git",
@@ -40,7 +41,7 @@
   "sideEffects": false,
   "devDependencies": {
     "chai": "^4.1.2",
-    "cmof-parser": "^0.2.0",
+    "cmof-parser": "^0.5.2",
     "eslint": "^4.11.0",
     "eslint-plugin-bpmn-io": "^0.4.1",
     "esm": "^3.0.15",
