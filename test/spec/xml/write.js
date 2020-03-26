@@ -223,6 +223,25 @@ describe('bpmn-moddle - write', function() {
       });
 
 
+      it('LinkEventDefinition', function(done) {
+
+        // given
+        var definition = moddle.create('bpmn:LinkEventDefinition', { name: '' });
+
+        var expectedXML =
+          '<bpmn:linkEventDefinition xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" name="" />';
+
+        // when
+        write(definition, function(err, result) {
+
+          // then
+          expect(result).to.eql(expectedXML);
+
+          done(err);
+        });
+      });
+
+
       it('StandardLoopCharacteristics', function(done) {
 
         // given
