@@ -18,12 +18,12 @@
       <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:sequenceFlow id="SequenceFlow_1" name="" sourceRef="ExclusiveGateway_1" targetRef="Task_1">
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${foo > bar}</bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression">${foo &gt; bar}</bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:task id="Task_1">
       <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
       <bpmn2:multiInstanceLoopCharacteristics>
-        <bpmn2:completionCondition xsi:type="bpmn2:tFormalExpression">${foo > bar}</bpmn2:completionCondition>
+        <bpmn2:completionCondition xsi:type="bpmn2:tFormalExpression">${foo &gt; bar}</bpmn2:completionCondition>
       </bpmn2:multiInstanceLoopCharacteristics>
     </bpmn2:task>
   </bpmn2:process>
