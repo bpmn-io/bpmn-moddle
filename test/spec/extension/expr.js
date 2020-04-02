@@ -1,14 +1,10 @@
 import expect from '../../expect';
 
 import {
-  assign,
-  isFunction
-} from 'min-dash';
-
-import {
   createModdle,
   readFile,
-  read
+  read,
+  write
 } from '../../helper';
 
 
@@ -21,18 +17,6 @@ describe('bpmn-moddle - expr', function() {
   function fromFile(file, root, opts, callback) {
     var contents = readFile(file);
     return read(moddle, contents, root, opts, callback);
-  }
-
-  function write(element, options, callback) {
-    if (isFunction(options)) {
-      callback = options;
-      options = {};
-    }
-
-    // skip preamble for tests
-    options = assign({ preamble: false }, options);
-
-    moddle.toXML(element, options, callback);
   }
 
 
@@ -79,7 +63,7 @@ describe('bpmn-moddle - expr', function() {
       '</bpmn:sequenceFlow>\n';
 
     // when
-    write(sequenceFlow, { format: true }, function(err, result) {
+    write(moddle, sequenceFlow, { format: true }, function(err, result) {
 
       if (err) {
         return done(err);

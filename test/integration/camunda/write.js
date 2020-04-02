@@ -1,12 +1,8 @@
 import expect from '../../expect';
 
 import {
-  assign,
-  isFunction
-} from 'min-dash';
-
-import {
-  createModdle
+  createModdle,
+  write
 } from '../../helper';
 
 import camundaPackage from '../../fixtures/json/model/camunda';
@@ -19,18 +15,6 @@ describe('bpmn-moddle - integration', function() {
     describe('write', function() {
 
       var moddle = createModdle({ camunda: camundaPackage });
-
-      function write(element, options, callback) {
-        if (isFunction(options)) {
-          callback = options;
-          options = {};
-        }
-
-        // skip preamble for tests
-        options = assign({ preamble: false }, options);
-
-        moddle.toXML(element, options, callback);
-      }
 
 
       describe('should export camunda types', function() {
@@ -49,7 +33,7 @@ describe('bpmn-moddle - integration', function() {
                             'camunda:javaDelegate="FOO" />';
 
           // when
-          write(serviceTask, function(err, result) {
+          write(moddle, serviceTask, function(err, result) {
 
             if (err) {
               return done(err);
@@ -95,7 +79,7 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          write(moddle, inputOutput, function(err, result) {
 
             if (err) {
               return done(err);
@@ -150,7 +134,7 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          write(moddle, inputOutput, function(err, result) {
 
             if (err) {
               return done(err);
@@ -196,7 +180,7 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          write(moddle, inputOutput, function(err, result) {
 
             if (err) {
               return done(err);
@@ -231,7 +215,7 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          write(moddle, inputOutput, function(err, result) {
 
             if (err) {
               return done(err);

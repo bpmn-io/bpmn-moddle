@@ -3,15 +3,11 @@ import expect from '../expect';
 import {
   createModdle,
   readFile,
-  read
+  read,
+  write
 } from '../helper';
 
 import droolsPackage from '../fixtures/json/model/drools';
-
-import {
-  assign,
-  isFunction
-} from 'min-dash';
 
 
 describe('bpmn-moddle - integration', function() {
@@ -24,19 +20,6 @@ describe('bpmn-moddle - integration', function() {
       var contents = readFile('test/fixtures/bpmn/' + file);
       return read(moddle, contents, root, opts, callback);
     }
-
-    function write(element, options, callback) {
-      if (isFunction(options)) {
-        callback = options;
-        options = {};
-      }
-
-      // skip preamble for tests
-      options = assign({ preamble: false }, options);
-
-      moddle.toXML(element, options, callback);
-    }
-
 
     it('should import', function(done) {
 
@@ -91,7 +74,7 @@ describe('bpmn-moddle - integration', function() {
         '</bpmn:process>';
 
       // when
-      write(processElement, function(err, result) {
+      write(moddle, processElement, function(err, result) {
 
         if (err) {
           return done(err);

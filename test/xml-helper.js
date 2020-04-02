@@ -46,7 +46,11 @@ export function fromValidFile(moddle, file, done) {
 
 
 export function toXML(element, opts, done) {
-  element.$model.toXML(element, opts, done);
+  element.$model.toXML(element, opts).then(function(result) {
+    done(null, result);
+  }).catch(function(err) {
+    done(err);
+  });
 }
 
 

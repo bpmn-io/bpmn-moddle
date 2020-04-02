@@ -1,33 +1,14 @@
 import expect from '../../expect';
 
 import {
-  assign,
-  isFunction
-} from 'min-dash';
-
-import {
-  createModdle
+  createModdle,
+  write
 } from '../../helper';
 
 
 describe('bpmn-moddle - write', function() {
 
   var moddle = createModdle();
-
-
-  function write(element, options, callback) {
-    if (isFunction(options)) {
-      callback = options;
-      options = {};
-    }
-
-    // skip preamble for tests
-    options = assign({ preamble: false }, options);
-
-    moddle.toXML(element, options, callback);
-  }
-
-
 
   describe('should export types', function() {
 
@@ -42,7 +23,7 @@ describe('bpmn-moddle - write', function() {
           '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" />';
 
         // when
-        write(definitions, function(err, result) {
+        write(moddle, definitions, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -92,7 +73,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:definitions>';
 
         // when
-        write(definitions, function(err, result) {
+        write(moddle, definitions, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -118,7 +99,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:scriptTask>';
 
         // when
-        write(scriptTask, function(err, result) {
+        write(moddle, scriptTask, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -142,7 +123,7 @@ describe('bpmn-moddle - write', function() {
                            'id="Task_1" />';
 
         // then
-        write(task, function(err, result) {
+        write(moddle, task, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -169,7 +150,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:sequenceFlow>\n';
 
         // when
-        write(sequenceFlow, { format: true }, function(err, result) {
+        write(moddle, sequenceFlow, { format: true }, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -214,7 +195,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:multiInstanceLoopCharacteristics>';
 
         // when
-        write(loopCharacteristics, function(err, result) {
+        write(moddle, loopCharacteristics, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -232,7 +213,7 @@ describe('bpmn-moddle - write', function() {
           '<bpmn:linkEventDefinition xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" name="" />';
 
         // when
-        write(definition, function(err, result) {
+        write(moddle, definition, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -262,7 +243,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:standardLoopCharacteristics>';
 
         // when
-        write(loopCharacteristics, function(err, result) {
+        write(moddle, loopCharacteristics, function(err, result) {
 
           if (err) {
             return done(err);
@@ -316,7 +297,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:process>';
 
         // when
-        write(processElement, function(err, result) {
+        write(moddle, processElement, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -357,7 +338,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:activity>';
 
         // when
-        write(activity, function(err, result) {
+        write(moddle, activity, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -385,7 +366,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:definitions>';
 
         // when
-        write(defs, function(err, result) {
+        write(moddle, defs, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -409,7 +390,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:callableElement>';
 
         // when
-        write(callableElement, function(err, result) {
+        write(moddle, callableElement, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -433,7 +414,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:resourceRole>';
 
         // when
-        write(role, function(err, result) {
+        write(moddle, role, function(err, result) {
 
           // then
           expect(err).not.to.exist;
@@ -467,7 +448,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:resourceAssignmentExpression>';
 
         // when
-        write(assignmentExpression, function(err, result, context) {
+        write(moddle, assignmentExpression, function(err, result, context) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -491,7 +472,7 @@ describe('bpmn-moddle - write', function() {
               'id="CallActivity_1" calledElement="otherProcess" />';
 
         // when
-        write(callActivity, function(err, result) {
+        write(moddle, callActivity, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -515,7 +496,7 @@ describe('bpmn-moddle - write', function() {
                   'structureRef="service:CelsiusToFahrenheitSoapIn" />';
 
         // when
-        write(itemDefinition, function(err, result) {
+        write(moddle, itemDefinition, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -546,7 +527,7 @@ describe('bpmn-moddle - write', function() {
 
 
         // when
-        write(itemDefinition, function(err, result) {
+        write(moddle, itemDefinition, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -569,7 +550,7 @@ describe('bpmn-moddle - write', function() {
                   'implementationRef="foo:operation" />';
 
         // when
-        write(operation, function(err, result) {
+        write(moddle, operation, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -593,7 +574,7 @@ describe('bpmn-moddle - write', function() {
                   'implementationRef="foo:interface" />';
 
         // when
-        write(iface, function(err, result) {
+        write(moddle, iface, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -629,7 +610,7 @@ describe('bpmn-moddle - write', function() {
 
 
         // when
-        write(collaboration, function(err, result) {
+        write(moddle, collaboration, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -664,7 +645,7 @@ describe('bpmn-moddle - write', function() {
 
 
         // when
-        write(definitions, function(err, result) {
+        write(moddle, definitions, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -697,7 +678,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:operation>';
 
         // when
-        write(operation, function(err, result) {
+        write(moddle, operation, function(err, result) {
 
           // then
           expect(result).to.eql(expectedXML);
@@ -721,7 +702,7 @@ describe('bpmn-moddle - write', function() {
                               'resolution="96.5" />';
 
         // when
-        write(diagram, function(err, result) {
+        write(moddle, diagram, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -743,7 +724,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmndi:BPMNShape>';
 
         // when
-        write(bpmnShape, function(err, result) {
+        write(moddle, bpmnShape, function(err, result) {
           // then
           expect(result).to.eql(expectedXML);
 
@@ -765,7 +746,7 @@ describe('bpmn-moddle - write', function() {
                             'bioc:stroke="#00ff00" bioc:fill="#ff0000" />';
 
         // when
-        write(bpmnShape, function(err, result) {
+        write(moddle, bpmnShape, function(err, result) {
 
           if (err) {
             done(err);
@@ -792,7 +773,7 @@ describe('bpmn-moddle - write', function() {
                             'bioc:stroke="#00ff00" bioc:fill="#ff0000" />';
 
         // when
-        write(bpmnEdge, function(err, result) {
+        write(moddle, bpmnEdge, function(err, result) {
 
           if (err) {
             done(err);
@@ -826,7 +807,7 @@ describe('bpmn-moddle - write', function() {
                           'xmlns:foo="http://foobar" />';
 
       // when
-      write(definitions, function(err, result) {
+      write(moddle, definitions, function(err, result) {
 
         if (err) {
           return done(err);
@@ -855,7 +836,7 @@ describe('bpmn-moddle - write', function() {
                           'xmlns:foo="http://foobar" foo:bar="BAR" />';
 
       // when
-      write(definitions, function(err, result) {
+      write(moddle, definitions, function(err, result) {
 
         // then
         expect(result).to.eql(expectedXML);
@@ -884,7 +865,7 @@ describe('bpmn-moddle - write', function() {
         '</bpmn:definitions>';
 
       // when
-      write(definitions, function(err, result) {
+      write(moddle, definitions, function(err, result) {
 
         // then
         expect(result).to.eql(expectedXML);
@@ -912,7 +893,7 @@ describe('bpmn-moddle - write', function() {
         '</bpmn:definitions>';
 
       // when
-      write(definitions, function(err, result) {
+      write(moddle, definitions, function(err, result) {
 
         // then
         expect(result).to.eql(expectedXML);
@@ -942,7 +923,7 @@ describe('bpmn-moddle - write', function() {
         '</bpmn:definitions>';
 
       // when
-      write(definitions, function(err, result) {
+      write(moddle, definitions, function(err, result) {
 
         // then
         expect(result).to.eql(expectedXML);
@@ -983,7 +964,7 @@ describe('bpmn-moddle - write', function() {
 
 
       // when
-      write(definitions, function(err, result) {
+      write(moddle, definitions, function(err, result) {
 
         if (err) {
           return done(err);
@@ -1033,7 +1014,7 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:userTask>';
 
       // when
-      write(userTask, function(err, result) {
+      write(moddle, userTask, function(err, result) {
 
         if (err) {
           return done(err);

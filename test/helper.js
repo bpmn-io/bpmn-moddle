@@ -4,7 +4,8 @@ import SimpleBpmnModdle from '../lib';
 
 import {
   isFunction,
-  isString
+  isString,
+  assign
 } from 'min-dash';
 
 export function ensureDirExists(dir) {
@@ -12,6 +13,24 @@ export function ensureDirExists(dir) {
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
+}
+
+export function write(moddle, element, options, callback) {
+  if (isFunction(options)) {
+    callback = options;
+    options = {};
+  }
+
+  // skip preamble for tests
+  options = assign({ preamble: false }, options);
+
+  moddle.toXML(element, options).then(function(result) {
+
+    callback(null, result);
+  }).catch(function(err) {
+
+    callback(err, null);
+  });
 }
 
 export function read(moddle, xml, root, opts, callback) {
