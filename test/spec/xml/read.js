@@ -2,7 +2,8 @@ import expect from '../../expect';
 
 import {
   createModdle,
-  readFile
+  readFile,
+  read
 } from '../../helper';
 
 
@@ -10,13 +11,9 @@ describe('bpmn-moddle - read', function() {
 
   var moddle = createModdle();
 
-  function read(xml, root, opts, callback) {
-    return moddle.fromXML(xml, root, opts, callback);
-  }
-
   function fromFile(file, root, opts, callback) {
     var contents = readFile(file);
-    return read(contents, root, opts, callback);
+    return read(moddle, contents, root, opts, callback);
   }
 
 
@@ -742,7 +739,7 @@ describe('bpmn-moddle - read', function() {
       var xml = '<bpmn:sequenceFlow xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" sourceRef="FOO_BAR" />';
 
       // when
-      read(xml, 'bpmn:SequenceFlow', function(err, result, context) {
+      read(moddle, xml, 'bpmn:SequenceFlow', function(err, result, context) {
 
         var expectedReference = {
           element: {
@@ -772,7 +769,7 @@ describe('bpmn-moddle - read', function() {
         '</bpmn:serviceTask>';
 
       // when
-      read(xml, 'bpmn:ServiceTask', function(err, result, context) {
+      read(moddle, xml, 'bpmn:ServiceTask', function(err, result, context) {
 
         var reference1 = {
           property: 'bpmn:outgoing',
@@ -806,7 +803,7 @@ describe('bpmn-moddle - read', function() {
                                    'xmlns:foo="http://foobar" foo:bar="BAR" />';
 
       // when
-      read(xml, 'bpmn:SequenceFlow', function(err, result, context) {
+      read(moddle, xml, 'bpmn:SequenceFlow', function(err, result, context) {
 
         // then
         expect(result.$attrs['foo:bar']).to.eql('BAR');

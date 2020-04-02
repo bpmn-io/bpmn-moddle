@@ -7,7 +7,8 @@ import {
 
 import {
   createModdle,
-  readFile
+  readFile,
+  read
 } from '../../helper';
 
 
@@ -17,13 +18,9 @@ describe('bpmn-moddle - expr', function() {
     expr: require('../../fixtures/json/model/expr')
   });
 
-  function read(xml, root, opts, callback) {
-    return moddle.fromXML(xml, root, opts, callback);
-  }
-
   function fromFile(file, root, opts, callback) {
     var contents = readFile(file);
-    return read(contents, root, opts, callback);
+    return read(moddle, contents, root, opts, callback);
   }
 
   function write(element, options, callback) {

@@ -2,7 +2,8 @@ import expect from '../expect';
 
 import {
   createModdle,
-  readFile
+  readFile,
+  read
 } from '../helper';
 
 import droolsPackage from '../fixtures/json/model/drools';
@@ -19,13 +20,9 @@ describe('bpmn-moddle - integration', function() {
 
     var moddle = createModdle({ drools: droolsPackage });
 
-    function read(xml, root, opts, callback) {
-      return moddle.fromXML(xml, root, opts, callback);
-    }
-
     function fromFile(file, root, opts, callback) {
       var contents = readFile('test/fixtures/bpmn/' + file);
-      return read(contents, root, opts, callback);
+      return read(moddle, contents, root, opts, callback);
     }
 
     function write(element, options, callback) {

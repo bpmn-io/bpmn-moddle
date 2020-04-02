@@ -16,7 +16,13 @@ export function fromFile(moddle, file, done) {
 export function fromFilePart(moddle, file, type, done) {
   var fileContents = readFile(file);
 
-  moddle.fromXML(fileContents, type, done);
+  moddle.fromXML(fileContents, type).then(function(result) {
+
+    done(null, result.result, result.parseContext);
+  }).catch(function(err) {
+
+    done(err, null, err.parseContext);
+  });
 }
 
 export function fromValidFile(moddle, file, done) {
@@ -28,7 +34,13 @@ export function fromValidFile(moddle, file, done) {
       return done(err);
     }
 
-    moddle.fromXML(fileContents, 'bpmn:Definitions', done);
+    moddle.fromXML(fileContents, 'bpmn:Definitions').then(function(result) {
+
+      done(null, result.result, result.parseContext);
+    }).catch(function(err) {
+
+      done(err, null, err.parseContext);
+    });
   });
 }
 

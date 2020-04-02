@@ -2,7 +2,8 @@ import expect from '../../expect';
 
 import {
   createModdle,
-  readFile
+  readFile,
+  read
 } from '../../helper';
 
 import camundaPackage from '../../fixtures/json/model/camunda';
@@ -16,13 +17,9 @@ describe('bpmn-moddle - integration', function() {
 
       var moddle = createModdle({ camunda: camundaPackage });
 
-      function read(xml, root, opts, callback) {
-        return moddle.fromXML(xml, root, opts, callback);
-      }
-
       function fromFile(file, root, opts, callback) {
         var contents = readFile('test/fixtures/bpmn/' + file);
-        return read(contents, root, opts, callback);
+        return read(moddle, contents, root, opts, callback);
       }
 
 
