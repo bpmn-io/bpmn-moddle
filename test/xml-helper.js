@@ -9,52 +9,56 @@ import {
 var BPMN_XSD = 'test/fixtures/xsd/BPMN20.xsd';
 
 
-export function fromFile(moddle, file, done) {
-  return fromFilePart(moddle, file, 'bpmn:Definitions', done);
+export function fromFile(moddle, file) {
+  return fromFilePart(moddle, file, 'bpmn:Definitions');
 }
 
-export function fromFilePart(moddle, file, type, done) {
+export function fromFilePart(moddle, file, type) {
   var fileContents = readFile(file);
 
-  moddle.fromXML(fileContents, type, done);
+  return moddle.fromXML(fileContents, type);
 }
 
-export function fromValidFile(moddle, file, done) {
+export function fromValidFile(moddle, file) {
   var fileContents = readFile(file);
 
-  validate(null, fileContents, function(err) {
+  return new Promise(function(resolve, reject) {
 
-    if (err) {
-      return done(err);
-    }
+    validate(fileContents).then(function() {
 
-    moddle.fromXML(fileContents, 'bpmn:Definitions', done);
+      moddle.fromXML(fileContents, 'bpmn:Definitions').then(function(result) {
+
+        return resolve(result);
+      }).catch(function(err) {
+
+        return reject(err);
+      });
+    }).catch(function(err) {
+      return reject(err);
+    });
   });
 }
 
-
-export function toXML(element, opts, done) {
-  element.$model.toXML(element, opts, done);
+export function toXML(element, opts) {
+  return element.$model.toXML(element, opts);
 }
 
+export function validate(xml) {
 
-export function validate(err, xml, done) {
+  return new Promise(function(resolve, reject) {
 
-  if (err) {
-    return done(err);
-  }
-
-  if (!xml) {
-    return done(new Error('XML is not defined'));
-  }
-
-  SchemaValidator.validateXML(xml, BPMN_XSD, function(err, result) {
-
-    if (err) {
-      return done(err);
+    if (!xml) {
+      return reject(new Error('XML is not defined'));
     }
 
-    expect(result.valid).to.be.true;
-    done();
+    SchemaValidator.validateXML(xml, BPMN_XSD, function(err, result) {
+
+      if (err) {
+        return reject(err);
+      }
+
+      expect(result.valid).to.be.true;
+      return resolve({});
+    });
   });
 }
