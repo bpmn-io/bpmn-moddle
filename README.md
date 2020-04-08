@@ -4,7 +4,7 @@
 
 Read and write BPMN 2.0 diagram files in NodeJS and the browser.
 
-__bpmn-moddle__ uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/) to validate the input and produce correct BPMN 2.0 XML. 
+__bpmn-moddle__ uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/) to validate the input and produce correct BPMN 2.0 XML.
 
 
 ## Usage
@@ -14,9 +14,9 @@ Get the library via [npm package](https://www.npmjs.org/package/bpmn-moddle). Co
 ```javascript
 import BpmnModdle from 'bpmn-moddle';
 
-var moddle = new BpmnModdle();
+const moddle = new BpmnModdle();
 
-var xmlStr =
+const xmlStr =
   '<?xml version="1.0" encoding="UTF-8"?>' +
   '<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
                      'id="empty-definitions" ' +
@@ -24,22 +24,19 @@ var xmlStr =
   '</bpmn2:definitions>';
 
 
-moddle.fromXML(xmlStr, function(err, definitions) {
+const {
+  rootElement: definitions
+} = await moddle.fromXML(xmlStr);
 
-  // update id attribute
-  definitions.set('id', 'NEW ID');
+// update id attribute
+definitions.set('id', 'NEW ID');
 
-  // add a root element
-  var bpmnProcess = moddle.create('bpmn:Process', { id: 'MyProcess_1' });
-  definitions.get('rootElements').push(bpmnProcess);
+// add a root element
+const bpmnProcess = moddle.create('bpmn:Process', { id: 'MyProcess_1' });
+definitions.get('rootElements').push(bpmnProcess);
 
-  moddle.toXML(definitions, function(err, xmlStrUpdated) {
-
-    // xmlStrUpdated contains new id and the added process
-
-  });
-
-});
+// xmlStrUpdated contains new id and the added process
+const xmlStrUpdated = await moddle.toXML(definitions);
 ```
 
 
