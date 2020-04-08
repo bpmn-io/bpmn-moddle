@@ -8,8 +8,7 @@ import {
 import droolsPackage from '../fixtures/json/model/drools';
 
 import {
-  assign,
-  isFunction
+  assign
 } from 'min-dash';
 
 
@@ -19,58 +18,50 @@ describe('bpmn-moddle - integration', function() {
 
     var moddle = createModdle({ drools: droolsPackage });
 
-    function read(xml, root, opts, callback) {
-      return moddle.fromXML(xml, root, opts, callback);
+    function read(xml, root, opts) {
+      return moddle.fromXML(xml, root, opts);
     }
 
-    function fromFile(file, root, opts, callback) {
+    function fromFile(file, root, opts) {
       var contents = readFile('test/fixtures/bpmn/' + file);
-      return read(contents, root, opts, callback);
+      return read(contents, root, opts);
     }
 
-    function write(element, options, callback) {
-      if (isFunction(options)) {
-        callback = options;
-        options = {};
-      }
-
+    function write(element, options) {
       // skip preamble for tests
       options = assign({ preamble: false }, options);
 
-      moddle.toXML(element, options, callback);
+      return moddle.toXML(element, options);
     }
 
 
-    it('should import', function(done) {
+    it('should import', async function() {
+
+      // given
+      var expected = {
+        $type: 'bpmn:Process',
+        id: 'Evaluation',
+        isExecutable: false,
+        extensionElements: {
+          $type: 'bpmn:ExtensionElements',
+          values: [
+            {
+              $type: 'drools:Import',
+              name: 'com.example.model.User'
+            }
+          ]
+        }
+      };
 
       // when
-      fromFile('extension/drools.part.bpmn', 'bpmn:Process', function(err, result) {
+      var result = await fromFile('extension/drools.part.bpmn', 'bpmn:Process');
 
-        var expected = {
-          $type: 'bpmn:Process',
-          id: 'Evaluation',
-          isExecutable: false,
-          extensionElements: {
-            $type: 'bpmn:ExtensionElements',
-            values: [
-              {
-                $type: 'drools:Import',
-                name: 'com.example.model.User'
-              }
-            ]
-          }
-        };
-
-        // then
-        expect(result).to.jsonEqual(expected);
-
-        done(err);
-      });
-
+      // then
+      expect(result.rootElement).to.jsonEqual(expected);
     });
 
 
-    it('should export', function(done) {
+    it('should export', async function() {
 
       // given
       var importElement = moddle.create('drools:Import', {
@@ -94,17 +85,10 @@ describe('bpmn-moddle - integration', function() {
         '</bpmn:process>';
 
       // when
-      write(processElement, function(err, result) {
+      var { xml } = await write(processElement);
 
-        if (err) {
-          return done(err);
-        }
-
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done(err);
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
   });
