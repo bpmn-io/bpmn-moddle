@@ -17,8 +17,8 @@ describe('bpmn-moddle - integration', function() {
 
     var moddle = createModdle({ camunda: camundaPackage });
 
-    function fromFile(file, done) {
-      parseFromFile(moddle, file, done);
+    function fromFile(file) {
+      return parseFromFile(moddle, file);
     }
 
 
@@ -27,20 +27,14 @@ describe('bpmn-moddle - integration', function() {
       this.timeout(15000);
 
 
-      it('inputOutput', function(done) {
+      it('inputOutput', async function() {
 
         // given
-        fromFile('test/fixtures/bpmn/extension/camunda/inputOutput.bpmn', function(err, result) {
+        var result = await fromFile('test/fixtures/bpmn/extension/camunda/inputOutput.bpmn');
 
-          if (err) {
-            return done(err);
-          }
-
-          // when
-          toXML(result, { format: true }, function(err, xml) {
-            validate(err, xml, done);
-          });
-        });
+        // when
+        var { xml } = await toXML(result.rootElement, { format: true });
+        await validate(xml);
       });
 
     });

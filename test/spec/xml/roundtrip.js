@@ -18,14 +18,14 @@ describe('bpmn-moddle - roundtrip', function() {
 
   var moddle = createModdle();
 
-  function fromFile(file, done) {
-    fromValidFile(moddle, file, done);
+  function fromFile(file) {
+    return fromValidFile(moddle, file);
   }
 
 
   describe('should serialize valid BPMN 2.0 xml after read', function() {
 
-    it('home-made bpmn model', function(done) {
+    it('home-made bpmn model', async function() {
 
       var definitions = moddle.create('bpmn:Definitions', { targetNamespace: 'http://foo' });
 
@@ -36,15 +36,14 @@ describe('bpmn-moddle - roundtrip', function() {
       definitions.get('rootElements').push(processElement);
 
       // when
-      toXML(definitions, { format: true }, function(err, xml) {
+      var { xml } = await toXML(definitions, { format: true });
 
-        // then
-        validate(err, xml, done);
-      });
+      // then
+      await validate(xml);
     });
 
 
-    it('obscure ids model', function(done) {
+    it('obscure ids model', async function() {
 
       var definitions = moddle.create('bpmn:Definitions', {
         'xmlns:foo': 'http://foo-ns',
@@ -65,15 +64,14 @@ describe('bpmn-moddle - roundtrip', function() {
       });
 
       // when
-      toXML(definitions, { format: true }, function(err, xml) {
+      var { xml } = await toXML(definitions, { format: true });
 
-        // then
-        validate(err, xml, done);
-      });
+      // then
+      await validate(xml);
     });
 
 
-    it('ioSpecification', function(done) {
+    it('ioSpecification', async function() {
 
       // given
       var definitions = moddle.create('bpmn:Definitions', { targetNamespace: 'http://foo' });
@@ -103,15 +101,14 @@ describe('bpmn-moddle - roundtrip', function() {
       definitions.get('rootElements').push(processElement);
 
       // when
-      toXML(definitions, { format: true }, function(err, xml) {
+      var { xml } = await toXML(definitions, { format: true });
 
-        // then
-        validate(err, xml, done);
-      });
+      // then
+      await validate(xml);
     });
 
 
-    it('properties', function(done) {
+    it('properties', async function() {
 
       // given
       var definitions = moddle.create('bpmn:Definitions', { targetNamespace: 'http://foo' });
@@ -132,494 +129,326 @@ describe('bpmn-moddle - roundtrip', function() {
       definitions.get('rootElements').push(processElement);
 
       // when
-      toXML(definitions, { format: true }, function(err, xml) {
+      var { xml } = await toXML(definitions, { format: true });
 
-        // then
-        validate(err, xml, done);
-      });
+      // then
+      await validate(xml);
     });
 
 
-    it('extension attributes', function(done) {
+    it('extension attributes', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/extension-attributes.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/extension-attributes.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('extension attributes on expression', function(done) {
+    it('extension attributes on expression', async function() {
 
       // given
-      fromFilePart(moddle, 'test/fixtures/bpmn/expression-extension.part.bpmn', 'bpmn:ResourceAssignmentExpression', function(err, result, context) {
+      var result = await fromFilePart(moddle, 'test/fixtures/bpmn/expression-extension.part.bpmn', 'bpmn:ResourceAssignmentExpression');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-
-          expect(xml).to.contain(
-            '<bpmn:expression ' +
+      expect(xml).to.contain(
+        '<bpmn:expression ' +
                 'id="ID_0hnlswl" ' +
                 'myNs:expressionType="Constant">' +
               'fgdfgdfg' +
             '</bpmn:expression>'
-          );
+      );
 
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
     });
 
 
-    it('multi instance loop characteristics', function(done) {
+    it('multi instance loop characteristics', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/multiInstanceLoopCharacteristics.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/multiInstanceLoopCharacteristics.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('Expression without xsi:type', function(done) {
+    it('Expression without xsi:type', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/expression-plain.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/expression-plain.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
+      // we are serializing xsi:type, even though
+      // it is the default
+      expect(xml).not.to.contain('xsi:type="bpmn:tExpression');
 
-          if (err) {
-            return done(err);
-          }
-
-          // we are serializing xsi:type, even though
-          // it is the default
-          expect(xml).not.to.contain('xsi:type="bpmn:tExpression');
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
 
     });
 
 
-    it('documentation / extensionElements order', function(done) {
+    it('documentation / extensionElements order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/documentation-extension-elements.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/documentation-extension-elements.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('activity children order', function(done) {
+    it('activity children order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/activity-children.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/activity-children.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('lane children order', function(done) {
+    it('lane children order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/lane-children.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/lane-children.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('conversation children order', function(done) {
+    it('conversation children order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/conversation-children.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/conversation-children.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('process children order', function(done) {
+    it('process children order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/process-children.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/process-children.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('definitions children order', function(done) {
+    it('definitions children order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/definitions-children.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/definitions-children.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('ioSpecification children order', function(done) {
+    it('ioSpecification children order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/inputOutputSpecification-children.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/inputOutputSpecification-children.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('dataInputAssociation assignment order', function(done) {
+    it('dataInputAssociation assignment order', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/data-input-association.assignment.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/data-input-association.assignment.bpmn');
 
-        if (err) {
-          console.log('FAILED TO OPEN DIAGRAM');
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('Participant#interfaceRef', function(done) {
+    it('Participant#interfaceRef', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/participant-interfaceRef.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/participant-interfaceRef.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('ResourceRole#resourceRef', function(done) {
+    it('ResourceRole#resourceRef', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/potentialOwner.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/potentialOwner.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('Operation#messageRef', function(done) {
+    it('Operation#messageRef', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/operation-messageRef.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/operation-messageRef.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
+      // then
+      expect(xml).to.contain('<bpmn:inMessageRef>fooInMessage</bpmn:inMessageRef>');
 
-          // then
-          expect(xml).to.contain('<bpmn:inMessageRef>fooInMessage</bpmn:inMessageRef>');
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
     });
 
 
-    it('di extensions', function(done) {
+    it('di extensions', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/di-extension.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/di-extension.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
+      expect(xml).to.contain('<vendor:baz baz="BAZ" />');
+      expect(xml).to.contain('<vendor:bar>BAR</vendor:bar>');
+      expect(xml).to.contain('<di:extension />');
 
-          expect(xml).to.contain('<vendor:baz baz="BAZ" />');
-          expect(xml).to.contain('<vendor:bar>BAR</vendor:bar>');
-          expect(xml).to.contain('<di:extension />');
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
     });
 
 
-    it('complex processElement / extensionElements', function(done) {
+    it('complex processElement / extensionElements', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/complex.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/complex.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('category', function(done) {
+    it('category', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/category.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/category.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
+      expect(xml).to.contain('sid-afd7e63e-916e-4bd0-a9f0-98cbff749193');
+      expect(xml).to.contain('group with label');
 
-          expect(xml).to.contain('sid-afd7e63e-916e-4bd0-a9f0-98cbff749193');
-          expect(xml).to.contain('group with label');
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
 
     });
 
 
-    it('choreography task', function(done) {
+    it('choreography task', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/choreography-task.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/choreography-task.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
 
     });
 
 
-    it('simple processElement', function(done) {
+    it('simple processElement', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/simple.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/simple.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('xsi:type', function(done) {
+    it('xsi:type', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/xsi-type.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/xsi-type.bpmn');
 
-        if (err) {
-          return done(err);
-        }
-
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          validate(err, xml, done);
-        });
-      });
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
+      await validate(xml);
     });
 
 
-    it('colors', function(done) {
+    it('colors', async function() {
 
-      fromFile('test/fixtures/bpmn/example-colors.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/example-colors.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
     });
 
 
-    it('nested default namespace prefix', function(done) {
+    it('nested default namespace prefix', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/nested-default-namespace-prefix.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/nested-default-namespace-prefix.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
+      // then
+      expect(xml).to.contain('<Entry key="A" value="B" />');
 
-          if (err) {
-            return done(err);
-          }
-
-          // then
-          expect(xml).to.contain('<Entry key="A" value="B" />');
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
     });
 
 
-    it('nested elements no (default) namespace prefix', function(done) {
+    it('nested elements no (default) namespace prefix', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/nested-no-namespace-prefix.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/nested-no-namespace-prefix.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
+      // then
+      expect(xml).to.contain('<Entry key="A" value="B" />');
 
-          if (err) {
-            return done(err);
-          }
-
-          // then
-          expect(xml).to.contain('<Entry key="A" value="B" />');
-
-          validate(err, xml, done);
-        });
-      });
+      await validate(xml);
     });
 
 
-    it('conflicting ns prefix', function(done) {
+    it('conflicting ns prefix', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/namespace-prefix-collision.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/namespace-prefix-collision.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-
-          if (err) {
-            return done(err);
-          }
-
-          // then
-          validate(err, xml, done);
-        });
-      });
+      // then
+      await validate(xml);
     });
 
   });
@@ -629,20 +458,14 @@ describe('bpmn-moddle - roundtrip', function() {
 
     describe('signavio', function() {
 
-      it('complex processElement', function(done) {
+      it('complex processElement', async function() {
 
         // given
-        fromFile('test/fixtures/bpmn/vendor/signavio-complex-no-extensions.bpmn', function(err, result) {
+        var result = await fromFile('test/fixtures/bpmn/vendor/signavio-complex-no-extensions.bpmn');
 
-          if (err) {
-            return done(err);
-          }
-
-          // when
-          toXML(result, { format: true }, function(err, xml) {
-            validate(err, xml, done);
-          });
-        });
+        // when
+        var { xml } = await toXML(result.rootElement, { format: true });
+        await validate(xml);
       });
 
     });
@@ -650,28 +473,22 @@ describe('bpmn-moddle - roundtrip', function() {
 
     describe('yaoqiang', function() {
 
-      it('event definitions', function(done) {
+      it('event definitions', async function() {
 
         // given
-        fromFile('test/fixtures/bpmn/vendor/yaoqiang-event-definitions.bpmn', function(err, result, context) {
+        var result = await fromFile('test/fixtures/bpmn/vendor/yaoqiang-event-definitions.bpmn');
 
-          if (err) {
-            return done(err);
-          }
+        var warningsStr = result.warnings.map(function(w) {
+          return '\n\t- ' + w.message;
+        }).join('');
 
-          var warningsStr = context.warnings.map(function(w) {
-            return '\n\t- ' + w.message;
-          }).join('');
+        if (warningsStr) {
+          throw new Error('import warnings: ' + warningsStr);
+        }
 
-          if (warningsStr) {
-            return done(new Error('import warnings: ' + warningsStr));
-          }
-
-          // when
-          toXML(result, { format: true }, function(err, xml) {
-            validate(err, xml, done);
-          });
-        });
+        // when
+        var { xml } = await toXML(result.rootElement, { format: true });
+        await validate(xml);
       });
 
     });
@@ -679,28 +496,22 @@ describe('bpmn-moddle - roundtrip', function() {
 
     describe('bizagi', function() {
 
-      it('event definitions', function(done) {
+      it('event definitions', async function() {
 
         // given
-        fromFile('test/fixtures/bpmn/vendor/bizagi-nested-ns-definition.bpmn', function(err, result, context) {
+        var result = await fromFile('test/fixtures/bpmn/vendor/bizagi-nested-ns-definition.bpmn');
 
-          if (err) {
-            return done(err);
-          }
+        var warningsStr = result.warnings.map(function(w) {
+          return '\n\t- ' + w.message;
+        }).join('');
 
-          var warningsStr = context.warnings.map(function(w) {
-            return '\n\t- ' + w.message;
-          }).join('');
+        if (warningsStr) {
+          throw new Error('import warnings: ' + warningsStr);
+        }
 
-          if (warningsStr) {
-            return done(new Error('import warnings: ' + warningsStr));
-          }
-
-          // when
-          toXML(result, { format: true }, function(err, xml) {
-            validate(err, xml, done);
-          });
-        });
+        // when
+        var { xml } = await toXML(result.rootElement, { format: true });
+        await validate(xml);
       });
 
     });
