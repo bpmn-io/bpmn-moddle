@@ -1,8 +1,7 @@
 import expect from '../../expect';
 
 import {
-  assign,
-  isFunction
+  assign
 } from 'min-dash';
 
 import {
@@ -17,54 +16,45 @@ describe('bpmn-moddle - expr', function() {
     expr: require('../../fixtures/json/model/expr')
   });
 
-  function read(xml, root, opts, callback) {
-    return moddle.fromXML(xml, root, opts, callback);
+  function read(xml, root, opts) {
+    return moddle.fromXML(xml, root, opts);
   }
 
-  function fromFile(file, root, opts, callback) {
+  function fromFile(file, root, opts) {
     var contents = readFile(file);
-    return read(contents, root, opts, callback);
+    return read(contents, root, opts);
   }
 
-  function write(element, options, callback) {
-    if (isFunction(options)) {
-      callback = options;
-      options = {};
-    }
-
+  function write(element, options) {
     // skip preamble for tests
     options = assign({ preamble: false }, options);
 
-    moddle.toXML(element, options, callback);
+    return moddle.toXML(element, options);
   }
 
 
-  it('should read expr:Guard (sub-class of bpmn:FormalExpression)', function(done) {
+  it('should read expr:Guard (sub-class of bpmn:FormalExpression)', async function() {
 
     // given
+    var expected = {
+      $type: 'bpmn:SequenceFlow',
+      id: 'SequenceFlow_1',
+
+      conditionExpression: {
+        $type: 'expr:Guard',
+        body: '${ foo < bar }'
+      }
+    };
 
     // when
-    fromFile('test/spec/extension/expr-Guard.part.bpmn', 'bpmn:SequenceFlow', function(err, result) {
+    var result = await fromFile('test/spec/extension/expr-Guard.part.bpmn', 'bpmn:SequenceFlow');
 
-      var expected = {
-        $type: 'bpmn:SequenceFlow',
-        id: 'SequenceFlow_1',
-
-        conditionExpression: {
-          $type: 'expr:Guard',
-          body: '${ foo < bar }'
-        }
-      };
-
-      // then
-      expect(result).to.jsonEqual(expected);
-
-      done(err);
-    });
+    // then
+    expect(result.rootElement).to.jsonEqual(expected);
   });
 
 
-  it('should write expr:Guard (sub-class of bpmn:FormalExpression)', function(done) {
+  it('should write expr:Guard (sub-class of bpmn:FormalExpression)', async function() {
 
     // given
     var sequenceFlow = moddle.create('bpmn:SequenceFlow', {
@@ -82,17 +72,10 @@ describe('bpmn-moddle - expr', function() {
       '</bpmn:sequenceFlow>\n';
 
     // when
-    write(sequenceFlow, { format: true }, function(err, result) {
+    var { xml } = await write(sequenceFlow, { format: true });
 
-      if (err) {
-        return done(err);
-      }
-
-      // then
-      expect(result).to.eql(expectedXML);
-
-      done(err);
-    });
+    // then
+    expect(xml).to.eql(expectedXML);
   });
 
 });
