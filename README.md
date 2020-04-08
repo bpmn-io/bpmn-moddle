@@ -36,7 +36,9 @@ const bpmnProcess = moddle.create('bpmn:Process', { id: 'MyProcess_1' });
 definitions.get('rootElements').push(bpmnProcess);
 
 // xmlStrUpdated contains new id and the added process
-const xmlStrUpdated = await moddle.toXML(definitions);
+const {
+  xml: xmlStrUpdated 
+} = await moddle.toXML(definitions);
 ```
 
 
