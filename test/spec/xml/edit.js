@@ -14,32 +14,25 @@ describe('bpmn-moddle - edit', function() {
 
   var moddle = createModdle();
 
-  function fromFile(file, done) {
-    readFromFile(moddle, file, done);
+  function fromFile(file) {
+    return readFromFile(moddle, file);
   }
 
 
   describe('save after change', function() {
 
-    it('should serialize changed name', function(done) {
+    it('should serialize changed name', async function() {
 
       // given
-      fromFile('test/fixtures/bpmn/simple.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/simple.bpmn');
 
-        if (err) {
-          return done(err);
-        }
+      result.rootElement.rootElements[0].name = 'OTHER PROCESS';
 
-        result.rootElements[0].name = 'OTHER PROCESS';
+      // when
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-        // when
-        toXML(result, { format: true }, function(err, xml) {
-          expect(xml).to.contain('name="OTHER PROCESS"');
-
-          done(err);
-        });
-      });
-
+      // then
+      expect(xml).to.contain('name="OTHER PROCESS"');
     });
 
   });
@@ -47,34 +40,29 @@ describe('bpmn-moddle - edit', function() {
 
   describe('dataObjectRef', function() {
 
-    it('should update', function(done) {
+    it('should update', async function() {
 
-      fromFile('test/fixtures/bpmn/data-object-reference.bpmn', function(err, result) {
+      var result = await fromFile('test/fixtures/bpmn/data-object-reference.bpmn');
 
-        // given
-        var process = result.rootElements[0],
-            dataObjectReference = process.flowElements[0];
+      // given
+      var process = result.rootElement.rootElements[0],
+          dataObjectReference = process.flowElements[0];
 
-        // when
-        // creating new data object
-        var dataObject_2 = moddle.create('bpmn:DataObject', { id: 'dataObject_2' });
+      // when
+      // creating new data object
+      var dataObject_2 = moddle.create('bpmn:DataObject', { id: 'dataObject_2' });
 
-        // adding data object to its parent (makes sure it is contained in the XML)
-        process.flowElements.push(dataObject_2);
+      // adding data object to its parent (makes sure it is contained in the XML)
+      process.flowElements.push(dataObject_2);
 
-        // set reference to the new data object
-        dataObjectReference.dataObjectRef = dataObject_2;
+      // set reference to the new data object
+      dataObjectReference.dataObjectRef = dataObject_2;
 
-        toXML(result, { format: true }, function(err, xml) {
+      var { xml } = await toXML(result.rootElement, { format: true });
 
-          // then
-          expect(xml).to.contain('<bpmn:dataObject id="dataObject_2" />');
-          expect(xml).to.contain('<bpmn:dataObjectReference id="DataObjectReference_1" dataObjectRef="dataObject_2" />');
-
-          done(err);
-        });
-
-      });
+      // then
+      expect(xml).to.contain('<bpmn:dataObject id="dataObject_2" />');
+      expect(xml).to.contain('<bpmn:dataObjectReference id="DataObjectReference_1" dataObjectRef="dataObject_2" />');
     });
   });
 });
