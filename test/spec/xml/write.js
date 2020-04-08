@@ -1,8 +1,7 @@
 import expect from '../../expect';
 
 import {
-  assign,
-  isFunction
+  assign
 } from 'min-dash';
 
 import {
@@ -15,25 +14,20 @@ describe('bpmn-moddle - write', function() {
   var moddle = createModdle();
 
 
-  function write(element, options, callback) {
-    if (isFunction(options)) {
-      callback = options;
-      options = {};
-    }
+  function write(element, options) {
 
     // skip preamble for tests
     options = assign({ preamble: false }, options);
 
-    moddle.toXML(element, options, callback);
+    return moddle.toXML(element, options);
   }
-
 
 
   describe('should export types', function() {
 
     describe('bpmn', function() {
 
-      it('Definitions (empty)', function(done) {
+      it('Definitions (empty)', async function() {
 
         // given
         var definitions = moddle.create('bpmn:Definitions');
@@ -42,17 +36,14 @@ describe('bpmn-moddle - write', function() {
           '<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" />';
 
         // when
-        write(definitions, function(err, result) {
+        var { xml } = await write(definitions);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Definitions (participant + interface)', function(done) {
+      it('Definitions (participant + interface)', async function() {
 
         // given
         var interfaceElement = moddle.create('bpmn:Interface', {
@@ -92,17 +83,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:definitions>';
 
         // when
-        write(definitions, function(err, result) {
+        var { xml } = await write(definitions);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('ScriptTask#script', function(done) {
+      it('ScriptTask#script', async function() {
 
         // given
         var scriptTask = moddle.create('bpmn:ScriptTask', {
@@ -118,17 +106,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:scriptTask>';
 
         // when
-        write(scriptTask, function(err, result) {
+        var { xml } = await write(scriptTask);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Task with null property', function(done) {
+      it('Task with null property', async function() {
 
         // given
         var task = moddle.create('bpmn:Task', {
@@ -141,18 +126,14 @@ describe('bpmn-moddle - write', function() {
           '<bpmn:task xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
                            'id="Task_1" />';
 
+        var { xml } = await write(task);
+
         // then
-        write(task, function(err, result) {
-
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('SequenceFlow#conditionExpression', function(done) {
+      it('SequenceFlow#conditionExpression', async function() {
 
         // given
         var sequenceFlow = moddle.create('bpmn:SequenceFlow', {
@@ -169,16 +150,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:sequenceFlow>\n';
 
         // when
-        write(sequenceFlow, { format: true }, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(sequenceFlow, { format: true });
 
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('MultiInstanceLoopCharacteristics', function(done) {
+      it('MultiInstanceLoopCharacteristics', async function() {
 
         // given
         var loopCharacteristics = moddle.create('bpmn:MultiInstanceLoopCharacteristics', {
@@ -214,16 +193,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:multiInstanceLoopCharacteristics>';
 
         // when
-        write(loopCharacteristics, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(loopCharacteristics);
 
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('LinkEventDefinition', function(done) {
+      it('LinkEventDefinition', async function() {
 
         // given
         var definition = moddle.create('bpmn:LinkEventDefinition', { name: '' });
@@ -232,17 +209,14 @@ describe('bpmn-moddle - write', function() {
           '<bpmn:linkEventDefinition xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" name="" />';
 
         // when
-        write(definition, function(err, result) {
+        var { xml } = await write(definition);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('StandardLoopCharacteristics', function(done) {
+      it('StandardLoopCharacteristics', async function() {
 
         // given
         var loopCharacteristics = moddle.create('bpmn:StandardLoopCharacteristics', {
@@ -262,21 +236,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:standardLoopCharacteristics>';
 
         // when
-        write(loopCharacteristics, function(err, result) {
+        var { xml } = await write(loopCharacteristics);
 
-          if (err) {
-            return done(err);
-          }
-
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Process', function(done) {
+      it('Process', async function() {
 
         // given
         var processElement = moddle.create('bpmn:Process', {
@@ -316,16 +283,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:process>';
 
         // when
-        write(processElement, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(processElement);
 
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Activity', function(done) {
+      it('Activity', async function() {
 
         // given
         var activity = moddle.create('bpmn:Activity', {
@@ -357,16 +322,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:activity>';
 
         // when
-        write(activity, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(activity);
 
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('BaseElement#documentation', function(done) {
+      it('BaseElement#documentation', async function() {
 
         // given
         var defs = moddle.create('bpmn:Definitions', {
@@ -385,17 +348,15 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:definitions>';
 
         // when
-        write(defs, function(err, result) {
+        var { xml } = await write(defs);
 
-          // then
-          expect(result).to.eql(expectedXML);
+        // then
+        expect(xml).to.eql(expectedXML);
 
-          done(err);
-        });
       });
 
 
-      it('CallableElement#ioSpecification', function(done) {
+      it('CallableElement#ioSpecification', async function() {
 
         // given
         var callableElement = moddle.create('bpmn:CallableElement', {
@@ -409,17 +370,15 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:callableElement>';
 
         // when
-        write(callableElement, function(err, result) {
+        var { xml } = await write(callableElement);
 
-          // then
-          expect(result).to.eql(expectedXML);
+        // then
+        expect(xml).to.eql(expectedXML);
 
-          done();
-        });
       });
 
 
-      it('ResourceRole#resourceRef', function(done) {
+      it('ResourceRole#resourceRef', async function() {
 
         // given
         var role = moddle.create('bpmn:ResourceRole', {
@@ -433,19 +392,14 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:resourceRole>';
 
         // when
-        write(role, function(err, result) {
+        var { xml } = await write(role);
 
-          // then
-          expect(err).not.to.exist;
-
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('ResourceAssignmentExpression', function(done) {
+      it('ResourceAssignmentExpression', async function() {
 
         // given
         var expression = moddle.create('bpmn:FormalExpression', { body: '${ foo < bar }' });
@@ -467,17 +421,15 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:resourceAssignmentExpression>';
 
         // when
-        write(assignmentExpression, function(err, result, context) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(assignmentExpression);
 
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
 
       });
 
 
-      it('CallActivity#calledElement', function(done) {
+      it('CallActivity#calledElement', async function() {
 
         // given
         var callActivity = moddle.create('bpmn:CallActivity', {
@@ -491,17 +443,14 @@ describe('bpmn-moddle - write', function() {
               'id="CallActivity_1" calledElement="otherProcess" />';
 
         // when
-        write(callActivity, function(err, result) {
+        var { xml } = await write(callActivity);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('ItemDefinition#structureRef', function(done) {
+      it('ItemDefinition#structureRef', async function() {
 
         // given
         var itemDefinition = moddle.create('bpmn:ItemDefinition', {
@@ -515,17 +464,14 @@ describe('bpmn-moddle - write', function() {
                   'structureRef="service:CelsiusToFahrenheitSoapIn" />';
 
         // when
-        write(itemDefinition, function(err, result) {
+        var { xml } = await write(itemDefinition);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('ItemDefinition#structureRef with ns', function(done) {
+      it('ItemDefinition#structureRef with ns', async function() {
 
         // given
         var itemDefinition = moddle.create('bpmn:ItemDefinition', {
@@ -546,16 +492,14 @@ describe('bpmn-moddle - write', function() {
 
 
         // when
-        write(itemDefinition, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(itemDefinition);
 
-          done();
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Operation#implementationRef', function(done) {
+      it('Operation#implementationRef', async function() {
 
         // given
         var operation = moddle.create('bpmn:Operation', {
@@ -569,17 +513,14 @@ describe('bpmn-moddle - write', function() {
                   'implementationRef="foo:operation" />';
 
         // when
-        write(operation, function(err, result) {
+        var { xml } = await write(operation);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Interface#implementationRef', function(done) {
+      it('Interface#implementationRef', async function() {
 
         // given
         var iface = moddle.create('bpmn:Interface', {
@@ -593,17 +534,14 @@ describe('bpmn-moddle - write', function() {
                   'implementationRef="foo:interface" />';
 
         // when
-        write(iface, function(err, result) {
+        var { xml } = await write(iface);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Collaboration', function(done) {
+      it('Collaboration', async function() {
 
         // given
 
@@ -629,16 +567,14 @@ describe('bpmn-moddle - write', function() {
 
 
         // when
-        write(collaboration, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(collaboration);
 
-          done();
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('ExtensionElements', function(done) {
+      it('ExtensionElements', async function() {
 
         // given
         var extensionElements = moddle.create('bpmn:ExtensionElements');
@@ -664,17 +600,14 @@ describe('bpmn-moddle - write', function() {
 
 
         // when
-        write(definitions, function(err, result) {
+        var { xml } = await write(definitions);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('Operation#messageRef', function(done) {
+      it('Operation#messageRef', async function() {
         // given
         var inMessage = moddle.create('bpmn:Message', {
           id: 'fooInMessage'
@@ -697,20 +630,17 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:operation>';
 
         // when
-        write(operation, function(err, result) {
+        var { xml } = await write(operation);
 
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
     });
 
 
     describe('bpmndi', function() {
 
-      it('BPMNDiagram', function(done) {
+      it('BPMNDiagram', async function() {
 
         // given
         var diagram = moddle.create('bpmndi:BPMNDiagram', { name: 'FOO', resolution: 96.5 });
@@ -721,16 +651,14 @@ describe('bpmn-moddle - write', function() {
                               'resolution="96.5" />';
 
         // when
-        write(diagram, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(diagram);
 
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
 
-      it('BPMNShape', function(done) {
+      it('BPMNShape', async function() {
 
         // given
         var bounds = moddle.create('dc:Bounds', { x: 100.0, y: 200.0, width: 50.0, height: 50.0 });
@@ -743,15 +671,13 @@ describe('bpmn-moddle - write', function() {
           '</bpmndi:BPMNShape>';
 
         // when
-        write(bpmnShape, function(err, result) {
-          // then
-          expect(result).to.eql(expectedXML);
+        var { xml } = await write(bpmnShape);
 
-          done(err);
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
-      it('BPMNShape (colored)', function(done) {
+      it('BPMNShape (colored)', async function() {
 
         // given
         var bpmnShape = moddle.create('bpmndi:BPMNShape', {
@@ -765,20 +691,13 @@ describe('bpmn-moddle - write', function() {
                             'bioc:stroke="#00ff00" bioc:fill="#ff0000" />';
 
         // when
-        write(bpmnShape, function(err, result) {
+        var { xml } = await write(bpmnShape);
 
-          if (err) {
-            done(err);
-          }
-
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done();
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
-      it('BPMNEdge (colored)', function(done) {
+      it('BPMNEdge (colored)', async function() {
 
         // given
         var bpmnEdge = moddle.create('bpmndi:BPMNEdge', {
@@ -792,17 +711,10 @@ describe('bpmn-moddle - write', function() {
                             'bioc:stroke="#00ff00" bioc:fill="#ff0000" />';
 
         // when
-        write(bpmnEdge, function(err, result) {
+        var { xml } = await write(bpmnEdge);
 
-          if (err) {
-            done(err);
-          }
-
-          // then
-          expect(result).to.eql(expectedXML);
-
-          done();
-        });
+        // then
+        expect(xml).to.eql(expectedXML);
       });
 
     });
@@ -812,7 +724,7 @@ describe('bpmn-moddle - write', function() {
 
   describe('should export extensions', function() {
 
-    it('manually added custom namespace', function(done) {
+    it('manually added custom namespace', async function() {
 
       // given
       var definitions = moddle.create('bpmn:Definitions');
@@ -826,21 +738,14 @@ describe('bpmn-moddle - write', function() {
                           'xmlns:foo="http://foobar" />';
 
       // when
-      write(definitions, function(err, result) {
+      var { xml } = await write(definitions);
 
-        if (err) {
-          return done(err);
-        }
-
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done(err);
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
 
-    it('attributes on root', function(done) {
+    it('attributes on root', async function() {
 
       // given
       var definitions = moddle.create('bpmn:Definitions');
@@ -855,17 +760,14 @@ describe('bpmn-moddle - write', function() {
                           'xmlns:foo="http://foobar" foo:bar="BAR" />';
 
       // when
-      write(definitions, function(err, result) {
+      var { xml } = await write(definitions);
 
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done(err);
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
 
-    it('attributes on nested element', function(done) {
+    it('attributes on nested element', async function() {
 
       // given
       var signal = moddle.create('bpmn:Signal', {
@@ -884,17 +786,14 @@ describe('bpmn-moddle - write', function() {
         '</bpmn:definitions>';
 
       // when
-      write(definitions, function(err, result) {
+      var { xml } = await write(definitions);
 
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done(err);
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
 
-    it('attributes and namespace on nested element', function(done) {
+    it('attributes and namespace on nested element', async function() {
 
       // given
       var signal = moddle.create('bpmn:Signal', {
@@ -912,17 +811,14 @@ describe('bpmn-moddle - write', function() {
         '</bpmn:definitions>';
 
       // when
-      write(definitions, function(err, result) {
+      var { xml } = await write(definitions);
 
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done(err);
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
 
-    it('attributes and namespace on root + nested element', function(done) {
+    it('attributes and namespace on root + nested element', async function() {
 
       // given
       var signal = moddle.create('bpmn:Signal', {
@@ -942,17 +838,14 @@ describe('bpmn-moddle - write', function() {
         '</bpmn:definitions>';
 
       // when
-      write(definitions, function(err, result) {
+      var { xml } = await write(definitions);
 
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done(err);
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
 
-    it('elements via bpmn:extensionElements', function(done) {
+    it('elements via bpmn:extensionElements', async function() {
 
       // given
 
@@ -983,21 +876,14 @@ describe('bpmn-moddle - write', function() {
 
 
       // when
-      write(definitions, function(err, result) {
+      var { xml } = await write(definitions);
 
-        if (err) {
-          return done(err);
-        }
-
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done();
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
 
-    it('nested elements via bpmn:extensionElements', function(done) {
+    it('nested elements via bpmn:extensionElements', async function() {
 
       var camundaNs = 'http://camunda.org/schema/1.0/bpmn';
 
@@ -1033,17 +919,10 @@ describe('bpmn-moddle - write', function() {
           '</bpmn:userTask>';
 
       // when
-      write(userTask, function(err, result) {
+      var { xml } = await write(userTask);
 
-        if (err) {
-          return done(err);
-        }
-
-        // then
-        expect(result).to.eql(expectedXML);
-
-        done();
-      });
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
   });
