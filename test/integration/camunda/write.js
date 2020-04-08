@@ -1,8 +1,7 @@
 import expect from '../../expect';
 
 import {
-  assign,
-  isFunction
+  assign
 } from 'min-dash';
 
 import {
@@ -20,22 +19,17 @@ describe('bpmn-moddle - integration', function() {
 
       var moddle = createModdle({ camunda: camundaPackage });
 
-      function write(element, options, callback) {
-        if (isFunction(options)) {
-          callback = options;
-          options = {};
-        }
-
+      function write(element, options) {
         // skip preamble for tests
         options = assign({ preamble: false }, options);
 
-        moddle.toXML(element, options, callback);
+        return moddle.toXML(element, options);
       }
 
 
       describe('should export camunda types', function() {
 
-        it('ServiceTaskLike', function(done) {
+        it('ServiceTaskLike', async function() {
 
           // given
           var serviceTask = moddle.create('bpmn:ServiceTask', { javaDelegate: 'FOO' });
@@ -49,21 +43,14 @@ describe('bpmn-moddle - integration', function() {
                             'camunda:javaDelegate="FOO" />';
 
           // when
-          write(serviceTask, function(err, result) {
+          var { xml } = await write(serviceTask);
 
-            if (err) {
-              return done(err);
-            }
-
-            // then
-            expect(result).to.eql(expectedXML);
-
-            done(err);
-          });
+          // then
+          expect(xml).to.eql(expectedXML);
         });
 
 
-        it('InputOutput - list', function(done) {
+        it('InputOutput - list', async function() {
 
           // given
           var outputParameter = moddle.create('camunda:OutputParameter', {
@@ -95,21 +82,14 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          var { xml } = await write(inputOutput);
 
-            if (err) {
-              return done(err);
-            }
-
-            // then
-            expect(result).to.eql(expectedXML);
-
-            done(err);
-          });
+          // then
+          expect(xml).to.eql(expectedXML);
         });
 
 
-        it('InputOutput - map', function(done) {
+        it('InputOutput - map', async function() {
 
           // given
           var inputParameter = moddle.create('camunda:InputParameter', {
@@ -150,21 +130,14 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          var { xml } = await write(inputOutput);
 
-            if (err) {
-              return done(err);
-            }
-
-            // then
-            expect(result).to.eql(expectedXML);
-
-            done(err);
-          });
+          // then
+          expect(xml).to.eql(expectedXML);
         });
 
 
-        it('InputOutput - mixed', function(done) {
+        it('InputOutput - mixed', async function() {
 
           // given
           var inputParameter = moddle.create('camunda:InputParameter', {
@@ -196,21 +169,14 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          var { xml } = await write(inputOutput);
 
-            if (err) {
-              return done(err);
-            }
-
-            // then
-            expect(result).to.eql(expectedXML);
-
-            done(err);
-          });
+          // then
+          expect(xml).to.eql(expectedXML);
         });
 
 
-        it('InputOutput - plain', function(done) {
+        it('InputOutput - plain', async function() {
 
 
           // given
@@ -231,17 +197,10 @@ describe('bpmn-moddle - integration', function() {
 
 
           // when
-          write(inputOutput, function(err, result) {
+          var { xml } = await write(inputOutput);
 
-            if (err) {
-              return done(err);
-            }
-
-            // then
-            expect(result).to.eql(expectedXML);
-
-            done(err);
-          });
+          // then
+          expect(xml).to.eql(expectedXML);
         });
 
       });
