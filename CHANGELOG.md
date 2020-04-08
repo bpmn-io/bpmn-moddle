@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.0.4
+
+* `CHORE`: bump to `moddle-xml@8.0.5`
+
 ## 6.0.3
 
 * `CHORE`: bump to `moddle-xml@8.0.3`
