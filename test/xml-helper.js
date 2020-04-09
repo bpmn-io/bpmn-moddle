@@ -22,20 +22,8 @@ export function fromFilePart(moddle, file, type) {
 export function fromValidFile(moddle, file) {
   var fileContents = readFile(file);
 
-  return new Promise(function(resolve, reject) {
-
-    validate(fileContents).then(function() {
-
-      moddle.fromXML(fileContents, 'bpmn:Definitions').then(function(result) {
-
-        return resolve(result);
-      }).catch(function(err) {
-
-        return reject(err);
-      });
-    }).catch(function(err) {
-      return reject(err);
-    });
+  return validate(fileContents).then(function() {
+    return moddle.fromXML(fileContents, 'bpmn:Definitions');
   });
 }
 
@@ -57,8 +45,13 @@ export function validate(xml) {
         return reject(err);
       }
 
-      expect(result.valid).to.be.true;
-      return resolve({});
+      try {
+        expect(result.valid).to.be.true;
+      } catch (err) {
+        return reject(err);
+      }
+
+      return resolve();
     });
   });
 }
