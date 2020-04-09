@@ -30,10 +30,16 @@ describe('bpmn-moddle - integration', function() {
       it('inputOutput', async function() {
 
         // given
-        var result = await fromFile('test/fixtures/bpmn/extension/camunda/inputOutput.bpmn');
+        var {
+          rootElement
+        } = await fromFile('test/fixtures/bpmn/extension/camunda/inputOutput.bpmn');
 
         // when
-        var { xml } = await toXML(result.rootElement, { format: true });
+        var {
+          xml
+        } = await toXML(rootElement, { format: true });
+
+        // then
         await validate(xml);
       });
 

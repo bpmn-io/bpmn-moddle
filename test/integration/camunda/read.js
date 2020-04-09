@@ -50,10 +50,12 @@ describe('bpmn-moddle - integration', function() {
           };
 
           // when
-          var result = await fromFile('extension/camunda/inputOutput-list.part.bpmn', 'camunda:InputOutput');
+          var {
+            rootElement
+          } = await fromFile('extension/camunda/inputOutput-list.part.bpmn', 'camunda:InputOutput');
 
           // then
-          expect(result.rootElement).to.jsonEqual(expected);
+          expect(rootElement).to.jsonEqual(expected);
         });
 
 
@@ -93,10 +95,12 @@ describe('bpmn-moddle - integration', function() {
           };
 
           // when
-          var result = await fromFile('extension/camunda/inputOutput-map.part.bpmn', 'camunda:InputOutput');
+          var {
+            rootElement
+          } = await fromFile('extension/camunda/inputOutput-map.part.bpmn', 'camunda:InputOutput');
 
           // then
-          expect(result.rootElement).to.jsonEqual(expected);
+          expect(rootElement).to.jsonEqual(expected);
         });
 
 
@@ -125,10 +129,12 @@ describe('bpmn-moddle - integration', function() {
           };
 
           // when
-          var result = await fromFile('extension/camunda/inputOutput-mixed.part.bpmn', 'camunda:InputOutput');
+          var {
+            rootElement
+          } = await fromFile('extension/camunda/inputOutput-mixed.part.bpmn', 'camunda:InputOutput');
 
           // then
-          expect(result.rootElement).to.jsonEqual(expected);
+          expect(rootElement).to.jsonEqual(expected);
         });
 
 
@@ -147,10 +153,12 @@ describe('bpmn-moddle - integration', function() {
           };
 
           // when
-          var result = await fromFile('extension/camunda/inputOutput-plain.part.bpmn', 'camunda:InputOutput');
+          var {
+            rootElement
+          } = await fromFile('extension/camunda/inputOutput-plain.part.bpmn', 'camunda:InputOutput');
 
           // then
-          expect(result.rootElement).to.jsonEqual(expected);
+          expect(rootElement).to.jsonEqual(expected);
         });
 
 
@@ -172,10 +180,12 @@ describe('bpmn-moddle - integration', function() {
           };
 
           // when
-          var result = await fromFile('extension/camunda/inputOutput-script.part.bpmn', 'camunda:InputOutput');
+          var {
+            rootElement
+          } = await fromFile('extension/camunda/inputOutput-script.part.bpmn', 'camunda:InputOutput');
 
           // then
-          expect(result.rootElement).to.jsonEqual(expected);
+          expect(rootElement).to.jsonEqual(expected);
         });
       });
 
