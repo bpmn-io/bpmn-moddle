@@ -36,7 +36,9 @@ describe('bpmn-moddle - roundtrip', function() {
       definitions.get('rootElements').push(processElement);
 
       // when
-      var { xml } = await toXML(definitions, { format: true });
+      var {
+        xml
+      } = await toXML(definitions, { format: true });
 
       // then
       await validate(xml);
@@ -64,7 +66,9 @@ describe('bpmn-moddle - roundtrip', function() {
       });
 
       // when
-      var { xml } = await toXML(definitions, { format: true });
+      var {
+        xml
+      } = await toXML(definitions, { format: true });
 
       // then
       await validate(xml);
@@ -101,7 +105,9 @@ describe('bpmn-moddle - roundtrip', function() {
       definitions.get('rootElements').push(processElement);
 
       // when
-      var { xml } = await toXML(definitions, { format: true });
+      var {
+        xml
+      } = await toXML(definitions, { format: true });
 
       // then
       await validate(xml);
@@ -129,7 +135,9 @@ describe('bpmn-moddle - roundtrip', function() {
       definitions.get('rootElements').push(processElement);
 
       // when
-      var { xml } = await toXML(definitions, { format: true });
+      var {
+        xml
+      } = await toXML(definitions, { format: true });
 
       // then
       await validate(xml);
@@ -139,10 +147,16 @@ describe('bpmn-moddle - roundtrip', function() {
     it('extension attributes', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/extension-attributes.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/extension-attributes.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -150,10 +164,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('extension attributes on expression', async function() {
 
       // given
-      var result = await fromFilePart(moddle, 'test/fixtures/bpmn/expression-extension.part.bpmn', 'bpmn:ResourceAssignmentExpression');
+      var {
+        rootElement
+      } = await fromFilePart(moddle, 'test/fixtures/bpmn/expression-extension.part.bpmn', 'bpmn:ResourceAssignmentExpression');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       expect(xml).to.contain(
         '<bpmn:expression ' +
@@ -163,6 +181,7 @@ describe('bpmn-moddle - roundtrip', function() {
             '</bpmn:expression>'
       );
 
+      // then
       await validate(xml);
     });
 
@@ -170,10 +189,16 @@ describe('bpmn-moddle - roundtrip', function() {
     it('multi instance loop characteristics', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/multiInstanceLoopCharacteristics.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/multiInstanceLoopCharacteristics.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -181,11 +206,17 @@ describe('bpmn-moddle - roundtrip', function() {
     it('Expression without xsi:type', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/expression-plain.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/expression-plain.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
+
+      // then
       // we are serializing xsi:type, even though
       // it is the default
       expect(xml).not.to.contain('xsi:type="bpmn:tExpression');
@@ -198,10 +229,16 @@ describe('bpmn-moddle - roundtrip', function() {
     it('documentation / extensionElements order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/documentation-extension-elements.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/documentation-extension-elements.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -209,10 +246,16 @@ describe('bpmn-moddle - roundtrip', function() {
     it('activity children order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/activity-children.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/activity-children.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -220,10 +263,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('lane children order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/lane-children.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/lane-children.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -231,10 +278,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('conversation children order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/conversation-children.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/conversation-children.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -242,10 +293,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('process children order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/process-children.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/process-children.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -253,10 +308,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('definitions children order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/definitions-children.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/definitions-children.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -264,10 +323,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('ioSpecification children order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/inputOutputSpecification-children.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/inputOutputSpecification-children.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -275,10 +338,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('dataInputAssociation assignment order', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/data-input-association.assignment.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/data-input-association.assignment.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -286,10 +353,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('Participant#interfaceRef', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/participant-interfaceRef.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/participant-interfaceRef.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -297,10 +368,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('ResourceRole#resourceRef', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/potentialOwner.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/potentialOwner.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -308,10 +383,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('Operation#messageRef', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/operation-messageRef.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/operation-messageRef.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       // then
       expect(xml).to.contain('<bpmn:inMessageRef>fooInMessage</bpmn:inMessageRef>');
@@ -323,10 +402,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('di extensions', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/di-extension.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/di-extension.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       expect(xml).to.contain('<vendor:baz baz="BAZ" />');
       expect(xml).to.contain('<vendor:bar>BAR</vendor:bar>');
@@ -339,10 +422,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('complex processElement / extensionElements', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/complex.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/complex.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -350,10 +437,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('category', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/category.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/category.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       expect(xml).to.contain('sid-afd7e63e-916e-4bd0-a9f0-98cbff749193');
       expect(xml).to.contain('group with label');
@@ -366,10 +457,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('choreography task', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/choreography-task.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/choreography-task.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       await validate(xml);
 
@@ -379,10 +474,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('simple processElement', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/simple.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/simple.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
@@ -390,20 +489,28 @@ describe('bpmn-moddle - roundtrip', function() {
     it('xsi:type', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/xsi-type.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/xsi-type.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
       await validate(xml);
     });
 
 
     it('colors', async function() {
 
-      var result = await fromFile('test/fixtures/bpmn/example-colors.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/example-colors.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       await validate(xml);
     });
@@ -412,10 +519,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('nested default namespace prefix', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/nested-default-namespace-prefix.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/nested-default-namespace-prefix.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       // then
       expect(xml).to.contain('<Entry key="A" value="B" />');
@@ -427,10 +538,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('nested elements no (default) namespace prefix', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/nested-no-namespace-prefix.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/nested-no-namespace-prefix.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       // then
       expect(xml).to.contain('<Entry key="A" value="B" />');
@@ -442,10 +557,14 @@ describe('bpmn-moddle - roundtrip', function() {
     it('conflicting ns prefix', async function() {
 
       // given
-      var result = await fromFile('test/fixtures/bpmn/namespace-prefix-collision.bpmn');
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/namespace-prefix-collision.bpmn');
 
       // when
-      var { xml } = await toXML(result.rootElement, { format: true });
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
 
       // then
       await validate(xml);
@@ -461,10 +580,14 @@ describe('bpmn-moddle - roundtrip', function() {
       it('complex processElement', async function() {
 
         // given
-        var result = await fromFile('test/fixtures/bpmn/vendor/signavio-complex-no-extensions.bpmn');
+        var {
+          rootElement
+        } = await fromFile('test/fixtures/bpmn/vendor/signavio-complex-no-extensions.bpmn');
 
         // when
-        var { xml } = await toXML(result.rootElement, { format: true });
+        var {
+          xml
+        } = await toXML(rootElement, { format: true });
         await validate(xml);
       });
 
@@ -476,9 +599,12 @@ describe('bpmn-moddle - roundtrip', function() {
       it('event definitions', async function() {
 
         // given
-        var result = await fromFile('test/fixtures/bpmn/vendor/yaoqiang-event-definitions.bpmn');
+        var {
+          rootElement,
+          warnings
+        } = await fromFile('test/fixtures/bpmn/vendor/yaoqiang-event-definitions.bpmn');
 
-        var warningsStr = result.warnings.map(function(w) {
+        var warningsStr = warnings.map(function(w) {
           return '\n\t- ' + w.message;
         }).join('');
 
@@ -487,7 +613,9 @@ describe('bpmn-moddle - roundtrip', function() {
         }
 
         // when
-        var { xml } = await toXML(result.rootElement, { format: true });
+        var {
+          xml
+        } = await toXML(rootElement, { format: true });
         await validate(xml);
       });
 
@@ -499,9 +627,12 @@ describe('bpmn-moddle - roundtrip', function() {
       it('event definitions', async function() {
 
         // given
-        var result = await fromFile('test/fixtures/bpmn/vendor/bizagi-nested-ns-definition.bpmn');
+        var {
+          rootElement,
+          warnings
+        } = await fromFile('test/fixtures/bpmn/vendor/bizagi-nested-ns-definition.bpmn');
 
-        var warningsStr = result.warnings.map(function(w) {
+        var warningsStr = warnings.map(function(w) {
           return '\n\t- ' + w.message;
         }).join('');
 
@@ -510,7 +641,9 @@ describe('bpmn-moddle - roundtrip', function() {
         }
 
         // when
-        var { xml } = await toXML(result.rootElement, { format: true });
+        var {
+          xml
+        } = await toXML(rootElement, { format: true });
         await validate(xml);
       });
 

@@ -47,10 +47,12 @@ describe('bpmn-moddle - expr', function() {
     };
 
     // when
-    var result = await fromFile('test/spec/extension/expr-Guard.part.bpmn', 'bpmn:SequenceFlow');
+    var {
+      rootElement
+    } = await fromFile('test/spec/extension/expr-Guard.part.bpmn', 'bpmn:SequenceFlow');
 
     // then
-    expect(result.rootElement).to.jsonEqual(expected);
+    expect(rootElement).to.jsonEqual(expected);
   });
 
 
