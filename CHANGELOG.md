@@ -6,6 +6,14 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.0.0
+
+* `FEAT`: promisify `fromXML` and `toXML` APIs. ([#73](https://github.com/bpmn-io/bpmn-moddle/pull/73))
+
+### Breaking Changes
+
+* `fromXML` and `toXML` APIs now return a Promise. Support for callbacks is dropped. Refer to the [documentation](https://github.com/bpmn-io/bpmn-moddle#usage) for updated usage information.
+
 ## 6.0.4
 
 * `CHORE`: bump to `moddle-xml@8.0.5`
