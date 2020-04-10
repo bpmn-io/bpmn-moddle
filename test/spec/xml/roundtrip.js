@@ -570,6 +570,33 @@ describe('bpmn-moddle - roundtrip', function() {
       await validate(xml);
     });
 
+
+    it('local namespace declaration / re-definition', async function() {
+
+      // given
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/redundant-ns-declaration.bpmn');
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
+      // unused namespace declaration is cleaned up
+      expect(xml).not.to.contain(
+        'xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"'
+      );
+
+      // local namespace declaration is exported
+      expect(xml).to.contain(
+        '<BPMNDiagram id="BPMNDiagram_1" xmlns="http://www.omg.org/spec/BPMN/20100524/DI">'
+      );
+
+      await validate(xml);
+    });
+
   });
 
 
@@ -644,6 +671,8 @@ describe('bpmn-moddle - roundtrip', function() {
         var {
           xml
         } = await toXML(rootElement, { format: true });
+
+        // then
         await validate(xml);
       });
 

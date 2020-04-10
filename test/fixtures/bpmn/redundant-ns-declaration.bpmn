@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<definitions id="Definitions" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" targetNamespace="http://bpmn.io">
+  <BPMNDiagram id="BPMNDiagram_1" xmlns="http://www.omg.org/spec/BPMN/20100524/DI">
+    <BPMNPlane bpmnElement="Definitions" xmlns="http://www.omg.org/spec/BPMN/20100524/DI" />
+  </BPMNDiagram>
+</definitions>
