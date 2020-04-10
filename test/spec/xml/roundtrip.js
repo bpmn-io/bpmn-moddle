@@ -622,6 +622,40 @@ describe('bpmn-moddle - roundtrip', function() {
       });
     });
 
+
+    it('local namespace declaration / re-definition', function(done) {
+
+      // given
+      fromFile('test/fixtures/bpmn/redundant-ns-declaration.bpmn', function(err, result) {
+
+        if (err) {
+          return done(err);
+        }
+
+        // when
+        toXML(result, { format: true }, function(err, xml) {
+
+          if (err) {
+            return done(err);
+          }
+
+          // then
+          // unused namespace declaration is cleaned up
+          expect(xml).not.to.contain(
+            'xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"'
+          );
+
+          // local namespace declaration is exported
+          expect(xml).to.contain(
+            '<BPMNDiagram xmlns="http://www.omg.org/spec/BPMN/20100524/DI" id="BPMNDiagram_1">'
+          );
+
+          validate(err, xml, done);
+        });
+      });
+
+    });
+
   });
 
 
