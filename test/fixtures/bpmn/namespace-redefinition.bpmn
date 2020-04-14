@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions" targetNamespace="http://bpmn.io">
+  <process id="Process_1">
+    <dataObjectReference xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="DataObjectReference_1" />
+    <foo:userTask xmlns:foo="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Task_1" name="Task 1" />
+  </process>
+  <BPMNDiagram xmlns="http://www.omg.org/spec/BPMN/20100524/DI" id="BPMNDiagram_1">
+    <BPMNPlane xmlns="http://www.omg.org/spec/BPMN/20100524/DI" bpmnElement="Definitions" />
+  </BPMNDiagram>
+</definitions>
