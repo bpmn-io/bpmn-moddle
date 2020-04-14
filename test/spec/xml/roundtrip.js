@@ -11,6 +11,10 @@ import {
   validate
 } from '../../xml-helper';
 
+import {
+  readFileSync as readFile
+} from 'fs';
+
 
 describe('bpmn-moddle - roundtrip', function() {
 
@@ -591,10 +595,29 @@ describe('bpmn-moddle - roundtrip', function() {
 
       // local namespace declaration is exported
       expect(xml).to.contain(
-        '<BPMNDiagram id="BPMNDiagram_1" xmlns="http://www.omg.org/spec/BPMN/20100524/DI">'
+        '<BPMNDiagram xmlns="http://www.omg.org/spec/BPMN/20100524/DI" id="BPMNDiagram_1">'
       );
 
       await validate(xml);
+    });
+
+
+    it('local namespace exports', async function() {
+
+      // given
+      var expectedXML = readFile('test/fixtures/bpmn/namespace-redefinition.bpmn', 'utf8');
+
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/namespace-redefinition.bpmn');
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
+      expect(xml).to.eql(expectedXML);
     });
 
   });
