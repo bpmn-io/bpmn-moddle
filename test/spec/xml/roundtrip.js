@@ -701,6 +701,35 @@ describe('bpmn-moddle - roundtrip', function() {
 
     });
 
+
+    describe('CaseAgile', function() {
+
+      it('local namespace declaration', async function() {
+
+        // given
+        var {
+          rootElement,
+          warnings
+        } = await fromFile('test/fixtures/bpmn/vendor/case-agile-local-ns-declaration.bpmn');
+
+        var warningsStr = warnings.map(function(w) {
+          return '\n\t- ' + w.message;
+        }).join('');
+
+        if (warningsStr) {
+          throw new Error('import warnings: ' + warningsStr);
+        }
+
+        // when
+        var {
+          xml
+        } = await toXML(rootElement, { format: true });
+
+        // then
+        await validate(xml);
+      });
+
+    });
   });
 
 });
