@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<definitions name="Advertise a job vacancy" id="_f3f4debc-8cae-4e5b-ad68-156e841dce43" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:caseagile="http://caseagile.com/schema/BPMN/20170414/MODEL" targetNamespace="http://caseagile.com/schema/BPMN/20170414/MODEL" expressionLanguage="https://www.ecma-international.org/publications/standards/Ecma-334.htm" typeLanguage="http://www.w3.org/2001/XMLSchema" exporter="Enterprise Composer" exporterVersion="1.0.11.0" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
+  <collaboration id="_c2f769b2-3184-442a-944b-e6f88152a071" name="">
+    <extensionElements>
+      <caseagile:model>
+        <caseagile:element id="bf36ed5c-a157-4fdb-981a-75b8139b566f" />
+        <caseagile:principal id="User" />
+        <caseagile:created date="2020-04-08 07:10:27" />
+        <caseagile:modified date="2020-04-08 07:10:27" />
+        <caseagile:properties>
+          <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+        </caseagile:properties>
+        <caseagile:values>
+          <caseagile:value name="bgcolor" value="FFFFFF" />
+        </caseagile:values>
+      </caseagile:model>
+    </extensionElements>
+    <participant id="_9c3d9edd-e594-4ecf-af64-ae5ceb2fa680" name="EU Bank" processRef="_009164cd-aecf-4dc6-9c8d-a3aa5e1b73b3" />
+  </collaboration>
+  <process id="_009164cd-aecf-4dc6-9c8d-a3aa5e1b73b3" name="EU Bank" isExecutable="false">
+    <extensionElements>
+      <caseagile:model>
+        <caseagile:element id="292b8da1-beb8-4afc-88c6-33e55be267dd" />
+        <caseagile:principal id="User" />
+        <caseagile:created date="2020-04-08 07:10:27" />
+        <caseagile:modified date="2020-04-08 07:10:27" />
+        <caseagile:properties>
+          <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+        </caseagile:properties>
+        <caseagile:values>
+          <caseagile:value name="bgcolor" value="FFFFFF" />
+        </caseagile:values>
+      </caseagile:model>
+    </extensionElements>
+    <ioSpecification id="_e8aff608-71ef-46e2-90de-0a3d5f5cdc90">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="07cf9833-ffd0-4763-832c-2eee154d22cc" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <dataInput id="_c5ea416f-79b1-4119-ab17-47d472f4081d" name="Role required" isCollection="false">
+        <extensionElements>
+          <caseagile:model>
+            <caseagile:element id="065fd730-7fdd-4065-9d73-891c425911f7" />
+            <caseagile:principal id="User" />
+            <caseagile:created date="2020-04-08 07:10:27" />
+            <caseagile:modified date="2020-04-08 07:10:27" />
+            <caseagile:properties>
+              <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+            </caseagile:properties>
+            <caseagile:values>
+              <caseagile:value name="bgcolor" value="FFFFFF" />
+            </caseagile:values>
+          </caseagile:model>
+        </extensionElements>
+      </dataInput>
+      <dataOutput id="_36d9b11f-70c5-492f-9f48-b0d4d59343e9" name="Job advertisement" isCollection="false">
+        <extensionElements>
+          <caseagile:model>
+            <caseagile:element id="6788cb7b-287e-4b38-9af6-75ffe4836fd8" />
+            <caseagile:principal id="User" />
+            <caseagile:created date="2020-04-08 07:10:27" />
+            <caseagile:modified date="2020-04-08 07:10:27" />
+            <caseagile:properties>
+              <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+            </caseagile:properties>
+            <caseagile:values>
+              <caseagile:value name="bgcolor" value="FFFFFF" />
+            </caseagile:values>
+          </caseagile:model>
+        </extensionElements>
+      </dataOutput>
+      <inputSet id="_5c794105-1cee-4a4e-be8f-307f2519ca15">
+        <extensionElements>
+          <caseagile:model>
+            <caseagile:element id="081366c7-4a0f-479a-b472-f25c95efe8bc" />
+            <caseagile:principal id="User" />
+            <caseagile:created date="2020-04-08 07:10:27" />
+            <caseagile:modified date="2020-04-08 07:10:27" />
+            <caseagile:properties>
+              <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+            </caseagile:properties>
+            <caseagile:values>
+              <caseagile:value name="bgcolor" value="FFFFFF" />
+            </caseagile:values>
+          </caseagile:model>
+        </extensionElements>
+        <dataInputRefs>_c5ea416f-79b1-4119-ab17-47d472f4081d</dataInputRefs>
+      </inputSet>
+      <outputSet id="_fe397e23-3756-4f11-a3b2-d6b8679bd3fe">
+        <extensionElements>
+          <caseagile:model>
+            <caseagile:element id="5267a92d-eb5e-4c45-99a1-fea318896b03" />
+            <caseagile:principal id="User" />
+            <caseagile:created date="2020-04-08 07:10:27" />
+            <caseagile:modified date="2020-04-08 07:10:27" />
+            <caseagile:properties>
+              <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+            </caseagile:properties>
+            <caseagile:values>
+              <caseagile:value name="bgcolor" value="FFFFFF" />
+            </caseagile:values>
+          </caseagile:model>
+        </extensionElements>
+        <dataOutputRefs>_36d9b11f-70c5-492f-9f48-b0d4d59343e9</dataOutputRefs>
+      </outputSet>
+    </ioSpecification>
+    <laneSet id="_cb6db6f9-df8d-4f3d-a05e-18c1193c7f84">
+      <lane id="_bf785e1d-fd11-447b-be3c-7fed793cd3a3" name="Hiring manager">
+        <flowNodeRef>_779cf12f-1022-4264-b314-f59a9cfd134f</flowNodeRef>
+        <flowNodeRef>_dbfc0f86-5647-4ca8-aafd-f4a88a7ed178</flowNodeRef>
+        <flowNodeRef>_38ad53b1-eecd-4f20-b30a-15d5977d4dd6</flowNodeRef>
+        <flowNodeRef>_241240fc-574a-4bec-8021-357c987dd0a3</flowNodeRef>
+      </lane>
+      <lane id="_b4703b36-7f21-42bb-8d74-1717bcff8d1a" name="Recruitment">
+        <flowNodeRef>_6c38b7aa-bec8-4e62-a192-b48208fa43ed</flowNodeRef>
+        <flowNodeRef>_9a9ec640-4cd2-465f-b9e3-3a8edc6f4375</flowNodeRef>
+        <flowNodeRef>_cd37f8af-7735-4f1b-bde0-811be94b2f70</flowNodeRef>
+        <flowNodeRef>_d04af6e0-8232-40fc-a408-2ee2ba0181c9</flowNodeRef>
+        <flowNodeRef>_62946c09-da90-4ea3-8292-abf0c9eb3a83</flowNodeRef>
+        <flowNodeRef>_4ea95b48-6f9d-4787-bd32-24727837cd01</flowNodeRef>
+        <flowNodeRef>_d1514771-c3a3-42a5-8896-99f229a179d0</flowNodeRef>
+      </lane>
+    </laneSet>
+    <businessRuleTask id="_cd37f8af-7735-4f1b-bde0-811be94b2f70" name="Select 3rd party platforms for publishing">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="302c3d88-8332-4014-851a-89ed4015a43d" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_8fe38884-42ec-4a64-83cf-b5dbbdb99982</incoming>
+      <outgoing>_27a4e387-7829-434a-8a3d-1a9ce54307a6</outgoing>
+    </businessRuleTask>
+    <dataObject id="_39f8cd8f-3ccc-4222-9751-50e5a0a01fde">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="40d2c4fd-e581-445a-9ee7-54f363300bd7" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="_bd9048cd-1910-4a60-92d0-06c5b211cd21">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="6a10c62e-aa33-4886-9046-a05db5ae871d" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </dataObject>
+    <dataObject id="_19a8ea59-b044-400c-96f7-ddc5c077b4a5">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="507a0c86-5f19-4db6-8222-ec1bf1593f09" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </dataObject>
+    <dataObjectReference id="_b3fea5c2-af80-4890-9506-bed34496c96e" name="Job description" dataObjectRef="_39f8cd8f-3ccc-4222-9751-50e5a0a01fde">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="f44e1b51-822f-4c15-930d-348baa1784ae" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </dataObjectReference>
+    <dataObjectReference id="_f34b6efe-1241-49bf-a817-165e6ddaf5dd" name="Job advertisement" dataObjectRef="_bd9048cd-1910-4a60-92d0-06c5b211cd21">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="513ff909-6764-4ff4-b12f-a36420a081cf" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </dataObjectReference>
+    <dataObjectReference id="_42dff389-e0ee-4af7-9a65-45ea1fb610ef" name="List of selected 3rd parties" dataObjectRef="_19a8ea59-b044-400c-96f7-ddc5c077b4a5">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="d561d0d9-7cb4-4364-a3c8-5fab36a441be" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </dataObjectReference>
+    <endEvent id="_d1514771-c3a3-42a5-8896-99f229a179d0" name="Job vacancy advertised">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="fbfd8a5e-1af9-450c-aa41-22e20b7bba04" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_5f829594-92cd-4d2b-80c3-ec7eca495f06</incoming>
+    </endEvent>
+    <exclusiveGateway id="_241240fc-574a-4bec-8021-357c987dd0a3" name="Job advertisement approved?">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="6938608d-551a-4d40-8ac4-df0466770583" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_9102d14d-5132-42dd-9358-a323ec879a90</incoming>
+      <outgoing>_54861d70-c310-4deb-9d37-29d091f5389b</outgoing>
+    </exclusiveGateway>
+    <parallelGateway id="_9a9ec640-4cd2-465f-b9e3-3a8edc6f4375" name="">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="7eeec36d-e958-4341-92f4-de51760f3ae4" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_f5c670ea-fd6d-4d4f-ad08-942b2b429f6e</incoming>
+      <outgoing>_f43c143b-6b0b-4fa0-9c4c-cd3169e1f4be</outgoing>
+    </parallelGateway>
+    <parallelGateway id="_4ea95b48-6f9d-4787-bd32-24727837cd01" name="">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="64cd0c59-b649-493e-8454-1814edb18065" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_64feb503-8dc0-4dc0-a034-ed20742f3fa4</incoming>
+      <outgoing>_5f829594-92cd-4d2b-80c3-ec7eca495f06</outgoing>
+    </parallelGateway>
+    <sequenceFlow id="_afb9e846-dc8b-4bc3-ad40-3543b2714953" name="" sourceRef="_dbfc0f86-5647-4ca8-aafd-f4a88a7ed178" targetRef="_6c38b7aa-bec8-4e62-a192-b48208fa43ed">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="69db4302-9b37-498a-be71-15c90b56e0b7" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_a2f52698-7c17-42c7-ab65-61d9d3f34a85" name="" sourceRef="_6c38b7aa-bec8-4e62-a192-b48208fa43ed" targetRef="_38ad53b1-eecd-4f20-b30a-15d5977d4dd6">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="8ef30f3d-4d68-4203-a45c-c0a4f76c2a78" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_54861d70-c310-4deb-9d37-29d091f5389b" name="No" sourceRef="_241240fc-574a-4bec-8021-357c987dd0a3" targetRef="_6c38b7aa-bec8-4e62-a192-b48208fa43ed">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="1effda57-4287-4c5b-9b3c-dda7b171d838" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_f5c670ea-fd6d-4d4f-ad08-942b2b429f6e" name="Yes" sourceRef="_241240fc-574a-4bec-8021-357c987dd0a3" targetRef="_9a9ec640-4cd2-465f-b9e3-3a8edc6f4375">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="e62ac528-8731-4f8c-aa53-f42f08b4ca35" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_ebd5bfe0-18dd-4e18-a7ee-495d3319e972" name="" sourceRef="_779cf12f-1022-4264-b314-f59a9cfd134f" targetRef="_dbfc0f86-5647-4ca8-aafd-f4a88a7ed178">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="3eb8bba8-50d8-4903-82e0-faf826469d86" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_9102d14d-5132-42dd-9358-a323ec879a90" name="" sourceRef="_38ad53b1-eecd-4f20-b30a-15d5977d4dd6" targetRef="_241240fc-574a-4bec-8021-357c987dd0a3">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="9f9ab7b3-9f04-438f-a1d7-0aebfed9414e" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_f43c143b-6b0b-4fa0-9c4c-cd3169e1f4be" name="" sourceRef="_9a9ec640-4cd2-465f-b9e3-3a8edc6f4375" targetRef="_d04af6e0-8232-40fc-a408-2ee2ba0181c9">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="15898f2e-7cdc-4d7f-81fd-19412a55576f" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_8fe38884-42ec-4a64-83cf-b5dbbdb99982" name="" sourceRef="_9a9ec640-4cd2-465f-b9e3-3a8edc6f4375" targetRef="_cd37f8af-7735-4f1b-bde0-811be94b2f70">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="eecf6152-3722-4935-a8b4-a29e705f84d1" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_64feb503-8dc0-4dc0-a034-ed20742f3fa4" name="" sourceRef="_d04af6e0-8232-40fc-a408-2ee2ba0181c9" targetRef="_4ea95b48-6f9d-4787-bd32-24727837cd01">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="cf895066-129a-4c9f-bdfa-e45ac259f01c" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_27a4e387-7829-434a-8a3d-1a9ce54307a6" name="" sourceRef="_cd37f8af-7735-4f1b-bde0-811be94b2f70" targetRef="_62946c09-da90-4ea3-8292-abf0c9eb3a83">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="f5ce43de-161d-4649-bac1-1816224cffd2" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_5f829594-92cd-4d2b-80c3-ec7eca495f06" name="" sourceRef="_4ea95b48-6f9d-4787-bd32-24727837cd01" targetRef="_d1514771-c3a3-42a5-8896-99f229a179d0">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="bce4f71d-3f7b-4050-9a76-45d747740b09" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="_a6a7a848-6dfd-4d20-8e40-30a2352bf45c" name="" sourceRef="_62946c09-da90-4ea3-8292-abf0c9eb3a83" targetRef="_4ea95b48-6f9d-4787-bd32-24727837cd01">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="62d1ecc1-d0a0-4466-9028-66b85c03a3c1" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </sequenceFlow>
+    <serviceTask id="_d04af6e0-8232-40fc-a408-2ee2ba0181c9" name="Publish job advertisement on homepage">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="4d7d7e02-6195-4cbe-aa87-c7a63b255906" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_f43c143b-6b0b-4fa0-9c4c-cd3169e1f4be</incoming>
+      <outgoing>_64feb503-8dc0-4dc0-a034-ed20742f3fa4</outgoing>
+    </serviceTask>
+    <serviceTask id="_62946c09-da90-4ea3-8292-abf0c9eb3a83" name="Publish job on 3rd party platforms">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="62f9b821-6843-4010-a85a-1f68209d786f" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_27a4e387-7829-434a-8a3d-1a9ce54307a6</incoming>
+      <outgoing>_a6a7a848-6dfd-4d20-8e40-30a2352bf45c</outgoing>
+      <multiInstanceLoopCharacteristics isSequential="false">
+        <loopCardinality />
+      </multiInstanceLoopCharacteristics>
+    </serviceTask>
+    <startEvent id="_779cf12f-1022-4264-b314-f59a9cfd134f" name="Job vacancy to be  advertised">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="a4f62c38-de55-468f-9a5d-83b266542951" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <outgoing>_ebd5bfe0-18dd-4e18-a7ee-495d3319e972</outgoing>
+    </startEvent>
+    <userTask id="_dbfc0f86-5647-4ca8-aafd-f4a88a7ed178" name="Write job description">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="c36f554c-7a83-44a3-aa4e-38703e6943dd" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_ebd5bfe0-18dd-4e18-a7ee-495d3319e972</incoming>
+      <outgoing>_afb9e846-dc8b-4bc3-ad40-3543b2714953</outgoing>
+    </userTask>
+    <userTask id="_38ad53b1-eecd-4f20-b30a-15d5977d4dd6" name="Approve job advertisement">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="266fcbc7-4394-430f-9bfc-c5dc2d7fceee" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_a2f52698-7c17-42c7-ab65-61d9d3f34a85</incoming>
+      <outgoing>_9102d14d-5132-42dd-9358-a323ec879a90</outgoing>
+      <ioSpecification id="_4e5636ab-5109-41a9-abb8-37136c99799a">
+        <extensionElements>
+          <caseagile:model>
+            <caseagile:element id="715ffe95-ab3e-4856-a9aa-393b4d90efcb" />
+            <caseagile:principal id="User" />
+            <caseagile:created date="2020-04-08 07:10:27" />
+            <caseagile:modified date="2020-04-08 07:10:27" />
+            <caseagile:properties>
+              <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+            </caseagile:properties>
+            <caseagile:values>
+              <caseagile:value name="bgcolor" value="FFFFFF" />
+            </caseagile:values>
+          </caseagile:model>
+        </extensionElements>
+        <dataOutput id="_7f1f4f11-bb8f-4590-9c7e-9c4b1f5b1b33" name="Job advertisement" isCollection="false">
+          <extensionElements>
+            <caseagile:model>
+              <caseagile:element id="a1acd179-9921-45e9-acbf-078208c9f43a" />
+              <caseagile:principal id="User" />
+              <caseagile:created date="2020-04-08 07:10:27" />
+              <caseagile:modified date="2020-04-08 07:10:27" />
+              <caseagile:properties>
+                <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+              </caseagile:properties>
+              <caseagile:values>
+                <caseagile:value name="bgcolor" value="FFFFFF" />
+              </caseagile:values>
+            </caseagile:model>
+          </extensionElements>
+        </dataOutput>
+        <inputSet id="_86f6246d-2f4b-4e6f-be1c-8db9e80378c1">
+          <extensionElements>
+            <caseagile:model>
+              <caseagile:element id="8bb074e3-193f-420d-b314-6aae5d53f050" />
+              <caseagile:principal id="User" />
+              <caseagile:created date="2020-04-08 07:10:27" />
+              <caseagile:modified date="2020-04-08 07:10:27" />
+              <caseagile:properties>
+                <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+              </caseagile:properties>
+              <caseagile:values>
+                <caseagile:value name="bgcolor" value="FFFFFF" />
+              </caseagile:values>
+            </caseagile:model>
+          </extensionElements>
+        </inputSet>
+        <outputSet id="_b7bc5e22-daa6-44b4-a313-f9c1f2db7644">
+          <extensionElements>
+            <caseagile:model>
+              <caseagile:element id="742bf196-fc46-4fba-947a-2b5254d25648" />
+              <caseagile:principal id="User" />
+              <caseagile:created date="2020-04-08 07:10:27" />
+              <caseagile:modified date="2020-04-08 07:10:27" />
+              <caseagile:properties>
+                <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+              </caseagile:properties>
+              <caseagile:values>
+                <caseagile:value name="bgcolor" value="FFFFFF" />
+              </caseagile:values>
+            </caseagile:model>
+          </extensionElements>
+          <dataOutputRefs>_7f1f4f11-bb8f-4590-9c7e-9c4b1f5b1b33</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataOutputAssociation id="_832a4132-988e-44fd-af0a-f78d51ac4a50">
+        <extensionElements>
+          <caseagile:model>
+            <caseagile:element id="24467970-92b7-458a-a6f1-47ea67a60cf9" />
+            <caseagile:principal id="User" />
+            <caseagile:created date="2020-04-08 07:10:27" />
+            <caseagile:modified date="2020-04-08 07:10:27" />
+            <caseagile:properties>
+              <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+            </caseagile:properties>
+            <caseagile:values>
+              <caseagile:value name="bgcolor" value="FFFFFF" />
+            </caseagile:values>
+          </caseagile:model>
+        </extensionElements>
+        <sourceRef>_7f1f4f11-bb8f-4590-9c7e-9c4b1f5b1b33</sourceRef>
+        <targetRef>_36d9b11f-70c5-492f-9f48-b0d4d59343e9</targetRef>
+      </dataOutputAssociation>
+    </userTask>
+    <userTask id="_6c38b7aa-bec8-4e62-a192-b48208fa43ed" name="Complete job advertisement">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="8d7a80a0-97bb-4364-8a5c-fac709cce9e7" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+      <incoming>_afb9e846-dc8b-4bc3-ad40-3543b2714953</incoming>
+      <outgoing>_a2f52698-7c17-42c7-ab65-61d9d3f34a85</outgoing>
+    </userTask>
+    <association id="_d7e79c49-2434-4cc2-a27a-0e8c93c3d345" sourceRef="_b3fea5c2-af80-4890-9506-bed34496c96e" targetRef="_6c38b7aa-bec8-4e62-a192-b48208fa43ed" associationDirection="One">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="09658709-2091-47a3-a2b5-49ad51e0c573" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </association>
+    <association id="_83d03deb-6880-4078-afdd-93fe9db0ceb5" sourceRef="_f34b6efe-1241-49bf-a817-165e6ddaf5dd" targetRef="_38ad53b1-eecd-4f20-b30a-15d5977d4dd6" associationDirection="One">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="e6b6f377-14aa-4afd-99f8-1a9df0345dba" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </association>
+    <association id="_583aadc0-f134-4dc9-8f20-d58f3a19fa46" sourceRef="_dbfc0f86-5647-4ca8-aafd-f4a88a7ed178" targetRef="_b3fea5c2-af80-4890-9506-bed34496c96e" associationDirection="One">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="5be3c3d8-140a-4cb0-9642-414425eef383" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </association>
+    <association id="_e7cf0c57-ba2d-4e52-b72d-56f6d7fa5d70" sourceRef="_6c38b7aa-bec8-4e62-a192-b48208fa43ed" targetRef="_f34b6efe-1241-49bf-a817-165e6ddaf5dd" associationDirection="One">
+      <extensionElements>
+        <caseagile:model>
+          <caseagile:element id="3d38fe08-b0fa-4f94-8e4c-3b590fce820d" />
+          <caseagile:principal id="User" />
+          <caseagile:created date="2020-04-08 07:10:27" />
+          <caseagile:modified date="2020-04-08 07:10:27" />
+          <caseagile:properties>
+            <caseagile:property name="bgcolor" description="Background Color" type="int" format="hex" default="FFFFFF" minimum="000000" maximum="FFFFFF" visible="True" readOnly="False" />
+          </caseagile:properties>
+          <caseagile:values>
+            <caseagile:value name="bgcolor" value="FFFFFF" />
+          </caseagile:values>
+        </caseagile:model>
+      </extensionElements>
+    </association>
+  </process>
+  <BPMNDiagram name="Advertise job vacancy" resolution="96" id="_24450b66-4c7d-4ed6-8b59-ed4a4eba2124" xmlns="http://www.omg.org/spec/BPMN/20100524/DI">
+    <BPMNPlane bpmnElement="_c2f769b2-3184-442a-944b-e6f88152a071">
+      <BPMNEdge id="_79203438-6052-4ad3-a707-91b7b23f51f7" bpmnElement="_afb9e846-dc8b-4bc3-ad40-3543b2714953">
+        <waypoint x="370" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="388" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="388" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="456" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_6aab0394-0aa8-43ed-b476-7f3d7456e7c4" bpmnElement="_a2f52698-7c17-42c7-ab65-61d9d3f34a85">
+        <waypoint x="574" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="592" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="592" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="663" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_11c75a84-b9b2-4cc3-8ca6-94773ce81b1d" bpmnElement="_54861d70-c310-4deb-9d37-29d091f5389b">
+        <waypoint x="859" y="330" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="859" y="312" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="820" y="312" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="820" y="602" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="714" y="602" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="707" y="602" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="596" y="602" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="588" y="602" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="515" y="602" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="515" y="620" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_94a4a7ca-832c-4a82-a67a-bda44af96576" bpmnElement="_f5c670ea-fd6d-4d4f-ad08-942b2b429f6e">
+        <waypoint x="880" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="898" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="898" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="952" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_3e97b032-a5a0-478c-95dd-e51097517b2f" bpmnElement="_d7e79c49-2434-4cc2-a27a-0e8c93c3d345">
+        <waypoint x="392" y="236" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="485" y="236" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="485" y="621" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_cdd5c377-389e-4785-ad8e-e5a7881c1a45" bpmnElement="_83d03deb-6880-4078-afdd-93fe9db0ceb5">
+        <waypoint x="609" y="777" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="711" y="777" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="711" y="388" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_219314b6-a225-4d20-9ea7-b2f3442626c5" bpmnElement="_ebd5bfe0-18dd-4e18-a7ee-495d3319e972">
+        <waypoint x="219" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="274" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_fe40c8d2-ce43-43b7-ab34-52b70e1dfea0" bpmnElement="_9102d14d-5132-42dd-9358-a323ec879a90">
+        <waypoint x="759" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="777" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="777" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="816" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="824" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="838" y="350" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_a898545d-7f92-4cf4-b33e-9c7f0f5a8d56" bpmnElement="_583aadc0-f134-4dc9-8f20-d58f3a19fa46">
+        <waypoint x="322" y="312" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="322" y="236" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="358" y="236" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_1d1f42d9-c25c-419c-8851-e608ef2650b7" bpmnElement="_832a4132-988e-44fd-af0a-f78d51ac4a50" targetElement="_bd0255d7-3607-4449-ac9a-eae77cb74d8f">
+        <waypoint x="735" y="312" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="735" y="222" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="768" y="222" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_124c5315-82cc-470c-a7ae-16613b9927da" bpmnElement="_f43c143b-6b0b-4fa0-9c4c-cd3169e1f4be">
+        <waypoint x="973" y="641" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="973" y="581" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1101" y="581" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_354fdbd5-47e3-4d63-bf0c-e22b6af0c72d" bpmnElement="_8fe38884-42ec-4a64-83cf-b5dbbdb99982">
+        <waypoint x="973" y="680" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="973" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1015" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_aff5c910-fa3c-4e4e-b0a6-18f7b922cced" bpmnElement="_64feb503-8dc0-4dc0-a034-ed20742f3fa4">
+        <waypoint x="1221" y="581" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1369" y="581" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1369" y="641" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_5cae0a96-6c8a-4521-a5cc-6f67791b98a1" bpmnElement="_27a4e387-7829-434a-8a3d-1a9ce54307a6">
+        <waypoint x="1156" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1174" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1174" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1207" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_91075bed-8967-4caf-beb6-c4adedf329d5" bpmnElement="_5f829594-92cd-4d2b-80c3-ec7eca495f06">
+        <waypoint x="1390" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1476" y="660" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_c1c4eaf1-6289-4614-9749-0892ccda6fc2" bpmnElement="_a6a7a848-6dfd-4d20-8e40-30a2352bf45c">
+        <waypoint x="1336" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1369" y="738" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="1369" y="680" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNEdge id="_31918a76-ffa4-47aa-923c-b1807d8ba664" bpmnElement="_e7cf0c57-ba2d-4e52-b72d-56f6d7fa5d70">
+        <waypoint x="515" y="701" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="515" y="777" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+        <waypoint x="574" y="777" xmlns="http://www.omg.org/spec/DD/20100524/DI" />
+      </BPMNEdge>
+      <BPMNShape id="_b2d3daae-494b-442a-862a-cd02a43e790a" bpmnElement="_9c3d9edd-e594-4ecf-af64-ae5ceb2fa680" isHorizontal="true" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="74" y="107" width="1531" height="823" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_72754a7b-86c3-4833-adaf-8658618bc19f" bpmnElement="_bf785e1d-fd11-447b-be3c-7fed793cd3a3" isHorizontal="true" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="122" y="107" width="1483" height="402" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_824b2825-2027-4f4b-b324-90ed19069d5e" bpmnElement="_b4703b36-7f21-42bb-8d74-1717bcff8d1a" isHorizontal="true" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="122" y="510" width="1483" height="420" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_fdc4ed48-b36c-46e2-a2bc-5451710cdcb4" bpmnElement="_779cf12f-1022-4264-b314-f59a9cfd134f" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="187" y="334" width="32" height="32" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_196c9aee-0cf5-4e9d-8aef-d4597869a0fe" bpmnElement="_dbfc0f86-5647-4ca8-aafd-f4a88a7ed178" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="274" y="312" width="96" height="76" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_00c0d713-3aa9-4ce9-9a89-96a670357399" bpmnElement="_38ad53b1-eecd-4f20-b30a-15d5977d4dd6" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="663" y="312" width="96" height="76" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_ebfa75af-c653-4ab6-8d46-108ff372f245" bpmnElement="_241240fc-574a-4bec-8021-357c987dd0a3" isHorizontal="false" isExpanded="false" isMarkerVisible="true" isMessageVisible="false">
+        <Bounds x="838" y="331" width="42" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_a9cc6c35-674c-4b22-aa25-8ec857eb7df7" bpmnElement="_c5ea416f-79b1-4119-ab17-47d472f4081d" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="159" y="187" width="33" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_78637f69-fce2-4b6a-8f4c-d9012b78354a" bpmnElement="_b3fea5c2-af80-4890-9506-bed34496c96e" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="358" y="217" width="33" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_bd0255d7-3607-4449-ac9a-eae77cb74d8f" bpmnElement="_36d9b11f-70c5-492f-9f48-b0d4d59343e9" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="768" y="204" width="33" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_2d9babdb-ec80-40f2-913e-d4146a2ac7fd" bpmnElement="_6c38b7aa-bec8-4e62-a192-b48208fa43ed" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="456" y="622" width="117" height="79" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_7c1d18a9-f5b5-4f4e-84c7-32a0f98d05f4" bpmnElement="_9a9ec640-4cd2-465f-b9e3-3a8edc6f4375" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="952" y="641" width="42" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_d381d09e-4921-4806-b902-0ffbf2bd81fc" bpmnElement="_cd37f8af-7735-4f1b-bde0-811be94b2f70" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="1015" y="694" width="141" height="88" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_6633b0c4-925f-429a-b252-3c9b33c02bc1" bpmnElement="_d04af6e0-8232-40fc-a408-2ee2ba0181c9" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="1101" y="540" width="119" height="81" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_6100a163-051e-412f-b165-bec86599bbff" bpmnElement="_62946c09-da90-4ea3-8292-abf0c9eb3a83" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="1207" y="697" width="129" height="82" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_2a2e8a8b-f4a3-4906-a7fb-d76e7f40a2fa" bpmnElement="_4ea95b48-6f9d-4787-bd32-24727837cd01" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="1348" y="641" width="42" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_509bcdb2-ea1c-45a3-9e28-84989e8fc288" bpmnElement="_d1514771-c3a3-42a5-8896-99f229a179d0" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="1476" y="642" width="36" height="36" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_027c8401-2cc0-49ab-828a-4d7a352c183e" bpmnElement="_f34b6efe-1241-49bf-a817-165e6ddaf5dd" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="574" y="759" width="33" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+      <BPMNShape id="_b5245571-a3b8-4174-8fe1-f40f43c4de67" bpmnElement="_42dff389-e0ee-4af7-9a65-45ea1fb610ef" isHorizontal="false" isExpanded="false" isMarkerVisible="false" isMessageVisible="false">
+        <Bounds x="1168" y="834" width="33" height="39" xmlns="http://www.omg.org/spec/DD/20100524/DC" />
+      </BPMNShape>
+    </BPMNPlane>
+  </BPMNDiagram>
+</definitions>
