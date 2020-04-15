@@ -6,8 +6,14 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 6.0.5
+
+* `FIX`: account for local namespace declaration overrides ([#76](https://github.com/bpmn-io/bpmn-moddle/pull/76))
+* `CHORE`: bump to `moddle-xml@8.0.6`
+
 ## 7.0.1
 
+* `FIX`: account for local namespace declaration overrides ([#75](https://github.com/bpmn-io/bpmn-moddle/pull/75))
 * `CHORE`: bump to `moddle-xml@9.0.1`
 
 ## 7.0.0
