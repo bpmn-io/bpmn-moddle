@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.0.1
+
+* `CHORE`: bump to `moddle-xml@9.0.1`
+
 ## 7.0.0
 
 * `FEAT`: promisify `fromXML` and `toXML` APIs. ([#73](https://github.com/bpmn-io/bpmn-moddle/pull/73))
