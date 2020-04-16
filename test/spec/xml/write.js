@@ -677,6 +677,7 @@ describe('bpmn-moddle - write', function() {
         expect(xml).to.eql(expectedXML);
       });
 
+
       it('BPMNShape (colored)', async function() {
 
         // given
@@ -696,6 +697,7 @@ describe('bpmn-moddle - write', function() {
         // then
         expect(xml).to.eql(expectedXML);
       });
+
 
       it('BPMNEdge (colored)', async function() {
 
