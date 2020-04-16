@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="6.4.2">
+  <process id="Process" isExecutable="false">
+    <startEvent id="Start" name="hunger noticed">
+      <outgoing>SequenceFlow</outgoing>
+    </startEvent>
+    <task id="Task" name="choose recipe">
+      <incoming>SequenceFlow</incoming>
+    </task>
+    <sequenceFlow id="SequenceFlow" sourceRef="Start" targetRef="Task" />
+  </process>
+  <BPMNDiagram id="BpmnDiagram_1" xmlns="http://www.omg.org/spec/BPMN/20100524/DI">
+    <BPMNPlane id="BpmnPlane_1" bpmnElement="Process" xmlns="http://www.omg.org/spec/BPMN/20100524/DI">
+    </BPMNPlane>
+  </BPMNDiagram>
+</definitions>
