@@ -144,14 +144,22 @@ describe('bpmn-moddle - edit', function() {
         // when
         toXML(definitions, { format: true }, function(err, xml) {
 
-          // then
-          expect(xml).to.contain(
-            'xmlns:di="http://www.omg.org/spec/DD/20100524/DI"'
-          );
+          if (err) {
+            return done(err);
+          }
 
-          expect(xml).to.contain(
-            'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"'
-          );
+          try {
+            // then
+            expect(xml).to.contain(
+              'xmlns:di="http://www.omg.org/spec/DD/20100524/DI"'
+            );
+
+            expect(xml).to.contain(
+              'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"'
+            );
+          } catch (_err) {
+            err = _err;
+          }
 
           return validate(err, xml, done);
         });
@@ -171,19 +179,27 @@ describe('bpmn-moddle - edit', function() {
         // when
         toXML(definitions, { format: true }, function(err, xml) {
 
+          if (err) {
+            return done(err);
+          }
+
           // when
           // set global namespace information
           definitions.$attrs['xmlns:di'] = 'http://www.omg.org/spec/DD/20100524/DI';
           definitions.$attrs['xmlns:dc'] = 'http://www.omg.org/spec/DD/20100524/DC';
 
           // then
-          expect(xml).to.contain(
-            'xmlns:di="http://www.omg.org/spec/DD/20100524/DI"'
-          );
+          try {
+            expect(xml).to.contain(
+              'xmlns:di="http://www.omg.org/spec/DD/20100524/DI"'
+            );
 
-          expect(xml).to.contain(
-            'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"'
-          );
+            expect(xml).to.contain(
+              'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"'
+            );
+          } catch (_err) {
+            err = _err;
+          }
 
           return validate(err, xml, done);
         });
