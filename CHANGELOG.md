@@ -6,6 +6,14 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.0.3
+
+* `CHORE`: update to `moddle-xml@9.0.3`
+
+## 6.0.7
+
+* `CHORE`: update to `moddle-xml@8.0.8`
+
 ## 7.0.2
 
 * `FIX`: recursively log nested namespaces as used ([#78](https://github.com/bpmn-io/bpmn-moddle/pull/78))
