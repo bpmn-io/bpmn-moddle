@@ -1,6 +1,6 @@
 # bpmn-moddle
 
-[![Build Status](https://travis-ci.org/bpmn-io/bpmn-moddle.svg?branch=master)](https://travis-ci.org/bpmn-io/bpmn-moddle)
+[![Build Status](https://travis-ci.com/bpmn-io/bpmn-moddle.svg?branch=master)](https://travis-ci.com/bpmn-io/bpmn-moddle)
 
 Read and write BPMN 2.0 diagram files in NodeJS and the browser.
 
@@ -37,7 +37,7 @@ definitions.get('rootElements').push(bpmnProcess);
 
 // xmlStrUpdated contains new id and the added process
 const {
-  xml: xmlStrUpdated 
+  xml: xmlStrUpdated
 } = await moddle.toXML(definitions);
 ```
 
