@@ -13,6 +13,7 @@ describe('bpmn-moddle', function() {
   describe('parsing', function() {
 
     it('should publish type', function() {
+
       // when
       var type = moddle.getType('bpmn:Process');
 

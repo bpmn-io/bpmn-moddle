@@ -28,6 +28,7 @@ describe('bpmn-moddle - integration', function() {
     }
 
     function write(element, options) {
+
       // skip preamble for tests
       options = assign({ preamble: false }, options);
 

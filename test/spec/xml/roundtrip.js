@@ -62,6 +62,7 @@ describe('bpmn-moddle - roundtrip', function() {
           moddle.create('bpmn:Message', { id: '_foo_bar' }),
           moddle.create('bpmn:Message', { id: '_foo-bar' }),
           moddle.create('bpmn:Message', { id: '_11' })
+
           // invalid
           // moddle.create('bpmn:Message', { id: '-foo-bar' }),
           // moddle.create('bpmn:Message', { id: 'foo:_foo_bar' }),
