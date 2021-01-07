@@ -20,6 +20,7 @@ describe('bpmn-moddle - integration', function() {
       var moddle = createModdle({ camunda: camundaPackage });
 
       function write(element, options) {
+
         // skip preamble for tests
         options = assign({ preamble: false }, options);
 

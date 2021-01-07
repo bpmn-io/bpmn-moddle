@@ -20,6 +20,7 @@ const umdDist = pkg['umd:main'];
 const umdName = 'BpmnModdle';
 
 export default [
+
   // browser-friendly UMD build
   {
     input: srcEntry,
