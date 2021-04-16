@@ -227,7 +227,6 @@ describe('bpmn-moddle - roundtrip', function() {
       expect(xml).not.to.contain('xsi:type="bpmn:tExpression');
 
       await validate(xml);
-
     });
 
 
@@ -276,6 +275,8 @@ describe('bpmn-moddle - roundtrip', function() {
       var {
         xml
       } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -291,6 +292,8 @@ describe('bpmn-moddle - roundtrip', function() {
       var {
         xml
       } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -306,6 +309,8 @@ describe('bpmn-moddle - roundtrip', function() {
       var {
         xml
       } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -321,6 +326,8 @@ describe('bpmn-moddle - roundtrip', function() {
       var {
         xml
       } = await toXML(rootElement, { format: true });
+
+      // then
       await validate(xml);
     });
 
@@ -621,6 +628,32 @@ describe('bpmn-moddle - roundtrip', function() {
       expect(xml).to.eql(expectedXML);
     });
 
+
+    it('xml:lang attribute', async function() {
+
+      // given
+      var {
+        rootElement,
+        warnings
+      } = await fromFile('test/fixtures/bpmn/xml-lang.bpmn');
+
+      var warningsStr = warnings.map(function(w) {
+        return '\n\t- ' + w.message;
+      }).join('');
+
+      if (warningsStr) {
+        throw new Error('import warnings: ' + warningsStr);
+      }
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
+      await validate(xml);
+    });
+
   });
 
 
@@ -731,6 +764,7 @@ describe('bpmn-moddle - roundtrip', function() {
       });
 
     });
+
   });
 
 });
