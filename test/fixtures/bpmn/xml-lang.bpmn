@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<semantic:definitions xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" id="Definitions_ID-fb608531-757d-11ea-1607-e454e8a94fcb" name="Advertise job vacancy" targetNamespace="http://www.softwareag.com/aris/bpmn2" exporter="ARIS" exporterVersion="10.0.0.42">
+    <semantic:collaboration name="Advertise job vacancy" id="Collaboration_ID-fb608531-757d-11ea-1607-e454e8a94fcb" xml:lang="de">
+        <semantic:extensionElements>
+            <i18n:translation target="@name" xml:lang="en">Advertise job vacancy</i18n:translation>
+        </semantic:extensionElements>
+    </semantic:collaboration>
+</semantic:definitions>

@@ -786,6 +786,51 @@ describe('bpmn-moddle - read', function() {
 
     });
 
+
+    it('generic xml extensions', async function() {
+
+      // given
+      var xml = `
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <bpmn:definitions
+      xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+      xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0"
+      id="Definitions_1">
+    <bpmn:collaboration id="Collaboration_1">
+      <bpmn:extensionElements>
+        <i18n:translation target="@name" xml:lang="en">Advertise</i18n:translation>
+      </bpmn:extensionElements>
+    </bpmn:collaboration>
+  </bpmn:definitions>`;
+
+      // when
+      var {
+        rootElement
+      } = await read(xml);
+
+      expect(rootElement).to.jsonEqual({
+        $type: 'bpmn:Definitions',
+        id: 'Definitions_1',
+        rootElements: [
+          {
+            $type: 'bpmn:Collaboration',
+            id: 'Collaboration_1',
+            extensionElements: {
+              $type: 'bpmn:ExtensionElements',
+              values: [
+                {
+                  $type: 'i18n:translation',
+                  target: '@name',
+                  'xml:lang': 'en',
+                  $body: 'Advertise'
+                }
+              ]
+            }
+          }
+        ]
+      });
+    });
+
   });
 
 
