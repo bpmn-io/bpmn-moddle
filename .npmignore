@@ -1,8 +1,8 @@
+.github
 resources/bpmn/cmof/
 test/
 lib/
 !dist/
 .eslintrc
 .eslintignore
-.travis.yml
 rollup.config.js
