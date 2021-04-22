@@ -1,6 +1,7 @@
 .github
 resources/bpmn/cmof/
 test/
+tasks/
 lib/
 !dist/
 .eslintrc
