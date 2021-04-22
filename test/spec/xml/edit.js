@@ -79,8 +79,6 @@ describe('bpmn-moddle - edit', function() {
 
   describe('generate DI', function() {
 
-    this.timeout(30000);
-
     async function readAndGenerateDI(file) {
 
       var {
