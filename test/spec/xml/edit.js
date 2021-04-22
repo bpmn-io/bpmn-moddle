@@ -73,10 +73,13 @@ describe('bpmn-moddle - edit', function() {
       expect(xml).to.contain('<bpmn:dataObject id="dataObject_2" />');
       expect(xml).to.contain('<bpmn:dataObjectReference id="DataObjectReference_1" dataObjectRef="dataObject_2" />');
     });
+
   });
 
 
   describe('generate DI', function() {
+
+    this.timeout(30000);
 
     async function readAndGenerateDI(file) {
 
