@@ -6,6 +6,11 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.1.0
+
+* `FEAT`: add BPMN in Color schema ([#87](https://github.com/bpmn-io/bpmn-moddle/pull/87))
+* `CHORE`: update dependencies
+
 ## 7.0.5
 
 * `FIX`: correct serialization of `xml` prefixed attributes on `Any` elements
