@@ -40,6 +40,7 @@
   "license": "MIT",
   "sideEffects": false,
   "devDependencies": {
+    "bpmn-in-color-moddle": "^0.1.0",
     "chai": "^4.3.4",
     "cmof-parser": "^0.5.2",
     "eslint": "^7.24.0",
