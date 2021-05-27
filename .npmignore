@@ -1,9 +1,0 @@
-.github
-resources/bpmn/cmof/
-test/
-tasks/
-lib/
-!dist/
-.eslintrc
-.eslintignore
-rollup.config.js

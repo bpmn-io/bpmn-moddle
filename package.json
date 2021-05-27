@@ -59,5 +59,10 @@
     "min-dash": "^3.5.2",
     "moddle": "^5.0.2",
     "moddle-xml": "^9.0.5"
-  }
+  },
+  "files": [
+    "dist",
+    "resources",
+    "!resources/bpmn/cmof"
+  ]
 }
