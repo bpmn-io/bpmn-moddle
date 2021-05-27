@@ -58,6 +58,12 @@ export default [
       'moddle',
       'moddle-xml'
     ],
-    plugins: pgl()
+    plugins: pgl([
+      resolve({
+        resolveOnly: [
+          'bpmn-in-color-moddle'
+        ]
+      }),
+    ])
   }
 ];
