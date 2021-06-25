@@ -76,6 +76,14 @@ describe('bpmn-moddle', function() {
     });
 
 
+    it('should create CallActivity', function() {
+      var subProcess = moddle.create('bpmn:CallActivity');
+
+      expect(subProcess.$type).to.eql('bpmn:CallActivity');
+      expect(subProcess.$instanceOf('bpmn:InteractionNode')).to.be.true;
+    });
+
+
     describe('defaults', function() {
 
       it('should init Gateway', function() {

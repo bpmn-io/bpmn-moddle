@@ -220,6 +220,7 @@ module.exports = async function(results) {
   ], model);
 
   findType('SubProcess', model).superClass.push('InteractionNode');
+  findType('CallActivity', model).superClass.push('InteractionNode');
 
   const text = findProperty('Documentation#text', model);
 
