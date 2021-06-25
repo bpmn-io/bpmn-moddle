@@ -2477,7 +2477,8 @@
     {
       "name": "CallActivity",
       "superClass": [
-        "Activity"
+        "Activity",
+        "InteractionNode"
       ],
       "properties": [
         {
