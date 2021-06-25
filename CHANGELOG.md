@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.1.2
+
+* `FIX`: make `bpmn:InteractionNode` include `bpmn:CallActivity`
+
 ## 7.1.1
 
 * `FIX`: properly inline BPMN in Color schema ([#88](https://github.com/bpmn-io/bpmn-moddle/pull/88))
