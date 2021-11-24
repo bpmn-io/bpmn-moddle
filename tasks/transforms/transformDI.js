@@ -48,12 +48,12 @@ module.exports = async function(results) {
   });
 
 
-  findType('Style', model).properties = [{
+  findType('Style', model).properties = [ {
     name: 'id',
     isAttr: true,
     isId: true,
     type: 'String'
-  }];
+  } ];
 
   findProperty('Edge#waypoint', model).xml = {
     serialize: 'xsi:type'
