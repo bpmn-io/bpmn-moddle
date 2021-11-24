@@ -342,11 +342,11 @@ module.exports = async function(results) {
 
   expression.isAbstract = false;
 
-  expression.properties = [{
+  expression.properties = [ {
     name: 'body',
     isBody: true,
     type: 'String'
-  }];
+  } ];
 
   const formalExpression = findType('FormalExpression', model);
 
