@@ -655,6 +655,23 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('i18n', async function() {
+
+      // given
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/i18n.bpmn');
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
+      await validate(xml);
+    });
+
+
     it('BPMN in color properties', async function() {
 
       // given
