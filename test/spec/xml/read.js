@@ -217,7 +217,7 @@ describe('bpmn-moddle - read', function() {
           id: 'EndEvent_1',
 
           dataInputAssociations: [
-            { $type: 'bpmn:DataInputAssociation', id: 'DataInputAssociation_1' }
+            { $type: 'bpmn:DataInputAssociation', id: 'DataInputAssociation_1', name: 'DataInputAssociation_1n' }
           ]
         };
 
@@ -240,7 +240,7 @@ describe('bpmn-moddle - read', function() {
           id: 'StartEvent_1',
 
           dataOutputAssociations: [
-            { $type: 'bpmn:DataOutputAssociation', id: 'DataOutputAssociation_1' }
+            { $type: 'bpmn:DataOutputAssociation', id: 'DataOutputAssociation_1', name: 'DataOutputAssociation_1n' }
           ]
         };
 

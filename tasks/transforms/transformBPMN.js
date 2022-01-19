@@ -140,15 +140,25 @@ module.exports = async function(results) {
     model
   );
 
-  model = orderProperties('DataAssociation', [
-    'sourceRef',
-    'targetRef',
-    'transformation'
-  ], model);
-
   findProperty('DataAssociation#transformation', model).xml = {
     serialize: 'property'
   };
+
+  const dataAssociation = findType('DataAssociation', model);
+
+  dataAssociation.properties.push({
+    name: 'name',
+    isAttr: true,
+    type: 'String'
+  });
+
+  model = orderProperties('DataAssociation', [
+    'name',
+    'sourceRef',
+    'targetRef',
+    'transformation',
+    'assignment'
+  ], model);
 
   findType('Choreography', model).superClass = [ 'Collaboration', 'FlowElementsContainer' ];
 
@@ -164,13 +174,6 @@ module.exports = async function(results) {
     'resources',
     'completionQuantity',
     'loopCharacteristics'
-  ], model);
-
-  model = orderProperties('DataAssociation', [
-    'sourceRef',
-    'targetRef',
-    'transformation',
-    'assignment'
   ], model);
 
   findProperty('CallableElement#supportedInterfaceRefs', model).name = 'supportedInterfaceRef';

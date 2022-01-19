@@ -946,6 +946,11 @@
       ],
       "properties": [
         {
+          "name": "name",
+          "isAttr": true,
+          "type": "String"
+        },
+        {
           "name": "sourceRef",
           "type": "ItemAwareElement",
           "isMany": true,
