@@ -10,7 +10,7 @@
     "distro": "run-s build test:build",
     "build": "rollup -c",
     "test:build": "mocha --reporter=spec --recursive test/distro",
-    "prepublishOnly": "run-s distro",
+    "prepare": "run-s distro",
     "generate-schema": "node tasks/generate-schema"
   },
   "repository": {
