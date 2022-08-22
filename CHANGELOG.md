@@ -6,6 +6,11 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 7.1.3
+
+* `FIX`: de-duplicate attributes
+* `DEPS`: update to `moddle-xml@9.0.6`
+
 ## 7.1.2
 
 * `FIX`: make `bpmn:InteractionNode` include `bpmn:CallActivity`
