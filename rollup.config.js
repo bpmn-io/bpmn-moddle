@@ -1,5 +1,7 @@
 import { terser } from 'rollup-plugin-terser';
 
+import { importAssertions } from 'acorn-import-assertions';
+
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
@@ -33,7 +35,8 @@ export default [
       resolve(),
       commonjs(),
       terser()
-    ])
+    ]),
+    acornInjectPlugins: [ importAssertions ]
   },
   {
     input: srcEntry,
@@ -45,7 +48,8 @@ export default [
     plugins: pgl([
       resolve(),
       commonjs()
-    ])
+    ]),
+    acornInjectPlugins: [ importAssertions ]
   },
   {
     input: srcEntry,
@@ -64,6 +68,7 @@ export default [
           'bpmn-in-color-moddle'
         ]
       }),
-    ])
+    ]),
+    acornInjectPlugins: [ importAssertions ]
   }
 ];

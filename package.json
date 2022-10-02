@@ -46,6 +46,7 @@
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^14.1.0",
+    "acorn-import-assertions": "^1.8.0",
     "bpmn-in-color-moddle": "^0.1.0",
     "chai": "^4.3.6",
     "cmof-parser": "^0.5.2",
