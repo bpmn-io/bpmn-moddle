@@ -1,4 +1,4 @@
-import expect from '../../expect';
+import expect from '../../expect.js';
 
 import {
   assign
@@ -6,7 +6,7 @@ import {
 
 import {
   createModdle
-} from '../../helper';
+} from '../../helper.js';
 
 
 describe('bpmn-moddle - write', function() {

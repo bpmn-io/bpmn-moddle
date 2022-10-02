@@ -1,6 +1,6 @@
 const {
   findProperty
-} = require('./helper');
+} = require('./helper.cjs');
 
 module.exports = async function(results) {
   const { elementsByType } = results;

@@ -1,11 +1,11 @@
-import expect from '../expect';
+import expect from '../expect.js';
 
 import {
   createModdle,
   readFile
-} from '../helper';
+} from '../helper.js';
 
-import droolsPackage from '../fixtures/json/model/drools';
+import droolsPackage from '../fixtures/json/model/drools.json' assert { type: 'json' };
 
 import {
   assign

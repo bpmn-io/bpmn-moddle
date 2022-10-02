@@ -1,4 +1,4 @@
-import expect from '../../expect';
+import expect from '../../expect.js';
 
 import {
   assign
@@ -7,13 +7,14 @@ import {
 import {
   createModdle,
   readFile
-} from '../../helper';
+} from '../../helper.js';
 
+import ExprModdle from '../../fixtures/json/model/expr.json' assert { type: 'json' };
 
 describe('bpmn-moddle - expr', function() {
 
   var moddle = createModdle({
-    expr: require('../../fixtures/json/model/expr')
+    expr: ExprModdle
   });
 
   function read(xml, root, opts) {

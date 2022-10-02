@@ -1,14 +1,14 @@
-import expect from '../../expect';
+import expect from '../../expect.js';
 
 import {
   createModdle
-} from '../../helper';
+} from '../../helper.js';
 
 import {
   fromFile as readFromFile,
   validate,
   toXML
-} from '../../xml-helper';
+} from '../../xml-helper.js';
 
 
 describe('bpmn-moddle - edit', function() {

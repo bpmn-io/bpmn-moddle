@@ -1,10 +1,10 @@
-import expect from './expect';
+import expect from './expect.js';
 
 import SchemaValidator from 'xsd-schema-validator';
 
 import {
   readFile
-} from './helper';
+} from './helper.js';
 
 var BPMN_XSD = 'test/fixtures/xsd/BPMN20.xsd';
 

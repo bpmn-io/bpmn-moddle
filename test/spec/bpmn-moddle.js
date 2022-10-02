@@ -1,8 +1,8 @@
-import expect from '../expect';
+import expect from '../expect.js';
 
 import {
   createModdle
-} from '../helper';
+} from '../helper.js';
 
 
 describe('bpmn-moddle', function() {

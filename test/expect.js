@@ -1,6 +1,6 @@
 import chai from 'chai';
 
-import Matchers from './matchers';
+import Matchers from './matchers.js';
 
 // add matchers
 chai.use(Matchers);

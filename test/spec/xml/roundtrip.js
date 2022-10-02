@@ -1,15 +1,15 @@
-import expect from '../../expect';
+import expect from '../../expect.js';
 
 import {
   createModdle
-} from '../../helper';
+} from '../../helper.js';
 
 import {
   fromValidFile,
   fromFilePart,
   toXML,
   validate
-} from '../../xml-helper';
+} from '../../xml-helper.js';
 
 import {
   readFileSync as readFile

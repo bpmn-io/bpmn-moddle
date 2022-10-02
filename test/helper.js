@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import SimpleBpmnModdle from '../lib';
+import SimpleBpmnModdle from '../lib/index.js';
 
 export function ensureDirExists(dir) {
 

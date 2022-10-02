@@ -1,14 +1,14 @@
 import {
   createModdle
-} from '../../helper';
+} from '../../helper.js';
 
-import camundaPackage from '../../fixtures/json/model/camunda';
+import camundaPackage from '../../fixtures/json/model/camunda.json' assert { type: 'json' };
 
 import {
   fromFile as parseFromFile,
   toXML,
   validate
-} from '../../xml-helper';
+} from '../../xml-helper.js';
 
 
 describe('bpmn-moddle - integration', function() {

@@ -1,4 +1,4 @@
-import expect from '../../expect';
+import expect from '../../expect.js';
 
 import {
   assign
@@ -6,9 +6,9 @@ import {
 
 import {
   createModdle
-} from '../../helper';
+} from '../../helper.js';
 
-import camundaPackage from '../../fixtures/json/model/camunda';
+import camundaPackage from '../../fixtures/json/model/camunda.json' assert { type: 'json' };
 
 
 describe('bpmn-moddle - integration', function() {

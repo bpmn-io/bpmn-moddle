@@ -1,3 +1,12 @@
 {
-  "extends": "plugin:bpmn-io/recommended"
+  "extends": "plugin:bpmn-io/recommended",
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "plugins": [
+        "@babel/plugin-syntax-import-assertions"
+      ]
+    }
+  }
 }

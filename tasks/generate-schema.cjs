@@ -7,7 +7,7 @@ const {
   transformDI,
   transformBPMN,
   transformBPMNDI
-} = require('./transforms');
+} = require('./transforms/index.cjs');
 
 async function generateSchema(files) {
   files.forEach(async file => {
