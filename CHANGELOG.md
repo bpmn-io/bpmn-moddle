@@ -6,6 +6,13 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.0.0
+
+* `DEPS`: update to `moddle@6`
+* `DEPS`: update to `moddle-xml@10`
+* `DEPS`: update to `min-dash@4`
+* `CHORE`: turn into ES module
+
 ## 7.1.3
 
 * `FIX`: de-duplicate attributes
