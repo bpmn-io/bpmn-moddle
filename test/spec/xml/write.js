@@ -644,7 +644,10 @@ describe('bpmn-moddle - write', function() {
       it('BPMNDiagram', async function() {
 
         // given
-        var diagram = moddle.create('bpmndi:BPMNDiagram', { name: 'FOO', resolution: 96.5 });
+        var diagram = moddle.create('bpmndi:BPMNDiagram', {
+          name: 'FOO',
+          resolution: 96.5
+        });
 
         var expectedXML =
           '<bpmndi:BPMNDiagram xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
@@ -662,8 +665,14 @@ describe('bpmn-moddle - write', function() {
       it('BPMNShape', async function() {
 
         // given
-        var bounds = moddle.create('dc:Bounds', { x: 100.0, y: 200.0, width: 50.0, height: 50.0 });
-        var bpmnShape = moddle.create('bpmndi:BPMNShape', { bounds: bounds });
+        var bpmnShape = moddle.create('bpmndi:BPMNShape', {
+          bounds: moddle.create('dc:Bounds', {
+            x: 100.0,
+            y: 200.0,
+            width: 50.0,
+            height: 50.0
+          })
+        });
 
         var expectedXML =
           '<bpmndi:BPMNShape xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
