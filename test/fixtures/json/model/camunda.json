@@ -200,7 +200,7 @@
       "superClass": [ "InputOutputParameterDefinition" ],
       "properties": [
         {
-          "name": "scriptLanguage",
+          "name": "scriptFormat",
           "isAttr": true,
           "type": "String"
         },
