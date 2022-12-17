@@ -69,10 +69,15 @@ describe('bpmn-moddle', function() {
 
 
     it('should create SubProcess', function() {
-      var subProcess = moddle.create('bpmn:SubProcess');
+      var task = moddle.create('bpmn:Task');
+
+      var subProcess = moddle.create('bpmn:SubProcess', {
+        flowElements: [ task ]
+      });
 
       expect(subProcess.$type).to.eql('bpmn:SubProcess');
       expect(subProcess.$instanceOf('bpmn:InteractionNode')).to.be.true;
+      expect(subProcess.flowElements).to.eql([ task ]);
     });
 
 
