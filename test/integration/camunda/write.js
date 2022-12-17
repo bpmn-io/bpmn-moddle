@@ -33,7 +33,9 @@ describe('bpmn-moddle - integration', function() {
         it('ServiceTaskLike', async function() {
 
           // given
-          var serviceTask = moddle.create('bpmn:ServiceTask', { javaDelegate: 'FOO' });
+          var serviceTask = moddle.create('bpmn:ServiceTask', {
+            'camunda:javaDelegate': 'FOO'
+          });
 
           // assume
           expect(serviceTask.$instanceOf('camunda:ServiceTaskLike')).to.be.true;
