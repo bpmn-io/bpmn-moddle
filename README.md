@@ -53,7 +53,7 @@ const {
 
 The tests include XSD schema validation. They required you to have a Java SDK installed and exposed through the `JAVA_HOME` variable.
 
-```
+```bash
 # execute the test
 npm test
 
