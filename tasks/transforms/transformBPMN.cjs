@@ -306,6 +306,8 @@ module.exports = async function(results) {
 
   findProperty('CompensateEventDefinition#waitForCompletion', model).default = true;
 
+  delete findProperty('LinkEventDefinition#target', model).isAttr;
+
   findProperty('EventBasedGateway#eventGatewayType', model).default = 'Exclusive';
 
   findProperty('CatchEvent#parallelMultiple', model).default = false;

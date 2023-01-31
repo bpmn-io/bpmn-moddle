@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="IDcabd3f46-e0f3-46bd-abb3-e06c859f9ab5" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="valid-link-event-definitions" isExecutable="true">
+    <bpmn:intermediateThrowEvent id="ID388a1f53-e21f-467f-a7b3-031fb3e40647">
+      <bpmn:linkEventDefinition id="ID14e6ec89-6434-4ef9-bdab-6784f8fee217" name="valid-link">
+        <bpmn:target>ID1df1dbc4-6013-457c-840b-b7aae14f91e4</bpmn:target>
+      </bpmn:linkEventDefinition>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateCatchEvent id="ID2f916948-6dca-4ac4-83fb-080769460487">
+      <bpmn:linkEventDefinition id="ID1df1dbc4-6013-457c-840b-b7aae14f91e4" name="valid-link">
+        <bpmn:source>ID14e6ec89-6434-4ef9-bdab-6784f8fee217</bpmn:source>
+      </bpmn:linkEventDefinition>
+    </bpmn:intermediateCatchEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="valid-link-event-definitions">
+      <bpmndi:BPMNShape id="ID5ac6cb14-7694-4545-a258-ba9a01345352_di" bpmnElement="ID388a1f53-e21f-467f-a7b3-031fb3e40647">
+        <dc:Bounds x="312" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ID2aff1f7f-f7af-4447-86b8-cdc21f57fb9d_di" bpmnElement="ID2f916948-6dca-4ac4-83fb-080769460487">
+        <dc:Bounds x="432" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

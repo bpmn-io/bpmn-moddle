@@ -823,7 +823,6 @@
         {
           "name": "target",
           "type": "LinkEventDefinition",
-          "isAttr": true,
           "isReference": true
         },
         {
