@@ -7,11 +7,13 @@
     "lint": "eslint .",
     "dev": "npm test -- --watch",
     "test": "mocha --reporter=spec --recursive test/spec test/integration",
-    "distro": "run-s build test:build",
+    "distro": "run-s copy build test:build",
     "build": "rollup -c",
     "test:build": "mocha --reporter=spec --recursive test/distro",
     "prepare": "run-s distro",
-    "generate-schema": "node tasks/generate-schema.cjs"
+    "generate-schema": "node tasks/generate-schema.cjs",
+    "generate-types": "node tasks/generate-types.js",
+    "copy": "cpx \"lib/*.d.ts\" dist"
   },
   "type": "module",
   "repository": {
@@ -50,12 +52,14 @@
     "bpmn-in-color-moddle": "^0.1.0",
     "chai": "^4.3.6",
     "cmof-parser": "^0.5.2",
+    "cpx": "^1.5.0",
     "eslint": "^8.24.0",
     "eslint-plugin-bpmn-io": "^0.16.0",
     "mocha": "^10.0.0",
     "npm-run-all": "^4.1.5",
     "rollup": "^2.79.1",
     "rollup-plugin-terser": "^7.0.2",
+    "ts-moddle": "file:../../ts-moddle",
     "xsd-schema-validator": "^0.7.0"
   },
   "dependencies": {
