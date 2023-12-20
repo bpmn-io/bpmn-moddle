@@ -579,6 +579,26 @@ describe('bpmn-moddle - read', function() {
       });
 
 
+      it('BPMNShape#isMarkerVisible', async function() {
+
+        // given
+
+        // when
+        var {
+          rootElement
+        } = await fromFile('test/fixtures/bpmn/di/bpmnShape-isMarkerVisible.part.bpmn', 'bpmndi:BPMNShape');
+
+        var expected = {
+          $type: 'bpmndi:BPMNShape',
+          id: 'BPMNShape_1',
+          isMarkerVisible: false
+        };
+
+        // then
+        expect(rootElement).to.jsonEqual(expected);
+      });
+
+
       it('BPMNEdge#waypoint', async function() {
 
         // given
