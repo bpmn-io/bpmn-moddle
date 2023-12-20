@@ -6,6 +6,11 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 8.1.0
+
+* `DEPS`: update to `moddle@6.2.3`
+* `DEPS`: update to `moddle-xml@10.1.0`
+
 ## 8.0.1
 
 * `FIX`: correct serialization of `LinkEventDefinition#target` ([#96](https://github.com/bpmn-io/bpmn-moddle/issues/96))
