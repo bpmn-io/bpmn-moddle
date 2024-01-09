@@ -48,7 +48,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
     "bpmn-in-color-moddle": "^0.1.0",
-    "chai": "^4.3.10",
+    "chai": "^4.4.0",
     "cmof-parser": "^0.5.2",
     "eslint": "^8.24.0",
     "eslint-plugin-bpmn-io": "^0.16.0",
