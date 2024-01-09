@@ -51,7 +51,7 @@
     "chai": "^4.3.10",
     "cmof-parser": "^0.5.2",
     "eslint": "^8.24.0",
-    "eslint-plugin-bpmn-io": "^0.16.0",
+    "eslint-plugin-bpmn-io": "^1.0.0",
     "mocha": "^10.2.0",
     "npm-run-all": "^4.1.5",
     "rollup": "^4.9.1",
