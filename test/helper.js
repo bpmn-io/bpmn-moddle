@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 
-import SimpleBpmnModdle from '../lib/index.js';
+import BpmnModdle from 'bpmn-moddle';
 
 export function ensureDirExists(dir) {
 
@@ -14,5 +14,5 @@ export function readFile(filename) {
 }
 
 export function createModdle(additionalPackages, options) {
-  return new SimpleBpmnModdle(additionalPackages, options);
+  return new BpmnModdle(additionalPackages, options);
 }
