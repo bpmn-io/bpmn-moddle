@@ -1,7 +1,13 @@
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 
-import pkg from './package.json' assert { type: "json" };
+import fs from 'node:fs';
+
+const pkg = JSON.parse(fs.readFileSync('./package.json'));
+
+const pkgExports = pkg.exports['.'];
+
+const srcEntry = 'lib/index.js';
 
 function pgl(plugins = []) {
   return [
@@ -10,14 +16,13 @@ function pgl(plugins = []) {
   ];
 }
 
-const srcEntry = pkg.source;
 
 export default [
   {
     input: srcEntry,
     output: [
-      { file: pkg.main, format: 'cjs', exports: 'default' },
-      { file: pkg.module, format: 'es', exports: 'default' }
+      { file: pkgExports.require, format: 'cjs', sourcemap: true },
+      { file: pkgExports.import, format: 'es', sourcemap: true }
     ],
     external: [
       'min-dash',

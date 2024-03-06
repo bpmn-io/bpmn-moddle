@@ -3,14 +3,14 @@
   "version": "8.1.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
-    "all": "run-s generate-schema lint test distro",
+    "all": "run-s generate-schema lint test",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
-    "test": "mocha --reporter=spec --recursive test/spec test/integration",
+    "pretest": "run-s build",
+    "test": "mocha --reporter=spec --recursive test",
     "distro": "run-s build test:build",
     "build": "rollup -c",
-    "test:build": "mocha --reporter=spec --recursive test/distro",
-    "prepare": "run-s distro",
+    "prepare": "run-s build",
     "generate-schema": "node tasks/generate-schema.cjs"
   },
   "type": "module",
@@ -18,9 +18,14 @@
     "type": "git",
     "url": "https://github.com/bpmn-io/bpmn-moddle"
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.esm.js",
-  "source": "lib/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./resources/*": "./resources/*",
+    "./package.json": "./package.json"
+  },
   "keywords": [
     "bpmn",
     "moddle",
