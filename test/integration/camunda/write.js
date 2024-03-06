@@ -8,7 +8,7 @@ import {
   createModdle
 } from '../../helper.js';
 
-import camundaPackage from '../../fixtures/json/model/camunda.json' assert { type: 'json' };
+import camundaPackage from '../../fixtures/json/model/camunda.json' with { type: 'json' };
 
 
 describe('bpmn-moddle - integration', function() {

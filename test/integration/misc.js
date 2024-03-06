@@ -5,7 +5,7 @@ import {
   readFile
 } from '../helper.js';
 
-import droolsPackage from '../fixtures/json/model/drools.json' assert { type: 'json' };
+import droolsPackage from '../fixtures/json/model/drools.json' with { type: 'json' };
 
 import {
   assign
