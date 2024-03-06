@@ -13,11 +13,4 @@ describe('bpmn-moddle', function() {
     expect(new BpmnModdle()).to.exist;
   });
 
-
-  it('should expose UMD bundle', function() {
-    const BpmnModdle = require('../../' + pkg['umd:main']);
-
-    expect(new BpmnModdle()).to.exist;
-  });
-
 });

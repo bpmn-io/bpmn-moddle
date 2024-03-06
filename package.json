@@ -20,7 +20,6 @@
   },
   "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
-  "umd:main": "dist/bpmn-moddle.umd.cjs",
   "source": "lib/index.js",
   "keywords": [
     "bpmn",
@@ -43,10 +42,8 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.10",
     "@babel/plugin-syntax-import-assertions": "^7.23.3",
-    "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
     "bpmn-in-color-moddle": "^0.1.0",
     "chai": "^4.4.1",
     "cmof-parser": "^0.5.2",
