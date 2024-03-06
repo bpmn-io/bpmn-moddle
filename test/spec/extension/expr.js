@@ -9,7 +9,8 @@ import {
   readFile
 } from '../../helper.js';
 
-import ExprModdle from '../../fixtures/json/model/expr.json' assert { type: 'json' };
+import ExprModdle from '../../fixtures/json/model/expr.json' with { type: 'json' };
+
 
 describe('bpmn-moddle - expr', function() {
 
