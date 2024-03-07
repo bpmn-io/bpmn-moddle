@@ -6,6 +6,16 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 9.0.0
+
+* `FEAT`: add `exports` configuration ([#111](https://github.com/bpmn-io/bpmn-moddle/pull/111))
+* `FIX`: remove broken `main` export ([#111](https://github.com/bpmn-io/bpmn-moddle/pull/111))
+* `CHORE`: drop UMD distribution ([#110](https://github.com/bpmn-io/bpmn-moddle/pull/110))
+* `CHORE`: turn into ES module ([#111](https://github.com/bpmn-io/bpmn-moddle/pull/111))
+* `CHORE`: require Node >= 16
+* `DEPS`: update to `moddle@7.0.0` ([#109](https://github.com/bpmn-io/bpmn-moddle/pull/109))
+* `DEPS`: update to `moddle-xml@11.0.0` ([#109](https://github.com/bpmn-io/bpmn-moddle/pull/109))
+
 ## 8.1.0
 
 * `DEPS`: update to `moddle@6.2.3`
