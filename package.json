@@ -1,6 +1,6 @@
 {
   "name": "bpmn-moddle",
-  "version": "8.1.0",
+  "version": "9.0.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
     "all": "run-s generate-schema lint test",
