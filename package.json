@@ -26,6 +26,9 @@
     "./resources/*": "./resources/*",
     "./package.json": "./package.json"
   },
+  "engines": {
+    "node": ">= 16"
+  },
   "keywords": [
     "bpmn",
     "moddle",
