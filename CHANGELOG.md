@@ -16,6 +16,11 @@ ___Note:__ Yet to be released changes appear here._
 * `DEPS`: update to `moddle@7.0.0` ([#109](https://github.com/bpmn-io/bpmn-moddle/pull/109))
 * `DEPS`: update to `moddle-xml@11.0.0` ([#109](https://github.com/bpmn-io/bpmn-moddle/pull/109))
 
+### Breaking Changes
+
+* Require Node >= 16
+* Drop UMD distribution. Use ES module export in modern JavaScript run-times
+
 ## 8.1.0
 
 * `DEPS`: update to `moddle@6.2.3`
