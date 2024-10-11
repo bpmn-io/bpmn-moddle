@@ -2,28 +2,39 @@ import bpmnIoPlugin from 'eslint-plugin-bpmn-io';
 
 import babelParser from '@babel/eslint-parser';
 
+const files = {
+  build: [
+    'tasks/**/*.cjs'
+  ],
+  test: [
+    'test/**/*.js',
+    'test/**/*.cjs'
+  ]
+};
+
 export default [
   {
     'ignores': [ 'dist' ]
   },
-  ...bpmnIoPlugin.configs.recommended,
+  ...bpmnIoPlugin.configs.recommended.map(config => {
+
+    return {
+      ...config,
+      ignores: files.build
+    };
+  }),
   ...bpmnIoPlugin.configs.node.map(config => {
 
     return {
       ...config,
-      files: [
-        'tasks/**/*.cjs'
-      ]
+      files: files.build
     };
   }),
   ...bpmnIoPlugin.configs.mocha.map(config => {
 
     return {
       ...config,
-      files: [
-        'test/**/*.js',
-        'test/**/*.cjs'
-      ]
+      files: files.test
     };
   }),
 
