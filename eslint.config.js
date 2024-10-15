@@ -9,25 +9,28 @@ const files = {
   test: [
     'test/**/*.js',
     'test/**/*.cjs'
+  ],
+  ignored: [
+    'dist'
   ]
 };
 
 export default [
   {
-    'ignores': [ 'dist' ]
+    'ignores': files.ignored
   },
-  ...bpmnIoPlugin.configs.recommended.map(config => {
-
-    return {
-      ...config,
-      ignores: files.build
-    };
-  }),
   ...bpmnIoPlugin.configs.node.map(config => {
 
     return {
       ...config,
       files: files.build
+    };
+  }),
+  ...bpmnIoPlugin.configs.recommended.map(config => {
+
+    return {
+      ...config,
+      ignores: files.build
     };
   }),
   ...bpmnIoPlugin.configs.mocha.map(config => {
