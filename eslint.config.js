@@ -19,6 +19,8 @@ export default [
   {
     'ignores': files.ignored
   },
+
+  // build
   ...bpmnIoPlugin.configs.node.map(config => {
 
     return {
@@ -26,6 +28,8 @@ export default [
       files: files.build
     };
   }),
+
+  // lib + test
   ...bpmnIoPlugin.configs.recommended.map(config => {
 
     return {
@@ -33,6 +37,8 @@ export default [
       ignores: files.build
     };
   }),
+
+  // test
   ...bpmnIoPlugin.configs.mocha.map(config => {
 
     return {
@@ -41,6 +47,7 @@ export default [
     };
   }),
 
+  // other
   // hook up babel parser
   {
     files: [ '**/*.js', '**/*.mjs' ],
