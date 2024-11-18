@@ -60,7 +60,7 @@
     "mocha": "^10.3.0",
     "npm-run-all2": "^7.0.0",
     "rollup": "^4.12.1",
-    "xsd-schema-validator": "^0.7.0"
+    "xsd-schema-validator": "^0.10.0"
   },
   "dependencies": {
     "min-dash": "^4.2.1",

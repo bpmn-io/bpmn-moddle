@@ -31,27 +31,13 @@ export function toXML(element, opts) {
   return element.$model.toXML(element, opts);
 }
 
-export function validate(xml) {
+export async function validate(xml) {
 
-  return new Promise(function(resolve, reject) {
+  if (!xml) {
+    throw new Error('XML is not defined');
+  }
 
-    if (!xml) {
-      return reject(new Error('XML is not defined'));
-    }
+  const result = await SchemaValidator.validateXML(xml, BPMN_XSD);
 
-    SchemaValidator.validateXML(xml, BPMN_XSD, function(err, result) {
-
-      if (err) {
-        return reject(err);
-      }
-
-      try {
-        expect(result.valid).to.be.true;
-      } catch (err) {
-        return reject(err);
-      }
-
-      return resolve();
-    });
-  });
+  expect(result.valid).to.be.true;
 }
