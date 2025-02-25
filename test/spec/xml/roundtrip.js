@@ -529,6 +529,21 @@ describe('bpmn-moddle - roundtrip', function() {
     });
 
 
+    it('ad-hoc subprocess', async function() {
+
+      // given
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/ad-hoc.bpmn');
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+      await validate(xml);
+    });
+
+
     it('colors', async function() {
 
       var {
