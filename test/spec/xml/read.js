@@ -501,6 +501,29 @@ describe('bpmn-moddle - read', function() {
 
       });
 
+
+      it('Event#eventDefinitionRef', async function() {
+
+        // when
+        var {
+          elementsById
+        } = await fromFile('test/fixtures/bpmn/event-definition-ref.bpmn');
+
+        // then
+        const eventDefinitionRef = elementsById['StartEvent_1'].get('eventDefinitionRef');
+
+        expect(eventDefinitionRef).to.jsonEqual([
+          {
+            $type: 'bpmn:TimerEventDefinition',
+            id: 'TimerDefinition',
+            timeDate: {
+              $type: 'bpmn:FormalExpression',
+              body: 'date'
+            }
+          }
+        ]);
+      });
+
     });
 
 
