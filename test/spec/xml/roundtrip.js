@@ -727,6 +727,23 @@ describe('bpmn-moddle - roundtrip', function() {
       // then
       await validate(xml);
     });
+
+
+    it('event definition ref', async function() {
+
+      // given
+      var {
+        rootElement
+      } = await fromFile('test/fixtures/bpmn/event-definition-ref.bpmn');
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
+      await validate(xml);
+    });
   });
 
 
