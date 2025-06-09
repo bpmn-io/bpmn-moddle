@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" id="simple" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:interface name="interface">
+    <bpmn2:operation id="operation" name="foo">
+      <bpmn2:inMessageRef>fooInMessage</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>fooOutMessage</bpmn2:outMessageRef>
+    </bpmn2:operation>
+  </bpmn2:interface>
+  <bpmn2:process>
+    <bpmn2:ioSpecification id="InputOutputSpecification_1">
+      <bpmn2:dataOutput id="DataOutput_1" name="approved" />
+      <bpmn2:inputSet id="InputSet_1" name="default input set">
+        <bpmn2:outputSetRefs>OutputSet_1</bpmn2:outputSetRefs>
+      </bpmn2:inputSet>
+      <bpmn2:outputSet id="OutputSet_1" name="default output set">
+        <bpmn2:dataOutputRefs>DataOutput_1</bpmn2:dataOutputRefs>
+        <bpmn2:inputSetRefs>InputSet_1</bpmn2:inputSetRefs>
+      </bpmn2:outputSet>
+    </bpmn2:ioSpecification>
+    <bpmn2:ioBinding inputDataRef="InputSet_1" outputDataRef="OutputSet_1" operationRef="operation" />
+    <bpmn2:receiveTask operationRef="operation" />
+    <bpmn2:sendTask operationRef="operation" />
+    <bpmn2:serviceTask operationRef="operation" />
+  </bpmn2:process>
+  <bpmn2:message id="fooInMessage" />
+  <bpmn2:message id="fooOutMessage" />
+</bpmn2:definitions>

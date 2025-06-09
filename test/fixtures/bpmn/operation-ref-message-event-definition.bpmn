@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" id="simple" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:interface name="interface">
+    <bpmn2:operation id="operation" name="foo">
+      <bpmn2:inMessageRef>fooInMessage</bpmn2:inMessageRef>
+      <bpmn2:outMessageRef>fooOutMessage</bpmn2:outMessageRef>
+    </bpmn2:operation>
+  </bpmn2:interface>
+  <bpmn2:messageEventDefinition id="messageEventDefinition">
+    <bpmn2:operationRef>operation</bpmn2:operationRef>
+  </bpmn2:messageEventDefinition>
+  <bpmn2:message id="fooInMessage" />
+  <bpmn2:message id="fooOutMessage" />
+</bpmn2:definitions>

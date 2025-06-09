@@ -744,6 +744,46 @@ describe('bpmn-moddle - roundtrip', function() {
       // then
       await validate(xml);
     });
+
+
+    it('operation ref on message event definition', async function() {
+
+      // given
+      var path = 'test/fixtures/bpmn/operation-ref-message-event-definition.bpmn';
+      var expectedXML = readFile(path, 'utf8');
+      var {
+        rootElement
+      } = await fromFile(path);
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
+      await validate(xml);
+      expect(xml).to.eql(expectedXML);
+    });
+
+
+    it('operation ref as an attribute on tasks and io binding', async function() {
+
+      // given
+      var path = 'test/fixtures/bpmn/operation-ref-as-attribute.bpmn';
+      var expectedXML = readFile(path, 'utf8');
+      var {
+        rootElement
+      } = await fromFile(path);
+
+      // when
+      var {
+        xml
+      } = await toXML(rootElement, { format: true });
+
+      // then
+      await validate(xml);
+      expect(xml).to.eql(expectedXML);
+    });
   });
 
 

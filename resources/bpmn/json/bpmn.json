@@ -848,7 +848,6 @@
         {
           "name": "operationRef",
           "type": "Operation",
-          "isAttr": true,
           "isReference": true
         }
       ]
