@@ -370,5 +370,8 @@ module.exports = async function(results) {
 
   delete findProperty('Operation#outMessageRef', model).isAttr;
 
+  // https://github.com/bpmn-io/bpmn-moddle/issues/127
+  delete findProperty('MessageEventDefinition#operationRef', model).isAttr;
+
   return model;
 };
