@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 9.0.2
+
+* `FIX`: handle `operationRef` correctly ([#127](https://github.com/bpmn-io/bpmn-moddle/issues/127))
+
 ## 9.0.1
 
 * `FIX`: correct the `engine` field to require Node 18 ([#113](https://github.com/bpmn-io/bpmn-moddle/issues/113))
