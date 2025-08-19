@@ -6,6 +6,10 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 9.0.3
+
+* `FIX`: remove `AdHocSubProcess#cancelRemainingInstances` default value ([#131](https://github.com/bpmn-io/bpmn-moddle/issues/131))
+
 ## 9.0.2
 
 * `FIX`: handle `operationRef` correctly ([#127](https://github.com/bpmn-io/bpmn-moddle/issues/127))
