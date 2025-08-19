@@ -536,10 +536,14 @@ describe('bpmn-moddle - roundtrip', function() {
         rootElement
       } = await fromFile('test/fixtures/bpmn/ad-hoc.bpmn');
 
+      // cancelRemainingInstances should not have a default value
+      expect(rootElement.get('cancelRemainingInstances')).not.to.exist;
+
       // when
       var {
         xml
       } = await toXML(rootElement, { format: true });
+
       await validate(xml);
     });
 
