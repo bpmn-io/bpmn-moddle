@@ -636,6 +636,43 @@ describe('bpmn-moddle - write', function() {
         // then
         expect(xml).to.eql(expectedXML);
       });
+
+
+      it('AdHocSubProcess#cancelRemainingInstances', async function() {
+
+        // given
+        var operation = moddle.create('bpmn:AdHocSubProcess', {
+          cancelRemainingInstances: false
+        });
+
+        var expectedXML =
+          '<bpmn:adHocSubProcess xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+          'cancelRemainingInstances="false" />';
+
+        // when
+        var { xml } = await write(operation);
+
+        // then
+        expect(xml).to.eql(expectedXML);
+      });
+
+
+      it('AdHocSubProcess#cancelRemainingInstances (default value not exported)', async function() {
+
+        // given
+        var operation = moddle.create('bpmn:AdHocSubProcess', {
+          cancelRemainingInstances: true
+        });
+
+        var expectedXML =
+          '<bpmn:adHocSubProcess xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" />';
+
+        // when
+        var { xml } = await write(operation);
+
+        // then
+        expect(xml).to.eql(expectedXML);
+      });
     });
 
 
