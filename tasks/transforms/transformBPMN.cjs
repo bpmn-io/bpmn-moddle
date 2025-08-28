@@ -373,7 +373,5 @@ module.exports = async function(results) {
   // https://github.com/bpmn-io/bpmn-moddle/issues/127
   delete findProperty('MessageEventDefinition#operationRef', model).isAttr;
 
-  delete findProperty('AdHocSubProcess#cancelRemainingInstances', model).default;
-
   return model;
 };

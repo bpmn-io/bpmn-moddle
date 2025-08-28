@@ -636,7 +636,6 @@ describe('bpmn-moddle - write', function() {
         // then
         expect(xml).to.eql(expectedXML);
       });
-
     });
 
 
