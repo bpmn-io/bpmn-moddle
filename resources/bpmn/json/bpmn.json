@@ -2599,6 +2599,7 @@
         },
         {
           "name": "cancelRemainingInstances",
+          "default": true,
           "isAttr": true,
           "type": "Boolean"
         }
