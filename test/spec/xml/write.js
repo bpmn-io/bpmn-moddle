@@ -729,8 +729,8 @@ describe('bpmn-moddle - write', function() {
 
         // given
         var bpmnShape = moddle.create('bpmndi:BPMNShape', {
-          fill: '#ff0000',
-          stroke: '#00ff00'
+          'bioc:fill': '#ff0000',
+          'bioc:stroke': '#00ff00'
         });
 
         var expectedXML =
@@ -750,8 +750,8 @@ describe('bpmn-moddle - write', function() {
 
         // given
         var bpmnEdge = moddle.create('bpmndi:BPMNEdge', {
-          fill: '#ff0000',
-          stroke: '#00ff00'
+          'bioc:fill': '#ff0000',
+          'bioc:stroke': '#00ff00'
         });
 
         var expectedXML =

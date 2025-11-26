@@ -14,5 +14,5 @@ export function readFile(filename) {
 }
 
 export function createModdle(additionalPackages, options) {
-  return new BpmnModdle(additionalPackages, options);
+  return new BpmnModdle(additionalPackages, options || { strict: true });
 }
