@@ -51,7 +51,7 @@
     "@babel/eslint-parser": "^7.25.8",
     "@babel/plugin-syntax-import-attributes": "^7.23.3",
     "@rollup/plugin-json": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "bpmn-in-color-moddle": "^0.1.0",
     "chai": "^6.0.0",
     "cmof-parser": "^0.5.2",
@@ -59,7 +59,7 @@
     "eslint-plugin-bpmn-io": "^2.0.1",
     "mocha": "^11.0.0",
     "npm-run-all2": "^8.0.0",
-    "rollup": "^4.12.1",
+    "rollup": "^4.54.0",
     "xsd-schema-validator": "^0.10.0"
   },
   "dependencies": {
