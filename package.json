@@ -52,7 +52,7 @@
     "@babel/plugin-syntax-import-attributes": "^7.27.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
-    "bpmn-in-color-moddle": "^0.1.0",
+    "bpmn-in-color-moddle": "^0.2.0",
     "chai": "^6.0.0",
     "cmof-parser": "^0.5.2",
     "eslint": "^9.39.2",
