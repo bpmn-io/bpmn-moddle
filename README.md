@@ -12,7 +12,7 @@ __bpmn-moddle__ uses the [BPMN 2.0 meta-model](http://www.omg.org/spec/BPMN/2.0/
 Get the library via [npm package](https://www.npmjs.org/package/bpmn-moddle). Consume it in NodeJS, via UMD or bundle it using your favorite build tool.
 
 ```javascript
-import BpmnModdle from 'bpmn-moddle';
+import { BpmnModdle } from 'bpmn-moddle';
 
 const moddle = new BpmnModdle();
 
