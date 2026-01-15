@@ -19,15 +19,12 @@
     "url": "https://github.com/bpmn-io/bpmn-moddle"
   },
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
+    ".": "./dist/index.js",
     "./resources/*": "./resources/*",
     "./package.json": "./package.json"
   },
   "engines": {
-    "node": ">= 18"
+    "node": ">= 20.12"
   },
   "keywords": [
     "bpmn",
