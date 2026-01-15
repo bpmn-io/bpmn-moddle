@@ -1,9 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import json from '@rollup/plugin-json';
 
-import fs from 'node:fs';
-
-const pkg = JSON.parse(fs.readFileSync('./package.json'));
+import pkg from './package.json';
 
 const pkgExports = pkg.exports['.'];
 
