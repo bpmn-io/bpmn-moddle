@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-import BpmnModdle from 'bpmn-moddle';
+import { BpmnModdle } from 'bpmn-moddle';
 
 export function ensureDirExists(dir) {
 
