@@ -1,7 +1,5 @@
 import bpmnIoPlugin from 'eslint-plugin-bpmn-io';
 
-import babelParser from '@babel/eslint-parser';
-
 const files = {
   build: [
     'tasks/**/*.cjs'
@@ -47,22 +45,10 @@ export default [
     };
   }),
 
-  // other
-  // hook up babel parser
+  // support "with" import
   {
-    files: [ '**/*.js', '**/*.mjs' ],
     languageOptions: {
-      parser: babelParser,
-      parserOptions: {
-        requireConfigFile: false,
-        babelOptions: {
-          babelrc: false,
-          configFile: false,
-          plugins: [
-            '@babel/plugin-syntax-import-attributes'
-          ]
-        },
-      }
+      ecmaVersion: 2025
     }
   }
 ];

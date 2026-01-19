@@ -8,7 +8,7 @@
     "dev": "npm test -- --watch",
     "pretest": "run-s build",
     "test": "mocha --reporter=spec --recursive test",
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "rollup -c",
     "prepare": "run-s build",
     "generate-schema": "node tasks/generate-schema.cjs"
   },
@@ -44,8 +44,6 @@
   "license": "MIT",
   "sideEffects": false,
   "devDependencies": {
-    "@babel/eslint-parser": "^7.28.5",
-    "@babel/plugin-syntax-import-attributes": "^7.27.1",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "bpmn-in-color-moddle": "^0.2.0",
