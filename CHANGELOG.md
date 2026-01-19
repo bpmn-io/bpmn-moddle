@@ -6,6 +6,17 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 10.0.0
+
+* `DEPS`: update to `moddle@8` and `moddle-xml@12`
+* `CHORE`: drop CJS distribution ([#138](https://github.com/bpmn-io/bpmn-moddle/pull/138))
+* `CHORE`: use named `BpmnModdle` export ([#138](https://github.com/bpmn-io/bpmn-moddle/pull/138))
+
+### Breaking Changes
+
+* Library is now ESM only, and can be consumed in Node >= 20.12
+* Moved to named export instead of default one.
+
 ## 9.0.4
 
 * `FIX`: revert breaking change in ([#131](https://github.com/bpmn-io/bpmn-moddle/pull/131))
