@@ -8,7 +8,6 @@
     "dev": "npm test -- --watch",
     "pretest": "run-s build",
     "test": "mocha --reporter=spec --recursive test",
-    "distro": "run-s build test:build",
     "build": "rollup -c --bundleConfigAsCjs",
     "prepare": "run-s build",
     "generate-schema": "node tasks/generate-schema.cjs"
