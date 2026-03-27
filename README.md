@@ -1,6 +1,6 @@
 # bpmn-moddle
 
-[![CI](https://github.com/bpmn-io/bpmn-moddle/workflows/CI/badge.svg)](https://github.com/bpmn-io/bpmn-moddle/actions?query=workflow%3ACI)
+[![CI](https://github.com/bpmn-io/bpmn-moddle/actions/workflows/CI.yml/badge.svg)](https://github.com/bpmn-io/bpmn-moddle/actions/workflows/CI.yml)
 
 Read and write BPMN 2.0 diagram files in NodeJS and the browser.
 
