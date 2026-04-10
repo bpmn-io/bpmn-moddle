@@ -410,7 +410,7 @@ function replaceKey(key, newKey, object) {
   // (1) iterate object keys
   Object.entries(object).forEach(entry => {
 
-    if (isArray[ entry[ 1 ]]) {
+    if (isArray(entry[ 1 ])) {
 
       // (2.1) recurse
       entry[ 1 ].forEach(item => replaceKey(key, newKey, item));
