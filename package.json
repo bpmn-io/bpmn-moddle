@@ -3,14 +3,16 @@
   "version": "10.0.0",
   "description": "A moddle wrapper for BPMN 2.0",
   "scripts": {
-    "all": "run-s generate-schema lint test",
+    "all": "run-s generate-schema lint generate-types test",
     "lint": "eslint .",
     "dev": "npm test -- --watch",
     "pretest": "run-s build",
     "test": "mocha --reporter=spec --recursive test",
     "build": "rollup -c",
     "prepare": "run-s build",
-    "generate-schema": "node tasks/generate-schema.cjs"
+    "prepublishOnly": "run-s generate-types",
+    "generate-schema": "node tasks/generate-schema.cjs",
+    "generate-types": "moddle-generate-types --index dist/types/index.d.ts resources/bpmn/json/bpmn.json dist/types/bpmn.d.ts resources/bpmn/json/dc.json dist/types/dc.d.ts resources/bpmn/json/di.json dist/types/di.d.ts resources/bpmn/json/bpmndi.json dist/types/bpmndi.d.ts"
   },
   "type": "module",
   "repository": {
@@ -19,6 +21,9 @@
   },
   "exports": {
     ".": "./dist/index.js",
+    "./types": {
+      "types": "./dist/types/index.d.ts"
+    },
     "./resources/*": "./resources/*",
     "./package.json": "./package.json"
   },
@@ -44,6 +49,7 @@
   "license": "MIT",
   "sideEffects": false,
   "devDependencies": {
+    "@bpmn-io/moddle-types-generator": "^0.2.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "bpmn-in-color-moddle": "^0.2.0",
