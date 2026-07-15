@@ -6,6 +6,8 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+* `DEPS`: update to `moddle-xml@12.1.0`
+
 ## 10.0.0
 
 * `DEPS`: update to `moddle@8` and `moddle-xml@12`
