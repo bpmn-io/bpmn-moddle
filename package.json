@@ -65,5 +65,8 @@
     "dist",
     "resources",
     "!resources/bpmn/cmof"
-  ]
+  ],
+  "allowScripts": {
+    "xsd-schema-validator@0.11.0": true
+  }
 }
