@@ -1135,6 +1135,42 @@ describe('bpmn-moddle - read', function() {
       );
     });
 
+
+    it.only('when importing element with unbound prefix (constructor)', async function() {
+
+      // given
+      var error;
+
+      // when
+      try {
+        await fromFile('test/fixtures/bpmn/error/unbound-prefix-constructor.bpmn');
+      } catch (err) {
+        error = err;
+      }
+
+      // then
+      expect(error).to.exist;
+      expect(error.message).to.match(/unparsable content <constructor:child> detected/);
+    });
+
+
+    it.only('when importing element with unbound prefix (__proto__)', async function() {
+
+      // given
+      var error;
+
+      // when
+      try {
+        await fromFile('test/fixtures/bpmn/error/unbound-prefix-__proto__.bpmn');
+      } catch (err) {
+        error = err;
+      }
+
+      // then
+      expect(error).to.exist;
+      expect(error.message).to.match(/unparsable content <__proto__:child> detected/);
+    });
+
   });
 
 
