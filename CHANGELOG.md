@@ -6,6 +6,9 @@ All notable changes to [bpmn-moddle](https://github.com/bpmn-io/bpmn-moddle) are
 
 ___Note:__ Yet to be released changes appear here._
 
+## 10.1.0
+
+* `FEAT`: generate bpmn moddle element types ([#149](https://github.com/bpmn-io/bpmn-moddle/pull/149))
 * `DEPS`: update to `moddle@8.2.1`
 * `DEPS`: update to `moddle-xml@12.1.0`
 
