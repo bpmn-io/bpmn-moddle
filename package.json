@@ -28,7 +28,7 @@
     "./package.json": "./package.json"
   },
   "engines": {
-    "node": ">= 20.12"
+    "node": ">= 24"
   },
   "keywords": [
     "bpmn",
